@@ -1,5 +1,5 @@
 # Introduction
-The license is AGPLV3.
+The license is Apache 2.0.
 
 # Contributing
-The standard licence is the [AGPLv3](LICENSE). For more information please see [CONTRIBUTING.md](CONTRIBUTING.md).
+The standard licence is the [Apache 2.0](LICENSE). For more information please see [CONTRIBUTING.md](CONTRIBUTING.md).
