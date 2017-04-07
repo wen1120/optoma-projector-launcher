@@ -3,4 +3,7 @@
     <color name="white">#ffffff</color>
     <color name="date">#d0d3d4</color>
     <color name="time">#8a8d8f</color>
+    <color name="setting">#9a887b</color>
+    <color name="source">#2e2a25</color>
+    <color name="transparent">#ffffff</color>
 </resources>

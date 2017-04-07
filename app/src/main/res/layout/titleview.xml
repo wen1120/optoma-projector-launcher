@@ -21,7 +21,7 @@
 
     <View
         android:id="@+id/title_bar_divider"
-        android:layout_width="match_parent"
+        android:layout_width="105dp"
         android:layout_height="1dp"
         android:layout_below="@+id/title_bar_hour"
         android:layout_alignParentRight="true"

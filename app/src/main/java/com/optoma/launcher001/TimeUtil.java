@@ -1,4 +1,4 @@
-package com.optoma.launcher;
+package com.optoma.launcher001;
 
 import android.text.format.Time;
 
@@ -24,6 +24,7 @@ public final class TimeUtil {
     public static String getTime() {
         String date = getFormattedDate();
         return date.substring(11, date.length() - 3);
+
     }
 
     /**
@@ -33,7 +34,7 @@ public final class TimeUtil {
      */
     public static String getDate() {
         String date = getFormattedDate();
-        return date.substring(0, 11);
+        return date.substring(0, 10);
     }
 
     private static String getFormattedDate() {
@@ -41,7 +42,7 @@ public final class TimeUtil {
         time.setToNow();
         DateFormat.getDateInstance();
         Calendar c = Calendar.getInstance();
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat df = new SimpleDateFormat("EEE dd MMM HH:mm:ss");
         return df.format(c.getTime());
     }
 }
