@@ -45,8 +45,6 @@ public class HomeActivity extends Activity {
         @Override
         public void onClick(View v) {
             Log.d(TAG, "Button Input Source clicked");
-            //intent.setClassName(this, getPackageName() + ".WelcomeActivity");
-            startActivity(intent);
         }
     };
 
