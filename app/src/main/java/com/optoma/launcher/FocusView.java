@@ -1,4 +1,4 @@
-package com.optoma.launcher001;
+package com.optoma.launcher;
 
 import android.animation.Animator;
 import android.animation.ObjectAnimator;

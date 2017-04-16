@@ -1,4 +1,4 @@
-package com.optoma.launcher001;
+package com.optoma.launcher;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -48,7 +48,7 @@ public class TitleView extends RelativeLayout {
         tvTime = (TextView) view.findViewById(R.id.title_bar_hour);
         tvDate = (TextView) view.findViewById(R.id.title_bar_date);
         typeface = Typeface.createFromAsset(context.getAssets(),
-                "font/Roboto-Regular.ttf");
+                "fonts/Roboto-Regular.ttf");
         tvTime.setTypeface(typeface);
         tvDate.setTypeface(typeface);
         timeHandle.post(timeRun);
