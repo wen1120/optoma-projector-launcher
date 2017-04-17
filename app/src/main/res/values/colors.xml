@@ -9,4 +9,7 @@
     <color name="tsource">#ff2e2a25</color>
     <color name="transparent">#ffffff</color>
     <color name="bolder">#eada24</color>
+    <color name="select">#d0d3d4</color>
+    <color name="shortcut">#5b646f</color>
+    <color name="ss_unselect_source">#71c5e8</color>
 </resources>

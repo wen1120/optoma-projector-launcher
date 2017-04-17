@@ -4,4 +4,79 @@
     <string name="home_input_source">Input Source</string>
     <string name="home_settings">Settings</string>
     <string name="home_display_settings">Display Settings</string>
+    <string name="is_miracast">Miracast</string>
+    <string name="is_vga">VGA</string>
+    <string name="is_hdmi_01">HDMI 01</string>
+    <string name="is_hdmi_02">HDMI 02</string>
+    <string name="is_hdmi_03">HDMI 03</string>
+    <string name="is_hdmi_04">HDMI 04</string>
+    <string name="is_usb_01">USB 01</string>
+    <string name="is_usb_02">USB 02</string>
+    <string name="is_svideo">S-video</string>
+    <string name="is_set_shortcut">Set Shortcut</string>
+    <string name="is_ss_title">Set shortcut for your quick access to input sources.</string>
+    <string name="is_ss_ss01">Shortcut 01</string>
+    <string name="is_ss_ss02">Shortcut 02</string>
+    <string name="is_ss_ss03">Shortcut 03</string>
+    <string name="setting_power">power</string>
+    <string name="setting_power_title">Power Mode</string>
+    <string name="setting_power_content">Active</string>
+    <string name="setting_account">Account</string>
+    <string name="setting_account_title">User name</string>
+    <string name="setting_account_content">Optoma</string>
+    <string name="setting_general">General</string>
+    <string name="setting_general_title">Projector ID</string>
+    <string name="setting_general_content">06</string>
+    <string name="setting_network">Network</string>
+    <string name="setting_network_title">Network Status</string>
+    <string name="setting_network_content">Connected</string>
+    <string name="setting_information">Information</string>
+    <string name="setting_information_title">Software Version</string>
+    <string name="setting_information_content">1.2.14</string>
+    <string name="setting_bluetooth">Bluetooth</string>
+    <string name="setting_bluetooth_title">Current Mode</string>
+    <string name="setting_bluetooth_content">Off</string>
+    <string name="setting_system">System</string>
+    <string name="setting_system_title">Language</string>
+    <string name="setting_system_content">English</string>
+    <string name="setting_audio">Audio</string>
+    <string name="setting_audio_title">Volume</string>
+    <string name="setting_audio_content">3</string>
+    <string name="setting_control">Control</string>
+    <string name="setting_control_title">Allow access</string>
+    <string name="setting_control_content">Crestron, PJ Link, HTTP</string>
+
+    <string-array name="ssArray">
+        <item>Miracast</item>
+        <item>VGA</item>
+        <item>HDMI 01</item>
+        <item>HDMI 02</item>
+        <item>HDMI 03</item>
+        <item>HDMI 04</item>
+        <item>USB 01</item>
+        <item>USB 02</item>
+        <item>S-video</item>
+    </string-array>
+    <string-array name="settingTitle">
+        <item>Power Mode</item>
+        <item>User name</item>
+        <item>Projector ID</item>
+        <item>Network Status</item>
+        <item>Software Version</item>
+        <item>Current Mode</item>
+        <item>Language</item>
+        <item>Volume</item>
+        <item>Allow access</item>
+    </string-array>
+    <string-array name="settingContent">
+        <item>Active</item>
+        <item>Optoma</item>
+        <item>06</item>
+        <item>Connected</item>
+        <item>1.2.14</item>
+        <item>Off</item>
+        <item>English</item>
+        <item>3</item>
+        <item>Crestron, PJ Link, HTTP</item>
+    </string-array>
 </resources>
