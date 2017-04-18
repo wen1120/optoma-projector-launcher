@@ -8,70 +8,59 @@
     android:orientation="vertical">
 
 
-    <RelativeLayout
-        android:id="@+id/header"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <ImageView
-            android:id="@+id/logo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="false"
-            android:layout_alignParentTop="false"
-            android:layout_weight="1"
-            android:adjustViewBounds="false"
-            android:paddingLeft="36dp"
-            android:paddingTop="20dp"
-            app:srcCompat="@drawable/optomalogo" />
-
-        <TextView
-            android:id="@+id/clock"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:paddingRight="36dp"
-            android:paddingTop="20dp"
-            android:text="10:09"
-            android:textSize="32sp" />
-
-        <ImageView
-            android:id="@+id/line_header"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/logo"
-            android:layout_alignLeft="@+id/clock"
-            android:layout_alignParentBottom="false"
-            android:layout_alignParentRight="true"
-            android:layout_alignRight="@+id/clock"
-            android:layout_alignWithParentIfMissing="false"
-            android:layout_marginRight="36dp"
-            app:srcCompat="@drawable/hline_ffffff" />
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/header">
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="false"
+        android:layout_alignParentTop="false"
+        android:layout_weight="1"
+        android:adjustViewBounds="false"
+        android:paddingLeft="36dp"
+        android:paddingTop="20dp"
+        app:srcCompat="@drawable/optomalogo" />
 
-        <TextView
-            android:id="@+id/day"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:paddingRight="36dp"
-            android:text="FRI 30 DEC"
-            android:textSize="15sp" />
+    <TextView
+        android:id="@+id/clock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:paddingRight="36dp"
+        android:paddingTop="20dp"
+        android:text="10:09"
+        android:textSize="32sp" />
 
-    </RelativeLayout>
+    <ImageView
+        android:id="@+id/clock_line"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/logo"
+        android:layout_alignLeft="@+id/clock"
+        android:layout_alignParentBottom="false"
+        android:layout_alignParentRight="true"
+        android:layout_alignRight="@+id/clock"
+        android:layout_alignWithParentIfMissing="false"
+        android:layout_marginRight="36dp"
+        app:srcCompat="@drawable/hline_ffffff" />
 
-    <RelativeLayout
+    <TextView
+        android:id="@+id/day"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/clock_line"
+        android:layout_marginRight="36dp"
+        android:text="FRI 30 DEC"
+        android:textSize="15sp" />
+
+    <LinearLayout
         android:layout_width="190dp"
         android:layout_height="wrap_content"
         android:layout_above="@+id/shortcut"
-        android:layout_centerHorizontal="true">
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="20dp"
+        android:orientation="vertical">
 
         <GridLayout
             android:id="@+id/menu"
@@ -79,15 +68,13 @@
             android:layout_height="wrap_content"
             android:layout_above="@+id/imageView1"
             android:layout_centerInParent="true"
-            android:layout_gravity="center"
-            android:layout_marginBottom="4dp">
+            android:layout_gravity="center">
 
             <ImageView
                 android:id="@+id/position"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignRight="@+id/apps"
-                android:layout_marginBottom="4dp"
                 android:layout_marginRight="5dp"
                 android:layout_weight="1"
                 app:srcCompat="@drawable/position" />
@@ -99,7 +86,6 @@
                 android:layout_centerHorizontal="false"
                 android:layout_centerInParent="false"
                 android:layout_centerVertical="false"
-                android:layout_marginBottom="4dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
                 android:layout_weight="1"
@@ -112,7 +98,6 @@
                 android:layout_centerHorizontal="false"
                 android:layout_centerInParent="false"
                 android:layout_centerVertical="false"
-                android:layout_marginBottom="4dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
                 android:layout_weight="1"
@@ -124,7 +109,6 @@
                 android:layout_height="wrap_content"
                 android:layout_alignLeft="@+id/input_source"
                 android:layout_alignRight="@+id/input_source"
-                android:layout_marginBottom="4dp"
                 android:layout_marginLeft="5dp"
                 app:srcCompat="@drawable/language" />
 
@@ -132,350 +116,333 @@
 
         <LinearLayout
             android:id="@+id/imageView1"
-            android:layout_width="190dp"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_above="@+id/shortcut"
             android:layout_centerInParent="true"
             android:layout_centerVertical="false"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="4dp"
             android:orientation="horizontal">
 
         </LinearLayout>
 
-    </RelativeLayout>
+    </LinearLayout>
 
-    <RelativeLayout
+    <GridLayout
         android:id="@+id/shortcut"
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
+        android:layout_alignWithParentIfMissing="false"
+        android:layout_centerHorizontal="false"
         android:layout_centerInParent="false"
         android:layout_centerVertical="false"
         android:layout_marginLeft="60dp"
-        android:layout_marginRight="60dp">
+        android:layout_marginRight="60dp"
+        android:layout_weight="1"
+        android:columnCount="8"
+        android:columnOrderPreserved="false"
+        android:focusable="false"
+        android:rowCount="1"
+        android:useDefaultMargins="true">
 
-        <GridLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignWithParentIfMissing="false"
-            android:layout_centerHorizontal="false"
-            android:layout_centerInParent="false"
-            android:layout_centerVertical="false"
+        <LinearLayout
+            android:layout_width="84dp"
+            android:layout_height="96dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="27dp"
+            android:layout_marginTop="27dp"
             android:layout_weight="1"
-            android:columnCount="8"
-            android:columnOrderPreserved="false"
+            android:background="@drawable/home_setting"
             android:focusable="false"
-            android:rowCount="1"
-            android:useDefaultMargins="true">
+            android:focusableInTouchMode="false"
+            android:forceHasOverlappingRendering="false"
+            android:gravity="center"
+            android:orientation="vertical">
 
-            <LinearLayout
-                android:id="@+id/shortcut"
-                android:layout_width="84dp"
-                android:layout_height="96dp"
-                android:layout_gravity="center"
-                android:layout_marginBottom="27dp"
-                android:layout_marginTop="27dp"
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center"
                 android:layout_weight="1"
-                android:background="@drawable/home_setting"
+                android:adjustViewBounds="false"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
-                android:forceHasOverlappingRendering="false"
-                android:gravity="center"
-                android:orientation="vertical">
+                android:src="@drawable/settings" />
 
-                <ImageView
-                    android:id="@+id/imageView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical|center"
-                    android:layout_weight="1"
-                    android:adjustViewBounds="false"
-                    android:focusable="false"
-                    android:focusableInTouchMode="false"
-                    android:src="@drawable/settings" />
-
-                <TextView
-                    android:id="@+id/textView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="5"
-                    android:gravity="center_vertical"
-                    android:text="Settings"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/shortcut"
-                android:layout_width="84dp"
-                android:layout_height="96dp"
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginBottom="27dp"
-                android:layout_marginTop="27dp"
+                android:layout_weight="5"
+                android:gravity="center_vertical"
+                android:text="Settings"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="84dp"
+            android:layout_height="96dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="27dp"
+            android:layout_marginTop="27dp"
+            android:layout_weight="1"
+            android:background="@drawable/home_setting"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:forceHasOverlappingRendering="false"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center"
                 android:layout_weight="1"
-                android:background="@drawable/home_setting"
+                android:adjustViewBounds="false"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
-                android:forceHasOverlappingRendering="false"
-                android:gravity="center"
-                android:orientation="vertical">
+                android:src="@drawable/settings" />
 
-                <ImageView
-                    android:id="@+id/imageView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical|center"
-                    android:layout_weight="1"
-                    android:adjustViewBounds="false"
-                    android:focusable="false"
-                    android:focusableInTouchMode="false"
-                    android:src="@drawable/settings" />
-
-                <TextView
-                    android:id="@+id/textView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="5"
-                    android:gravity="center_vertical"
-                    android:text="Settings"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/shortcut"
-                android:layout_width="84dp"
-                android:layout_height="96dp"
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginBottom="27dp"
-                android:layout_marginTop="27dp"
+                android:layout_weight="5"
+                android:gravity="center_vertical"
+                android:text="Settings"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="84dp"
+            android:layout_height="96dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="27dp"
+            android:layout_marginTop="27dp"
+            android:layout_weight="1"
+            android:background="@drawable/home_setting"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:forceHasOverlappingRendering="false"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center"
                 android:layout_weight="1"
-                android:background="@drawable/home_setting"
+                android:adjustViewBounds="false"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
-                android:forceHasOverlappingRendering="false"
-                android:gravity="center"
-                android:orientation="vertical">
+                android:src="@drawable/settings" />
 
-                <ImageView
-                    android:id="@+id/imageView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical|center"
-                    android:layout_weight="1"
-                    android:adjustViewBounds="false"
-                    android:focusable="false"
-                    android:focusableInTouchMode="false"
-                    android:src="@drawable/settings" />
-
-                <TextView
-                    android:id="@+id/textView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="5"
-                    android:gravity="center_vertical"
-                    android:text="Settings"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/shortcut"
-                android:layout_width="84dp"
-                android:layout_height="96dp"
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginBottom="27dp"
-                android:layout_marginTop="27dp"
+                android:layout_weight="5"
+                android:gravity="center_vertical"
+                android:text="Settings"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="84dp"
+            android:layout_height="96dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="27dp"
+            android:layout_marginTop="27dp"
+            android:layout_weight="1"
+            android:background="@drawable/home_setting"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:forceHasOverlappingRendering="false"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center"
                 android:layout_weight="1"
-                android:background="@drawable/home_setting"
+                android:adjustViewBounds="false"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
-                android:forceHasOverlappingRendering="false"
-                android:gravity="center"
-                android:orientation="vertical">
+                android:src="@drawable/settings" />
 
-                <ImageView
-                    android:id="@+id/imageView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical|center"
-                    android:layout_weight="1"
-                    android:adjustViewBounds="false"
-                    android:focusable="false"
-                    android:focusableInTouchMode="false"
-                    android:src="@drawable/settings" />
-
-                <TextView
-                    android:id="@+id/textView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="5"
-                    android:gravity="center_vertical"
-                    android:text="Settings"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/shortcut"
-                android:layout_width="84dp"
-                android:layout_height="96dp"
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginBottom="27dp"
-                android:layout_marginTop="27dp"
+                android:layout_weight="5"
+                android:gravity="center_vertical"
+                android:text="Settings"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="84dp"
+            android:layout_height="96dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="27dp"
+            android:layout_marginTop="27dp"
+            android:layout_weight="1"
+            android:background="@drawable/home_setting"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:forceHasOverlappingRendering="false"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center"
                 android:layout_weight="1"
-                android:background="@drawable/home_setting"
+                android:adjustViewBounds="false"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
-                android:forceHasOverlappingRendering="false"
-                android:gravity="center"
-                android:orientation="vertical">
+                android:src="@drawable/settings" />
 
-                <ImageView
-                    android:id="@+id/imageView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical|center"
-                    android:layout_weight="1"
-                    android:adjustViewBounds="false"
-                    android:focusable="false"
-                    android:focusableInTouchMode="false"
-                    android:src="@drawable/settings" />
-
-                <TextView
-                    android:id="@+id/textView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="5"
-                    android:gravity="center_vertical"
-                    android:text="Settings"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/shortcut"
-                android:layout_width="84dp"
-                android:layout_height="96dp"
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginBottom="27dp"
-                android:layout_marginTop="27dp"
+                android:layout_weight="5"
+                android:gravity="center_vertical"
+                android:text="Settings"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="84dp"
+            android:layout_height="96dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="27dp"
+            android:layout_marginTop="27dp"
+            android:layout_weight="1"
+            android:background="@drawable/home_setting"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:forceHasOverlappingRendering="false"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center"
                 android:layout_weight="1"
-                android:background="@drawable/home_setting"
+                android:adjustViewBounds="false"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
-                android:forceHasOverlappingRendering="false"
-                android:gravity="center"
-                android:orientation="vertical">
+                android:src="@drawable/settings" />
 
-                <ImageView
-                    android:id="@+id/imageView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical|center"
-                    android:layout_weight="1"
-                    android:adjustViewBounds="false"
-                    android:focusable="false"
-                    android:focusableInTouchMode="false"
-                    android:src="@drawable/settings" />
-
-                <TextView
-                    android:id="@+id/textView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="5"
-                    android:gravity="center_vertical"
-                    android:text="Settings"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/shortcut"
-                android:layout_width="84dp"
-                android:layout_height="96dp"
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginBottom="27dp"
-                android:layout_marginTop="27dp"
+                android:layout_weight="5"
+                android:gravity="center_vertical"
+                android:text="Settings"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="84dp"
+            android:layout_height="96dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="27dp"
+            android:layout_marginTop="27dp"
+            android:layout_weight="1"
+            android:background="@drawable/home_setting"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:forceHasOverlappingRendering="false"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center"
                 android:layout_weight="1"
-                android:background="@drawable/home_setting"
+                android:adjustViewBounds="false"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
-                android:forceHasOverlappingRendering="false"
-                android:gravity="center"
-                android:orientation="vertical">
+                android:src="@drawable/settings" />
 
-                <ImageView
-                    android:id="@+id/imageView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical|center"
-                    android:layout_weight="1"
-                    android:adjustViewBounds="false"
-                    android:focusable="false"
-                    android:focusableInTouchMode="false"
-                    android:src="@drawable/settings" />
-
-                <TextView
-                    android:id="@+id/textView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="5"
-                    android:gravity="center_vertical"
-                    android:text="Settings"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/shortcut"
-                android:layout_width="84dp"
-                android:layout_height="96dp"
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginBottom="27dp"
-                android:layout_marginTop="27dp"
+                android:layout_weight="5"
+                android:gravity="center_vertical"
+                android:text="Settings"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="84dp"
+            android:layout_height="96dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="27dp"
+            android:layout_marginTop="27dp"
+            android:layout_weight="1"
+            android:background="@drawable/home_setting"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:forceHasOverlappingRendering="false"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center"
                 android:layout_weight="1"
-                android:background="@drawable/home_setting"
+                android:adjustViewBounds="false"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
-                android:forceHasOverlappingRendering="false"
-                android:gravity="center"
-                android:orientation="vertical">
+                android:src="@drawable/settings" />
 
-                <ImageView
-                    android:id="@+id/imageView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical|center"
-                    android:layout_weight="1"
-                    android:adjustViewBounds="false"
-                    android:focusable="false"
-                    android:focusableInTouchMode="false"
-                    android:src="@drawable/settings" />
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="5"
+                android:gravity="center_vertical"
+                android:text="Settings"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+        </LinearLayout>
 
-                <TextView
-                    android:id="@+id/textView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="5"
-                    android:gravity="center_vertical"
-                    android:text="Settings"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
+    </GridLayout>
 
-        </GridLayout>
-
-    </RelativeLayout>
 
 </RelativeLayout>
