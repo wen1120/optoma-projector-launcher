@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <ImageView
+        <android.support.v7.widget.AppCompatImageView
             android:id="@+id/logo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -37,7 +37,7 @@
             android:text="10:09"
             android:textSize="32sp" />
 
-        <ImageView
+        <android.support.v7.widget.AppCompatImageView
             android:id="@+id/clock_line"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -63,79 +63,67 @@
         android:text="FRI 30 DEC"
         android:textSize="15sp" />
 
-    <LinearLayout
-        android:layout_width="190dp"
+    <GridLayout
+        android:id="@+id/menu"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/menu_line"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center">
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/position"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@+id/apps"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/position" />
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/apps"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="false"
+            android:layout_centerInParent="false"
+            android:layout_centerVertical="false"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/apps" />
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/input_source"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="false"
+            android:layout_centerInParent="false"
+            android:layout_centerVertical="false"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/input_source" />
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/language"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/input_source"
+            android:layout_alignRight="@+id/input_source"
+            android:layout_marginLeft="5dp"
+            app:srcCompat="@drawable/language" />
+
+    </GridLayout>
+
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/menu_line"
+        android:layout_width="190dp"
+        android:layout_height="1dp"
         android:layout_above="@+id/shortcut"
         android:layout_centerInParent="true"
         android:layout_marginBottom="20dp"
-        android:orientation="vertical">
-
-        <GridLayout
-            android:id="@+id/menu"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/imageView1"
-            android:layout_centerInParent="true"
-            android:layout_gravity="center">
-
-            <ImageView
-                android:id="@+id/position"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignRight="@+id/apps"
-                android:layout_marginRight="5dp"
-                android:layout_weight="1"
-                app:srcCompat="@drawable/position" />
-
-            <ImageView
-                android:id="@+id/apps"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="false"
-                android:layout_centerInParent="false"
-                android:layout_centerVertical="false"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_weight="1"
-                app:srcCompat="@drawable/apps" />
-
-            <ImageView
-                android:id="@+id/input_source"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="false"
-                android:layout_centerInParent="false"
-                android:layout_centerVertical="false"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_weight="1"
-                app:srcCompat="@drawable/input_source" />
-
-            <ImageView
-                android:id="@+id/language"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/input_source"
-                android:layout_alignRight="@+id/input_source"
-                android:layout_marginLeft="5dp"
-                app:srcCompat="@drawable/language" />
-
-        </GridLayout>
-
-        <LinearLayout
-            android:id="@+id/imageView1"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_above="@+id/shortcut"
-            android:layout_centerInParent="true"
-            android:layout_centerVertical="false"
-            android:layout_marginTop="4dp"
-            android:orientation="horizontal">
-
-        </LinearLayout>
-
-    </LinearLayout>
+        android:layout_marginTop="4dp"
+        app:srcCompat="@drawable/hline_ffffff" />
 
     <LinearLayout
         android:id="@+id/shortcut"
@@ -176,7 +164,7 @@
                 android:gravity="center"
                 android:orientation="vertical">
 
-                <ImageView
+                <android.support.v7.widget.AppCompatImageView
                     android:id="@+id/imageView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -195,6 +183,7 @@
                     android:layout_weight="5"
                     android:gravity="center_vertical"
                     android:text="Settings"
+                    android:textAlignment="center"
                     android:textSize="12sp"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -212,7 +201,7 @@
                 android:gravity="center"
                 android:orientation="vertical">
 
-                <ImageView
+                <android.support.v7.widget.AppCompatImageView
                     android:id="@+id/imageView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -231,6 +220,7 @@
                     android:layout_weight="5"
                     android:gravity="center_vertical"
                     android:text="Settings"
+                    android:textAlignment="center"
                     android:textSize="12sp"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -248,7 +238,7 @@
                 android:gravity="center"
                 android:orientation="vertical">
 
-                <ImageView
+                <android.support.v7.widget.AppCompatImageView
                     android:id="@+id/imageView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -267,6 +257,7 @@
                     android:layout_weight="5"
                     android:gravity="center_vertical"
                     android:text="Settings"
+                    android:textAlignment="center"
                     android:textSize="12sp"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -284,7 +275,7 @@
                 android:gravity="center"
                 android:orientation="vertical">
 
-                <ImageView
+                <android.support.v7.widget.AppCompatImageView
                     android:id="@+id/imageView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -303,6 +294,7 @@
                     android:layout_weight="5"
                     android:gravity="center_vertical"
                     android:text="Settings"
+                    android:textAlignment="center"
                     android:textSize="12sp"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -321,7 +313,7 @@
                 android:gravity="center"
                 android:orientation="vertical">
 
-                <ImageView
+                <android.support.v7.widget.AppCompatImageView
                     android:id="@+id/imageView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -340,6 +332,7 @@
                     android:layout_weight="5"
                     android:gravity="center_vertical"
                     android:text="Settings"
+                    android:textAlignment="center"
                     android:textSize="12sp"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -358,7 +351,7 @@
                 android:gravity="center"
                 android:orientation="vertical">
 
-                <ImageView
+                <android.support.v7.widget.AppCompatImageView
                     android:id="@+id/imageView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -377,6 +370,7 @@
                     android:layout_weight="5"
                     android:gravity="center_vertical"
                     android:text="Settings"
+                    android:textAlignment="center"
                     android:textSize="12sp"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -395,7 +389,7 @@
                 android:gravity="center"
                 android:orientation="vertical">
 
-                <ImageView
+                <android.support.v7.widget.AppCompatImageView
                     android:id="@+id/imageView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -414,6 +408,7 @@
                     android:layout_weight="5"
                     android:gravity="center_vertical"
                     android:text="Settings"
+                    android:textAlignment="center"
                     android:textSize="12sp"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -432,7 +427,7 @@
                 android:gravity="center"
                 android:orientation="vertical">
 
-                <ImageView
+                <android.support.v7.widget.AppCompatImageView
                     android:id="@+id/imageView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -450,7 +445,8 @@
                     android:layout_gravity="center"
                     android:layout_weight="5"
                     android:gravity="center_vertical"
-                    android:text="Settings"
+                    android:text="Projector Setup"
+                    android:textAlignment="center"
                     android:textSize="12sp"
                     android:textStyle="bold" />
             </LinearLayout>

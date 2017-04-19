@@ -8,13 +8,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Leanback">
         <activity
-            android:name="com.optoma.launcher.home"
-            android:label="@string/title_activity_main" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        android:name="com.optoma.launcher.home"
+        android:label="@string/title_activity_main" >
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+    </activity>
     </application>
 </manifest>
