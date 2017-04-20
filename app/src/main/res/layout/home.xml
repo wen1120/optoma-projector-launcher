@@ -20,10 +20,10 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="false"
             android:layout_alignParentTop="false"
+            android:layout_marginLeft="48dp"
+            android:layout_marginTop="27dp"
             android:layout_weight="1"
             android:adjustViewBounds="false"
-            android:paddingLeft="36dp"
-            android:paddingTop="20dp"
             app:srcCompat="@drawable/optomalogo" />
 
         <TextView
@@ -31,16 +31,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
+            android:layout_marginRight="48dp"
+            android:layout_marginTop="27dp"
             android:layout_weight="1"
-            android:paddingRight="36dp"
-            android:paddingTop="20dp"
             android:text="10:09"
-            android:textSize="32sp" />
+            android:textColor="#D0D3D4"
+            android:textSize="42sp" />
 
         <android.support.v7.widget.AppCompatImageView
             android:id="@+id/clock_line"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="1dp"
             android:layout_alignBottom="@+id/logo"
             android:layout_alignLeft="@+id/clock"
             android:layout_alignParentBottom="false"
@@ -48,9 +49,9 @@
             android:layout_alignRight="@+id/clock"
             android:layout_alignWithParentIfMissing="false"
             android:layout_gravity="right"
-            android:layout_marginRight="36dp"
+            android:layout_marginRight="48dp"
             android:layout_weight="1"
-            app:srcCompat="@drawable/hline_ffffff" />
+            android:background="#D0D3D4" />
     </RelativeLayout>
 
     <TextView
@@ -61,7 +62,8 @@
         android:layout_below="@+id/header"
         android:layout_marginRight="36dp"
         android:text="FRI 30 DEC"
-        android:textSize="15sp" />
+        android:textColor="#FFFFFF"
+        android:textSize="20sp" />
 
     <GridLayout
         android:id="@+id/menu"
@@ -76,9 +78,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignRight="@+id/apps"
-            android:layout_marginRight="5dp"
+            android:layout_marginRight="7dp"
             android:layout_weight="1"
-            app:srcCompat="@drawable/position" />
+            app:srcCompat="@drawable/uf_position" />
 
         <android.support.v7.widget.AppCompatImageView
             android:id="@+id/apps"
@@ -87,10 +89,10 @@
             android:layout_centerHorizontal="false"
             android:layout_centerInParent="false"
             android:layout_centerVertical="false"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
+            android:layout_marginLeft="7dp"
+            android:layout_marginRight="7dp"
             android:layout_weight="1"
-            app:srcCompat="@drawable/apps" />
+            app:srcCompat="@drawable/uf_apps" />
 
         <android.support.v7.widget.AppCompatImageView
             android:id="@+id/input_source"
@@ -99,10 +101,10 @@
             android:layout_centerHorizontal="false"
             android:layout_centerInParent="false"
             android:layout_centerVertical="false"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
+            android:layout_marginLeft="7dp"
+            android:layout_marginRight="7dp"
             android:layout_weight="1"
-            app:srcCompat="@drawable/input_source" />
+            app:srcCompat="@drawable/uf_inputsource" />
 
         <android.support.v7.widget.AppCompatImageView
             android:id="@+id/language"
@@ -110,40 +112,40 @@
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/input_source"
             android:layout_alignRight="@+id/input_source"
-            android:layout_marginLeft="5dp"
-            app:srcCompat="@drawable/language" />
+            android:layout_marginLeft="7dp"
+            app:srcCompat="@drawable/uff_language" />
 
     </GridLayout>
 
     <android.support.v7.widget.AppCompatImageView
         android:id="@+id/menu_line"
-        android:layout_width="190dp"
+        android:layout_width="254dp"
         android:layout_height="1dp"
         android:layout_above="@+id/shortcut"
         android:layout_centerInParent="true"
-        android:layout_marginBottom="20dp"
-        android:layout_marginTop="4dp"
-        app:srcCompat="@drawable/hline_ffffff" />
+        android:layout_marginBottom="24dp"
+        android:layout_marginTop="8dp"
+        android:background="#FFFFFF" />
 
     <LinearLayout
         android:id="@+id/shortcut"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="200dp"
         android:layout_alignParentBottom="true"
         android:background="@drawable/backgroundhome"
         android:orientation="vertical">
 
         <GridLayout
             android:layout_width="wrap_content"
-            android:layout_height="150dp"
+            android:layout_height="200dp"
             android:layout_alignParentBottom="true"
             android:layout_alignWithParentIfMissing="false"
             android:layout_centerHorizontal="true"
             android:layout_centerInParent="false"
             android:layout_centerVertical="false"
             android:layout_gravity="center"
-            android:layout_marginLeft="60dp"
-            android:layout_marginRight="60dp"
+            android:layout_marginLeft="80dp"
+            android:layout_marginRight="80dp"
             android:layout_weight="1"
             android:columnCount="8"
             android:columnOrderPreserved="false"
@@ -151,162 +153,66 @@
             android:rowCount="1"
             android:useDefaultMargins="true">
 
-            <LinearLayout
-                android:layout_width="84dp"
-                android:layout_height="96dp"
-                android:layout_gravity="center"
-                android:layout_marginBottom="27dp"
-                android:layout_marginTop="27dp"
-                android:layout_weight="1"
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/imageView"
+                android:layout_width="112dp"
+                android:layout_height="128dp"
+                android:layout_gravity="center_vertical|center"
+                android:layout_marginBottom="36dp"
+                android:layout_marginTop="36dp"
+                android:layout_weight="11"
+                android:adjustViewBounds="false"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
-                android:forceHasOverlappingRendering="false"
-                android:gravity="center"
-                android:orientation="vertical">
+                android:src="@drawable/settings" />
 
-                <android.support.v7.widget.AppCompatImageView
-                    android:id="@+id/imageView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical|center"
-                    android:layout_weight="11"
-                    android:adjustViewBounds="false"
-                    android:focusable="false"
-                    android:focusableInTouchMode="false"
-                    android:src="@drawable/settings" />
-
-                <TextView
-                    android:id="@+id/textView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="5"
-                    android:gravity="center_vertical"
-                    android:text="Settings"
-                    android:textAlignment="center"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="84dp"
-                android:layout_height="96dp"
-                android:layout_gravity="center"
-                android:layout_marginBottom="27dp"
-                android:layout_marginTop="27dp"
-                android:layout_weight="1"
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/imageView"
+                android:layout_width="112dp"
+                android:layout_height="128dp"
+                android:layout_gravity="center_vertical|center"
+                android:layout_marginBottom="36dp"
+                android:layout_marginTop="36dp"
+                android:layout_weight="11"
+                android:adjustViewBounds="false"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
-                android:forceHasOverlappingRendering="false"
-                android:gravity="center"
-                android:orientation="vertical">
+                android:src="@drawable/settings" />
 
-                <android.support.v7.widget.AppCompatImageView
-                    android:id="@+id/imageView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical|center"
-                    android:layout_weight="11"
-                    android:adjustViewBounds="false"
-                    android:focusable="false"
-                    android:focusableInTouchMode="false"
-                    android:src="@drawable/settings" />
-
-                <TextView
-                    android:id="@+id/textView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="5"
-                    android:gravity="center_vertical"
-                    android:text="Settings"
-                    android:textAlignment="center"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="84dp"
-                android:layout_height="96dp"
-                android:layout_gravity="center"
-                android:layout_marginBottom="27dp"
-                android:layout_marginTop="27dp"
-                android:layout_weight="1"
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/imageView"
+                android:layout_width="112dp"
+                android:layout_height="128dp"
+                android:layout_gravity="center_vertical|center"
+                android:layout_marginBottom="36dp"
+                android:layout_marginTop="36dp"
+                android:layout_weight="11"
+                android:adjustViewBounds="false"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
-                android:forceHasOverlappingRendering="false"
-                android:gravity="center"
-                android:orientation="vertical">
+                android:src="@drawable/settings" />
 
-                <android.support.v7.widget.AppCompatImageView
-                    android:id="@+id/imageView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical|center"
-                    android:layout_weight="11"
-                    android:adjustViewBounds="false"
-                    android:focusable="false"
-                    android:focusableInTouchMode="false"
-                    android:src="@drawable/settings" />
-
-                <TextView
-                    android:id="@+id/textView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="5"
-                    android:gravity="center_vertical"
-                    android:text="Settings"
-                    android:textAlignment="center"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="84dp"
-                android:layout_height="96dp"
-                android:layout_gravity="center"
-                android:layout_marginBottom="27dp"
-                android:layout_marginTop="27dp"
-                android:layout_weight="1"
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/imageView"
+                android:layout_width="112dp"
+                android:layout_height="128dp"
+                android:layout_gravity="center_vertical|center"
+                android:layout_marginBottom="36dp"
+                android:layout_marginTop="36dp"
+                android:layout_weight="11"
+                android:adjustViewBounds="false"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
-                android:forceHasOverlappingRendering="false"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <android.support.v7.widget.AppCompatImageView
-                    android:id="@+id/imageView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical|center"
-                    android:layout_weight="11"
-                    android:adjustViewBounds="false"
-                    android:focusable="false"
-                    android:focusableInTouchMode="false"
-                    android:src="@drawable/settings" />
-
-                <TextView
-                    android:id="@+id/textView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="5"
-                    android:gravity="center_vertical"
-                    android:text="Settings"
-                    android:textAlignment="center"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
+                android:src="@drawable/settings" />
 
             <LinearLayout
-                android:layout_width="84dp"
-                android:layout_height="96dp"
+                android:layout_width="112dp"
+                android:layout_height="128dp"
                 android:layout_gravity="center"
-                android:layout_marginBottom="27dp"
-                android:layout_marginTop="27dp"
+                android:layout_marginBottom="36dp"
+                android:layout_marginTop="36dp"
                 android:layout_weight="1"
-                android:background="@drawable/home_source"
+                android:background="#2E2A25"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
                 android:forceHasOverlappingRendering="false"
@@ -333,18 +239,19 @@
                     android:gravity="center_vertical"
                     android:text="Settings"
                     android:textAlignment="center"
-                    android:textSize="12sp"
+                    android:textColor="#B2FFFFFF"
+                    android:textSize="16sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="84dp"
-                android:layout_height="96dp"
+                android:layout_width="112dp"
+                android:layout_height="128dp"
                 android:layout_gravity="center"
-                android:layout_marginBottom="27dp"
-                android:layout_marginTop="27dp"
+                android:layout_marginBottom="36dp"
+                android:layout_marginTop="36dp"
                 android:layout_weight="1"
-                android:background="@drawable/home_source"
+                android:background="#2E2A25"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
                 android:forceHasOverlappingRendering="false"
@@ -371,18 +278,18 @@
                     android:gravity="center_vertical"
                     android:text="Settings"
                     android:textAlignment="center"
-                    android:textSize="12sp"
+                    android:textSize="16sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="84dp"
-                android:layout_height="96dp"
+                android:layout_width="112dp"
+                android:layout_height="128dp"
                 android:layout_gravity="center"
-                android:layout_marginBottom="27dp"
-                android:layout_marginTop="27dp"
+                android:layout_marginBottom="36dp"
+                android:layout_marginTop="36dp"
                 android:layout_weight="1"
-                android:background="@drawable/home_setting"
+                android:background="#9A887B"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
                 android:forceHasOverlappingRendering="false"
@@ -409,18 +316,18 @@
                     android:gravity="center_vertical"
                     android:text="Settings"
                     android:textAlignment="center"
-                    android:textSize="12sp"
+                    android:textSize="16sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="84dp"
-                android:layout_height="96dp"
+                android:layout_width="112dp"
+                android:layout_height="128dp"
                 android:layout_gravity="center"
-                android:layout_marginBottom="27dp"
-                android:layout_marginTop="27dp"
+                android:layout_marginBottom="36dp"
+                android:layout_marginTop="36dp"
                 android:layout_weight="1"
-                android:background="@drawable/home_setting"
+                android:background="#B2FFFFFF"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
                 android:forceHasOverlappingRendering="false"
@@ -447,7 +354,8 @@
                     android:gravity="center_vertical"
                     android:text="Projector Setup"
                     android:textAlignment="center"
-                    android:textSize="12sp"
+                    android:textColor="#B2FFFFFF"
+                    android:textSize="16sp"
                     android:textStyle="bold" />
             </LinearLayout>
 

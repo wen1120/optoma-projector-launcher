@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="580dp"
+    android:layout_height="310dp"
+    android:background="#2e2a25">
+    <TextView
+        android:id="@+id/ss_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginTop="48dp"
+        android:gravity="center"
+        android:text="@string/is_ss_title"
+        android:textSize = "20sp"
+        android:textColor="@color/select"
+        android:fontFamily="sans-serif">
+    </TextView>
+    <TextView
+        android:id="@+id/ss_ss01"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_below="@+id/ss_textview"
+        android:layout_marginLeft="64dp"
+        android:layout_marginTop="45dp"
+        android:gravity="left"
+        android:text="@string/is_ss_ss01"
+        android:textSize = "18sp"
+        android:textColor="@color/shortcut"
+        android:fontFamily="sans-serif">
+    </TextView>
+    <TextView
+        android:id="@+id/ss_ss02"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_below="@+id/ss_ss01"
+        android:layout_marginLeft="64dp"
+        android:gravity="left"
+        android:text="@string/is_ss_ss02"
+        android:textSize = "18sp"
+        android:textColor="@color/shortcut"
+        android:fontFamily="sans-serif">
+    </TextView>
+    <TextView
+        android:id="@+id/ss_ss03"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_below="@+id/ss_ss02"
+        android:layout_marginLeft="64dp"
+        android:gravity="left"
+        android:text="@string/is_ss_ss03"
+        android:textSize = "18sp"
+        android:textColor="@color/shortcut"
+        android:fontFamily="sans-serif">
+    </TextView>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_below="@+id/ss_textview"
+        android:layout_marginTop="45dp">
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/ss_rightarrow01"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="32dp"
+            app:srcCompat="@drawable/right_arrow427"
+            android:scaleType="center" >
+        </android.support.v7.widget.AppCompatImageView>
+        <TextView
+            android:id="@+id/ss_source01"
+            android:layout_width="190dp"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/ss_rightarrow01"
+            android:text="@string/is_ss_ss01"
+            android:textSize = "18sp"
+            android:textColor="@color/ss_unselect_source"
+            android:gravity="center"
+            android:fontFamily="sans-serif">
+        </TextView>
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/ss_leftarrow01"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/ss_source01"
+            app:srcCompat="@drawable/left_arrow427"
+            android:scaleType="center" >
+        </android.support.v7.widget.AppCompatImageView>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_below="@+id/ss_ss01">
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/ss_rightarrow02"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="32dp"
+            app:srcCompat="@drawable/right_arrow427"
+            android:scaleType="center" >
+        </android.support.v7.widget.AppCompatImageView>
+        <TextView
+            android:id="@+id/ss_source02"
+            android:layout_width="190dp"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/ss_rightarrow02"
+            android:text="@string/is_ss_ss02"
+            android:textSize = "18sp"
+            android:textColor="@color/ss_unselect_source"
+            android:gravity="center"
+            android:fontFamily="sans-serif">
+        </TextView>
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/ss_leftarrow02"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/ss_source02"
+            app:srcCompat="@drawable/left_arrow427"
+            android:scaleType="center" >
+        </android.support.v7.widget.AppCompatImageView>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_below="@+id/ss_ss02">
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/ss_rightarrow03"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="32dp"
+            app:srcCompat="@drawable/right_arrow427"
+            android:scaleType="center" >
+        </android.support.v7.widget.AppCompatImageView>
+        <TextView
+            android:id="@+id/ss_source03"
+            android:layout_width="190dp"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/ss_rightarrow03"
+            android:text="@string/is_ss_ss03"
+            android:textSize = "18sp"
+            android:textColor="@color/ss_unselect_source"
+            android:gravity="center"
+            android:fontFamily="sans-serif">
+        </TextView>
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/ss_leftarrow03"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/ss_source03"
+            app:srcCompat="@drawable/left_arrow427"
+            android:scaleType="center" >
+        </android.support.v7.widget.AppCompatImageView>
+    </RelativeLayout>
+    <ListView
+        android:id="@+id/ss_list_view"
+        android:layout_width="match_parent"
+        android:layout_height="146dp"
+        android:layout_below="@+id/ss_textview"
+        android:layout_marginTop="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_centerVertical="true"
+        android:listSelector="@drawable/setshortcut_selected" />
+</RelativeLayout>

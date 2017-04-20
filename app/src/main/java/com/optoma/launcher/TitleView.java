@@ -48,7 +48,7 @@ public class TitleView extends RelativeLayout {
         tvTime = (TextView) view.findViewById(R.id.title_bar_hour);
         tvDate = (TextView) view.findViewById(R.id.title_bar_date);
         typeface = Typeface.createFromAsset(context.getAssets(),
-                "fonts/Roboto-Regular.ttf");
+                "font/Roboto-Regular.ttf");
         tvTime.setTypeface(typeface);
         tvDate.setTypeface(typeface);
         timeHandle.post(timeRun);

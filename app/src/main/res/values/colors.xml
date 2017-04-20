@@ -3,7 +3,13 @@
     <color name="white">#ffffff</color>
     <color name="date">#d0d3d4</color>
     <color name="time">#8a8d8f</color>
-    <color name="setting">#9a887b</color>
-    <color name="source">#2e2a25</color>
+    <color name="setting">#b29a887b</color>
+    <color name="source">#b22e2a25</color>
+    <color name="tsetting">#ff9a887b</color>
+    <color name="tsource">#ff2e2a25</color>
     <color name="transparent">#ffffff</color>
+    <color name="bolder">#eada24</color>
+    <color name="select">#d0d3d4</color>
+    <color name="shortcut">#5b646f</color>
+    <color name="ss_unselect_source">#71c5e8</color>
 </resources>
