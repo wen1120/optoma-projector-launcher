@@ -54,6 +54,8 @@ public class HomeActivity extends Activity {
         @Override
         public void onClick(View v) {
             Log.d(TAG, "Button Settings clicked");
+            intent.setClassName(getPackageName(), getPackageName() + ".Settings.Settings");
+            startActivity(intent);
         }
     };
 

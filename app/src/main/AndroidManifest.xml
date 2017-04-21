@@ -19,6 +19,14 @@
             android:name=".InputSource"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
         </activity>
+        <activity
+            android:name=".Settings.Settings"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
+        </activity>
+        <activity
+            android:name=".Settings.Audio"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar">
+        </activity>
     </application>
 
 </manifest>
