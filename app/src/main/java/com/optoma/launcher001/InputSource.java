@@ -33,7 +33,6 @@ public class InputSource extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inputsource);
-        //bSetShortcut = (Button) findViewById(R.id.is_set_shortcut_button);
         bSetShortcut = (Button) findViewById(R.id.is_set_shortcut_button);
         bSetShortcut.setOnClickListener(bSSOnClick);
         for (String s : getResources().getStringArray(
