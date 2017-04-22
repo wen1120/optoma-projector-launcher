@@ -45,8 +45,6 @@
     <string name="setting_control">Control</string>
     <string name="setting_control_title">Allow access</string>
     <string name="setting_control_content">Crestron, PJ Link, HTTP</string>
-<<<<<<< HEAD
-=======
     <string name="audio_internal_speaker">Internal Speaker</string>
     <string name="audio_mute">Mute</string>
     <string name="audio_mic">Mic</string>
@@ -96,8 +94,6 @@
     <string name="info_subnet_mask">Subnet Mask</string>
     <string name="info_gateway">Gateway</string>
     <string name="info_dns">DNS</string>
->>>>>>> master
-
     <string-array name="ssArray">
         <item>Miracast</item>
         <item>VGA</item>

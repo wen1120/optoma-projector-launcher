@@ -1,4 +1,4 @@
-package com.optoma.launcher;
+package com.optoma.launcher001;
 
 /**
  * Created by linweiting on 2017/4/13.

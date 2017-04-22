@@ -3,11 +3,8 @@
 
     <style name="AppTheme" parent="@style/Theme.Leanback"></style>
     <style name="CustomAlertDialog" parent="Theme.AppCompat.Light.Dialog.Alert">
-<<<<<<< HEAD
-=======
         <item name="android:windowFrame">@drawable/dialog_stroke</item>
         <item name="android:windowIsFloating">true</item>
->>>>>>> master
         <item name="android:windowBackground">@drawable/dialog_background</item>
     </style>
 </resources>

@@ -1,4 +1,4 @@
-package com.optoma.launcher;
+package com.optoma.launcher001;
 
 import android.text.format.Time;
 
