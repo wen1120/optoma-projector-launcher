@@ -1,4 +1,4 @@
-package com.optoma.launcher001;
+package com.optoma.launcher;
 
 import android.content.Context;
 import android.graphics.Canvas;

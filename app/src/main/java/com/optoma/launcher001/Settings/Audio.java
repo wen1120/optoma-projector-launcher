@@ -1,4 +1,4 @@
-package com.optoma.launcher001.Settings;
+package com.optoma.launcher.Settings;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
@@ -13,7 +13,7 @@ import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import com.optoma.launcher001.R;
+import com.optoma.launcher.R;
 
 import java.util.ArrayList;
 

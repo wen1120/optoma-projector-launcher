@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.optoma.launcher001.R;
+import com.optoma.launcher.R;
 
 import java.util.ArrayList;
 
