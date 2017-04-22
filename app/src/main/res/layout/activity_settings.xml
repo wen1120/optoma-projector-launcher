@@ -3,172 +3,158 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/backgroundhome"
+    android:background="@drawable/tekapo"
     android:orientation="vertical">
+    <View
+        android:id="@+id/setting_main_bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/setting_main_bg_shape" />
+    <View
+        android:id="@+id/setting_top_bg"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@drawable/setting_top_bg_shape" />
     <TextView
+        android:id="@+id/setting_textview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="27dp"
+        android:layout_marginTop="24dp"
         android:gravity="center"
-        android:text="@string/home_input_source"
+        android:text="@string/home_settings"
         android:textSize = "45sp"
         android:textColor="#40FFFFFF"
         android:textStyle="bold"
         android:fontFamily="sans-serif">
     </TextView>
     <View
+        android:id="@+id/setting_divider"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginLeft="48dp"
         android:layout_marginRight="48dp"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="66dp"
         android:background="@color/transparent" />
 
-    <RelativeLayout
-        android:id="@+id/is_miracast"
-        android:layout_width="112dp"
-        android:layout_height="128dp"
-        android:layout_marginTop="122dp"
-        android:layout_marginLeft="230dp">
-        <android.support.v7.widget.AppCompatButton
-            android:id="@+id/is_miracast_button"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/home_source"
-            android:focusable="true"
-            android:focusableInTouchMode="true"/>
-        <android.support.v7.widget.AppCompatImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
-            android:layout_marginLeft="22dp"
-            app:srcCompat="@drawable/miracast"
-            android:scaleType="center" >
-        </android.support.v7.widget.AppCompatImageView>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="42dp"
-            android:layout_alignParentBottom="true"
-            android:gravity="center"
-            android:text="@string/is_miracast"
-            android:textSize = "16sp"
-            android:textColor="@color/transparent"
-            android:textStyle="bold"
-            android:fontFamily="sans-serif">
-        </TextView>
-    </RelativeLayout>
-    <RelativeLayout
-        android:id="@+id/is_vga"
-        android:layout_width="112dp"
-        android:layout_height="128dp"
-        android:layout_marginTop="122dp"
-        android:layout_marginLeft="374dp">
-        <android.support.v7.widget.AppCompatButton
-            android:id="@+id/is_vga_button"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/home_source"
-            android:focusable="true"
-            android:focusableInTouchMode="true"/>
-        <android.support.v7.widget.AppCompatImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
-            android:layout_marginLeft="22dp"
-            app:srcCompat="@drawable/vga"
-            android:scaleType="center" >
-        </android.support.v7.widget.AppCompatImageView>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="42dp"
-            android:layout_alignParentBottom="true"
-            android:gravity="center"
-            android:text="@string/is_vga"
-            android:textSize = "16sp"
-            android:textColor="@color/transparent"
-            android:textStyle="bold"
-            android:fontFamily="sans-serif">
-        </TextView>
-    </RelativeLayout>
+    <TextView
+        android:id="@+id/setting_tv_upper_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="102dp"
+        android:layout_marginLeft="48dp"
+        android:text="@string/setting_power_title"
+        android:textSize = "18sp"
+        android:textColor="#d0d3d4"
+        android:fontFamily="sans-serif">
+    </TextView>
+    <TextView
+        android:id="@+id/setting_tv_upper_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="128dp"
+        android:layout_marginLeft="48dp"
+        android:text="@string/setting_power_content"
+        android:textSize = "24sp"
+        android:textColor="#ffffff"
+        android:fontFamily="sans-serif">
+    </TextView>
+
+    <TextView
+        android:id="@+id/setting_tv_middle_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="286dp"
+        android:layout_marginLeft="48dp"
+        android:visibility="invisible"
+        android:text="middle_title"
+        android:textSize = "18sp"
+        android:textColor="#d0d3d4"
+        android:fontFamily="sans-serif">
+    </TextView>
+    <TextView
+        android:id="@+id/setting_tv_middle_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="312dp"
+        android:layout_marginLeft="48dp"
+        android:visibility="invisible"
+        android:text="middle_content"
+        android:textSize = "24sp"
+        android:textColor="#ffffff"
+        android:fontFamily="sans-serif">
+    </TextView>
+
+    <TextView
+        android:id="@+id/setting_tv_lower_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="470dp"
+        android:layout_marginLeft="48dp"
+        android:visibility="invisible"
+        android:text="lower_title"
+        android:textSize = "18sp"
+        android:textColor="#d0d3d4"
+        android:fontFamily="sans-serif">
+    </TextView>
+    <TextView
+        android:id="@+id/setting_tv_lower_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="496dp"
+        android:layout_marginLeft="48dp"
+        android:visibility="invisible"
+        android:text="lower_content"
+        android:textSize = "24sp"
+        android:textColor="#ffffff"
+        android:fontFamily="sans-serif">
+    </TextView>
 
     <RelativeLayout
-        android:id="@+id/is_hdmi_01"
-        android:layout_width="112dp"
-        android:layout_height="128dp"
-        android:layout_marginTop="122dp"
-        android:layout_marginLeft="518dp">
-        <android.support.v7.widget.AppCompatButton
-            android:id="@+id/is_hdmi_01_button"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/home_source"
-            android:focusable="true"
-            android:focusableInTouchMode="true"/>
-        <android.support.v7.widget.AppCompatImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
-            android:layout_marginLeft="22dp"
-            app:srcCompat="@drawable/hdmi"
-            android:scaleType="center" >
-        </android.support.v7.widget.AppCompatImageView>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="42dp"
-            android:layout_alignParentBottom="true"
-            android:gravity="center"
-            android:text="@string/is_hdmi_01"
-            android:textSize = "16sp"
-            android:textColor="@color/transparent"
-            android:textStyle="bold"
-            android:fontFamily="sans-serif">
-        </TextView>
-    </RelativeLayout>
-
+    android:id="@+id/setting_power"
+    android:layout_width="112dp"
+    android:layout_height="128dp"
+    android:layout_below="@+id/setting_divider"
+    android:layout_marginTop="38dp"
+    android:layout_marginLeft="662dp">
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/setting_power_button"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/home_setting"
+        android:focusable="true"
+        android:focusableInTouchMode="true"/>
+    <android.support.v7.widget.AppCompatImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:layout_marginLeft="22dp"
+        app:srcCompat="@drawable/power"
+        android:scaleType="center" >
+    </android.support.v7.widget.AppCompatImageView>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:text="@string/setting_power"
+        android:textSize = "16sp"
+        android:textColor="@color/transparent"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif">
+    </TextView>
+</RelativeLayout>
     <RelativeLayout
-        android:id="@+id/is_hdmi_02"
+        android:id="@+id/setting_account"
         android:layout_width="112dp"
         android:layout_height="128dp"
-        android:layout_marginTop="122dp"
-        android:layout_marginLeft="662dp">
-        <android.support.v7.widget.AppCompatButton
-            android:id="@+id/is_hdmi_02_button"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/home_source"
-            android:focusable="true"
-            android:focusableInTouchMode="true"/>
-        <android.support.v7.widget.AppCompatImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
-            android:layout_marginLeft="22dp"
-            app:srcCompat="@drawable/hdmi"
-            android:scaleType="center" >
-        </android.support.v7.widget.AppCompatImageView>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="42dp"
-            android:layout_alignParentBottom="true"
-            android:gravity="center"
-            android:text="@string/is_hdmi_02"
-            android:textSize = "16sp"
-            android:textColor="@color/transparent"
-            android:textStyle="bold"
-            android:fontFamily="sans-serif">
-        </TextView>
-    </RelativeLayout>
-    <RelativeLayout
-        android:id="@+id/is_hdmi_03"
-        android:layout_width="112dp"
-        android:layout_height="128dp"
-        android:layout_marginTop="122dp"
+        android:layout_below="@+id/setting_divider"
+        android:layout_marginTop="38dp"
         android:layout_marginLeft="806dp">
         <android.support.v7.widget.AppCompatButton
-            android:id="@+id/is_hdmi_03_button"
+            android:id="@+id/setting_account_button"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/home_source"
+            android:background="@drawable/home_setting"
             android:focusable="true"
             android:focusableInTouchMode="true"/>
         <android.support.v7.widget.AppCompatImageView
@@ -176,7 +162,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="14dp"
             android:layout_marginLeft="22dp"
-            app:srcCompat="@drawable/hdmi"
+            app:srcCompat="@drawable/account"
             android:scaleType="center" >
         </android.support.v7.widget.AppCompatImageView>
         <TextView
@@ -184,7 +170,7 @@
             android:layout_height="42dp"
             android:layout_alignParentBottom="true"
             android:gravity="center"
-            android:text="@string/is_hdmi_03"
+            android:text="@string/setting_account"
             android:textSize = "16sp"
             android:textColor="@color/transparent"
             android:textStyle="bold"
@@ -192,16 +178,17 @@
         </TextView>
     </RelativeLayout>
     <RelativeLayout
-        android:id="@+id/is_hdmi_04"
+        android:id="@+id/setting_general"
         android:layout_width="112dp"
         android:layout_height="128dp"
-        android:layout_marginTop="122dp"
+        android:layout_below="@+id/setting_divider"
+        android:layout_marginTop="38dp"
         android:layout_marginLeft="950dp">
         <android.support.v7.widget.AppCompatButton
-            android:id="@+id/is_hdmi_04_button"
+            android:id="@+id/setting_general_button"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/home_source"
+            android:background="@drawable/home_setting"
             android:focusable="true"
             android:focusableInTouchMode="true"/>
         <android.support.v7.widget.AppCompatImageView
@@ -209,7 +196,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="14dp"
             android:layout_marginLeft="22dp"
-            app:srcCompat="@drawable/hdmi"
+            app:srcCompat="@drawable/general"
             android:scaleType="center" >
         </android.support.v7.widget.AppCompatImageView>
         <TextView
@@ -217,7 +204,7 @@
             android:layout_height="42dp"
             android:layout_alignParentBottom="true"
             android:gravity="center"
-            android:text="@string/is_hdmi_04"
+            android:text="@string/setting_general"
             android:textSize = "16sp"
             android:textColor="@color/transparent"
             android:textStyle="bold"
@@ -226,154 +213,204 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/is_usb_01"
+        android:id="@+id/setting_network"
         android:layout_width="112dp"
         android:layout_height="128dp"
-        android:layout_marginTop="306dp"
-        android:layout_marginLeft="230dp">
-        <android.support.v7.widget.AppCompatButton
-            android:id="@+id/is_usb_01_button"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/home_source"
-            android:focusable="true"
-            android:focusableInTouchMode="true"/>
-        <android.support.v7.widget.AppCompatImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
-            android:layout_marginLeft="22dp"
-            app:srcCompat="@drawable/usb"
-            android:scaleType="center" >
-        </android.support.v7.widget.AppCompatImageView>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="42dp"
-            android:layout_alignParentBottom="true"
-            android:gravity="center"
-            android:text="@string/is_usb_01"
-            android:textSize = "16sp"
-            android:textColor="@color/transparent"
-            android:textStyle="bold"
-            android:fontFamily="sans-serif">
-        </TextView>
-    </RelativeLayout>
-    <RelativeLayout
-        android:id="@+id/is_usb_02"
-        android:layout_width="112dp"
-        android:layout_height="128dp"
-        android:layout_marginTop="306dp"
-        android:layout_marginLeft="374dp">
-        <android.support.v7.widget.AppCompatButton
-            android:id="@+id/is_usb_02_button"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/home_source"
-            android:focusable="true"
-            android:focusableInTouchMode="true"/>
-        <android.support.v7.widget.AppCompatImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
-            android:layout_marginLeft="22dp"
-            app:srcCompat="@drawable/usb"
-            android:scaleType="center" >
-        </android.support.v7.widget.AppCompatImageView>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="42dp"
-            android:layout_alignParentBottom="true"
-            android:gravity="center"
-            android:text="@string/is_usb_02"
-            android:textSize = "16sp"
-            android:textColor="@color/transparent"
-            android:textStyle="bold"
-            android:fontFamily="sans-serif">
-        </TextView>
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/is_svideo"
-        android:layout_width="112dp"
-        android:layout_height="128dp"
-        android:layout_marginTop="306dp"
-        android:layout_marginLeft="518dp">
-        <android.support.v7.widget.AppCompatButton
-            android:id="@+id/is_svideo_button"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/home_source"
-            android:focusable="true"
-            android:focusableInTouchMode="true"/>
-<<<<<<< HEAD
-
-        <android.support.v7.widget.AppCompatImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="22dp"
-            android:layout_marginTop="14dp"
-            android:scaleType="center"
-            app:srcCompat="@drawable/svideo"></android.support.v7.widget.AppCompatImageView>
-=======
-        <android.support.v7.widget.AppCompatImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
-            android:layout_marginLeft="22dp"
-            app:srcCompat="@drawable/s_video"
-            android:scaleType="center" >
-        </android.support.v7.widget.AppCompatImageView>
->>>>>>> master
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="42dp"
-            android:layout_alignParentBottom="true"
-            android:gravity="center"
-            android:text="@string/is_svideo"
-            android:textSize = "16sp"
-            android:textColor="@color/transparent"
-            android:textStyle="bold"
-            android:fontFamily="sans-serif">
-        </TextView>
-    </RelativeLayout>
-    <RelativeLayout
-        android:id="@+id/is_set_shortcut"
-        android:layout_width="112dp"
-        android:layout_height="128dp"
-        android:layout_marginTop="306dp"
+        android:layout_below="@+id/setting_divider"
+        android:layout_marginTop="222dp"
         android:layout_marginLeft="662dp">
         <android.support.v7.widget.AppCompatButton
-            android:id="@+id/is_set_shortcut_button"
+            android:id="@+id/setting_network_button"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/home_source"
+            android:background="@drawable/home_setting"
             android:focusable="true"
             android:focusableInTouchMode="true"/>
-<<<<<<< HEAD
-
-        <android.support.v7.widget.AppCompatImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="22dp"
-            android:layout_marginTop="14dp"
-            android:scaleType="center"
-            app:srcCompat="@drawable/addshortcut"></android.support.v7.widget.AppCompatImageView>
-=======
         <android.support.v7.widget.AppCompatImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="14dp"
             android:layout_marginLeft="22dp"
-            app:srcCompat="@drawable/favorite_source"
+            app:srcCompat="@drawable/network"
             android:scaleType="center" >
         </android.support.v7.widget.AppCompatImageView>
->>>>>>> master
         <TextView
             android:layout_width="match_parent"
             android:layout_height="42dp"
             android:layout_alignParentBottom="true"
             android:gravity="center"
-            android:text="@string/is_set_shortcut"
+            android:text="@string/setting_network"
+            android:textSize = "16sp"
+            android:textColor="@color/transparent"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif">
+        </TextView>
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/setting_information"
+        android:layout_width="112dp"
+        android:layout_height="128dp"
+        android:layout_below="@+id/setting_divider"
+        android:layout_marginTop="222dp"
+        android:layout_marginLeft="806dp">
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/setting_information_button"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/home_setting"
+            android:focusable="true"
+            android:focusableInTouchMode="true"/>
+        <android.support.v7.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:layout_marginLeft="22dp"
+            app:srcCompat="@drawable/information"
+            android:scaleType="center" >
+        </android.support.v7.widget.AppCompatImageView>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_alignParentBottom="true"
+            android:gravity="center"
+            android:text="@string/setting_information"
+            android:textSize = "16sp"
+            android:textColor="@color/transparent"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif">
+        </TextView>
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/setting_bluetooth"
+        android:layout_width="112dp"
+        android:layout_height="128dp"
+        android:layout_below="@+id/setting_divider"
+        android:layout_marginTop="222dp"
+        android:layout_marginLeft="950dp">
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/setting_bluetooth_button"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/home_setting"
+            android:focusable="true"
+            android:focusableInTouchMode="true"/>
+        <android.support.v7.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:layout_marginLeft="22dp"
+            app:srcCompat="@drawable/bluetooth"
+            android:scaleType="center" >
+        </android.support.v7.widget.AppCompatImageView>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_alignParentBottom="true"
+            android:gravity="center"
+            android:text="@string/setting_bluetooth"
+            android:textSize = "16sp"
+            android:textColor="@color/transparent"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif">
+        </TextView>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/setting_system"
+        android:layout_width="112dp"
+        android:layout_height="128dp"
+        android:layout_below="@+id/setting_divider"
+        android:layout_marginTop="406dp"
+        android:layout_marginLeft="662dp">
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/setting_system_button"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/home_setting"
+            android:focusable="true"
+            android:focusableInTouchMode="true"/>
+        <android.support.v7.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:layout_marginLeft="22dp"
+            app:srcCompat="@drawable/system"
+            android:scaleType="center" >
+        </android.support.v7.widget.AppCompatImageView>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_alignParentBottom="true"
+            android:gravity="center"
+            android:text="@string/setting_system"
+            android:textSize = "16sp"
+            android:textColor="@color/transparent"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif">
+        </TextView>
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/setting_audio"
+        android:layout_width="112dp"
+        android:layout_height="128dp"
+        android:layout_below="@+id/setting_divider"
+        android:layout_marginTop="406dp"
+        android:layout_marginLeft="806dp">
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/setting_audio_button"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/home_setting"
+            android:focusable="true"
+            android:focusableInTouchMode="true"/>
+        <android.support.v7.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:layout_marginLeft="22dp"
+            app:srcCompat="@drawable/audio"
+            android:scaleType="center" >
+        </android.support.v7.widget.AppCompatImageView>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_alignParentBottom="true"
+            android:gravity="center"
+            android:text="@string/setting_audio"
+            android:textSize = "16sp"
+            android:textColor="@color/transparent"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif">
+        </TextView>
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/setting_control"
+        android:layout_width="112dp"
+        android:layout_height="128dp"
+        android:layout_below="@+id/setting_divider"
+        android:layout_marginTop="406dp"
+        android:layout_marginLeft="950dp">
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/setting_control_button"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/home_setting"
+            android:focusable="true"
+            android:focusableInTouchMode="true"/>
+        <android.support.v7.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:layout_marginLeft="22dp"
+            app:srcCompat="@drawable/control"
+            android:scaleType="center" >
+        </android.support.v7.widget.AppCompatImageView>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_alignParentBottom="true"
+            android:gravity="center"
+            android:text="@string/setting_control"
             android:textSize = "16sp"
             android:textColor="@color/transparent"
             android:textStyle="bold"
