@@ -305,6 +305,16 @@
             android:background="@drawable/home_source"
             android:focusable="true"
             android:focusableInTouchMode="true"/>
+<<<<<<< HEAD
+
+        <android.support.v7.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="22dp"
+            android:layout_marginTop="14dp"
+            android:scaleType="center"
+            app:srcCompat="@drawable/svideo"></android.support.v7.widget.AppCompatImageView>
+=======
         <android.support.v7.widget.AppCompatImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -313,6 +323,7 @@
             app:srcCompat="@drawable/s_video"
             android:scaleType="center" >
         </android.support.v7.widget.AppCompatImageView>
+>>>>>>> master
         <TextView
             android:layout_width="match_parent"
             android:layout_height="42dp"
@@ -338,6 +349,16 @@
             android:background="@drawable/home_source"
             android:focusable="true"
             android:focusableInTouchMode="true"/>
+<<<<<<< HEAD
+
+        <android.support.v7.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="22dp"
+            android:layout_marginTop="14dp"
+            android:scaleType="center"
+            app:srcCompat="@drawable/addshortcut"></android.support.v7.widget.AppCompatImageView>
+=======
         <android.support.v7.widget.AppCompatImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -346,6 +367,7 @@
             app:srcCompat="@drawable/favorite_source"
             android:scaleType="center" >
         </android.support.v7.widget.AppCompatImageView>
+>>>>>>> master
         <TextView
             android:layout_width="match_parent"
             android:layout_height="42dp"
