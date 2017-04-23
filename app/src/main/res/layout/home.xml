@@ -6,12 +6,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="200dp"
-        android:background="@drawable/bg1"
+        android:background="@drawable/bg_tekapo"
         android:orientation="vertical">
 
         <RelativeLayout
@@ -33,13 +32,14 @@
                 app:srcCompat="@drawable/optomalogo" />
 
             <TextView
-                android:id="@+id/clock"
+                android:id="@+id/home_clock"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="48dp"
                 android:layout_marginTop="27dp"
                 android:layout_weight="1"
+                android:clickable="false"
                 android:text="10:09"
                 android:textColor="#D0D3D4"
                 android:textSize="42sp" />
@@ -48,10 +48,10 @@
                 android:id="@+id/clock_line"
                 android:layout_width="wrap_content"
                 android:layout_height="1dp"
-                android:layout_alignLeft="@+id/clock"
+                android:layout_alignLeft="@+id/home_clock"
                 android:layout_alignParentRight="true"
-                android:layout_alignRight="@+id/clock"
-                android:layout_below="@+id/clock"
+                android:layout_alignRight="@+id/home_clock"
+                android:layout_below="@+id/home_clock"
                 android:layout_marginRight="48dp"
                 android:text="TextView"
                 android:textColor="#D0D3D4" />
@@ -59,7 +59,7 @@
         </RelativeLayout>
 
         <TextView
-            android:id="@+id/day"
+            android:id="@+id/home_day"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="false"
@@ -80,16 +80,18 @@
             android:layout_gravity="center_horizontal">
 
             <android.support.v7.widget.AppCompatImageView
-                android:id="@+id/position"
+                android:id="@+id/menu_position"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignRight="@+id/apps"
+                android:layout_alignRight="@+id/menu_apps"
                 android:layout_marginRight="7dp"
                 android:layout_weight="1"
+                android:clickable="true"
+                android:onClick="buttonClicked"
                 app:srcCompat="@drawable/uf_position" />
 
             <android.support.v7.widget.AppCompatImageView
-                android:id="@+id/apps"
+                android:id="@+id/menu_apps"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="false"
@@ -98,10 +100,12 @@
                 android:layout_marginLeft="7dp"
                 android:layout_marginRight="7dp"
                 android:layout_weight="1"
+                android:clickable="true"
+                android:onClick="buttonClicked"
                 app:srcCompat="@drawable/uf_apps" />
 
             <android.support.v7.widget.AppCompatImageView
-                android:id="@+id/input_source"
+                android:id="@+id/menu_is"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="false"
@@ -110,15 +114,19 @@
                 android:layout_marginLeft="7dp"
                 android:layout_marginRight="7dp"
                 android:layout_weight="1"
+                android:clickable="true"
+                android:onClick="buttonClicked"
                 app:srcCompat="@drawable/uf_inputsource" />
 
             <android.support.v7.widget.AppCompatImageView
-                android:id="@+id/language"
+                android:id="@+id/menu_lang"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/input_source"
-                android:layout_alignRight="@+id/input_source"
+                android:layout_alignLeft="@+id/shortcut_is1"
+                android:layout_alignRight="@+id/shortcut_is1"
                 android:layout_marginLeft="7dp"
+                android:clickable="true"
+                android:onClick="buttonClicked"
                 app:srcCompat="@drawable/uff_language" />
 
         </GridLayout>
@@ -162,7 +170,7 @@
             android:useDefaultMargins="true">
 
             <android.support.v7.widget.AppCompatImageView
-                android:id="@+id/imageView"
+                android:id="@+id/shortcut_app1"
                 android:layout_width="112dp"
                 android:layout_height="128dp"
                 android:layout_gravity="center_vertical|center"
@@ -170,12 +178,14 @@
                 android:layout_marginTop="36dp"
                 android:layout_weight="11"
                 android:adjustViewBounds="false"
+                android:background="@drawable/corner_shortcut_app"
+                android:clickable="true"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
-                android:src="@drawable/settings" />
+                android:onClick="buttonClicked" />
 
             <android.support.v7.widget.AppCompatImageView
-                android:id="@+id/imageView"
+                android:id="@+id/shortcut_app2"
                 android:layout_width="112dp"
                 android:layout_height="128dp"
                 android:layout_gravity="center_vertical|center"
@@ -183,12 +193,14 @@
                 android:layout_marginTop="36dp"
                 android:layout_weight="11"
                 android:adjustViewBounds="false"
+                android:background="@drawable/corner_shortcut_app"
+                android:clickable="true"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
-                android:src="@drawable/settings" />
+                android:onClick="buttonClicked" />
 
             <android.support.v7.widget.AppCompatImageView
-                android:id="@+id/imageView"
+                android:id="@+id/shortcut_app3"
                 android:layout_width="112dp"
                 android:layout_height="128dp"
                 android:layout_gravity="center_vertical|center"
@@ -196,12 +208,14 @@
                 android:layout_marginTop="36dp"
                 android:layout_weight="11"
                 android:adjustViewBounds="false"
+                android:background="@drawable/corner_shortcut_app"
+                android:clickable="true"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
-                android:src="@drawable/settings" />
+                android:onClick="buttonClicked" />
 
             <android.support.v7.widget.AppCompatImageView
-                android:id="@+id/imageView"
+                android:id="@+id/shortcut_app4"
                 android:layout_width="112dp"
                 android:layout_height="128dp"
                 android:layout_gravity="center_vertical|center"
@@ -209,40 +223,170 @@
                 android:layout_marginTop="36dp"
                 android:layout_weight="11"
                 android:adjustViewBounds="false"
+                android:background="@drawable/corner_shortcut_app"
+                android:clickable="true"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
-                android:src="@drawable/settings" />
+                android:onClick="buttonClicked" />
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="112dp"
                 android:layout_height="128dp"
                 android:layout_gravity="center"
                 android:layout_marginBottom="36dp"
                 android:layout_marginTop="36dp"
                 android:layout_weight="1"
-                android:background="#2E2A25"
+                android:background="@drawable/corner_shortcut_input_source"
+                android:clickable="false"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
                 android:forceHasOverlappingRendering="false"
                 android:gravity="center"
                 android:orientation="vertical">
 
+                <android.support.v7.widget.AppCompatButton
+                    android:id="@+id/shortcut_is1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:onClick="buttonClicked" />
+
                 <android.support.v7.widget.AppCompatImageView
-                    android:id="@+id/imageView"
+                    android:id="@+id/shortcut_is1_img"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
                     android:layout_gravity="center_vertical|center"
                     android:layout_weight="11"
                     android:adjustViewBounds="false"
+                    android:elevation="0dp"
                     android:focusable="false"
                     android:focusableInTouchMode="false"
-                    android:src="@drawable/hdmi" />
+                    android:scaleType="center"
+                    app:srcCompat="@drawable/hdmi" />
 
                 <TextView
-                    android:id="@+id/textView"
+                    android:id="@+id/shortcut_is1_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
+                    android:layout_alignParentBottom="false"
+                    android:layout_below="@+id/shortcut_is1_img"
+                    android:layout_centerInParent="true"
+                    android:layout_weight="5"
+                    android:gravity="center_vertical"
+                    android:text="HMDI1"
+                    android:textAlignment="center"
+                    android:textColor="#B2FFFFFF"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="112dp"
+                android:layout_height="128dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="36dp"
+                android:layout_marginTop="36dp"
+                android:layout_weight="1"
+                android:background="@drawable/corner_shortcut_input_source"
+                android:clickable="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:forceHasOverlappingRendering="false"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <android.support.v7.widget.AppCompatButton
+                    android:id="@+id/shortcut_is2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:onClick="buttonClicked"
+                    app:srcCompat="@drawable/home_source" />
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/shortcut_is2_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="center_vertical|center"
+                    android:layout_weight="11"
+                    android:adjustViewBounds="false"
+                    android:elevation="0dp"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:scaleType="center"
+                    app:srcCompat="@drawable/vga" />
+
+                <TextView
+                    android:id="@+id/shortcut_is2_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="false"
+                    android:layout_below="@+id/shortcut_is2_img"
+                    android:layout_centerInParent="true"
+                    android:layout_weight="5"
+                    android:gravity="center_vertical"
+                    android:text="VGA"
+                    android:textAlignment="center"
+                    android:textColor="#B2FFFFFF"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="112dp"
+                android:layout_height="128dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="36dp"
+                android:layout_marginTop="36dp"
+                android:layout_weight="1"
+                android:background="@drawable/corner_shortcut_setup"
+                android:clickable="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:forceHasOverlappingRendering="false"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <android.support.v7.widget.AppCompatButton
+                    android:id="@+id/shortcut_setup"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:onClick="buttonClicked"
+                    app:srcCompat="@drawable/home_source" />
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/shortcut_setup_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="center_vertical|center"
+                    android:layout_weight="11"
+                    android:adjustViewBounds="false"
+                    android:elevation="0dp"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:scaleType="center"
+                    app:srcCompat="@drawable/settings" />
+
+                <TextView
+                    android:id="@+id/shortcut_setup_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="false"
+                    android:layout_below="@+id/shortcut_setup_img"
+                    android:layout_centerInParent="true"
                     android:layout_weight="5"
                     android:gravity="center_vertical"
                     android:text="Settings"
@@ -250,114 +394,55 @@
                     android:textColor="#B2FFFFFF"
                     android:textSize="16sp"
                     android:textStyle="bold" />
-            </LinearLayout>
+            </RelativeLayout>
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="112dp"
                 android:layout_height="128dp"
                 android:layout_gravity="center"
                 android:layout_marginBottom="36dp"
                 android:layout_marginTop="36dp"
                 android:layout_weight="1"
-                android:background="#2E2A25"
+                android:background="@drawable/corner_shortcut_setup"
+                android:clickable="false"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
                 android:forceHasOverlappingRendering="false"
                 android:gravity="center"
                 android:orientation="vertical">
 
+                <android.support.v7.widget.AppCompatButton
+                    android:id="@+id/shortcut_psetup"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:onClick="buttonClicked"
+                    app:srcCompat="@drawable/projectorsetup" />
+
                 <android.support.v7.widget.AppCompatImageView
-                    android:id="@+id/imageView"
+                    android:id="@+id/shortcut_psetup_img"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
                     android:layout_gravity="center_vertical|center"
                     android:layout_weight="11"
                     android:adjustViewBounds="false"
+                    android:elevation="0dp"
                     android:focusable="false"
                     android:focusableInTouchMode="false"
-                    android:src="@drawable/vga" />
+                    android:scaleType="center"
+                    app:srcCompat="@drawable/hdmi" />
 
                 <TextView
-                    android:id="@+id/textView"
+                    android:id="@+id/shortcut_psetup_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="5"
-                    android:gravity="center_vertical"
-                    android:text="Settings"
-                    android:textAlignment="center"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="112dp"
-                android:layout_height="128dp"
-                android:layout_gravity="center"
-                android:layout_marginBottom="36dp"
-                android:layout_marginTop="36dp"
-                android:layout_weight="1"
-                android:background="#9A887B"
-                android:focusable="false"
-                android:focusableInTouchMode="false"
-                android:forceHasOverlappingRendering="false"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <android.support.v7.widget.AppCompatImageView
-                    android:id="@+id/imageView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical|center"
-                    android:layout_weight="11"
-                    android:adjustViewBounds="false"
-                    android:focusable="false"
-                    android:focusableInTouchMode="false"
-                    android:src="@drawable/settings" />
-
-                <TextView
-                    android:id="@+id/textView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="5"
-                    android:gravity="center_vertical"
-                    android:text="Settings"
-                    android:textAlignment="center"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="112dp"
-                android:layout_height="128dp"
-                android:layout_gravity="center"
-                android:layout_marginBottom="36dp"
-                android:layout_marginTop="36dp"
-                android:layout_weight="1"
-                android:background="#B2FFFFFF"
-                android:focusable="false"
-                android:focusableInTouchMode="false"
-                android:forceHasOverlappingRendering="false"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <android.support.v7.widget.AppCompatImageView
-                    android:id="@+id/imageView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical|center"
-                    android:layout_weight="11"
-                    android:adjustViewBounds="false"
-                    android:focusable="false"
-                    android:focusableInTouchMode="false"
-                    android:src="@drawable/projectorsetup" />
-
-                <TextView
-                    android:id="@+id/textView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
+                    android:layout_alignParentBottom="false"
+                    android:layout_below="@+id/shortcut_psetup_img"
+                    android:layout_centerInParent="true"
                     android:layout_weight="5"
                     android:gravity="center_vertical"
                     android:text="Projector Setup"
@@ -365,7 +450,7 @@
                     android:textColor="#B2FFFFFF"
                     android:textSize="16sp"
                     android:textStyle="bold" />
-            </LinearLayout>
+            </RelativeLayout>
 
         </GridLayout>
     </LinearLayout>

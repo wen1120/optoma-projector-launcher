@@ -37,7 +37,7 @@
                 android:id="@+id/language"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignRight="@+id/input_source"
+                android:layout_alignRight="@+id/shortcut_is1"
                 android:layout_marginLeft="7dp"
                 app:srcCompat="@drawable/f_language" />
 
