@@ -1,4 +1,4 @@
-package com.optoma.launcher001.Settings;
+package com.optoma.launcher.Settings;
 
 import android.app.Activity;
 import android.content.Intent;
