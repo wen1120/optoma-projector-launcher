@@ -8,7 +8,7 @@
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_marginBottom="200dp"
         android:background="@drawable/bg_tekapo"
         android:orientation="vertical">
@@ -87,6 +87,8 @@
                 android:layout_marginRight="7dp"
                 android:layout_weight="1"
                 android:clickable="true"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
                 android:onClick="buttonClicked"
                 app:srcCompat="@drawable/uf_position" />
 
@@ -101,6 +103,8 @@
                 android:layout_marginRight="7dp"
                 android:layout_weight="1"
                 android:clickable="true"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
                 android:onClick="buttonClicked"
                 app:srcCompat="@drawable/uf_apps" />
 
@@ -115,6 +119,8 @@
                 android:layout_marginRight="7dp"
                 android:layout_weight="1"
                 android:clickable="true"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
                 android:onClick="buttonClicked"
                 app:srcCompat="@drawable/uf_inputsource" />
 
@@ -126,6 +132,8 @@
                 android:layout_alignRight="@+id/shortcut_is1"
                 android:layout_marginLeft="7dp"
                 android:clickable="true"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
                 android:onClick="buttonClicked"
                 app:srcCompat="@drawable/uff_language" />
 
@@ -180,8 +188,8 @@
                 android:adjustViewBounds="false"
                 android:background="@drawable/corner_shortcut_app"
                 android:clickable="true"
-                android:focusable="false"
-                android:focusableInTouchMode="false"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
                 android:onClick="buttonClicked" />
 
             <android.support.v7.widget.AppCompatImageView
@@ -195,8 +203,8 @@
                 android:adjustViewBounds="false"
                 android:background="@drawable/corner_shortcut_app"
                 android:clickable="true"
-                android:focusable="false"
-                android:focusableInTouchMode="false"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
                 android:onClick="buttonClicked" />
 
             <android.support.v7.widget.AppCompatImageView
@@ -210,8 +218,8 @@
                 android:adjustViewBounds="false"
                 android:background="@drawable/corner_shortcut_app"
                 android:clickable="true"
-                android:focusable="false"
-                android:focusableInTouchMode="false"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
                 android:onClick="buttonClicked" />
 
             <android.support.v7.widget.AppCompatImageView
@@ -225,11 +233,12 @@
                 android:adjustViewBounds="false"
                 android:background="@drawable/corner_shortcut_app"
                 android:clickable="true"
-                android:focusable="false"
-                android:focusableInTouchMode="false"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
                 android:onClick="buttonClicked" />
 
-            <RelativeLayout
+            <LinearLayout
+                android:id="@+id/shortcut_app5"
                 android:layout_width="112dp"
                 android:layout_height="128dp"
                 android:layout_gravity="center"
@@ -238,21 +247,11 @@
                 android:layout_weight="1"
                 android:background="@drawable/corner_shortcut_input_source"
                 android:clickable="false"
-                android:focusable="false"
-                android:focusableInTouchMode="false"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
                 android:forceHasOverlappingRendering="false"
                 android:gravity="center"
                 android:orientation="vertical">
-
-                <android.support.v7.widget.AppCompatButton
-                    android:id="@+id/shortcut_is1"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:focusableInTouchMode="true"
-                    android:onClick="buttonClicked" />
 
                 <android.support.v7.widget.AppCompatImageView
                     android:id="@+id/shortcut_is1_img"
@@ -262,10 +261,9 @@
                     android:layout_gravity="center_vertical|center"
                     android:layout_weight="11"
                     android:adjustViewBounds="false"
-                    android:elevation="0dp"
                     android:focusable="false"
                     android:focusableInTouchMode="false"
-                    android:scaleType="center"
+                    android:scaleType="centerInside"
                     app:srcCompat="@drawable/hdmi" />
 
                 <TextView
@@ -282,9 +280,10 @@
                     android:textColor="#B2FFFFFF"
                     android:textSize="16sp"
                     android:textStyle="bold" />
-            </RelativeLayout>
+            </LinearLayout>
 
-            <RelativeLayout
+            <LinearLayout
+                android:id="@+id/shortcut_app6"
                 android:layout_width="112dp"
                 android:layout_height="128dp"
                 android:layout_gravity="center"
@@ -292,23 +291,13 @@
                 android:layout_marginTop="36dp"
                 android:layout_weight="1"
                 android:background="@drawable/corner_shortcut_input_source"
-                android:clickable="false"
-                android:focusable="false"
-                android:focusableInTouchMode="false"
+                android:clickable="true"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
                 android:forceHasOverlappingRendering="false"
                 android:gravity="center"
+                android:onClick="buttonClicked"
                 android:orientation="vertical">
-
-                <android.support.v7.widget.AppCompatButton
-                    android:id="@+id/shortcut_is2"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:focusableInTouchMode="true"
-                    android:onClick="buttonClicked"
-                    app:srcCompat="@drawable/home_source" />
 
                 <android.support.v7.widget.AppCompatImageView
                     android:id="@+id/shortcut_is2_img"
@@ -321,7 +310,7 @@
                     android:elevation="0dp"
                     android:focusable="false"
                     android:focusableInTouchMode="false"
-                    android:scaleType="center"
+                    android:scaleType="centerInside"
                     app:srcCompat="@drawable/vga" />
 
                 <TextView
@@ -338,9 +327,10 @@
                     android:textColor="#B2FFFFFF"
                     android:textSize="16sp"
                     android:textStyle="bold" />
-            </RelativeLayout>
+            </LinearLayout>
 
-            <RelativeLayout
+            <LinearLayout
+                android:id="@+id/shortcut_app7"
                 android:layout_width="112dp"
                 android:layout_height="128dp"
                 android:layout_gravity="center"
@@ -348,23 +338,13 @@
                 android:layout_marginTop="36dp"
                 android:layout_weight="1"
                 android:background="@drawable/corner_shortcut_setup"
-                android:clickable="false"
-                android:focusable="false"
-                android:focusableInTouchMode="false"
+                android:clickable="true"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
                 android:forceHasOverlappingRendering="false"
                 android:gravity="center"
+                android:onClick="buttonClicked"
                 android:orientation="vertical">
-
-                <android.support.v7.widget.AppCompatButton
-                    android:id="@+id/shortcut_setup"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:focusableInTouchMode="true"
-                    android:onClick="buttonClicked"
-                    app:srcCompat="@drawable/home_source" />
 
                 <android.support.v7.widget.AppCompatImageView
                     android:id="@+id/shortcut_setup_img"
@@ -377,7 +357,7 @@
                     android:elevation="0dp"
                     android:focusable="false"
                     android:focusableInTouchMode="false"
-                    android:scaleType="center"
+                    android:scaleType="centerInside"
                     app:srcCompat="@drawable/settings" />
 
                 <TextView
@@ -394,9 +374,10 @@
                     android:textColor="#B2FFFFFF"
                     android:textSize="16sp"
                     android:textStyle="bold" />
-            </RelativeLayout>
+            </LinearLayout>
 
-            <RelativeLayout
+            <LinearLayout
+                android:id="@+id/shortcut_app8"
                 android:layout_width="112dp"
                 android:layout_height="128dp"
                 android:layout_gravity="center"
@@ -404,23 +385,13 @@
                 android:layout_marginTop="36dp"
                 android:layout_weight="1"
                 android:background="@drawable/corner_shortcut_setup"
-                android:clickable="false"
-                android:focusable="false"
-                android:focusableInTouchMode="false"
+                android:clickable="true"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
                 android:forceHasOverlappingRendering="false"
                 android:gravity="center"
+                android:onClick="buttonClicked"
                 android:orientation="vertical">
-
-                <android.support.v7.widget.AppCompatButton
-                    android:id="@+id/shortcut_psetup"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:focusableInTouchMode="true"
-                    android:onClick="buttonClicked"
-                    app:srcCompat="@drawable/projectorsetup" />
 
                 <android.support.v7.widget.AppCompatImageView
                     android:id="@+id/shortcut_psetup_img"
@@ -433,7 +404,7 @@
                     android:elevation="0dp"
                     android:focusable="false"
                     android:focusableInTouchMode="false"
-                    android:scaleType="center"
+                    android:scaleType="centerInside"
                     app:srcCompat="@drawable/hdmi" />
 
                 <TextView
@@ -450,7 +421,7 @@
                     android:textColor="#B2FFFFFF"
                     android:textSize="16sp"
                     android:textStyle="bold" />
-            </RelativeLayout>
+            </LinearLayout>
 
         </GridLayout>
     </LinearLayout>
