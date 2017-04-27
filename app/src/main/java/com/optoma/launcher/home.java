@@ -2,12 +2,17 @@ package com.optoma.launcher;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.icu.text.DateFormat;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.support.v7.widget.AppCompatImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import android.support.v4.util.ArrayMap;
 
 /*
 * gradle debug on command line on Mac
@@ -21,6 +26,8 @@ public class home extends Activity {
     //private View mView;
     private FocusView mFocusView;
     private Intent intent = new Intent();
+    private TextView nowTime; // time
+    private TextView nowDay; // day
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,12 +37,58 @@ public class home extends Activity {
         // shortcut input source 1 will be the default focus button
     //    firstBtn = (Button) findViewById(R.id.shortcut_is1_img);
     //    firstBtn.requestFocus();
-        initShortcutImageSize();
-        initShortcutClick();
+        init();
     }
 
 
-    public void initShortcutClick() {
+    private void init() {
+        initShortcutImageSize();
+        initBtnClick();
+        displayCurrentDateTime();
+    }
+    /*
+    * home_clock: 10:09
+    * home_day: FRI 30 DEC
+     */
+    public void displayCurrentDateTime() {
+        nowTime = (TextView) findViewById(R.id.home_clock);
+        nowDay = (TextView) findViewById(R.id.home_day);
+        nowTime.postDelayed(runnable, 1000);
+        nowDay.postDelayed(runnable, 1000);
+
+    }
+
+    /*
+    * update the day and time continually
+    * for the Calendar.getInstance(), as we didn't assign the timezone, it will use the default timezone and language of system
+     */
+    private Runnable runnable = new Runnable() {
+        @Override
+        public void run() {
+            nowTime.setText(new SimpleDateFormat("HH:mm").format(Calendar.getInstance().getTime()));
+            nowDay.setText(new SimpleDateFormat("EEE dd MMM").format(Calendar.getInstance().getTime()));
+            nowTime.postDelayed(runnable,1000);
+            nowDay.postDelayed(runnable,1000);
+        }
+    };
+
+    /*
+    * remove day & time update on the pause status
+     */
+    @Override
+    protected void onPause() {
+        super.onPause();
+        nowTime.removeCallbacks(runnable);
+        nowDay.removeCallbacks(runnable);
+    }
+
+    public void initBtnClick() {
+        int[] menuID = {
+                R.id.menu_position,
+                R.id.menu_apps,
+                R.id.menu_is,
+                R.id.menu_lang
+        };
         int[] shortcutID = {
                 R.id.shortcut_app5,
                 R.id.shortcut_app6,
@@ -45,14 +98,71 @@ public class home extends Activity {
         for(int i=0; i<shortcutID.length;i++) {
             layoutClicked(shortcutID[i]);
         }
+        for(int i=0; i<menuID.length;i++) {
+            menuClicked(menuID[i]);
+        }
     }
 
+    /*
+    * used for linearlayout to be clickable
+     */
     public void layoutClicked(int resourceID) {
+        String myClass;
+        final int rID;
+        rID = resourceID;
         LinearLayout ly = (LinearLayout)findViewById(resourceID);
         ly.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                intent.setClassName(getPackageName(), getPackageName() + ".InputSource");
+                switch (rID) {
+                    case R.id.shortcut_app5: //input source
+                        intent.setClassName(getPackageName(), getPackageName() + ".InputSource");
+                        break;
+                    case R.id.shortcut_app6: //input source
+                        intent.setClassName(getPackageName(), getPackageName() + ".InputSource");
+                        break;
+                    case R.id.shortcut_app7: //settings
+                        intent.setClassName(getPackageName(), getPackageName() + ".Settings.Settings");
+                        break;
+                    case R.id.shortcut_app8: // projector settings
+                        intent.setClassName(getPackageName(), getPackageName() + ".InputSource");
+                        break;
+                    default:
+                        intent.setClassName(getPackageName(), getPackageName() + ".Settings.Settings");
+                        break;
+                }
+                startActivity(intent);
+            }
+        });
+    }
+
+    /*
+    * used for AppCompatImageView to be clickable
+     */
+    public void menuClicked(int resourceID) {
+        final int rID;
+        rID = resourceID;
+        AppCompatImageView btn = (AppCompatImageView)findViewById(resourceID);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                switch (rID) {
+                    case R.id.menu_position:
+                        intent.setClassName(getPackageName(), getPackageName() + ".InputSource");
+                        break;
+                    case R.id.menu_apps:
+                        intent.setClassName(getPackageName(), getPackageName() + ".InputSource");
+                        break;
+                    case R.id.menu_is:
+                        intent.setClassName(getPackageName(), getPackageName() + ".InputSource");
+                        break;
+                    case R.id.menu_lang:
+                        intent.setClassName(getPackageName(), getPackageName() + ".InputSource");
+                        break;
+                    default:
+                        intent.setClassName(getPackageName(), getPackageName() + ".InputSource");
+                        break;
+                }
                 startActivity(intent);
             }
         });
@@ -76,83 +186,12 @@ public class home extends Activity {
     *
      */
     public void resizeImage(int imageID, double ratio) {
-        //double width, height;
         AppCompatImageView view = (AppCompatImageView) findViewById(imageID);
         Double height = new Double(view.getDrawable().getIntrinsicHeight() * ratio);
         Double width = new Double(view.getDrawable().getIntrinsicWidth() * ratio);
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(width.intValue(), height.intValue(), 11f);
         view.setLayoutParams(params);
         //view.requestLayout();
-    }
-    /*
-    * enable clickable on layout
-    * set the onClick value on layout to "buttonClicked"
-     */
-    public void buttonClicked(View view) {
-        Button thisBtn = (Button) findViewById(view.getId());
-        int nextRightId, nextLeftId, nextUpId, nextDownId;
-
-        switch (view.getId()) {
-            /*
-            * menu buttons
-             */
-            case R.id.menu_position:
-                nextRightId = R.id.menu_apps;
-                //nextLeftId = R.id.menu_lang; // turn off loop behavior
-                nextDownId = R.id.shortcut_app5;
-                intent.setClassName(getPackageName(), getPackageName() + ".InputSource");
-                break;
-            case R.id.menu_apps:
-                nextRightId = R.id.menu_is;
-                nextLeftId = R.id.menu_position;
-                nextDownId = R.id.shortcut_app5;
-                intent.setClassName(getPackageName(), getPackageName() + ".InputSource");
-                break;
-            case R.id.menu_is:
-                nextRightId = R.id.menu_lang;
-                nextLeftId = R.id.menu_apps;
-                nextDownId = R.id.shortcut_app5;
-                intent.setClassName(getPackageName(), getPackageName() + ".InputSource");
-                break;
-            case R.id.menu_lang:
-                //nextRightId = R.id.menu_position;
-                nextLeftId = R.id.menu_is;
-                nextDownId = R.id.shortcut_app5;
-                intent.setClassName(getPackageName(), getPackageName() + ".InputSource");
-                break;
-            /*
-            * shortcut buttons
-             */
-            /*case R.id.shortcut_app5:
-                nextRightId = R.id.shortcut_app4;
-                nextLeftId = R.id.shortcut_app6;
-                nextUpId = R.id.menu_apps;
-                intent.setClassName(getPackageName(), getPackageName() + ".InputSource");
-                break;*/
-            case R.id.shortcut_app6:
-                nextRightId = R.id.shortcut_app7;
-                nextLeftId = R.id.shortcut_is1;
-                nextUpId = R.id.menu_apps;
-                intent.setClassName(getPackageName(), getPackageName() + ".InputSource");
-                break;
-            case R.id.shortcut_app7:
-                nextRightId = R.id.shortcut_app8;
-                nextLeftId = R.id.shortcut_app6;
-                nextUpId = R.id.menu_apps;
-                intent.setClassName(getPackageName(), getPackageName() + ".InputSource");
-                break;
-            case R.id.shortcut_app8:
-                //nextRightId = R.id.shortcut_is1; // disable loop behavior
-                nextLeftId = R.id.shortcut_app7;
-                nextUpId = R.id.menu_apps;
-                intent.setClassName(getPackageName(), getPackageName() + ".InputSource");
-                break;
-            default:
-                Log.d(TAG, "unknow R.id=" + view.getId());
-                break;
-        }
-        Log.d(TAG, "get R.id=" + view.getId());
-        startActivity(intent);
     }
 
     private View mCurrentView;

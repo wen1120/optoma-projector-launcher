@@ -89,7 +89,6 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:focusableInTouchMode="true"
-                android:onClick="buttonClicked"
                 app:srcCompat="@drawable/uf_position" />
 
             <android.support.v7.widget.AppCompatImageView
@@ -105,7 +104,6 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:focusableInTouchMode="true"
-                android:onClick="buttonClicked"
                 app:srcCompat="@drawable/uf_apps" />
 
             <android.support.v7.widget.AppCompatImageView
@@ -121,7 +119,6 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:focusableInTouchMode="true"
-                android:onClick="buttonClicked"
                 app:srcCompat="@drawable/uf_inputsource" />
 
             <android.support.v7.widget.AppCompatImageView
@@ -134,7 +131,6 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:focusableInTouchMode="true"
-                android:onClick="buttonClicked"
                 app:srcCompat="@drawable/uff_language" />
 
         </GridLayout>
@@ -189,8 +185,7 @@
                 android:background="@drawable/corner_shortcut_app"
                 android:clickable="true"
                 android:focusable="true"
-                android:focusableInTouchMode="true"
-                android:onClick="buttonClicked" />
+                android:focusableInTouchMode="true" />
 
             <android.support.v7.widget.AppCompatImageView
                 android:id="@+id/shortcut_app2"
@@ -204,8 +199,7 @@
                 android:background="@drawable/corner_shortcut_app"
                 android:clickable="true"
                 android:focusable="true"
-                android:focusableInTouchMode="true"
-                android:onClick="buttonClicked" />
+                android:focusableInTouchMode="true" />
 
             <android.support.v7.widget.AppCompatImageView
                 android:id="@+id/shortcut_app3"
@@ -219,8 +213,7 @@
                 android:background="@drawable/corner_shortcut_app"
                 android:clickable="true"
                 android:focusable="true"
-                android:focusableInTouchMode="true"
-                android:onClick="buttonClicked" />
+                android:focusableInTouchMode="true" />
 
             <android.support.v7.widget.AppCompatImageView
                 android:id="@+id/shortcut_app4"
@@ -234,8 +227,7 @@
                 android:background="@drawable/corner_shortcut_app"
                 android:clickable="true"
                 android:focusable="true"
-                android:focusableInTouchMode="true"
-                android:onClick="buttonClicked" />
+                android:focusableInTouchMode="true" />
 
             <LinearLayout
                 android:id="@+id/shortcut_app5"
@@ -246,7 +238,7 @@
                 android:layout_marginTop="36dp"
                 android:layout_weight="1"
                 android:background="@drawable/corner_shortcut_input_source"
-                android:clickable="false"
+                android:clickable="true"
                 android:focusable="true"
                 android:focusableInTouchMode="true"
                 android:forceHasOverlappingRendering="false"
@@ -296,7 +288,6 @@
                 android:focusableInTouchMode="true"
                 android:forceHasOverlappingRendering="false"
                 android:gravity="center"
-                android:onClick="buttonClicked"
                 android:orientation="vertical">
 
                 <android.support.v7.widget.AppCompatImageView
@@ -343,7 +334,6 @@
                 android:focusableInTouchMode="true"
                 android:forceHasOverlappingRendering="false"
                 android:gravity="center"
-                android:onClick="buttonClicked"
                 android:orientation="vertical">
 
                 <android.support.v7.widget.AppCompatImageView
@@ -390,7 +380,6 @@
                 android:focusableInTouchMode="true"
                 android:forceHasOverlappingRendering="false"
                 android:gravity="center"
-                android:onClick="buttonClicked"
                 android:orientation="vertical">
 
                 <android.support.v7.widget.AppCompatImageView
