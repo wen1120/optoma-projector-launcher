@@ -12,16 +12,18 @@
         <android.support.v7.widget.AppCompatImageView
             android:id="@+id/audio_iv"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
             android:layout_marginTop="32dp"
-            android:layout_marginLeft="88dp"
-            app:srcCompat="@drawable/scale_audio">
+            android:layout_marginLeft="24dp"
+            android:scaleType="fitStart"
+            android:alpha="0.25"
+            app:srcCompat="@drawable/audio">
         </android.support.v7.widget.AppCompatImageView>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:layout_marginLeft="138dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="74dp"
             android:gravity="left"
             android:text="@string/setting_audio"
             android:textSize = "45sp"

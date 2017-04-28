@@ -94,6 +94,23 @@
     <string name="info_subnet_mask">Subnet Mask</string>
     <string name="info_gateway">Gateway</string>
     <string name="info_dns">DNS</string>
+    <string name="control_crestron">Crestron</string>
+    <string name="control_extron">Extron</string>
+    <string name="control_pjlink">PJ Link</string>
+    <string name="control_amx_dd">AMX Device Discovery</string>
+    <string name="control_telnet">Telnet</string>
+    <string name="control_http">HTTP</string>
+    <string name="system_language">language</string>
+    <string name="system_date_and_time">Date and Time</string>
+    <string name="system_automatic">Automatic (Network-provided)</string>
+    <string name="system_set_time">Set Time</string>
+    <string name="system_security">Security</string>
+    <string name="system_security_timer">Security Timeer</string>
+    <string name="system_change_password">Change Password</string>
+    <string name="system_update_software">Update Software</string>
+    <string name="system_reset_all_settings">Reset All Settings</string>
+    <string name="system_restore">Restore</string>
+
     <string-array name="ssArray">
         <item>Miracast</item>
         <item>VGA</item>

@@ -1,25 +1,17 @@
 package com.optoma.launcher.Settings;
 
 import android.app.Activity;
-import android.graphics.Bitmap;
-import android.graphics.Matrix;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.SeekBar;
-import android.widget.TextView;
 
 import com.optoma.launcher.R;
 
-import java.util.ArrayList;
 
 public class Audio extends Activity {
-    private static final String TAG = "LauncherLog001";
-    private ImageView AudioIV;
+    private static final String TAG = "LauncherLog";
     private int xPosition, yPosition;
     private final int yLimit = 9;
     private boolean[] bAudioItems = {true,false,false,false,false};
@@ -37,14 +29,12 @@ public class Audio extends Activity {
         ivAudioOnOff[4] = (ImageView) this.findViewById(R.id.audio_srs_iv);
         sbAudio[0] = (SeekBar) this.findViewById(R.id.audio_volume_sb);
         sbAudio[1] = (SeekBar) this.findViewById(R.id.audio_mic_volume_sb);
-        AudioIV = (ImageView) this.findViewById(R.id.audio_iv);
         xPosition = yPosition = 0;
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        //SetAudioImage();
     }
 
     public boolean onKeyDown(int keyCode, KeyEvent event) {
@@ -113,15 +103,5 @@ public class Audio extends Activity {
         }
 
         return super.onKeyDown(keyCode, event);
-    }
-
-    private void SetAudioImage() {
-        LayoutParams params = AudioIV.getLayoutParams();
-        Log.d(TAG, "layout height: " + params.height);
-        Log.d(TAG, "layout width: " + params.width);
-        params.height = (int)(params.height * 0.4);
-        params.width  = (int)(params.width * 0.4);
-        //AudioIV.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
-        //AudioIV.setLayoutParams(params);
     }
 }

@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.optoma.launcher.R;
@@ -22,8 +21,9 @@ public class Settings extends Activity {
     private TextView[] SystemContentTV  = new TextView[3];
     private ArrayList<String> aSystemTitle = new ArrayList<String>();
     private ArrayList<String> aSystemContent = new ArrayList<String>();
-    private Button bAudio,bInfo;
     private Intent intent = new Intent();
+    public static boolean[] bControlItems = {true,false,true,false,false,true};
+    public String[] bControlString = {"Crestron","Extron","PJ Link","AMX","Telnet","HTTP"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,10 +45,6 @@ public class Settings extends Activity {
                 R.array.settingContent)) {
             aSystemContent.add(s);
         }
-        bAudio = (Button) findViewById(R.id.setting_audio_button);
-        bAudio.setOnClickListener(bAudioOnClick);
-        bInfo = (Button) findViewById(R.id.setting_information_button);
-        bInfo.setOnClickListener(bInfoOnClick);
     }
 
     @Override
@@ -56,66 +52,48 @@ public class Settings extends Activity {
         super.onResume();
         SetSettingTV(true);
     }
-
-    private View.OnClickListener bAudioOnClick = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            Log.d(TAG, "Button Audio clicked");
-            SetSettingTV(false);
-            intent.setClassName(getPackageName(), getPackageName() + ".Settings.Audio");
-            startActivity(intent);
+    public void SettingClick(View view) {
+        SetSettingTV(false);
+        switch (view.getId()) {
+            case R.id.setting_audio_button:
+                intent.setClassName(getPackageName(), getPackageName() + ".Settings.Audio");
+                break;
+            case R.id.setting_control_button:
+                intent.setClassName(getPackageName(), getPackageName() + ".Settings.Control");
+                break;
+            case R.id.setting_information_button:
+                intent.setClassName(getPackageName(), getPackageName() + ".Settings.Information");
+                break;
+            case R.id.setting_system_button:
+                intent.setClassName(getPackageName(), getPackageName() + ".Settings.System");
+                break;
+            default:
+                Log.d(TAG, "unknow setting id=" + view.getId());
+                break;
         }
-    };
-
-    private View.OnClickListener bInfoOnClick = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            Log.d(TAG, "Button Information clicked");
-            SetSettingTV(false);
-            intent.setClassName(getPackageName(), getPackageName() + ".Settings.Information");
-            startActivity(intent);
-        }
-    };
+        startActivity(intent);
+    }
 
     private void SetSettingTV(boolean show) {
         int iShow = show ? View.VISIBLE : View.INVISIBLE;
+        if((2 == xFocus) && (2 == yFocus)) {
+            String sControl = "";
+            boolean bStart = true;
+            for(int i = 0;i < 6;i++) {
+                if(bControlItems[i]) {
+                    if(false == bStart) {
+                        sControl = sControl + ", ";
+                    }
+                    sControl = sControl + bControlString[i];
+                    bStart = false;
+                }
+            }
+            aSystemContent.set(8, sControl);
+            SetTitleContent(xFocus,yFocus);
+        }
         SettingTV.setVisibility(iShow);
         SystemTitleTV[yFocus].setVisibility(iShow);
         SystemContentTV[yFocus].setVisibility(iShow);
-    }
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        //if (true == bFocus) {
-            switch (keyCode) {
-                case KeyEvent.KEYCODE_DPAD_UP:
-                    if(yPosition > 0) {
-                        yPosition--;
-                        SetTitleContent(xPosition,yPosition);
-                    }
-                    break;
-                case KeyEvent.KEYCODE_DPAD_DOWN:
-                    if(yPosition < yLimit - 1) {
-                        yPosition++;
-                        SetTitleContent(xPosition,yPosition);
-                    }
-                    break;
-                case KeyEvent.KEYCODE_DPAD_LEFT:
-                    if(xPosition > 0) {
-                        xPosition--;
-                        SetTitleContent(xPosition,yPosition);
-                    }
-                    break;
-                case KeyEvent.KEYCODE_DPAD_RIGHT:
-                    if(xPosition < xLimit - 1) {
-                        xPosition++;
-                        SetTitleContent(xPosition,yPosition);
-                    }
-                    break;
-            }
-
-
-        Log.d(TAG, "activity onKeyDown: ");
-        return super.onKeyDown(keyCode, event);
     }
 
     public void SetTitleContent(int x, int y) {
@@ -133,4 +111,36 @@ public class Settings extends Activity {
             }
         }
     }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        switch (keyCode) {
+            case KeyEvent.KEYCODE_DPAD_UP:
+                if(yPosition > 0) {
+                    yPosition--;
+                    SetTitleContent(xPosition,yPosition);
+                }
+                break;
+            case KeyEvent.KEYCODE_DPAD_DOWN:
+                if(yPosition < yLimit - 1) {
+                    yPosition++;
+                    SetTitleContent(xPosition,yPosition);
+                }
+                break;
+            case KeyEvent.KEYCODE_DPAD_LEFT:
+                if(xPosition > 0) {
+                    xPosition--;
+                    SetTitleContent(xPosition,yPosition);
+                }
+                break;
+            case KeyEvent.KEYCODE_DPAD_RIGHT:
+                if(xPosition < xLimit - 1) {
+                    xPosition++;
+                    SetTitleContent(xPosition,yPosition);
+                }
+                break;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
 }
