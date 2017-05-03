@@ -110,6 +110,21 @@
     <string name="system_update_software">Update Software</string>
     <string name="system_reset_all_settings">Reset All Settings</string>
     <string name="system_restore">Restore</string>
+    <string name="system_update_title">There are new updates for your system, would you like to update the software?</string>
+    <string name="system_update_now">Update right now.</string>
+    <string name="system_download_restart">Download, but do it after restart.</string>
+    <string name="system_do_later">Do later.</string>
+    <string name="power_sleep_now">Sleep Now</string>
+    <string name="power_restart">Restart</string>
+    <string name="power_direct_poweron">Direct Power On</string>
+    <string name="power_signal_poweron">Signal Power On</string>
+    <string name="power_auto_poweroff">Auto Power Off (min)</string>
+    <string name="power_sleep">Sleep</string>
+    <string name="power_sleep_timer">Sleep Timer (min)</string>
+    <string name="power_quick_resume">Quick Resume</string>
+    <string name="power_mode">Power Mode (Standby)</string>
+    <string name="power_usb_power">USB Power</string>
+    <string name="power_wireless">Wireless</string>
 
     <string-array name="ssArray">
         <item>Miracast</item>

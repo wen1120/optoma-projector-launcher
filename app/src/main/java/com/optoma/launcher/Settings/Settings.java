@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.optoma.launcher.R;
@@ -21,6 +22,7 @@ public class Settings extends Activity {
     private TextView[] SystemContentTV  = new TextView[3];
     private ArrayList<String> aSystemTitle = new ArrayList<String>();
     private ArrayList<String> aSystemContent = new ArrayList<String>();
+    private Button[] button = new Button[9];
     private Intent intent = new Intent();
     public static boolean[] bControlItems = {true,false,true,false,false,true};
     public String[] bControlString = {"Crestron","Extron","PJ Link","AMX","Telnet","HTTP"};
@@ -45,6 +47,13 @@ public class Settings extends Activity {
                 R.array.settingContent)) {
             aSystemContent.add(s);
         }
+        button[0] = (Button) findViewById(R.id.setting_audio_button);
+        button[1] = (Button) findViewById(R.id.setting_control_button);
+        button[2] = (Button) findViewById(R.id.setting_information_button);
+        button[3] = (Button) findViewById(R.id.setting_system_button);
+        button[4] = (Button) findViewById(R.id.setting_power_button);
+        for(int i=0;i<5;i++)
+            button[i].setOnClickListener(buttonOnClick);
     }
 
     @Override
@@ -52,27 +61,34 @@ public class Settings extends Activity {
         super.onResume();
         SetSettingTV(true);
     }
-    public void SettingClick(View view) {
-        SetSettingTV(false);
-        switch (view.getId()) {
-            case R.id.setting_audio_button:
-                intent.setClassName(getPackageName(), getPackageName() + ".Settings.Audio");
-                break;
-            case R.id.setting_control_button:
-                intent.setClassName(getPackageName(), getPackageName() + ".Settings.Control");
-                break;
-            case R.id.setting_information_button:
-                intent.setClassName(getPackageName(), getPackageName() + ".Settings.Information");
-                break;
-            case R.id.setting_system_button:
-                intent.setClassName(getPackageName(), getPackageName() + ".Settings.System");
-                break;
-            default:
-                Log.d(TAG, "unknow setting id=" + view.getId());
-                break;
+
+    private View.OnClickListener buttonOnClick = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            SetSettingTV(false);
+            switch (v.getId()) {
+                case R.id.setting_audio_button:
+                    intent.setClassName(getPackageName(), getPackageName() + ".Settings.Audio");
+                    break;
+                case R.id.setting_control_button:
+                    intent.setClassName(getPackageName(), getPackageName() + ".Settings.Control");
+                    break;
+                case R.id.setting_information_button:
+                    intent.setClassName(getPackageName(), getPackageName() + ".Settings.Information");
+                    break;
+                case R.id.setting_system_button:
+                    intent.setClassName(getPackageName(), getPackageName() + ".Settings.System");
+                    break;
+                case R.id.setting_power_button:
+                    intent.setClassName(getPackageName(), getPackageName() + ".Settings.Power");
+                    break;
+                default:
+                    Log.d(TAG, "unknown setting id=" + v.getId());
+                    break;
+            }
+            startActivity(intent);
         }
-        startActivity(intent);
-    }
+    };
 
     private void SetSettingTV(boolean show) {
         int iShow = show ? View.VISIBLE : View.INVISIBLE;
