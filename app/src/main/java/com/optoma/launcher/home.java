@@ -29,6 +29,19 @@ public class home extends Activity {
     private TextView nowTime; // time
     private TextView nowDay; // day
 
+    private static int[] menuID = {
+            R.id.menu_position,
+            R.id.menu_apps,
+            R.id.menu_is,
+            R.id.menu_lang
+    };
+    private static int[] shortcutID = {
+            R.id.shortcut_app5,
+            R.id.shortcut_app6,
+            R.id.shortcut_app7,
+            R.id.shortcut_app8
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +59,7 @@ public class home extends Activity {
         initBtnClick();
         displayCurrentDateTime();
     }
+
     /*
     * home_clock: 10:09
     * home_day: FRI 30 DEC
@@ -83,18 +97,7 @@ public class home extends Activity {
     }
 
     public void initBtnClick() {
-        int[] menuID = {
-                R.id.menu_position,
-                R.id.menu_apps,
-                R.id.menu_is,
-                R.id.menu_lang
-        };
-        int[] shortcutID = {
-                R.id.shortcut_app5,
-                R.id.shortcut_app6,
-                R.id.shortcut_app7,
-                R.id.shortcut_app8
-        };
+
         for(int i=0; i<shortcutID.length;i++) {
             layoutClicked(shortcutID[i]);
         }
