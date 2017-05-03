@@ -15,6 +15,7 @@ import android.view.animation.BounceInterpolator;
 import android.widget.Button;
 import android.support.v7.widget.AppCompatImageView;
 import android.widget.GridLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import java.text.SimpleDateFormat;
@@ -197,7 +198,7 @@ public class home extends Activity {
     public void menuClicked(int resourceID) {
         final int rID;
         rID = resourceID;
-        AppCompatImageView btn = (AppCompatImageView)findViewById(resourceID);
+        ImageView btn = (ImageView)findViewById(resourceID);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

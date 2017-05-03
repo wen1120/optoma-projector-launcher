@@ -29,7 +29,7 @@
                 android:layout_marginTop="27dp"
                 android:layout_weight="1"
                 android:adjustViewBounds="false"
-                app:srcCompat="@drawable/optomalogo" />
+                android:src="@drawable/optomalogo" />
 
             <TextView
                 android:id="@+id/home_clock"
@@ -79,7 +79,7 @@
             android:layout_centerInParent="false"
             android:layout_gravity="center_horizontal">
 
-            <android.support.v7.widget.AppCompatImageView
+            <ImageView
                 android:id="@+id/menu_position"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -89,9 +89,11 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:focusableInTouchMode="true"
-                app:srcCompat="@drawable/uf_position" />
+                android:src="@drawable/uf_position" >
 
-            <android.support.v7.widget.AppCompatImageView
+            </ImageView>
+
+            <ImageView
                 android:id="@+id/menu_apps"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -104,9 +106,9 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:focusableInTouchMode="true"
-                app:srcCompat="@drawable/uf_apps" />
+                android:src="@drawable/uf_apps" />
 
-            <android.support.v7.widget.AppCompatImageView
+            <ImageView
                 android:id="@+id/menu_is"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -119,9 +121,9 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:focusableInTouchMode="true"
-                app:srcCompat="@drawable/uf_inputsource" />
+                android:src="@drawable/uf_inputsource" />
 
-            <android.support.v7.widget.AppCompatImageView
+            <ImageView
                 android:id="@+id/menu_lang"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -131,7 +133,7 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:focusableInTouchMode="true"
-                app:srcCompat="@drawable/uff_language" />
+                android:src="@drawable/uff_language" />
 
         </GridLayout>
 
@@ -160,7 +162,7 @@
             android:layout_height="match_parent"
             android:layout_width="80dp"/>
 
-        <android.support.v7.widget.AppCompatImageView
+        <ImageView
             android:id="@+id/shortcut_app1"
             android:layout_width="112dp"
             android:layout_height="128dp"
@@ -172,14 +174,14 @@
             android:clickable="true"
             android:focusable="true"
             android:focusableInTouchMode="true"
-            app:srcCompat="@drawable/vga"/>
+            android:src="@drawable/vga"/>
 
         <Space
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"/>
 
-        <android.support.v7.widget.AppCompatImageView
+        <ImageView
             android:id="@+id/shortcut_app2"
             android:layout_width="112dp"
             android:layout_height="128dp"
@@ -191,14 +193,14 @@
             android:clickable="true"
             android:focusable="true"
             android:focusableInTouchMode="true"
-            app:srcCompat="@drawable/vga"/>
+            android:src="@drawable/vga"/>
 
         <Space
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"/>
 
-        <android.support.v7.widget.AppCompatImageView
+        <ImageView
             android:id="@+id/shortcut_app3"
             android:layout_width="112dp"
             android:layout_height="128dp"
@@ -210,14 +212,14 @@
             android:clickable="true"
             android:focusable="true"
             android:focusableInTouchMode="true"
-            app:srcCompat="@drawable/vga"/>
+            android:src="@drawable/vga"/>
 
         <Space
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"/>
 
-        <android.support.v7.widget.AppCompatImageView
+        <ImageView
             android:id="@+id/shortcut_app4"
             android:layout_width="112dp"
             android:layout_height="128dp"
@@ -229,7 +231,7 @@
             android:clickable="true"
             android:focusable="true"
             android:focusableInTouchMode="true"
-            app:srcCompat="@drawable/vga"/>
+            android:src="@drawable/vga"/>
 
         <Space
             android:layout_weight="1"
@@ -251,7 +253,7 @@
             android:gravity="center"
             android:orientation="vertical">
 
-            <android.support.v7.widget.AppCompatImageView
+            <ImageView
                 android:id="@+id/shortcut_is1_img"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -262,7 +264,7 @@
                 android:focusable="false"
                 android:focusableInTouchMode="false"
                 android:scaleType="centerInside"
-                app:srcCompat="@drawable/hdmi" />
+                android:src="@drawable/hdmi" />
 
             <TextView
                 android:id="@+id/shortcut_is1_text"
@@ -300,7 +302,7 @@
             android:gravity="center"
             android:orientation="vertical">
 
-            <android.support.v7.widget.AppCompatImageView
+            <ImageView
                 android:id="@+id/shortcut_is2_img"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -312,7 +314,7 @@
                 android:focusable="false"
                 android:focusableInTouchMode="false"
                 android:scaleType="centerInside"
-                app:srcCompat="@drawable/vga" />
+                android:src="@drawable/vga" />
 
             <TextView
                 android:id="@+id/shortcut_is2_text"
@@ -350,7 +352,7 @@
             android:gravity="center"
             android:orientation="vertical">
 
-            <android.support.v7.widget.AppCompatImageView
+            <ImageView
                 android:id="@+id/shortcut_setup_img"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -362,7 +364,7 @@
                 android:focusable="false"
                 android:focusableInTouchMode="false"
                 android:scaleType="centerInside"
-                app:srcCompat="@drawable/settings" />
+                android:src="@drawable/settings" />
 
             <TextView
                 android:id="@+id/shortcut_setup_text"
@@ -400,7 +402,7 @@
             android:gravity="center"
             android:orientation="vertical">
 
-            <android.support.v7.widget.AppCompatImageView
+            <ImageView
                 android:id="@+id/shortcut_psetup_img"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -412,7 +414,7 @@
                 android:focusable="false"
                 android:focusableInTouchMode="false"
                 android:scaleType="centerInside"
-                app:srcCompat="@drawable/hdmi" />
+                android:src="@drawable/hdmi" />
 
             <TextView
                 android:id="@+id/shortcut_psetup_text"
