@@ -1,162 +1,169 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+    
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="200dp"
-        android:background="@drawable/bg_tekapo"
-        android:orientation="vertical">
-
-        <RelativeLayout
-            android:id="@+id/header"
+        <ImageView
+            android:id="@+id/logo"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginStart="48dp"
+            android:layout_marginTop="27dp"
+            android:adjustViewBounds="false"
+            android:src="@drawable/optomalogo" />
 
-            <android.support.v7.widget.AppCompatImageView
-                android:id="@+id/logo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="false"
-                android:layout_alignParentTop="false"
-                android:layout_marginLeft="48dp"
-                android:layout_marginTop="27dp"
-                android:layout_weight="1"
-                android:adjustViewBounds="false"
-                android:src="@drawable/optomalogo" />
-
-            <TextView
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="27dp"
+            android:layout_marginRight="48dp"
+            android:orientation="vertical">
+            <TextClock
                 android:id="@+id/home_clock"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="48dp"
-                android:layout_marginTop="27dp"
-                android:layout_weight="1"
                 android:clickable="false"
-                android:text="10:09"
                 android:textColor="#D0D3D4"
+                android:format12Hour="HH:mm"
                 android:textSize="42sp" />
-
-            <TextView
-                android:id="@+id/clock_line"
-                android:layout_width="wrap_content"
+            <View
+                android:layout_width="fill_parent"
                 android:layout_height="1dp"
-                android:layout_alignLeft="@+id/home_clock"
-                android:layout_alignParentRight="true"
-                android:layout_alignRight="@+id/home_clock"
-                android:layout_below="@+id/home_clock"
-                android:layout_marginRight="48dp"
-                android:text="TextView"
-                android:textColor="#D0D3D4" />
+                android:background="#D0D3D4" />
+        </LinearLayout>
 
-        </RelativeLayout>
+    </RelativeLayout>
 
-        <TextView
-            android:id="@+id/home_day"
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipChildren="false">
+
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="false"
-            android:layout_below="@+id/header"
-            android:layout_gravity="right"
-            android:layout_marginRight="48dp"
-            android:layout_weight="1"
-            android:text="FRI 30 DEC"
-            android:textColor="#FFFFFF"
-            android:textSize="20sp" />
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="48dp">
 
-        <GridLayout
+            <!-- dummy clock for layout purpose -->
+            <TextClock
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                android:format12Hour="HH:mm"
+                android:textColor="#D0D3D4"
+                android:textSize="42sp"
+                android:visibility="invisible" />
+
+            <TextClock
+                android:id="@+id/home_day"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:fontFamily="Roboto"
+                android:format12Hour="EEE d MMM"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp" />
+        </RelativeLayout>
+
+
+        <RelativeLayout
             android:id="@+id/menu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/menu_line"
-            android:layout_centerInParent="false"
-            android:layout_gravity="center_horizontal">
+            android:layout_alignParentBottom="true"
+            android:layout_centerInParent="true"
+            android:orientation="horizontal"
+            android:clipChildren="false"
+            android:layout_marginBottom="33dp">
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/menu_position"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignRight="@+id/menu_apps"
-                android:layout_marginRight="7dp"
-                android:layout_weight="1"
+                android:background="@android:color/transparent"
                 android:clickable="true"
                 android:focusable="true"
                 android:focusableInTouchMode="true"
-                android:src="@drawable/uf_position" >
+                android:src="@drawable/home_menu_position"
+                android:layout_alignParentLeft="true"
+                android:contentDescription="Position"/>
 
-            </ImageView>
-
-            <ImageView
+            <ImageButton
                 android:id="@+id/menu_apps"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="false"
-                android:layout_centerInParent="false"
-                android:layout_centerVertical="false"
-                android:layout_marginLeft="7dp"
-                android:layout_marginRight="7dp"
-                android:layout_weight="1"
+                android:background="@android:color/transparent"
                 android:clickable="true"
                 android:focusable="true"
                 android:focusableInTouchMode="true"
-                android:src="@drawable/uf_apps" />
+                android:src="@drawable/home_menu_apps"
+                android:layout_marginLeft="14dp"
+                android:layout_toRightOf="@id/menu_position"
+                android:contentDescription="Apps"/>
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/menu_is"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="false"
-                android:layout_centerInParent="false"
-                android:layout_centerVertical="false"
-                android:layout_marginLeft="7dp"
-                android:layout_marginRight="7dp"
-                android:layout_weight="1"
+                android:background="@android:color/transparent"
                 android:clickable="true"
                 android:focusable="true"
                 android:focusableInTouchMode="true"
-                android:src="@drawable/uf_inputsource" />
+                android:src="@drawable/home_menu_inputsource"
+                android:layout_toRightOf="@id/menu_apps"
+                android:layout_marginLeft="14dp"
+                android:contentDescription="Input Source"/>
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/menu_lang"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/shortcut_is1"
-                android:layout_alignRight="@+id/shortcut_is1"
-                android:layout_marginLeft="7dp"
+                android:background="@android:color/transparent"
                 android:clickable="true"
                 android:focusable="true"
                 android:focusableInTouchMode="true"
-                android:src="@drawable/uff_language" />
+                android:src="@drawable/home_menu_language"
+                android:layout_toRightOf="@id/menu_is"
+                android:layout_marginLeft="14dp"
+                android:contentDescription="Language"/>
 
-        </GridLayout>
+        </RelativeLayout>
 
-        <TextView
-            android:id="@+id/menu_line"
+        <!-- horizontal separator -->
+        <View
             android:layout_width="254dp"
             android:layout_height="1dp"
-            android:layout_gravity="center_horizontal"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
             android:layout_marginBottom="24dp"
-            android:layout_marginTop="8dp"
-            android:text="TextView"
-            android:textColor="#FFFFFF" />
+            android:background="#D0D3D4" />
 
-    </LinearLayout>
+        <TextView
+            android:id="@+id/menu_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="24dp"
+            android:text="Position"
+            android:layout_alignParentBottom="true"/>
+
+    </RelativeLayout>
 
     <LinearLayout
         android:id="@+id/shortcut"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:layout_alignParentBottom="true"
         android:background="@drawable/backgroundhome"
-        android:orientation="horizontal"
-        android:clipChildren="false">
+        android:orientation="horizontal">
 
         <Space
             android:layout_height="match_parent"
@@ -249,7 +256,6 @@
             android:clickable="true"
             android:focusable="true"
             android:focusableInTouchMode="true"
-            android:forceHasOverlappingRendering="false"
             android:gravity="center"
             android:orientation="vertical">
 
@@ -257,7 +263,6 @@
                 android:id="@+id/shortcut_is1_img"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
                 android:layout_gravity="center_vertical|center"
                 android:layout_weight="11"
                 android:adjustViewBounds="false"
@@ -270,9 +275,6 @@
                 android:id="@+id/shortcut_is1_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="false"
-                android:layout_below="@+id/shortcut_is1_img"
-                android:layout_centerInParent="true"
                 android:layout_weight="5"
                 android:gravity="center_vertical"
                 android:text="HMDI1"
@@ -298,7 +300,6 @@
             android:clickable="true"
             android:focusable="true"
             android:focusableInTouchMode="true"
-            android:forceHasOverlappingRendering="false"
             android:gravity="center"
             android:orientation="vertical">
 
@@ -306,11 +307,9 @@
                 android:id="@+id/shortcut_is2_img"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
                 android:layout_gravity="center_vertical|center"
                 android:layout_weight="11"
                 android:adjustViewBounds="false"
-                android:elevation="0dp"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
                 android:scaleType="centerInside"
@@ -320,9 +319,6 @@
                 android:id="@+id/shortcut_is2_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="false"
-                android:layout_below="@+id/shortcut_is2_img"
-                android:layout_centerInParent="true"
                 android:layout_weight="5"
                 android:gravity="center_vertical"
                 android:text="VGA"
@@ -348,7 +344,6 @@
             android:clickable="true"
             android:focusable="true"
             android:focusableInTouchMode="true"
-            android:forceHasOverlappingRendering="false"
             android:gravity="center"
             android:orientation="vertical">
 
@@ -356,11 +351,9 @@
                 android:id="@+id/shortcut_setup_img"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
                 android:layout_gravity="center_vertical|center"
                 android:layout_weight="11"
                 android:adjustViewBounds="false"
-                android:elevation="0dp"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
                 android:scaleType="centerInside"
@@ -370,9 +363,6 @@
                 android:id="@+id/shortcut_setup_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="false"
-                android:layout_below="@+id/shortcut_setup_img"
-                android:layout_centerInParent="true"
                 android:layout_weight="5"
                 android:gravity="center_vertical"
                 android:text="Settings"
@@ -398,7 +388,6 @@
             android:clickable="true"
             android:focusable="true"
             android:focusableInTouchMode="true"
-            android:forceHasOverlappingRendering="false"
             android:gravity="center"
             android:orientation="vertical">
 
@@ -406,11 +395,9 @@
                 android:id="@+id/shortcut_psetup_img"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
                 android:layout_gravity="center_vertical|center"
                 android:layout_weight="11"
                 android:adjustViewBounds="false"
-                android:elevation="0dp"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
                 android:scaleType="centerInside"
@@ -420,12 +407,9 @@
                 android:id="@+id/shortcut_psetup_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="false"
-                android:layout_below="@+id/shortcut_psetup_img"
-                android:layout_centerInParent="true"
                 android:layout_weight="5"
                 android:gravity="center_vertical"
-                android:text="Projector Setup"
+                android:text="Projector\nSetup"
                 android:textAlignment="center"
                 android:textColor="#B2FFFFFF"
                 android:textSize="16sp"
@@ -439,4 +423,4 @@
     </LinearLayout>
 
 
-</RelativeLayout>
+</LinearLayout>

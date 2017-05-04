@@ -1,26 +1,15 @@
 package com.optoma.launcher;
 
-import android.animation.TimeInterpolator;
 import android.app.Activity;
 import android.content.Intent;
-import android.icu.text.DateFormat;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
-import android.view.animation.AccelerateDecelerateInterpolator;
-import android.view.animation.BounceInterpolator;
-import android.widget.Button;
-import android.support.v7.widget.AppCompatImageView;
-import android.widget.GridLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import android.support.v4.util.ArrayMap;
 
 /*
 * gradle debug on command line on Mac
@@ -36,7 +25,8 @@ public class home extends Activity {
     private Intent intent = new Intent();
     private TextView nowTime; // time
     private TextView nowDay; // day
-    final FocusContainer homeRows = new FocusContainer();
+    private FocusContainer homeRows;
+    private static long animateDuration = 80;
 
     private static int[] menuID = {
             R.id.menu_position,
@@ -66,7 +56,6 @@ public class home extends Activity {
         init();
     }
 
-
     private void init() {
         // initShortcutImageSize();
         initBtnClick();
@@ -78,7 +67,7 @@ public class home extends Activity {
         final FocusContainer menuRow = new FocusContainer();
         for(int i=0; i<menuID.length; i++) {
             final View view = (View) findViewById(menuID[i]);
-            view.setOnFocusChangeListener(focusChangeListener);
+            view.setOnFocusChangeListener(menuFocusChangeListener);
             menuRow.add(view);
         }
         menuRow.setFocus(menuID.length / 2);
@@ -86,29 +75,54 @@ public class home extends Activity {
         final FocusContainer shortcutRow = new FocusContainer();
         for(int i=0; i<shortcutID.length; i++) {
             final View view = (View) findViewById(shortcutID[i]);
-            view.setOnFocusChangeListener(focusChangeListener);
+            view.setOnFocusChangeListener(shortcutFocusChangeListener);
             shortcutRow.add(view);
         }
         shortcutRow.setFocus(shortcutID.length / 2);
 
+        homeRows = new FocusContainer();
         homeRows.setOrientation(FocusContainer.ORIENTATION_VERTICAL);
         homeRows.add(menuRow);
         homeRows.add(shortcutRow);
-        homeRows.getFocusedView().requestFocus();
+
+        // Post hack: update the position of the label as the first UI event,
+        // ref: http://stackoverflow.com/questions/7733813/how-can-you-tell-when-a-layout-has-been-drawn/7735122#7735122
+        final View view = findViewById(R.id.menu);
+        view.post(new Runnable() {
+            @Override
+            public void run() {
+                homeRows.getFocusedView().requestFocus();
+            }
+        });
     }
 
-    private static long animateDuration = 80;
-
-    private View.OnFocusChangeListener focusChangeListener = new View.OnFocusChangeListener() {
+    private View.OnFocusChangeListener shortcutFocusChangeListener = new View.OnFocusChangeListener() {
         @Override
         public void onFocusChange(View v, boolean hasFocus) {
             if(hasFocus) {
                 v.animate().scaleX(1.25f).setDuration(animateDuration);
                 v.animate().scaleY(1.25f).setDuration(animateDuration);
-                Log.d(TAG, "focus on " + v);
             } else {
                 v.animate().scaleX(1f).setDuration(animateDuration);
                 v.animate().scaleY(1f).setDuration(animateDuration);
+            }
+        }
+    };
+
+    private View.OnFocusChangeListener menuFocusChangeListener = new View.OnFocusChangeListener() {
+        @Override
+        public void onFocusChange(View v, boolean hasFocus) {
+
+            final TextView hint = (TextView) findViewById(R.id.menu_hint);
+            if(hasFocus) {
+                hint.setText(v.getContentDescription());
+                hint.measure(0, 0);
+                final int[] location = new int[2];
+                v.getLocationInWindow(location);
+                hint.setX(location[0] + v.getWidth() / 2 - hint.getMeasuredWidth() / 2);
+                hint.setVisibility(View.VISIBLE);
+            } else {
+                hint.setVisibility(View.INVISIBLE);
             }
         }
     };
