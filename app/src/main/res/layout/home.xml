@@ -79,7 +79,7 @@
             android:layout_centerInParent="false"
             android:layout_gravity="center_horizontal">
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/menu_position"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -89,11 +89,10 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:focusableInTouchMode="true"
-                android:src="@drawable/uf_position" >
+                android:background="@android:color/transparent"
+                android:src="@drawable/home_menu_position" />
 
-            </ImageView>
-
-            <ImageView
+            <ImageButton
                 android:id="@+id/menu_apps"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -106,9 +105,10 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:focusableInTouchMode="true"
-                android:src="@drawable/uf_apps" />
+                android:background="@android:color/transparent"
+                android:src="@drawable/home_menu_apps" />
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/menu_is"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -121,9 +121,10 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:focusableInTouchMode="true"
-                android:src="@drawable/uf_inputsource" />
+                android:background="@android:color/transparent"
+                android:src="@drawable/home_menu_inputsource" />
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/menu_lang"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -133,7 +134,8 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:focusableInTouchMode="true"
-                android:src="@drawable/uff_language" />
+                android:background="@android:color/transparent"
+                android:src="@drawable/home_menu_language" />
 
         </GridLayout>
 
