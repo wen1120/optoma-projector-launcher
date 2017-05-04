@@ -78,7 +78,7 @@ public class home extends Activity {
         final FocusContainer menuRow = new FocusContainer();
         for(int i=0; i<menuID.length; i++) {
             final View view = (View) findViewById(menuID[i]);
-            view.setOnFocusChangeListener(focusChangeListener);
+            // view.setOnFocusChangeListener(focusChangeListener);
             menuRow.add(view);
         }
         menuRow.setFocus(menuID.length / 2);

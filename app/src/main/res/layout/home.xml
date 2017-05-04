@@ -86,7 +86,7 @@
             android:layout_marginBottom="33dp"
             android:orientation="horizontal">
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/menu_position"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -95,15 +95,14 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:focusableInTouchMode="true"
-                android:src="@drawable/uf_position">
-
-            </ImageView>
+                android:background="@android:color/transparent"
+                android:src="@drawable/home_menu_position" />
 
             <Space
                 android:layout_height="wrap_content"
                 android:layout_width="14dp"/>
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/menu_apps"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -113,13 +112,14 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:focusableInTouchMode="true"
-                android:src="@drawable/uf_apps" />
+                android:background="@android:color/transparent"
+                android:src="@drawable/home_menu_apps" />
 
             <Space
                 android:layout_height="wrap_content"
                 android:layout_width="14dp"/>
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/menu_is"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -129,13 +129,14 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:focusableInTouchMode="true"
-                android:src="@drawable/uf_inputsource" />
+                android:background="@android:color/transparent"
+                android:src="@drawable/home_menu_inputsource" />
 
             <Space
                 android:layout_height="wrap_content"
                 android:layout_width="14dp"/>
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/menu_lang"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -144,7 +145,8 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:focusableInTouchMode="true"
-                android:src="@drawable/uff_language" />
+                android:background="@android:color/transparent"
+                android:src="@drawable/home_menu_language" />
 
         </LinearLayout>
 
