@@ -39,5 +39,17 @@
             android:name=".Settings.System"
             android:theme="@android:style/Theme.Translucent.NoTitleBar">
         </activity>
+        <activity
+            android:name=".Settings.Power"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar">
+        </activity>
+        <activity
+            android:name=".Settings.Bluetooth"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar">
+        </activity>
+        <activity
+            android:name=".Settings.General"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar">
+        </activity>
     </application>
 </manifest>

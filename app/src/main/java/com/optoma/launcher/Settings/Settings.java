@@ -27,18 +27,34 @@ public class Settings extends Activity {
     public static boolean[] bControlItems = {true,false,true,false,false,true};
     public String[] bControlString = {"Crestron","Extron","PJ Link","AMX","Telnet","HTTP"};
 
+    private static int[] SettingTvTitleID = {
+            R.id.setting_tv_upper_title,
+            R.id.setting_tv_middle_title,
+            R.id.setting_tv_lower_title
+    };
+
+    private static int[] SettingTvContentID = {
+            R.id.setting_tv_upper_content,
+            R.id.setting_tv_middle_content,
+            R.id.setting_tv_lower_content
+    };
+
+    private static int[] SettingButtonID = {
+            R.id.setting_audio_button,
+            R.id.setting_control_button,
+            R.id.setting_information_button,
+            R.id.setting_system_button,
+            R.id.setting_power_button,
+            R.id.setting_bluetooth_button,
+            R.id.setting_general_button
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
         xPosition = yPosition = xFocus = yFocus = 0;
         SettingTV = (TextView) findViewById(R.id.setting_textview);
-        SystemTitleTV[0] = (TextView) findViewById(R.id.setting_tv_upper_title);
-        SystemTitleTV[1] = (TextView) findViewById(R.id.setting_tv_middle_title);
-        SystemTitleTV[2] = (TextView) findViewById(R.id.setting_tv_lower_title);
-        SystemContentTV[0] = (TextView) findViewById(R.id.setting_tv_upper_content);
-        SystemContentTV[1] = (TextView) findViewById(R.id.setting_tv_middle_content);
-        SystemContentTV[2] = (TextView) findViewById(R.id.setting_tv_lower_content);
         for (String s : getResources().getStringArray(
                 R.array.settingTitle)) {
             aSystemTitle.add(s);
@@ -47,13 +63,15 @@ public class Settings extends Activity {
                 R.array.settingContent)) {
             aSystemContent.add(s);
         }
-        button[0] = (Button) findViewById(R.id.setting_audio_button);
-        button[1] = (Button) findViewById(R.id.setting_control_button);
-        button[2] = (Button) findViewById(R.id.setting_information_button);
-        button[3] = (Button) findViewById(R.id.setting_system_button);
-        button[4] = (Button) findViewById(R.id.setting_power_button);
-        for(int i=0;i<5;i++)
+
+        for(int i=0;i<SettingButtonID.length;i++) {
+            button[i] = (Button) findViewById(SettingButtonID[i]);
             button[i].setOnClickListener(buttonOnClick);
+            if(i < yLimit) {
+                SystemTitleTV[i] = (TextView) findViewById(SettingTvTitleID[i]);
+                SystemContentTV[i] = (TextView) findViewById(SettingTvContentID[i]);
+            }
+        }
     }
 
     @Override
@@ -81,6 +99,12 @@ public class Settings extends Activity {
                     break;
                 case R.id.setting_power_button:
                     intent.setClassName(getPackageName(), getPackageName() + ".Settings.Power");
+                    break;
+                case R.id.setting_bluetooth_button:
+                    intent.setClassName(getPackageName(), getPackageName() + ".Settings.Bluetooth");
+                    break;
+                case R.id.setting_general_button:
+                    intent.setClassName(getPackageName(), getPackageName() + ".Settings.General");
                     break;
                 default:
                     Log.d(TAG, "unknown setting id=" + v.getId());

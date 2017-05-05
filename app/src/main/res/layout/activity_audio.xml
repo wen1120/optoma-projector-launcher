@@ -169,19 +169,25 @@
             android:scaleType="center"
             app:srcCompat="@drawable/right_arrow427">
         </android.support.v7.widget.AppCompatImageView>
-        <SeekBar
-            android:id="@+id/audio_volume_sb"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:maxHeight="1dp"
-            android:minHeight="1dp"
+            android:gravity="center_vertical"
             android:layout_below="@+id/audio_volume_tv"
             android:layout_toRightOf="@+id/audio_volume_left_arrow"
-            android:layout_toLeftOf="@+id/audio_volume_right_arrow"
-            android:focusable="false"
-            android:progress="5"
-            android:max="10">
-        </SeekBar>
+            android:layout_toLeftOf="@+id/audio_volume_right_arrow">
+            <SeekBar
+                android:id="@+id/audio_volume_sb"
+                android:layout_width="match_parent"
+                android:layout_height="12dp"
+                android:maxHeight="1dp"
+                android:focusable="false"
+                android:progressDrawable="@drawable/seekbar_style"
+                android:thumb="@drawable/sliderpoint"
+                android:progress="5"
+                android:max="10">
+            </SeekBar>
+        </RelativeLayout>
         <View
             android:id="@+id/audio_mic_volume_view"
             android:layout_width="match_parent"
@@ -224,18 +230,25 @@
             android:scaleType="center"
             app:srcCompat="@drawable/right_arrow427">
         </android.support.v7.widget.AppCompatImageView>
-        <SeekBar
-            android:id="@+id/audio_mic_volume_sb"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:maxHeight="1dp"
+            android:gravity="center_vertical"
             android:layout_below="@+id/audio_mic_volume_tv"
             android:layout_toRightOf="@+id/audio_mic_volume_left_arrow"
-            android:layout_toLeftOf="@+id/audio_mic_volume_right_arrow"
-            android:focusable="false"
-            android:progress="5"
-            android:max="10">
-        </SeekBar>
+            android:layout_toLeftOf="@+id/audio_mic_volume_right_arrow">
+            <SeekBar
+                android:id="@+id/audio_mic_volume_sb"
+                android:layout_width="match_parent"
+                android:layout_height="12dp"
+                android:maxHeight="1dp"
+                android:focusable="false"
+                android:progressDrawable="@drawable/seekbar_style"
+                android:thumb="@drawable/sliderpoint"
+                android:progress="5"
+                android:max="10">
+            </SeekBar>
+        </RelativeLayout>
         <View
             android:id="@+id/audio_input_view"
             android:layout_width="match_parent"

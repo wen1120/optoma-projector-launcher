@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.widget.ImageView;
 import android.widget.SeekBar;
+import android.widget.TextView;
 
 import com.optoma.launcher.R;
 
@@ -15,20 +16,50 @@ public class Audio extends Activity {
     private int xPosition, yPosition;
     private final int yLimit = 9;
     private boolean[] bAudioItems = {true,false,false,false,false};
+    private int[] iAudioChoice = {0,0};
     private ImageView[] ivAudioOnOff = new ImageView[5];
     private SeekBar[] sbAudio = new SeekBar[2];
+    private TextView[] tvAudio = new TextView[2];
     private int[] iAudioVolume = {5,5};
+    public String[] sAudioInput = {
+            "Default",
+            "Audio 1(Mini-Jack)",
+            "RCA",
+            "Audio 2",
+            "Audio 3",
+            "Audio 4",
+            "HDMI 1",
+            "HDMI 2",
+            "Audio 5/Displayport",
+            "Displayport"
+    };
+
+    private static int[] AudioIVID = {
+            R.id.audio_internal_speaker_iv,
+            R.id.audio_mute_iv,
+            R.id.audio_mic_iv,
+            R.id.audio_out_iv,
+            R.id.audio_srs_iv
+    };
+    private static int[] AudioSBID = {
+            R.id.audio_volume_sb,
+            R.id.audio_mic_volume_sb
+    };
+    private static int[] AudioTVID = {
+            R.id.audio_input_content_tv,
+            R.id.audio_delay_content_tv
+    };
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_audio);
-        ivAudioOnOff[0] = (ImageView) this.findViewById(R.id.audio_internal_speaker_iv);
-        ivAudioOnOff[1] = (ImageView) this.findViewById(R.id.audio_mute_iv);
-        ivAudioOnOff[2] = (ImageView) this.findViewById(R.id.audio_mic_iv);
-        ivAudioOnOff[3] = (ImageView) this.findViewById(R.id.audio_out_iv);
-        ivAudioOnOff[4] = (ImageView) this.findViewById(R.id.audio_srs_iv);
-        sbAudio[0] = (SeekBar) this.findViewById(R.id.audio_volume_sb);
-        sbAudio[1] = (SeekBar) this.findViewById(R.id.audio_mic_volume_sb);
+        for(int i=0;i< ivAudioOnOff.length; i++) {
+            ivAudioOnOff[i] = (ImageView) this.findViewById(AudioIVID[i]);
+            if(i<sbAudio.length)
+                sbAudio[i] = (SeekBar) this.findViewById(AudioSBID[i]);
+            if(i<tvAudio.length)
+                tvAudio[i] = (TextView) this.findViewById(AudioTVID[i]);
+        }
         xPosition = yPosition = 0;
     }
 
@@ -68,6 +99,14 @@ public class Audio extends Activity {
                         }
                         Log.d(TAG, "yPosition =  " + yPosition + ",iAudioVolume[yPosition-3] = " + iAudioVolume[yPosition-3]);
                         break;
+                    case 5:
+                        iAudioChoice[0] = (iAudioChoice[0] == 0) ? sAudioInput.length - 1 : iAudioChoice[0] - 1;
+                        tvAudio[0].setText(sAudioInput[iAudioChoice[0]]);
+                        break;
+                    case 6:
+                        iAudioChoice[1] = (iAudioChoice[1] == 0) ? 6 : iAudioChoice[1] - 2;
+                        tvAudio[1].setText(new String(iAudioChoice[1]+"ms"));
+                        break;
                     case 7:
                     case 8:
                         bAudioItems[yPosition-4] = !bAudioItems[yPosition-4];
@@ -91,6 +130,14 @@ public class Audio extends Activity {
                             iAudioVolume[yPosition-3]++;
                             sbAudio[yPosition-3].setProgress(iAudioVolume[yPosition-3]);
                         }
+                        break;
+                    case 5:
+                        iAudioChoice[0] = (iAudioChoice[0] == sAudioInput.length - 1) ? 0 : iAudioChoice[0] + 1;
+                        tvAudio[0].setText(sAudioInput[iAudioChoice[0]]);
+                        break;
+                    case 6:
+                        iAudioChoice[1] = (iAudioChoice[1] == 6) ? 0 : iAudioChoice[1] + 2;
+                        tvAudio[1].setText(new String(iAudioChoice[1]+"ms"));
                         break;
                     case 7:
                     case 8:
