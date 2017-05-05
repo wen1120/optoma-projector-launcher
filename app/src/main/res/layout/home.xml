@@ -5,159 +5,170 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    
-    <RelativeLayout
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <ImageView
-            android:id="@+id/logo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="48dp"
-            android:layout_marginTop="27dp"
-            android:adjustViewBounds="false"
-            android:src="@drawable/optomalogo" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="27dp"
-            android:layout_marginRight="48dp"
-            android:orientation="vertical">
-            <TextClock
-                android:id="@+id/home_clock"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:clickable="false"
-                android:textColor="#D0D3D4"
-                android:format12Hour="HH:mm"
-                android:textSize="42sp" />
-            <View
-                android:layout_width="fill_parent"
-                android:layout_height="1dp"
-                android:background="#D0D3D4" />
-        </LinearLayout>
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:layout_weight="1"
-        android:clipChildren="false">
+        android:background="@drawable/bg_tekapo">
 
+        <!-- topic area -->
         <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="48dp">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-            <!-- dummy clock for layout purpose -->
-            <TextClock
+            <ImageView
+                android:id="@+id/logo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:clickable="false"
-                android:format12Hour="HH:mm"
-                android:textColor="#D0D3D4"
-                android:textSize="42sp"
-                android:visibility="invisible" />
+                android:layout_marginStart="48dp"
+                android:layout_marginTop="27dp"
+                android:adjustViewBounds="false"
+                android:src="@drawable/optomalogo" />
 
-            <TextClock
-                android:id="@+id/home_day"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="27dp"
+                android:layout_marginRight="48dp"
+                android:orientation="vertical">
+                <TextClock
+                    android:id="@+id/home_clock"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="false"
+                    android:textColor="#D0D3D4"
+                    android:format12Hour="HH:mm"
+                    android:textSize="42sp" />
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#D0D3D4" />
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <!-- main area -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:clipChildren="false">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="48dp">
+
+                <!-- dummy clock for layout purpose -->
+                <TextClock
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="false"
+                    android:format12Hour="HH:mm"
+                    android:textColor="#D0D3D4"
+                    android:textSize="42sp"
+                    android:visibility="invisible" />
+
+                <TextClock
+                    android:id="@+id/home_day"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:fontFamily="Roboto"
+                    android:format12Hour="EEE d MMM"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/menu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerInParent="true"
+                android:orientation="horizontal"
+                android:clipChildren="false"
+                android:layout_marginBottom="33dp">
+
+                <ImageButton
+                    android:id="@+id/menu_position"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:src="@drawable/home_menu_position"
+                    android:layout_alignParentLeft="true"
+                    android:contentDescription="Position"/>
+
+                <ImageButton
+                    android:id="@+id/menu_apps"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:src="@drawable/home_menu_apps"
+                    android:layout_marginLeft="14dp"
+                    android:layout_toRightOf="@id/menu_position"
+                    android:contentDescription="Apps"/>
+
+                <ImageButton
+                    android:id="@+id/menu_is"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:src="@drawable/home_menu_inputsource"
+                    android:layout_toRightOf="@id/menu_apps"
+                    android:layout_marginLeft="14dp"
+                    android:contentDescription="Input Source"/>
+
+                <ImageButton
+                    android:id="@+id/menu_lang"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:src="@drawable/home_menu_language"
+                    android:layout_toRightOf="@id/menu_is"
+                    android:layout_marginLeft="14dp"
+                    android:contentDescription="Language"/>
+
+            </RelativeLayout>
+
+            <!-- horizontal separator -->
+            <View
+                android:layout_width="254dp"
+                android:layout_height="1dp"
+                android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
-                android:fontFamily="Roboto"
-                android:format12Hour="EEE d MMM"
-                android:textColor="#FFFFFF"
-                android:textSize="20sp" />
-        </RelativeLayout>
+                android:layout_marginBottom="24dp"
+                android:background="#D0D3D4" />
 
-
-        <RelativeLayout
-            android:id="@+id/menu"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerInParent="true"
-            android:orientation="horizontal"
-            android:clipChildren="false"
-            android:layout_marginBottom="33dp">
-
-            <ImageButton
-                android:id="@+id/menu_position"
+            <TextView
+                android:id="@+id/menu_hint"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
-                android:clickable="true"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
-                android:src="@drawable/home_menu_position"
-                android:layout_alignParentLeft="true"
-                android:contentDescription="Position"/>
-
-            <ImageButton
-                android:id="@+id/menu_apps"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
-                android:clickable="true"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
-                android:src="@drawable/home_menu_apps"
-                android:layout_marginLeft="14dp"
-                android:layout_toRightOf="@id/menu_position"
-                android:contentDescription="Apps"/>
-
-            <ImageButton
-                android:id="@+id/menu_is"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
-                android:clickable="true"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
-                android:src="@drawable/home_menu_inputsource"
-                android:layout_toRightOf="@id/menu_apps"
-                android:layout_marginLeft="14dp"
-                android:contentDescription="Input Source"/>
-
-            <ImageButton
-                android:id="@+id/menu_lang"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
-                android:clickable="true"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
-                android:src="@drawable/home_menu_language"
-                android:layout_toRightOf="@id/menu_is"
-                android:layout_marginLeft="14dp"
-                android:contentDescription="Language"/>
+                android:layout_height="24dp"
+                android:text="Position"
+                android:layout_alignParentBottom="true"/>
 
         </RelativeLayout>
 
-        <!-- horizontal separator -->
-        <View
-            android:layout_width="254dp"
-            android:layout_height="1dp"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="24dp"
-            android:background="#D0D3D4" />
+    </LinearLayout>
 
-        <TextView
-            android:id="@+id/menu_hint"
-            android:layout_width="wrap_content"
-            android:layout_height="24dp"
-            android:text="Position"
-            android:layout_alignParentBottom="true"/>
-
-    </RelativeLayout>
-
+    <!-- shortcut area -->
     <LinearLayout
         android:id="@+id/shortcut"
         android:layout_width="match_parent"
@@ -421,6 +432,5 @@
             android:layout_width="80dp"/>
 
     </LinearLayout>
-
 
 </LinearLayout>

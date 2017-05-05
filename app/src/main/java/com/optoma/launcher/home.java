@@ -56,6 +56,12 @@ public class home extends Activity {
         init();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+    }
+
     private void init() {
         // initShortcutImageSize();
         initBtnClick();
@@ -112,20 +118,23 @@ public class home extends Activity {
     private View.OnFocusChangeListener menuFocusChangeListener = new View.OnFocusChangeListener() {
         @Override
         public void onFocusChange(View v, boolean hasFocus) {
-
-            final TextView hint = (TextView) findViewById(R.id.menu_hint);
-            if(hasFocus) {
-                hint.setText(v.getContentDescription());
-                hint.measure(0, 0);
-                final int[] location = new int[2];
-                v.getLocationInWindow(location);
-                hint.setX(location[0] + v.getWidth() / 2 - hint.getMeasuredWidth() / 2);
-                hint.setVisibility(View.VISIBLE);
-            } else {
-                hint.setVisibility(View.INVISIBLE);
-            }
+        adjustHint(v, hasFocus);
         }
     };
+
+    private void adjustHint(View v, boolean hasFocus) {
+        final TextView hint = (TextView) findViewById(R.id.menu_hint);
+        if(hasFocus) {
+            hint.setText(v.getContentDescription());
+            hint.measure(0, 0);
+            final int[] location = new int[2];
+            v.getLocationInWindow(location);
+            hint.setX(location[0] + v.getWidth() / 2 - hint.getMeasuredWidth() / 2);
+            hint.setVisibility(View.VISIBLE);
+        } else {
+            hint.setVisibility(View.INVISIBLE);
+        }
+    }
 
     /*
     * home_clock: 10:09
