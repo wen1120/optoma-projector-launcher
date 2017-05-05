@@ -18,15 +18,8 @@ import java.util.Calendar;
  */
 public class home extends Activity {
     private static final String TAG = "LauncherLog";
-
-    //private Button firstBtn;
-    //private View mView;
-    private FocusView mFocusView;
-    private Intent intent = new Intent();
-    private TextView nowTime; // time
-    private TextView nowDay; // day
-    private FocusContainer homeRows;
     private static long animateDuration = 80;
+    private FocusContainer homeRows;
 
     private static int[] menuID = {
             R.id.menu_position,
@@ -34,6 +27,7 @@ public class home extends Activity {
             R.id.menu_is,
             R.id.menu_lang
     };
+
     private static int[] shortcutID = {
             R.id.shortcut_app1,
             R.id.shortcut_app2,
@@ -49,23 +43,11 @@ public class home extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
-        //mView = findViewById(android.R.id.content);
-        // shortcut input source 1 will be the default focus button
-    //    firstBtn = (Button) findViewById(R.id.shortcut_is1_img);
-    //    firstBtn.requestFocus();
         init();
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-    }
-
     private void init() {
-        // initShortcutImageSize();
         initBtnClick();
-        // displayCurrentDateTime();
         initButtons();
     }
 
@@ -118,7 +100,7 @@ public class home extends Activity {
     private View.OnFocusChangeListener menuFocusChangeListener = new View.OnFocusChangeListener() {
         @Override
         public void onFocusChange(View v, boolean hasFocus) {
-        adjustHint(v, hasFocus);
+            adjustHint(v, hasFocus);
         }
     };
 
@@ -136,44 +118,21 @@ public class home extends Activity {
         }
     }
 
-    /*
-    * home_clock: 10:09
-    * home_day: FRI 30 DEC
-     */
-    public void displayCurrentDateTime() {
-        nowTime = (TextView) findViewById(R.id.home_clock);
-        nowDay = (TextView) findViewById(R.id.home_day);
-        nowTime.postDelayed(runnable, 1000);
-        nowDay.postDelayed(runnable, 1000);
-
-    }
-
-    /*
-    * update the day and time continually
-    * for the Calendar.getInstance(), as we didn't assign the timezone, it will use the default timezone and language of system
-     */
-    private Runnable runnable = new Runnable() {
-        @Override
-        public void run() {
-            nowTime.setText(new SimpleDateFormat("HH:mm").format(Calendar.getInstance().getTime()));
-            nowDay.setText(new SimpleDateFormat("EEE dd MMM").format(Calendar.getInstance().getTime()));
-            nowTime.postDelayed(runnable,1000);
-            nowDay.postDelayed(runnable,1000);
-        }
-    };
-
-    /*
-    * remove day & time update on the pause status
-     */
+    // fullscreen
     @Override
-    protected void onPause() {
-        super.onPause();
-        // nowTime.removeCallbacks(runnable);
-        // nowDay.removeCallbacks(runnable);
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        if (hasFocus) {
+            getWindow().getDecorView().setSystemUiVisibility(
+                    View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                            | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                            | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                            | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                            | View.SYSTEM_UI_FLAG_FULLSCREEN
+                            | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);}
     }
 
     public void initBtnClick() {
-
         for(int i=0; i<shortcutID.length;i++) {
             layoutClicked(shortcutID[i]);
         }
@@ -186,13 +145,13 @@ public class home extends Activity {
     * used for linearlayout to be clickable
      */
     public void layoutClicked(int resourceID) {
-        String myClass;
         final int rID;
         rID = resourceID;
-        View ly = (View)findViewById(resourceID);
+        View ly = findViewById(resourceID);
         ly.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                final Intent intent = new Intent();
                 switch (rID) {
                     case R.id.shortcut_app5: //input source
                         intent.setClassName(getPackageName(), getPackageName() + ".InputSource");
@@ -225,6 +184,7 @@ public class home extends Activity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                final Intent intent = new Intent();
                 switch (rID) {
                     case R.id.menu_position:
                         intent.setClassName(getPackageName(), getPackageName() + ".InputSource");
@@ -246,42 +206,6 @@ public class home extends Activity {
             }
         });
     }
-
-    /* resize all image of shortcut to smaller(70%) size when app is launched
-     */
-//    public void initShortcutImageSize() {
-//        for(int i=0;i<shortcutID.length; i++) {
-//            resizeImage(shortcutID[i], 0.7);
-//        }
-//    }
-    /*
-    * 1. resize larger(focus) image size to smaller(70%)(non-focus) image and assign to the image src
-    *
-     */
-//    public void resizeImage(int imageID, double ratio) {
-//        final View view = (View) findViewById(imageID);
-//        Double height = new Double(view.getHeight() * ratio);
-//        Double width = new Double(view.getWidth() * ratio);
-//        GridLayout.LayoutParams params = new GridLayout.LayoutParams(width.intValue(), height.intValue());
-//        view.setLayoutParams(params);
-//        //view.requestLayout();
-//    }
-
-    private View mCurrentView;
-    public View.OnFocusChangeListener mOnFocusChangeListener = new View.OnFocusChangeListener() {
-
-        @Override
-        public void onFocusChange(View v, boolean hasFocus) {
-            if (hasFocus) {
-                mCurrentView = v;
-                //enlargeAnim(v);
-                mFocusView.setVisibility(View.VISIBLE);
-                mFocusView.setAnchorView(v);
-            } else {
-                //reduceAnim(v);
-            }
-        }
-    };
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
