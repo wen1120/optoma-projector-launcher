@@ -26,7 +26,7 @@ public class home extends Activity {
     private TextView nowTime; // time
     private TextView nowDay; // day
     private FocusContainer homeRows;
-    private static long animateDuration = 80;
+    public static long animateDuration = 80;
 
     private static int[] menuID = {
             R.id.menu_position,

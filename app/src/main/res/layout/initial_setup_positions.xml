@@ -1,61 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_below="@+id/ly_menu"
-    android:layout_centerHorizontal="true"
-    android:layout_marginTop="48dp"
-    android:layout_weight="1"
-    android:columnCount="2"
-    android:rowCount="2"
-    tools:showIn="@layout/setup_position">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <ImageButton
-        android:id="@+id/front"
+    <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="19dp"
-        android:focusable="true"
-        android:clickable="true"
-        android:focusableInTouchMode="true"
-        android:background="@android:color/transparent"
-        android:src="@drawable/initial_setup_front" />
-
-    <ImageButton
-        android:id="@+id/rear"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="19dp"
-        android:focusable="true"
-        android:clickable="true"
-        android:focusableInTouchMode="true"
-        android:background="@android:color/transparent"
-        android:src="@drawable/initial_setup_rear" />
-
-    <ImageButton
-        android:id="@+id/front_celling"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="19dp"
-        android:layout_marginTop="33dp"
         android:layout_weight="1"
-        android:focusable="true"
-        android:clickable="true"
-        android:focusableInTouchMode="true"
-        android:background="@android:color/transparent"
-        android:src="@drawable/initial_setup_front_ceiling" />
+        android:columnCount="2"
+        android:rowCount="2"
+        android:layout_marginTop="48dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        tools:showIn="@layout/initial_setup">
 
-    <ImageButton
-        android:id="@+id/rear_ceiling"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="19dp"
-        android:layout_marginTop="33dp"
-        android:layout_weight="1"
-        android:focusable="true"
-        android:clickable="true"
-        android:focusableInTouchMode="true"
-        android:background="@android:color/transparent"
-        android:src="@drawable/initial_setup_rear_ceiling" />
-</GridLayout>
+        <ImageButton
+            android:id="@+id/front"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="19dp"
+            android:focusable="true"
+            android:clickable="true"
+            android:focusableInTouchMode="true"
+            android:background="@android:color/transparent"
+            android:src="@drawable/initial_setup_position_front" />
+
+        <ImageButton
+            android:id="@+id/rear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="19dp"
+            android:focusable="true"
+            android:clickable="true"
+            android:focusableInTouchMode="true"
+            android:background="@android:color/transparent"
+            android:src="@drawable/initial_setup_position_rear" />
+
+        <ImageButton
+            android:id="@+id/front_celling"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="19dp"
+            android:layout_marginTop="33dp"
+            android:layout_weight="1"
+            android:focusable="true"
+            android:clickable="true"
+            android:focusableInTouchMode="true"
+            android:background="@android:color/transparent"
+            android:src="@drawable/initial_setup_position_front_ceiling" />
+
+        <ImageButton
+            android:id="@+id/rear_ceiling"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="19dp"
+            android:layout_marginTop="33dp"
+            android:layout_weight="1"
+            android:focusable="true"
+            android:clickable="true"
+            android:focusableInTouchMode="true"
+            android:background="@android:color/transparent"
+            android:src="@drawable/initial_setup_position_rear_ceiling" />
+    </GridLayout>
+</RelativeLayout>

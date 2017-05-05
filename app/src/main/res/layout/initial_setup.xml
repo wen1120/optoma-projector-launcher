@@ -34,7 +34,7 @@
                 android:clickable="true"
                 android:focusableInTouchMode="true"
                 android:background="@android:color/transparent"
-                android:src="@drawable/initial_setup_position" />
+                android:src="@drawable/initial_setup_position_button" />
 
             <ImageButton
                 android:id="@+id/language"
@@ -45,7 +45,7 @@
                 android:clickable="true"
                 android:focusableInTouchMode="true"
                 android:background="@android:color/transparent"
-                android:src="@drawable/initial_setup_language" />
+                android:src="@drawable/initial_setup_language_button" />
 
         </GridLayout>
 
@@ -58,7 +58,16 @@
             android:background="#FFFFFF" />
     </RelativeLayout>
 
-    <include layout="@layout/initial_setup_positions" android:id="@+id/setup_positions" />
+    <ViewFlipper
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/ly_menu"
+        android:id="@+id/initial_setup_flipper"
+        android:clipChildren="false">
+
+        <include layout="@layout/initial_setup_positions" />
+        <include layout="@layout/initial_setup_languages" />
+    </ViewFlipper>
 
 
 </RelativeLayout>
