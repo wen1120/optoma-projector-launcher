@@ -18,7 +18,7 @@ import java.util.Calendar;
  */
 public class home extends Activity {
     private static final String TAG = "LauncherLog";
-    private static long animateDuration = 80;
+    public static long animateDuration = 80;
     private FocusContainer homeRows;
 
     private static int[] menuID = {

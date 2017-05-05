@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_centerInParent="false"
+    android:background="@drawable/backgroundhome">
+
+    <RelativeLayout
+        android:id="@+id/ly_menu"
+        android:layout_width="190dp"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerInParent="false"
+        android:layout_centerVertical="false"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="20dp">
+
+        <GridLayout
+            android:id="@+id/menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/menu_line"
+            android:layout_centerHorizontal="true"
+            android:layout_centerInParent="false"
+            android:layout_centerVertical="true"
+            >
+
+            <ImageButton
+                android:id="@+id/position"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:focusable="true"
+                android:clickable="true"
+                android:focusableInTouchMode="true"
+                android:background="@android:color/transparent"
+                android:src="@drawable/initial_setup_position_button" />
+
+            <ImageButton
+                android:id="@+id/language"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="14dp"
+                android:focusable="true"
+                android:clickable="true"
+                android:focusableInTouchMode="true"
+                android:background="@android:color/transparent"
+                android:src="@drawable/initial_setup_language_button" />
+
+        </GridLayout>
+
+        <View
+            android:id="@+id/menu_line"
+            android:layout_width="254dp"
+            android:layout_height="1dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="8dp"
+            android:background="#FFFFFF" />
+    </RelativeLayout>
+
+    <ViewFlipper
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/ly_menu"
+        android:id="@+id/initial_setup_flipper"
+        android:clipChildren="false">
+
+        <include layout="@layout/initial_setup_positions" />
+        <include layout="@layout/initial_setup_languages" />
+    </ViewFlipper>
+
+
+</RelativeLayout>
