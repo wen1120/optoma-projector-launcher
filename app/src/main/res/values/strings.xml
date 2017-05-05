@@ -125,6 +125,13 @@
     <string name="power_mode">Power Mode (Standby)</string>
     <string name="power_usb_power">USB Power</string>
     <string name="power_wireless">Wireless</string>
+    <string name="bluetooth_onoff">On/Off</string>
+    <string name="bluetooth_connect_bt">Connect Bluetooth</string>
+    <string name="general_config_projector_id">Configure Projector ID</string>
+    <string name="general_config_remote_code">Configure Remote Code</string>
+    <string name="general_screen_saver_timeout">Screen Saver Timeout</string>
+    <string name="general_send_log">Send log &amp; error to Optoma</string>
+    <string name="general_closed_captioning">Closed Captioning</string>
 
     <string-array name="ssArray">
         <item>Miracast</item>
