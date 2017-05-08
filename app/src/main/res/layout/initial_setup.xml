@@ -24,9 +24,9 @@
             android:layout_centerHorizontal="true"
             android:layout_centerInParent="false"
             android:layout_centerVertical="true"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:clickable="true"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:clickable="false"
             >
 
             <ImageView

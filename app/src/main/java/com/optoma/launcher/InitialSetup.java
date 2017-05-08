@@ -2,23 +2,15 @@ package com.optoma.launcher;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Color;
-import android.inputmethodservice.Keyboard;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
-import android.util.Log;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CompoundButton;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.ToggleButton;
 import android.widget.ViewFlipper;
 
 /**
@@ -96,75 +88,17 @@ public class InitialSetup extends Activity {
             "簡体中文"
     };
 
-    private int position;
-    private int language;
-    private TabBarController tabBarController = null;
-
-    private class TabBarController implements View.OnKeyListener, View.OnFocusChangeListener {
-        private int current = 0;
-        final View tabBar;
-        final ViewFlipper viewFlipper;
-        final View[] tabs;
-
-        public TabBarController(View tabBar, ViewFlipper flipper, View... tabs) {
-            this.tabBar = tabBar;
-            this.viewFlipper = flipper;
-            this.tabs = tabs;
-
-            this.tabBar.setOnKeyListener(this);
-            this.tabBar.setOnFocusChangeListener(this);
-        }
-
-        @Override
-        public void onFocusChange(View v, boolean hasFocus) {
-            if(hasFocus) {
-                Log.d("ken", "focusing on tab bar");
-            } else {
-                Log.d("ken", "leave tab bar");
-            }
-        }
-
-        @Override
-        public boolean onKey(View v, int keyCode, KeyEvent event) {
-            if(event.getAction() != KeyEvent.ACTION_DOWN) return true;
-
-            switch (keyCode) {
-                case KeyEvent.KEYCODE_DPAD_LEFT:
-                    current--;
-                    if(current < 0) current = tabs.length - 1;
-                    break;
-                case KeyEvent.KEYCODE_DPAD_RIGHT:
-                    current++;
-                    if(current >= tabs.length) current = 0;
-                    break;
-                case KeyEvent.KEYCODE_ENTER:
-                case KeyEvent.KEYCODE_DPAD_DOWN:
-                    flipper.requestFocus();
-                    break;
-            }
-            for(int i=0; i<tabs.length; i++) {
-                tabs[i].setSelected(false);
-            }
-            viewFlipper.setDisplayedChild(current);
-            tabs[current].setSelected(true);
-
-            return true; // consume the event
-        }
-    }
-
-    ViewFlipper flipper;
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.initial_setup);
 
-        final View tabBar = (View) findViewById(R.id.initial_setup_tabbar);
+        // final View tabBar = (View) findViewById(R.id.initial_setup_tabbar);
         final View positionTab = (View) findViewById(R.id.position);
-        final View languageTab = (View) findViewById(R.id.language);
-        flipper = (ViewFlipper) findViewById(R.id.initial_setup_flipper);
-        tabBarController = new TabBarController(tabBar, flipper, positionTab, languageTab);
+        positionTab.setSelected(true);
 
+        final View languageTab = (View) findViewById(R.id.language);
+        final ViewFlipper flipper = (ViewFlipper) findViewById(R.id.initial_setup_flipper);
         final LinearLayout grid = (LinearLayout) flipper.getChildAt(1);
 
         for(int i=0; i<positionIds.length; i++) {
@@ -175,17 +109,16 @@ public class InitialSetup extends Activity {
                     // TODO: change position
                     Toast.makeText(InitialSetup.this,
                             "Setting position to " + v.getContentDescription(), Toast.LENGTH_SHORT).show();
+                    positionTab.setSelected(false);
+                    languageTab.setSelected(true);
+                    flipper.setDisplayedChild(1);
                 }
             });
         }
 
-        language = PreferenceManager.getDefaultSharedPreferences(this).getInt("lang", 0);
-
-        position = PreferenceManager.getDefaultSharedPreferences(this).getInt("pos", 0);
-
         addLanguages(grid);
 
-        tabBar.requestFocus();
+        flipper.requestFocus();
 
     }
 
