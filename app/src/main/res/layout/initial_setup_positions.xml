@@ -23,8 +23,9 @@
             android:focusable="true"
             android:clickable="true"
             android:focusableInTouchMode="true"
-            android:background="@android:color/transparent"
-            android:src="@drawable/initial_setup_position_front" />
+            android:background="@drawable/initial_setup_position_tile_bg"
+            android:src="@drawable/initial_setup_position_front"
+            android:contentDescription="Front"/>
 
         <ImageButton
             android:id="@+id/rear"
@@ -34,8 +35,9 @@
             android:focusable="true"
             android:clickable="true"
             android:focusableInTouchMode="true"
-            android:background="@android:color/transparent"
-            android:src="@drawable/initial_setup_position_rear" />
+            android:background="@drawable/initial_setup_position_tile_bg"
+            android:src="@drawable/initial_setup_position_rear"
+            android:contentDescription="Rear"/>
 
         <ImageButton
             android:id="@+id/front_celling"
@@ -47,8 +49,9 @@
             android:focusable="true"
             android:clickable="true"
             android:focusableInTouchMode="true"
-            android:background="@android:color/transparent"
-            android:src="@drawable/initial_setup_position_front_ceiling" />
+            android:background="@drawable/initial_setup_position_tile_bg"
+            android:src="@drawable/initial_setup_position_front_ceiling"
+            android:contentDescription="Front Celling"/>
 
         <ImageButton
             android:id="@+id/rear_ceiling"
@@ -60,7 +63,8 @@
             android:focusable="true"
             android:clickable="true"
             android:focusableInTouchMode="true"
-            android:background="@android:color/transparent"
-            android:src="@drawable/initial_setup_position_rear_ceiling" />
+            android:background="@drawable/initial_setup_position_tile_bg"
+            android:src="@drawable/initial_setup_position_rear_ceiling"
+            android:contentDescription="Rear Ceiling"/>
     </GridLayout>
 </RelativeLayout>

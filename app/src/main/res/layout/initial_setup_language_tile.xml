@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="128dp"
     android:layout_height="112dp"
-    android:background="@drawable/initial_setup_language_element_bg"
+    android:background="@drawable/initial_setup_language_tile_bg"
     android:orientation="vertical"
     android:focusable="true"
     android:clickable="true"

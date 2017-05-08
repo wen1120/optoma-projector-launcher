@@ -5,13 +5,10 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.GridLayout;
 import android.widget.LinearLayout;
-import android.widget.Space;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
@@ -29,7 +26,7 @@ public class InitialSetup extends Activity {
             R.id.rear_ceiling
     };
 
-    private static final String[] languagesEng = new String[] {
+    private static final String[] langsEng = new String[] {
             "ar",
             "cs",
             "da",
@@ -60,7 +57,7 @@ public class InitialSetup extends Activity {
             "zh"
     };
 
-    private static final String[] languages = new String[] {
+    private static final String[] langs = new String[] {
             "عربي",
             "Čeština",
             "Dansk",
@@ -102,63 +99,7 @@ public class InitialSetup extends Activity {
 
         final LinearLayout grid = (LinearLayout) flipper.getChildAt(1);
 
-        final LayoutInflater inflater = getLayoutInflater();
-        int index = 0;
-
-        for(int i=0; i<4; i++) {
-            final ViewGroup row = (ViewGroup) inflater.inflate(R.layout.initial_setup_language_row, grid, false);
-
-            for(int j=0; j<7; j++) {
-                final View element = inflater.inflate(
-                        R.layout.initial_setup_language_element, row, false);
-
-                final TextView languageName = (TextView) (((ViewGroup) element).getChildAt(1));
-                languageName.setText(languages[index]);
-
-                final TextView languageNameEnglish = (TextView)  (((ViewGroup) element).getChildAt(0));
-                languageNameEnglish.setText(languagesEng[index]);
-
-                element.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-                    @Override
-                    public void onFocusChange(View v, boolean hasFocus) {
-                        if(hasFocus) {
-                            languageName.setTextColor(Color.parseColor("#2E2A25"));
-                            languageNameEnglish.setTextColor(Color.parseColor("#2E2A25"));
-
-                            v.animate().scaleX(1.25f).setDuration(home.animateDuration);
-                            v.animate().scaleY(1.25f).setDuration(home.animateDuration);
-                        } else {
-                            languageName.setTextColor(Color.parseColor("#8A8D8F"));
-                            languageNameEnglish.setTextColor(Color.parseColor("#8A8D8F"));
-
-                            v.animate().scaleX(1f).setDuration(home.animateDuration);
-                            v.animate().scaleY(1f).setDuration(home.animateDuration);
-                        }
-                    }
-                });
-
-                element.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        final Intent intent = new Intent(InitialSetup.this, home.class);
-                        startActivity(intent);
-                    }
-                });
-
-                row.addView(element);
-
-                if (j != 6) {
-                    inflater.inflate(R.layout.space, row);
-                }
-
-                index++;
-            }
-
-            grid.addView(row);
-            if (i !=3 ) {
-                inflater.inflate(R.layout.space, grid);
-            }
-        }
+        addLanguages(grid);
 
         positionButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -179,12 +120,74 @@ public class InitialSetup extends Activity {
             v.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(InitialSetup.this, "Setting position...", Toast.LENGTH_LONG);
+                    // TODO: change position
+                    Toast.makeText(InitialSetup.this, "Setting position to " + v.getContentDescription(), Toast.LENGTH_SHORT).show();
                 }
             });
         }
 
         positionButton.requestFocus();
 
+    }
+
+    private void addLanguages(LinearLayout grid) {
+        final LayoutInflater inflater = getLayoutInflater();
+        final int numRow = 4;
+        final int numCol = 7;
+
+        for(int rowIndex=0; rowIndex < numRow; rowIndex++) {
+            final ViewGroup row = (ViewGroup) inflater.inflate(R.layout.initial_setup_language_row, grid, false);
+
+            for(int colIndex=0; colIndex < numCol; colIndex++) {
+                final View tile = inflater.inflate(
+                        R.layout.initial_setup_language_tile, row, false);
+
+                final int index = numCol * rowIndex + colIndex;
+
+                final TextView originalName = (TextView) (((ViewGroup) tile).getChildAt(1));
+                originalName.setText(langs[index]);
+
+                final TextView englishName = (TextView)  (((ViewGroup) tile).getChildAt(0));
+                englishName.setText(langsEng[index]);
+
+                tile.setContentDescription(langsEng[index]);
+
+                tile.setOnFocusChangeListener(new SizeChanger(1.25f, Home.animateDuration) {
+                     @Override
+                     public void onFocusChange(View v, boolean hasFocus) {
+                         super.onFocusChange(v, hasFocus);
+                         if(hasFocus) {
+                             originalName.setTextColor(Color.parseColor("#2E2A25"));
+                             englishName.setTextColor(Color.parseColor("#2E2A25"));
+                         } else {
+                             originalName.setTextColor(Color.parseColor("#8A8D8F"));
+                             englishName.setTextColor(Color.parseColor("#8A8D8F"));
+                         }
+                     }
+                });
+
+                tile.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        // TODO: change language setting
+                        Toast.makeText(InitialSetup.this, "Setting language to " + v.getContentDescription(), Toast.LENGTH_SHORT).show();
+
+                        final Intent intent = new Intent(InitialSetup.this, Home.class);
+                        startActivity(intent);
+                    }
+                });
+
+                row.addView(tile);
+
+                if (colIndex != numCol-1) {
+                    inflater.inflate(R.layout.space, row);
+                }
+            }
+
+            grid.addView(row);
+            if (rowIndex != numRow - 1 ) {
+                inflater.inflate(R.layout.space, grid);
+            }
+        }
     }
 }

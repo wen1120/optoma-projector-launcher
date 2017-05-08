@@ -28,7 +28,7 @@
 
             android:orientation="vertical">
 
-            <!-- topic area -->
+            <!-- title area -->
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -143,7 +143,7 @@
                         android:clickable="true"
                         android:focusable="true"
                         android:focusableInTouchMode="true"
-                        android:src="@drawable/home_menu_inputsource"
+                        android:src="@drawable/home_menu_source"
                         android:layout_toRightOf="@id/menu_apps"
                         android:layout_marginLeft="14dp"
                         android:contentDescription="Input Source"/>
@@ -205,7 +205,7 @@
             android:layout_marginBottom="36dp"
             android:layout_marginTop="36dp"
             android:adjustViewBounds="false"
-            android:background="@drawable/corner_shortcut_app"
+            android:background="@drawable/home_shortcut_app"
             android:clickable="true"
             android:focusable="true"
             android:focusableInTouchMode="true"
@@ -224,7 +224,7 @@
             android:layout_marginBottom="36dp"
             android:layout_marginTop="36dp"
             android:adjustViewBounds="false"
-            android:background="@drawable/corner_shortcut_app"
+            android:background="@drawable/home_shortcut_app"
             android:clickable="true"
             android:focusable="true"
             android:focusableInTouchMode="true"
@@ -243,7 +243,7 @@
             android:layout_marginBottom="36dp"
             android:layout_marginTop="36dp"
             android:adjustViewBounds="false"
-            android:background="@drawable/corner_shortcut_app"
+            android:background="@drawable/home_shortcut_app"
             android:clickable="true"
             android:focusable="true"
             android:focusableInTouchMode="true"
@@ -262,7 +262,7 @@
             android:layout_marginBottom="36dp"
             android:layout_marginTop="36dp"
             android:adjustViewBounds="false"
-            android:background="@drawable/corner_shortcut_app"
+            android:background="@drawable/home_shortcut_app"
             android:clickable="true"
             android:focusable="true"
             android:focusableInTouchMode="true"
@@ -280,7 +280,7 @@
             android:layout_gravity="center"
             android:layout_marginBottom="36dp"
             android:layout_marginTop="36dp"
-            android:background="@drawable/corner_shortcut_input_source"
+            android:background="@drawable/home_shortcut_source"
             android:clickable="true"
             android:focusable="true"
             android:focusableInTouchMode="true"
@@ -324,7 +324,7 @@
             android:layout_gravity="center"
             android:layout_marginBottom="36dp"
             android:layout_marginTop="36dp"
-            android:background="@drawable/corner_shortcut_input_source"
+            android:background="@drawable/home_shortcut_source"
             android:clickable="true"
             android:focusable="true"
             android:focusableInTouchMode="true"
@@ -368,7 +368,7 @@
             android:layout_gravity="center"
             android:layout_marginBottom="36dp"
             android:layout_marginTop="36dp"
-            android:background="@drawable/corner_shortcut_setup"
+            android:background="@drawable/home_shortcut_setup"
             android:clickable="true"
             android:focusable="true"
             android:focusableInTouchMode="true"
@@ -412,7 +412,7 @@
             android:layout_gravity="center"
             android:layout_marginBottom="36dp"
             android:layout_marginTop="36dp"
-            android:background="@drawable/corner_shortcut_setup"
+            android:background="@drawable/home_shortcut_setup"
             android:clickable="true"
             android:focusable="true"
             android:focusableInTouchMode="true"

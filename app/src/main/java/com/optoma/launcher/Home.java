@@ -3,20 +3,17 @@ package com.optoma.launcher;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 
 /*
 * gradle debug on command line on Mac
 * $ brew install gradle
 * $ gradle compileDebugSources --stacktrace --debug
  */
-public class home extends Activity {
+public class Home extends Activity {
     private static final String TAG = "LauncherLog";
     public static long animateDuration = 80;
     private FocusContainer homeRows;
@@ -84,18 +81,8 @@ public class home extends Activity {
         });
     }
 
-    private View.OnFocusChangeListener shortcutFocusChangeListener = new View.OnFocusChangeListener() {
-        @Override
-        public void onFocusChange(View v, boolean hasFocus) {
-            if(hasFocus) {
-                v.animate().scaleX(1.25f).setDuration(animateDuration);
-                v.animate().scaleY(1.25f).setDuration(animateDuration);
-            } else {
-                v.animate().scaleX(1f).setDuration(animateDuration);
-                v.animate().scaleY(1f).setDuration(animateDuration);
-            }
-        }
-    };
+    private View.OnFocusChangeListener shortcutFocusChangeListener =
+            new SizeChanger(1.25f, animateDuration);
 
     private View.OnFocusChangeListener menuFocusChangeListener = new View.OnFocusChangeListener() {
         @Override
@@ -129,7 +116,8 @@ public class home extends Activity {
                             | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
                             | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                             | View.SYSTEM_UI_FLAG_FULLSCREEN
-                            | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);}
+                            | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+        }
     }
 
     public void initBtnClick() {
