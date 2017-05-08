@@ -10,17 +10,30 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1">
+        <!--it has a weight of 1 to occupy the rest of the space-->
 
-        <ImageView
+        <!-- background -->
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:scaleType="centerCrop"
-            android:src="@drawable/bg_tekapo"/>
+            android:layout_height="match_parent">
+            <com.optoma.launcher.BottomCropImage
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/bg_tekapo"
+                android:scaleType="fitEnd"
+                android:layout_alignParentBottom="true"/>
+
+        </RelativeLayout>
+
+        <!--<View-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:background="@drawable/home_background_gradient_top"/>-->
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/home_background_vignette"/>
+            android:layout_height="80dp"
+            android:background="@drawable/home_background_gradient_left"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -191,7 +204,8 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:background="@drawable/backgroundhome"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_weight="0">
 
         <Space
             android:layout_height="match_parent"
