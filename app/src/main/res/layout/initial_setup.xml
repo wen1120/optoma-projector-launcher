@@ -17,35 +17,36 @@
         android:layout_marginTop="20dp">
 
         <GridLayout
-            android:id="@+id/menu"
+            android:id="@+id/initial_setup_tabbar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@+id/menu_line"
             android:layout_centerHorizontal="true"
             android:layout_centerInParent="false"
             android:layout_centerVertical="true"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:clickable="false"
             >
 
-            <ImageButton
+            <ImageView
                 android:id="@+id/position"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:focusable="true"
-                android:clickable="true"
-                android:focusableInTouchMode="true"
-                android:background="@android:color/transparent"
-                android:src="@drawable/initial_setup_position_button" />
+                android:focusable="false"
+                android:clickable="false"
+                android:focusableInTouchMode="false"
+                android:src="@drawable/initial_setup_position_tab" />
 
-            <ImageButton
+            <ImageView
                 android:id="@+id/language"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="14dp"
-                android:focusable="true"
-                android:clickable="true"
-                android:focusableInTouchMode="true"
-                android:background="@android:color/transparent"
-                android:src="@drawable/initial_setup_language_tab" />
+                android:focusable="false"
+                android:clickable="false"
+                android:focusableInTouchMode="false"
+                android:src="@drawable/initial_setup_language_tab"/>
 
         </GridLayout>
 

@@ -93,27 +93,13 @@ public class InitialSetup extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.initial_setup);
 
-        final View positionButton = (View) findViewById(R.id.position);
-        final View languageButton = (View) findViewById(R.id.language);
+        // final View tabBar = (View) findViewById(R.id.initial_setup_tabbar);
+        final View positionTab = (View) findViewById(R.id.position);
+        positionTab.setSelected(true);
+
+        final View languageTab = (View) findViewById(R.id.language);
         final ViewFlipper flipper = (ViewFlipper) findViewById(R.id.initial_setup_flipper);
-
         final LinearLayout grid = (LinearLayout) flipper.getChildAt(1);
-
-        addLanguages(grid);
-
-        positionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                flipper.setDisplayedChild(0);
-            }
-        });
-
-        languageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                flipper.setDisplayedChild(1);
-            }
-        });
 
         for(int i=0; i<positionIds.length; i++) {
             final View v = findViewById(positionIds[i]);
@@ -121,12 +107,18 @@ public class InitialSetup extends Activity {
                 @Override
                 public void onClick(View v) {
                     // TODO: change position
-                    Toast.makeText(InitialSetup.this, "Setting position to " + v.getContentDescription(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(InitialSetup.this,
+                            "Setting position to " + v.getContentDescription(), Toast.LENGTH_SHORT).show();
+                    positionTab.setSelected(false);
+                    languageTab.setSelected(true);
+                    flipper.setDisplayedChild(1);
                 }
             });
         }
 
-        positionButton.requestFocus();
+        addLanguages(grid);
+
+        flipper.requestFocus();
 
     }
 
@@ -170,7 +162,8 @@ public class InitialSetup extends Activity {
                     @Override
                     public void onClick(View v) {
                         // TODO: change language setting
-                        Toast.makeText(InitialSetup.this, "Setting language to " + v.getContentDescription(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(InitialSetup.this,
+                                "Setting language to " + v.getContentDescription(), Toast.LENGTH_SHORT).show();
 
                         final Intent intent = new Intent(InitialSetup.this, Home.class);
                         startActivity(intent);
