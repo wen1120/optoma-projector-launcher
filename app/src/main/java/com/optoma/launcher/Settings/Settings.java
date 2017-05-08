@@ -46,7 +46,8 @@ public class Settings extends Activity {
             R.id.setting_system_button,
             R.id.setting_power_button,
             R.id.setting_bluetooth_button,
-            R.id.setting_general_button
+            R.id.setting_general_button,
+            R.id.setting_network_button
     };
 
     @Override
@@ -105,6 +106,9 @@ public class Settings extends Activity {
                     break;
                 case R.id.setting_general_button:
                     intent.setClassName(getPackageName(), getPackageName() + ".Settings.General");
+                    break;
+                case R.id.setting_network_button:
+                    intent.setClassName(getPackageName(), getPackageName() + ".Settings.NetworkMain");
                     break;
                 default:
                     Log.d(TAG, "unknown setting id=" + v.getId());

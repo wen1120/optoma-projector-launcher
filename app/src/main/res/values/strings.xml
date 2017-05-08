@@ -132,6 +132,17 @@
     <string name="general_screen_saver_timeout">Screen Saver Timeout</string>
     <string name="general_send_log">Send log &amp; error to Optoma</string>
     <string name="general_closed_captioning">Closed Captioning</string>
+    <string name="network_wifi">Wi-Fi</string>
+    <string name="network_ssid">SSID</string>
+    <string name="network_connection_mode">Connection Mode</string>
+    <string name="network_lan">LAN</string>
+    <string name="network_dhcp">DHCP</string>
+    <string name="network_ip_address">IP Address</string>
+    <string name="network_subnet_mask">Subnet Mask</string>
+    <string name="network_gateway">Gateway</string>
+    <string name="network_dns">DNS</string>
+    <string name="network_reset">Reset</string>
+    <string name="network_test_network">Test Network</string>
 
     <string-array name="ssArray">
         <item>Miracast</item>

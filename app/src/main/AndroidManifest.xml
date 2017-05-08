@@ -56,5 +56,9 @@
             android:name=".Settings.General"
             android:theme="@android:style/Theme.Translucent.NoTitleBar">
         </activity>
+        <activity
+            android:name=".Settings.NetworkMain"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar">
+        </activity>
     </application>
 </manifest>
