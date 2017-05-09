@@ -7,4 +7,9 @@
         <attr name="offsetHeight" format="dimension" />
         <attr name="animDuration" format="integer" />
     </declare-styleable>
+
+    <declare-styleable name="ToggleMenuItem">
+        <attr name="text" format="string" />
+        <attr name="value" format="boolean" />
+    </declare-styleable>
 </resources>

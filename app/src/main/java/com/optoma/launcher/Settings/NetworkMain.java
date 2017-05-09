@@ -19,30 +19,30 @@ public class NetworkMain extends Activity {
     private TextView[] tvNetwork = new TextView[5];
     private TextView tvConnectionMode;
 
-    private static int[] NetworkOnOffID = {
-            R.id.network_wifi_iv,
-            R.id.network_lan_iv,
-            R.id.network_dhcp_iv
-    };
-    private static int[] NetworkTVID = {
-            R.id.network_ssid_value_tv,
-            R.id.network_ip_address_value_tv,
-            R.id.network_subnet_mask_value_tv,
-            R.id.network_gateway_value_tv,
-            R.id.network_dns_value_tv
-    };
+//    private static int[] NetworkOnOffID = {
+//            R.id.network_wifi_iv,
+//            R.id.network_lan_iv,
+//            R.id.network_dhcp_iv
+//    };
+//    private static int[] NetworkTVID = {
+//            R.id.network_ssid_value_tv,
+//            R.id.network_ip_address_value_tv,
+//            R.id.network_subnet_mask_value_tv,
+//            R.id.network_gateway_value_tv,
+//            R.id.network_dns_value_tv
+//    };
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.network);
 
-        tvConnectionMode = (TextView) this.findViewById(R.id.network_connection_mode_content_tv);
-        for(int i=0;i< tvNetwork.length; i++) {
-            tvNetwork[i] = (TextView) this.findViewById(NetworkTVID[i]);
-            if(i<ivNetworkOnOff.length)
-                ivNetworkOnOff[i] = (ImageView) this.findViewById(NetworkOnOffID[i]);
-        }
-        xPosition = yPosition = iConnectionMode = 0;
+//        tvConnectionMode = (TextView) this.findViewById(R.id.network_connection_mode_content_tv);
+//        for(int i=0;i< tvNetwork.length; i++) {
+//            tvNetwork[i] = (TextView) this.findViewById(NetworkTVID[i]);
+//            if(i<ivNetworkOnOff.length)
+//                ivNetworkOnOff[i] = (ImageView) this.findViewById(NetworkOnOffID[i]);
+//        }
+//        xPosition = yPosition = iConnectionMode = 0;
     }
 
     @Override
