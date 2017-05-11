@@ -60,5 +60,9 @@
             android:name=".Settings.NetworkMain"
             android:theme="@android:style/Theme.Translucent.NoTitleBar">
         </activity>
+        <activity
+            android:name=".ProjectorSetup.ProjectorMain"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar">
+        </activity>
     </application>
 </manifest>

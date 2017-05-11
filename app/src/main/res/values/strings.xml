@@ -143,6 +143,15 @@
     <string name="network_dns">DNS</string>
     <string name="network_reset">Reset</string>
     <string name="network_test_network">Test Network</string>
+    <string name="projector_setup">Projector Setup</string>
+    <string name="projector_image_settings">Image Settings</string>
+    <string name="projector_display_adjustment">Display Adjustment</string>
+    <string name="projector_pip_pbp">PIP/PBP</string>
+    <string name="projector_3d">3D</string>
+    <string name="projector_signal">Signal</string>
+    <string name="projector_installation">Installation</string>
+    <string name="projector_components_control">Components Control</string>
+    <string name="projector_source_control">Source Control</string>
 
     <string-array name="ssArray">
         <item>Miracast</item>
