@@ -8,24 +8,4 @@
         <attr name="animDuration" format="integer" />
     </declare-styleable>
 
-    <declare-styleable name="OMenuItem">
-        <attr name="text" format="string" />
-    </declare-styleable>
-
-    <declare-styleable name="OMenuItemWithToggle" parent="OMenuItem">
-        <attr name="isOn" format="boolean" />
-    </declare-styleable>
-
-    <declare-styleable name="OMenuItemWithText" parent="OMenuItem">
-        <attr name="label" format="string" />
-    </declare-styleable>
-
-    <declare-styleable name="OPicker">
-        <attr name="orientation" format="enum">
-            <enum name="horizontal" value="0"/>
-            <enum name="vertical" value="1"/>
-        </attr>
-        <attr name="visibleItemCount" format="integer" />
-    </declare-styleable>
-
 </resources>

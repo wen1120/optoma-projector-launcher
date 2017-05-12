@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.CompoundButton;
-import android.widget.RelativeLayout;
 
 public class OMenuItemWithToggle extends OMenuItem {
 
@@ -13,8 +12,8 @@ public class OMenuItemWithToggle extends OMenuItem {
     public OMenuItemWithToggle(Context context) {
         super(context);
 
-        toggle = createToggle();
-        addView(toggle);
+        toggle = getToggle();
+        addViewAtRight(toggle);
 
         setOnKeyListener(new OnKeyListener() {
             @Override
@@ -30,15 +29,13 @@ public class OMenuItemWithToggle extends OMenuItem {
     }
 
 
-    private OToggle createToggle() {
+    private OToggle getToggle() {
         final OToggle t = new OToggle(getContext());
 
-        final RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(
+        final MarginLayoutParams layoutParams = new MarginLayoutParams(
                 OUtil.dpToPixel(getContext(), 32), OUtil.dpToPixel(getContext(), 32)
         );
-        layoutParams.setMarginEnd(OUtil.dpToPixel(getContext(), 24));
-        layoutParams.addRule(RelativeLayout.ALIGN_PARENT_END);
-        layoutParams.addRule(RelativeLayout.CENTER_VERTICAL);
+
         t.setLayoutParams(layoutParams);
 
         return t;

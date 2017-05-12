@@ -47,22 +47,33 @@ public class OPicker extends RelativeLayout {
                 if(event.getAction() != KeyEvent.ACTION_DOWN) return false;
 
                 if(keyCode == KeyEvent.KEYCODE_DPAD_RIGHT) {
-                    if(selectedOption < options.size()-1) {
-                        selectedOption++;
-                    }
+                    next();
                 } else if(keyCode == KeyEvent.KEYCODE_DPAD_LEFT) {
-                    if(selectedOption > 0) {
-                        selectedOption--;
-                    }
-                }
-                if(selectedOption >= 0 && selectedOption < options.size()) {
-                    currentTextView.setText(options.get(selectedOption));
+                    previous();
                 }
 
                 return false;
             }
         });
 
+    }
+
+    public void next() {
+        if(selectedOption < options.size()-1) {
+            selectedOption++;
+        }
+        if(selectedOption >= 0 && selectedOption < options.size()) {
+            currentTextView.setText(options.get(selectedOption));
+        }
+    }
+
+    public void previous() {
+        if(selectedOption > 0) {
+            selectedOption--;
+        }
+        if(selectedOption >= 0 && selectedOption < options.size()) {
+            currentTextView.setText(options.get(selectedOption));
+        }
     }
 
     private TextView getCurrent() {

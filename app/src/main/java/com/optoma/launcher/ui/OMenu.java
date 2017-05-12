@@ -1,9 +1,12 @@
 package com.optoma.launcher.ui;
 
 import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Paint;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
@@ -32,13 +35,13 @@ public class OMenu extends LinearLayout {
 
         content = createContent();
 
-        final RelativeLayout contentWrapper = new RelativeLayout(context);
-        final LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
+        final FrameLayout contentWrapper = new FrameLayout(context);
+        final ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(
                 LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
         contentWrapper.setLayoutParams(layoutParams);
 
+        // contentWrapper.addView(createVerticalBar());
         contentWrapper.addView(content);
-//        contentWrapper.addView(createVerticalBar());
 
         addView(contentWrapper);
 
@@ -49,7 +52,7 @@ public class OMenu extends LinearLayout {
         final OMenuItemWithToggle title = new OMenuItemWithToggle(getContext());
 
         final ViewGroup.LayoutParams layoutParams = new LinearLayout.LayoutParams(
-                LayoutParams.WRAP_CONTENT, OUtil.dpToPixel(getContext(), 48));
+                LayoutParams.MATCH_PARENT, OUtil.dpToPixel(getContext(), 48));
 
         title.setLayoutParams(layoutParams);
 
@@ -72,10 +75,10 @@ public class OMenu extends LinearLayout {
         final View bar = new View(getContext());
 
         final RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(
-                OUtil.dpToPixel(getContext(), 2), OUtil.dpToPixel(getContext(), 0));
+                OUtil.dpToPixel(getContext(), 2), 0);
 
-        layoutParams.addRule(RelativeLayout.ALIGN_PARENT_TOP);
-        layoutParams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+//        layoutParams.addRule(RelativeLayout.ALIGN_PARENT_TOP);
+//        layoutParams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
 
         layoutParams.setMarginStart(OUtil.dpToPixel(getContext(), 29));
 
@@ -104,6 +107,8 @@ public class OMenu extends LinearLayout {
 
     public void addItem(View v) {
         v.setOnFocusChangeListener(backgroundStyle);
+        v.setEnabled(false);
+        v.setFocusable(false);
         content.addView(v);
     }
 
@@ -129,5 +134,11 @@ public class OMenu extends LinearLayout {
             });
         }
     }
-
+//
+//    private final Paint paint = new Paint();
+//    @Override
+//    protected void onDraw(Canvas canvas) {
+//        super.onDraw(canvas);
+//        canvas.drawLine(OUtil.dpToPixel(getContext(), 24), 0, OUtil.dpToPixel(getContext(), 24), 999, paint);
+//    }
 }
