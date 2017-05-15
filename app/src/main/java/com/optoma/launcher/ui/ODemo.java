@@ -34,6 +34,9 @@ public class ODemo extends Activity {
 //        tv.setText("hello, world");
 //        root.addView(tv);
 
+        final ButtonController button = new ButtonController(this, "Click for More");
+        root.addView(button.getView());
+
         final ToggleController toggle = new ToggleController(this, "Are you a genius?", false);
         root.addView(toggle.getView());
 
@@ -43,6 +46,10 @@ public class ODemo extends Activity {
         final PickerController picker = new PickerController(
                 this, "What's your favorite fruit?", new String[] {"Apple", "Banana", "Cherry"}, 1);
         root.addView(picker.getView());
+
+        final FlatPickerController flatPicker = new FlatPickerController(
+                this, "Position", new int[] {}, 0);
+        root.addView(flatPicker.getView());
 
     }
 }

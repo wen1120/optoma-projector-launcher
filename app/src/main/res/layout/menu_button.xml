@@ -6,26 +6,31 @@
     android:background="@drawable/menu_bg"
     android:layout_marginStart="24dp"
     android:layout_marginEnd="24dp"
-    >
+    android:focusable="true"
+    android:focusableInTouchMode="true">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/leading_image"
+        android:src="@drawable/backtotop_white"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello"
-        android:gravity="center"
+        android:layout_gravity="center"
         android:textSize = "18sp"
         android:id="@+id/title"/>
+
     <Space
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_weight="1"/>
 
-    <ToggleButton
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:text=""
-        android:textOn=""
-        android:textOff=""
-        android:background="@drawable/on_off"
-        android:id="@+id/toggle"/>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/trailing_image"
+        android:src="@drawable/expand_877"/>
+
 </LinearLayout>
