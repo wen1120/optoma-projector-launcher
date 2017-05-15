@@ -1,6 +1,7 @@
 package com.optoma.launcher.ui;
 
 import android.content.Context;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.animation.PathInterpolator;
 import android.widget.TextView;
@@ -30,6 +31,21 @@ public class PickerController implements ViewController {
 
         this.title.setText(title);
         this.current.setText(values[initial]);
+
+        view.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if(event.getAction() != KeyEvent.ACTION_DOWN) return false;
+                if(keyCode == KeyEvent.KEYCODE_DPAD_LEFT) {
+                    onClickLeft();
+                } else if(keyCode == KeyEvent.KEYCODE_DPAD_RIGHT) {
+                    onClickRight();
+                } else {
+                    return false;
+                }
+                return true;
+            }
+        });
     }
 
     @OnClick(R.id.left_arrow) public void onClickLeft() {

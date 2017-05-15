@@ -3,11 +3,15 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="48dp"
-    android:background="@drawable/menu_bg"
+    android:background="@drawable/menu_item_bg"
     android:layout_marginStart="24dp"
-    android:layout_marginEnd="24dp"
+    android:paddingEnd="24dp"
+    android:paddingStart="12dp"
+
     android:focusable="true"
-    android:focusableInTouchMode="true">
+    android:focusableInTouchMode="true"
+    android:clickable="true"
+    android:gravity="center">
 
     <ImageView
         android:layout_width="wrap_content"

@@ -1,6 +1,7 @@
 package com.optoma.launcher.ui;
 
 import android.content.Context;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -61,6 +62,21 @@ public class SeekBarController implements ViewController {
             @Override
             public void onClick(View v) {
                 seekBar.incrementProgressBy(step);
+            }
+        });
+
+        view.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if(event.getAction() != KeyEvent.ACTION_DOWN) return false;
+                if(keyCode == KeyEvent.KEYCODE_DPAD_LEFT) {
+                    seekBar.incrementProgressBy(-step);
+                } else if(keyCode == KeyEvent.KEYCODE_DPAD_RIGHT) {
+                    seekBar.incrementProgressBy(step);
+                } else {
+                    return false;
+                }
+                return true;
             }
         });
     }
