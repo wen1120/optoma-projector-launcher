@@ -19,24 +19,7 @@ public class ODemo extends Activity {
         final LinearLayout root = new LinearLayout(this);
         root.setOrientation(LinearLayout.VERTICAL);
 
-        final TextView tv = new TextView(this);
-        tv.setText("hello, world");
-        root.addView(tv);
-
-        final OSeekBar seekBar = new OSeekBar(this);
-//        seekBar.setLayoutParams(new ViewGroup.LayoutParams(
-//                OUtil.dpToPixel(this, 512), ViewGroup.LayoutParams.WRAP_CONTENT));
-        root.addView(seekBar);
-
-        final OPicker picker = new OPicker(this);
-        picker.addOption("Apple");
-        picker.addOption("Banana");
-        picker.addOption("Cherry");
-        root.addView(picker);
-
-        final OMenuItem menuItem = new OMenuItem(this);
-        menuItem.setText("apple");
-        root.addView(menuItem);
+        addChildren(root);
 
         root.setPadding(
                 OUtil.dpToPixel(this, 32),
@@ -44,5 +27,22 @@ public class ODemo extends Activity {
                 OUtil.dpToPixel(this, 32),
                 OUtil.dpToPixel(this, 32));
         setContentView(root);
+    }
+
+    private void addChildren(ViewGroup root) {
+//        final TextView tv = new TextView(this);
+//        tv.setText("hello, world");
+//        root.addView(tv);
+
+        final ToggleController toggle = new ToggleController(this, "Are you a genius?", false);
+        root.addView(toggle.getView());
+
+        final SeekBarController seekBar = new SeekBarController(this, "How's your mood?", 0, -100, 100, 5);
+        root.addView(seekBar.getView());
+
+        final PickerController picker = new PickerController(
+                this, "What's your favorite fruit?", new String[] {"Apple", "Banana", "Cherry"}, 1);
+        root.addView(picker.getView());
+
     }
 }
