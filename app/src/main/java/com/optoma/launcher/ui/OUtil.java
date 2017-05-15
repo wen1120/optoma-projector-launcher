@@ -29,4 +29,22 @@ public class OUtil {
         return s;
     }
 
+    public static Space getWeightedSpace(Context context) {
+        final Space s = new Space(context);
+        final LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
+                0, 0
+        );
+        layoutParams.weight = 1;
+        s.setLayoutParams(layoutParams);
+        return s;
+    }
+
+    public static LinearLayout.LayoutParams getWeightedLayoutParams() {
+        final LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
+                0, ViewGroup.LayoutParams.WRAP_CONTENT
+        );
+        layoutParams.weight = 1;
+        return layoutParams;
+    }
+
 }
