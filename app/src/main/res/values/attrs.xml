@@ -7,4 +7,5 @@
         <attr name="offsetHeight" format="dimension" />
         <attr name="animDuration" format="integer" />
     </declare-styleable>
+
 </resources>

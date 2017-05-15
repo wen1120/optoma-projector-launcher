@@ -9,15 +9,13 @@
         android:theme="@style/Theme.Leanback">
         <activity
             android:name=".InitialSetup" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
         </activity>
 
         <activity
             android:name=".Home"
             android:label="@string/title_activity_main" >
+
         </activity>
 
         <activity
@@ -57,12 +55,22 @@
             android:theme="@android:style/Theme.Translucent.NoTitleBar">
         </activity>
         <activity
-            android:name=".Settings.NetworkMain"
+            android:name=".Settings.Network"
             android:theme="@android:style/Theme.Translucent.NoTitleBar">
         </activity>
+
         <activity
             android:name=".ProjectorSetup.ProjectorMain"
             android:theme="@android:style/Theme.Translucent.NoTitleBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".ui.ODemo">
+
         </activity>
     </application>
 </manifest>

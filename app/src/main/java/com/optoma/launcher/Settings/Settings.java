@@ -108,7 +108,7 @@ public class Settings extends Activity {
                     intent.setClassName(getPackageName(), getPackageName() + ".Settings.General");
                     break;
                 case R.id.setting_network_button:
-                    intent.setClassName(getPackageName(), getPackageName() + ".Settings.NetworkMain");
+                    intent.setClassName(getPackageName(), getPackageName() + ".Settings.Network");
                     break;
                 default:
                     Log.d(TAG, "unknown setting id=" + v.getId());
