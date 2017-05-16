@@ -101,4 +101,49 @@ public class Projector {
             "Auto 3D"
     };
 
+    public static final String[] pipPbpScreens = new String[] {
+            "Off",
+            "PIP",
+            "PBP"
+    };
+
+    public static final String[] pipPbpLocations = new String[] {
+            "Top Left",
+            "Top Right",
+            "Bottom Left",
+            "Bottom Right",
+            "PBP, Main Left",
+            "PBP, Main Top",
+            "PBP, Main Right",
+            "PBP, Main Bottom"
+
+    };
+
+    public static final String[] pipPdpSizes = new String[] {
+            "Large",
+            "Medium",
+            "Small"
+    };
+
+    public static final String[] mainSources = new String[] {
+            "[no signal]",
+            "HDMI1/MHL",
+            "HDMI2",
+            "HDMI2/MHL",
+            "HDMI3"
+    };
+
+    public static final String[] darbeeModes = new String[]{
+            "Hi-Def",
+            "Gaming",
+            "Full Pop",
+            "Off"
+    };
+
+    public static final String[] demoModes = new String[] {
+            "Off",
+            "Split Screen",
+            "Swipe Screen"
+    };
+
 }

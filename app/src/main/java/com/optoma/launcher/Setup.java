@@ -2,6 +2,7 @@ package com.optoma.launcher;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v17.leanback.widget.picker.Picker;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -13,6 +14,7 @@ import com.optoma.launcher.ui.MenuGroupController;
 import com.optoma.launcher.ui.PickerController;
 import com.optoma.launcher.ui.SeekBarController;
 import com.optoma.launcher.ui.ShortcutController;
+import com.optoma.launcher.ui.ToggleController;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -30,11 +32,11 @@ public class Setup extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.setup);
         ButterKnife.bind(this);
-        buildViews();
+        createShortcuts();
 
     }
 
-    private void buildViews() {
+    private void createShortcuts() {
         final ShortcutController imageSettings = new ShortcutController(
                 this, R.drawable.image_settings, getResources().getString(R.string.projector_image_settings));
         shortcutArea.addView(imageSettings.getView());
@@ -63,6 +65,13 @@ public class Setup extends Activity {
 
         final ShortcutController pipPdb = new ShortcutController(
                 this, R.drawable.pip_pbp, getResources().getString(R.string.projector_pip_pbp));
+        pipPdb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                menuArea.removeAllViews();
+                menuArea.addView(createPipPbp(menuArea));
+            }
+        });
         shortcutArea.addView(pipPdb.getView());
 
         addSpace();
@@ -158,10 +167,22 @@ public class Setup extends Activity {
 
         final ButtonController pureEngine = new ButtonController(
                 this, "PureEngine", 0, R.drawable.expand431);
+        pureEngine.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                menu.setChild(createPureEngine(menu));
+            }
+        });
         menu.addItem(pureEngine.getView());
 
         final ButtonController darbeeSettings = new ButtonController(
                 this, "Darbee Settings", 0, R.drawable.expand431);
+        darbeeSettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                menu.setChild(createDarbeeSettings(menu));
+            }
+        });
         menu.addItem(darbeeSettings.getView());
 
         final ButtonController back = new ButtonController(
@@ -210,6 +231,61 @@ public class Setup extends Activity {
         return menu.getView();
     }
 
+    private View createPureEngine(final MenuController parent) {
+        final MenuController menu = new MenuController(this, 1, 2);
+
+        final ButtonController back = new ButtonController(
+                this, "Back to Image Settings", R.drawable.backtotop_white, -1);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                parent.setChild(null);
+            }
+        });
+        menu.addItem(back.getView());
+
+        final PickerController color = new PickerController(
+                this, "PureColor", new String[] { "Off", "1", "2", "3", "4", "5" }, 0);
+        menu.addItem(color.getView());
+
+        final PickerController motion = new PickerController(
+                this, "PureMotion", new String[] { "Off", "1", "2", "3" }, 0);
+        menu.addItem(motion.getView());
+
+        final PickerController pureMotionDemo = new PickerController(
+                this, "PureMotion Demo", new String[] { "Off", "H Split", "V Split" }, 0);
+        menu.addItem(pureMotionDemo.getView());
+
+        return menu.getView();
+    }
+
+    private View createDarbeeSettings(final MenuController parent) {
+        final MenuController menu = new MenuController(this, 1, 2);
+
+        final ButtonController back = new ButtonController(
+                this, "Back to Image Settings", R.drawable.backtotop_white, -1);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                parent.setChild(null);
+            }
+        });
+        menu.addItem(back.getView());
+
+        final PickerController mode = new PickerController(
+                this, "Mode", Projector.darbeeModes, 0);
+        menu.addItem(mode.getView());
+
+        final SeekBarController level = new SeekBarController(this, "Level", 0, 0, 120, 1);
+        menu.addItem(level.getView());
+
+        final PickerController demoMode = new PickerController(
+                this, "Demo Mode", Projector.demoModes, 0);
+        menu.addItem(demoMode.getView());
+
+        return menu.getView();
+    }
+
     private View createColorMatchingMenu(final MenuController parent) {
         final MenuController menu = new MenuController(this, 1, 1);
         menu.setChild(null);
@@ -247,6 +323,93 @@ public class Setup extends Activity {
         final PickerController aspectRatio = new PickerController(
                 this, "Aspect Ratio", Projector.aspectRatios, 0);
         menu.addItem(aspectRatio.getView());
+
+        final SeekBarController edgeMask = new SeekBarController(this, "Edge Mask", 0, 0, 10, 1);
+        menu.addItem(edgeMask.getView());
+
+        final SeekBarController zoom = new SeekBarController(this, "Zoom", 0, -5, 25, 1);
+        menu.addItem(zoom.getView());
+
+        final MenuGroupController imageShift = new MenuGroupController(this, "Image Shift");
+        {
+            final SeekBarController h = new SeekBarController(this, "H", 0, -100, 100, 1);
+            imageShift.addItem(h.getView());
+
+            final SeekBarController v = new SeekBarController(this, "V", 0, -100, 100, 1);
+            imageShift.addItem(v.getView());
+        }
+        menu.addItem(imageShift.getView());
+
+        final MenuGroupController geometricCorrection = new MenuGroupController(this, "Geometric Correction");
+        {
+            final SeekBarController hArc = new SeekBarController(this, "H Arc", 0, -10, 10, 1);
+            geometricCorrection.addItem(hArc.getView());
+
+            final SeekBarController vArc = new SeekBarController(this, "V Arc", 0, -10, 10, 1);
+            geometricCorrection.addItem(vArc.getView());
+
+            final SeekBarController hKeystone = new SeekBarController(this, "H Keystone", 0, -40, 40, 1);
+            geometricCorrection.addItem(hKeystone.getView());
+
+            final SeekBarController vKeystone = new SeekBarController(this, "V Keystone", 0, -40, 40, 1);
+            geometricCorrection.addItem(vKeystone.getView());
+
+            final ToggleController autoKeystone = new ToggleController(this, "Auto Keystone", false);
+            geometricCorrection.addItem(autoKeystone.getView());
+
+        }
+        menu.addItem(geometricCorrection.getView());
+
+        final ButtonController back = new ButtonController(
+                this, "Back to Projector Setup", R.drawable.backtotop_white, -1);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                parent.removeAllViews();
+            }
+        });
+        menu.addItem(back.getView());
+
+        return menu.getView();
+    }
+
+    private View createPipPbp(final ViewGroup parent) {
+        final MenuController menu = new MenuController(this, 1, 3);
+        menu.setChild(null);
+
+        final PickerController screen = new PickerController(
+                this, "Screen", Projector.pipPbpScreens, 0);
+        menu.addItem(screen.getView());
+
+        final PickerController location = new PickerController(
+                this, "Location", Projector.pipPbpLocations, 0);
+        menu.addItem(location.getView());
+
+        final PickerController size = new PickerController(
+                this, "Size", Projector.pipPdpSizes, 0);
+        menu.addItem(size.getView());
+
+        final MenuGroupController source = new MenuGroupController(this, "Source");
+        {
+            final PickerController mainSource = new PickerController(
+                    this, "Main Source", Projector.mainSources, 0);
+            source.addItem(mainSource.getView());
+
+            final PickerController subSource = new PickerController(
+                    this, "Sub Source", Projector.mainSources, 0);
+            source.addItem(subSource.getView());
+        }
+        menu.addItem(source.getView());
+
+        final ButtonController back = new ButtonController(
+                this, "Back to Projector Setup", R.drawable.backtotop_white, -1);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                parent.removeAllViews();
+            }
+        });
+        menu.addItem(back.getView());
 
         return menu.getView();
     }

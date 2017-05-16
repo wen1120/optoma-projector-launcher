@@ -25,6 +25,13 @@ public class ToggleController implements ViewController {
 
         this.title.setText(title);
         this.toggle.setChecked(isChecked);
+
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toggle.setChecked(!toggle.isChecked());
+            }
+        });
     }
 
     @Override
