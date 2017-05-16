@@ -29,4 +29,7 @@
     <color name="secondary_gray">#8a8d8f</color>
     <color name="secondary_light_gray">#d0d3d4</color>
     <color name="secondary_light_brown">#9a887b</color>
+    
+    <color name="p427c">#d0d3d4</color>
+    <color name="p301c">#004b87</color>
 </resources>

@@ -72,5 +72,13 @@
             android:name=".ui.ODemo">
 
         </activity>
+        <activity
+            android:name=".ProjectorSetup.Setup"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar">
+        </activity>
+        <activity
+            android:name=".ProjectorSetup.SourceControl"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar">
+        </activity>
     </application>
 </manifest>

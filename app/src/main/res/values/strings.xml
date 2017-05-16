@@ -152,6 +152,18 @@
     <string name="projector_installation">Installation</string>
     <string name="projector_components_control">Components Control</string>
     <string name="projector_source_control">Source Control</string>
+    <string name="setup_position">Position</string>
+    <string name="setup_ceiling_mount">Ceiling Mount</string>
+    <string name="setup_rear_projection">Rear Projection</string>
+    <string name="setup_test_pattern">Test Pattern</string>
+    <string name="sc_hdmi_link_settings">HDMI Link Settings</string>
+    <string name="sc_hdmi_link">HDMI Link</string>
+    <string name="sc_inclusive_of_tv">Inclusive of TV</string>
+    <string name="sc_power_on_link">Power On Link</string>
+    <string name="sc_power_off_link">Power Off Link</string>
+    <string name="sc_hdbaset_control">HDBaseT Control</string>
+    <string name="sc_ethernet">Ethernet</string>
+    <string name="sc_rs232">RS232</string>
 
     <string-array name="ssArray">
         <item>Miracast</item>
@@ -185,5 +197,29 @@
         <item>English</item>
         <item>3</item>
         <item>Crestron, PJ Link, HTTP</item>
+    </string-array>
+    <string-array name="setup_ceiling_mount_array">
+        <item>Off</item>
+        <item>On</item>
+        <item>Auto</item>
+    </string-array>
+    <string-array name="setup_test_pattern_array">
+        <item>Off</item>
+        <item>Green Grid</item>
+        <item>Magenta Grid</item>
+        <item>White Grid</item>
+        <item>White</item>
+        <item>Red</item>
+        <item>Green</item>
+        <item>Blue</item>
+        <item>Yellow</item>
+        <item>Magenta</item>
+        <item>Cyan</item>
+        <item>Black</item>
+    </string-array>
+    <string-array name="SC_power_on_link_array">
+        <item>Mutual</item>
+        <item>PJ --> Device</item>
+        <item>Device --> PJ</item>
     </string-array>
 </resources>
