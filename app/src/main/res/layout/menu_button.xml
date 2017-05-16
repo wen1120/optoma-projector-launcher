@@ -17,7 +17,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/leading_image"
-        android:src="@drawable/backtotop_white"/>
+        />
 
     <TextView
         android:layout_width="wrap_content"
@@ -35,6 +35,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/trailing_image"
-        android:src="@drawable/expand_877"/>
+        />
 
 </LinearLayout>

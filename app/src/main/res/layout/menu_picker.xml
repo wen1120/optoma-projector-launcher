@@ -8,6 +8,8 @@
 
     android:background="@drawable/menu_item_bg"
     android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:clickable="true"
     android:orientation="vertical"
     >
 
