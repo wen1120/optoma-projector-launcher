@@ -1,0 +1,12 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="projector_1st_tv_left">12dp</dimen>
+    <dimen name="projector_divider_left">17dp</dimen>
+    <dimen name="projector_line_height">48dp</dimen>
+    <dimen name="projector_2line_height">96dp</dimen>
+    <dimen name="projector_2nd_view_left">24dp</dimen>
+    <dimen name="projector_2nd_tv_left">36dp</dimen>
+    <dimen name="projector_on_right">24dp</dimen>
+    <dimen name="projector_2nd_leftarror">72dp</dimen>
+
+</resources>
