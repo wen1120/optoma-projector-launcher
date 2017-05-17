@@ -146,4 +146,38 @@ public class Projector {
             "Swipe Screen"
     };
 
+    public static final String[] anamorphicLensType = new String[] {
+            "None",
+            "Fixed",
+            "Movable"
+    };
+
+    public static final String[] lampModes = new String[] {
+            "Dual",
+            "Relay",
+            "Lamp 1",
+            "Lamp 2"
+    };
+
+    public static final String[] filterReminders = new String[] {
+            "Off",
+            "300hr",
+            "500hr",
+            "800hr",
+            "1000hr"
+    };
+
+    public static final String[] lensFunctions = new String[]{
+            "Lock",
+            "Unlock"
+    };
+
+    public static final String[] lensShifts = new String[]{
+            "Up",
+            "Down",
+            "Left",
+            "Right"
+    };
+
+
 }

@@ -2,6 +2,7 @@ package com.optoma.launcher;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v17.leanback.widget.Parallax;
 import android.support.v17.leanback.widget.picker.Picker;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import com.optoma.launcher.ui.PickerController;
 import com.optoma.launcher.ui.SeekBarController;
 import com.optoma.launcher.ui.ShortcutController;
 import com.optoma.launcher.ui.ToggleController;
+import com.optoma.launcher.ui.ViewController;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -96,6 +98,13 @@ public class Setup extends Activity {
 
         final ShortcutController componentsControl = new ShortcutController(
                 this, R.drawable.components_control, getResources().getString(R.string.projector_components_control));
+        componentsControl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                menuArea.removeAllViews();
+                menuArea.addView(createComponentsControl(menuArea));
+            }
+        });
         shortcutArea.addView(componentsControl.getView());
 
         addSpace();
@@ -245,15 +254,15 @@ public class Setup extends Activity {
         menu.addItem(back.getView());
 
         final PickerController color = new PickerController(
-                this, "PureColor", new String[] { "Off", "1", "2", "3", "4", "5" }, 0);
+                this, "PureColor", new String[]{"Off", "1", "2", "3", "4", "5"}, 0);
         menu.addItem(color.getView());
 
         final PickerController motion = new PickerController(
-                this, "PureMotion", new String[] { "Off", "1", "2", "3" }, 0);
+                this, "PureMotion", new String[]{"Off", "1", "2", "3"}, 0);
         menu.addItem(motion.getView());
 
         final PickerController pureMotionDemo = new PickerController(
-                this, "PureMotion Demo", new String[] { "Off", "H Split", "V Split" }, 0);
+                this, "PureMotion Demo", new String[]{"Off", "H Split", "V Split"}, 0);
         menu.addItem(pureMotionDemo.getView());
 
         return menu.getView();
@@ -310,7 +319,7 @@ public class Setup extends Activity {
         final SeekBarController hue = new SeekBarController(this, "Hue", 0, -50, 50, 1);
         menu.addItem(hue.getView());
 
-        final SeekBarController gain= new SeekBarController(this, "Gain", 0, -50, 50, 1);
+        final SeekBarController gain = new SeekBarController(this, "Gain", 0, -50, 50, 1);
         menu.addItem(gain.getView());
 
         return menu.getView();
@@ -412,5 +421,172 @@ public class Setup extends Activity {
         menu.addItem(back.getView());
 
         return menu.getView();
+    }
+
+    private View createComponentsControl(final ViewGroup parent) {
+
+        final MenuController menu = new MenuController(this, 1, 3);
+
+        final ButtonController lampSettings = new ButtonController(
+                this, "Lamp Settings", 0, R.drawable.expand431);
+        lampSettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                menu.setChild(createLampSettings(menu));
+            }
+        });
+        menu.addItem(lampSettings.getView());
+
+        final ButtonController filterSettings = new ButtonController(
+                this, "Filter Settings", 0, R.drawable.expand431);
+        filterSettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                menu.setChild(createFilterSettings(menu));
+            }
+        });
+        menu.addItem(filterSettings.getView());
+
+        final ButtonController lensSettings = new ButtonController(
+                this, "Lens Settings", 0, R.drawable.expand431);
+        menu.addItem(lensSettings.getView());
+
+        final PickerController anamorphicLens = new PickerController(
+                this, "Anamorphic Lens", Projector.anamorphicLensType, 0
+        );
+        menu.addItem(anamorphicLens.getView());
+
+        final ButtonController remoteSettings = new ButtonController(
+                this, "Remote Settings", 0, R.drawable.expand431);
+        menu.addItem(remoteSettings.getView());
+
+        final ToggleController twelveVTrigger = new ToggleController(
+                this, "12V Trigger", false
+        );
+        menu.addItem(twelveVTrigger.getView());
+
+        final ButtonController twelveVTriggerB = new ButtonController(
+                this, "12V Trigger B", 0, R.drawable.expand431);
+        menu.addItem(twelveVTriggerB.getView());
+
+        final ToggleController highAltitude = new ToggleController(
+                this, "High Altitude", false
+        );
+        menu.addItem(highAltitude .getView());
+
+        final ButtonController back = new ButtonController(
+                this, "Back to Projector Setup", R.drawable.backtotop_white, -1);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                parent.removeAllViews();
+            }
+        });
+        menu.addItem(back.getView());
+
+        return menu.getView();
+
+    }
+
+    private View createLampSettings(final MenuController parent) {
+
+        final MenuController menu = new MenuController(this, 1, 2);
+
+        final ButtonController back = new ButtonController(
+                this, "Back to Components Control", R.drawable.backtotop_white, -1);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                parent.setChild(null);
+            }
+        });
+        menu.addItem(back.getView());
+
+        final PickerController lampMode = new PickerController(
+                this, "Lamp Mode", Projector.lampModes, 0);
+        menu.addItem(lampMode.getView());
+
+        final ToggleController lampReminder = new ToggleController(this, "Lamp Reminder", false);
+        menu.addItem(lampReminder.getView());
+
+        final ButtonController lampReset = new ButtonController(this, "Lamp Reset");
+        menu.addItem(lampReset.getView());
+
+        final ButtonController lamp1Reset = new ButtonController(this, "Lamp1 Reset");
+        menu.addItem(lamp1Reset.getView());
+
+        final ButtonController lamp2Reset = new ButtonController(this, "Lamp2 Reset");
+        menu.addItem(lamp2Reset.getView());
+
+        final ButtonController lamp1and2Reset = new ButtonController(this, "Reset Lamp1 and Lamp2");
+        menu.addItem(lamp1and2Reset.getView());
+
+        return menu.getView();
+    }
+
+    private View createFilterSettings(final MenuController parent) {
+
+        final MenuController menu = new MenuController(this, 1, 2);
+
+        final ButtonController back = new ButtonController(
+                this, "Back to Components Control", R.drawable.backtotop_white, -1);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                parent.setChild(null);
+            }
+        });
+        menu.addItem(back.getView());
+
+        final ToggleController optionalFilterInstalled = new ToggleController(
+                this, "Optional Filter Installed", false
+        );
+        menu.addItem(optionalFilterInstalled.getView());
+
+        final PickerController filterReminder = new PickerController(
+                this, "Filter Reminder", Projector.filterReminders, 0
+        );
+        menu.addItem(filterReminder.getView());
+
+        final ButtonController filterReset = new ButtonController(
+                this, "Filter Reset"
+        );
+        menu.addItem(filterReset.getView());
+
+        return menu.getView();
+
+    }
+
+    private View createLensSettings(final MenuController parent) {
+
+        final MenuController menu = new MenuController(this, 1, 2);
+
+        final ButtonController back = new ButtonController(
+                this, "Back to Components Control", R.drawable.backtotop_white, -1);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                parent.setChild(null);
+            }
+        });
+        menu.addItem(back.getView());
+
+        final PickerController lensFunction = new PickerController(
+                this, "Lens Function", Projector.lensFunctions, 0
+        );
+        menu.addItem(lensFunction.getView());
+
+        final PickerController lensShift = new PickerController(
+                this, "Lens Shift", Projector.lensShifts, 0
+        );
+        menu.addItem(lensShift.getView());
+
+        final ButtonController lensCalibration = new ButtonController(
+                this, "Lens Calibration", -1, R.drawable.expand431
+        );
+        menu.addItem(lensCalibration.getView());
+
+        return menu.getView();
+
     }
 }
