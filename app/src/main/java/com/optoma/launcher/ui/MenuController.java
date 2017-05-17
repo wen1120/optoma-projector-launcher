@@ -1,6 +1,7 @@
 package com.optoma.launcher.ui;
 
 import android.content.Context;
+import android.inputmethodservice.Keyboard;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -43,20 +44,27 @@ public class MenuController implements ViewController {
         childLp.weight = totalWeight - weight;
         child.setLayoutParams(childLp);
 
-
-        view.setOnKeyListener(new View.OnKeyListener() {
-            @Override
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                if(event.getAction() != KeyEvent.ACTION_DOWN) return false;
-                Log.d("ken", "key on parent");
-                return false;
-            }
-        });
-
     }
 
     public void addItem(View v) {
+        v.setId(View.generateViewId());
+        final int childCount = content.getChildCount();
+
+        if(childCount == 0) {
+            v.setNextFocusUpId(v.getId());
+            v.setNextFocusDownId(v.getId());
+        } else {
+            final View first = content.getChildAt(0);
+            first.setNextFocusUpId(v.getId());
+
+            final View oldLast = content.getChildAt(childCount-1);
+            oldLast.setNextFocusDownId(View.NO_ID);
+            
+            v.setNextFocusDownId(content.getChildAt(0).getId());
+        }
+
         content.addView(v);
+
     }
 
     public void setChild(@Nullable View v) {
@@ -64,6 +72,7 @@ public class MenuController implements ViewController {
         if(v != null) {
             child.addView(v);
             gap.setVisibility(View.VISIBLE);
+            v.requestFocus();
         } else {
             gap.setVisibility(View.GONE);
         }
