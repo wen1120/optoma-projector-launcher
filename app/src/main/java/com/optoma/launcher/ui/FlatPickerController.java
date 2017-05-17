@@ -10,7 +10,6 @@ import com.optoma.launcher.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 /**
  * Created by ken.chou on 5/15/2017.
@@ -23,7 +22,7 @@ public class FlatPickerController implements ViewController {
     private int currentIndex;
 
     @BindView(R.id.title) TextView title;
-    @BindView(R.id.content) GridLayout content;
+    @BindView(R.id.tabs) GridLayout content;
 
     public FlatPickerController(Context context, String title, @DrawableRes int[] choices, int initial) {
         view = View.inflate(context, R.layout.menu_flat_picker, null);

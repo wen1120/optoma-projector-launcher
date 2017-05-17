@@ -10,6 +10,9 @@ import android.widget.TextView;
 
 import com.optoma.launcher.R;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -36,17 +39,6 @@ public class ButtonController implements ViewController {
             this.leadingImage.setImageResource(leadingImage);
         if(trailingImage>=0)
             this.trailingImage.setImageResource(trailingImage);
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d("ken", "in on click");
-
-                if(onClickListener != null) {
-                    Log.d("ken", "lis is not null");
-                    onClickListener.onClick(v);
-                }
-            }
-        });
 
         view.setOnKeyListener(new View.OnKeyListener() {
             @Override
@@ -61,7 +53,7 @@ public class ButtonController implements ViewController {
     }
 
     public void setOnClickListener(View.OnClickListener lis) {
-       onClickListener = lis;
+       view.setOnClickListener(lis);
     }
 
     @Override

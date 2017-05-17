@@ -16,7 +16,7 @@ public class MenuGroupController implements ViewController {
     @BindView(R.id.title)
     TextView title;
 
-    @BindView(R.id.content)
+    @BindView(R.id.tabs)
     LinearLayout content;
 
     public MenuGroupController(Context context, String title) {

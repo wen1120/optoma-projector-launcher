@@ -25,6 +25,11 @@ public class ShortcutController implements ViewController {
         label.setText(lab);
 
         view.setOnFocusChangeListener(new SizeChanger(1.25f, 80));
+
+    }
+
+    public void setOnClickListener(View.OnClickListener lis) {
+        view.setOnClickListener(lis);
     }
 
     @Override
@@ -32,7 +37,4 @@ public class ShortcutController implements ViewController {
         return view;
     }
 
-    public void setOnClickListener(View.OnClickListener lis) {
-        view.setOnClickListener(lis);
-    }
 }

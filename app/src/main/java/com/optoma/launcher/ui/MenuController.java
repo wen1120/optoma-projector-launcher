@@ -1,15 +1,15 @@
 package com.optoma.launcher.ui;
 
 import android.content.Context;
-import android.inputmethodservice.Keyboard;
+import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
-import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 
 import com.optoma.launcher.R;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -17,64 +17,76 @@ import butterknife.ButterKnife;
 public class MenuController implements ViewController {
     private View view;
 
+    @BindView(R.id.selector)
+    ViewGroup itemsWrapper;
+
     @BindView(R.id.content)
-    LinearLayout content;
+    ViewGroup contentWrapper;
 
-    @BindView(R.id.parent)
-    ViewGroup parent;
+    private MenuController from;
+    private List<ViewController> items = new ArrayList<>();
 
-    @BindView(R.id.child)
-    ViewGroup child;
-
-    @BindView(R.id.parent_child_gap)
-    View gap;
-
-    public MenuController(Context context, int weight, int totalWeight) {
-        view = View.inflate(context, R.layout.menu_panel, null);
+    public MenuController(Context context, @LayoutRes int layout, MenuController from) {
+        view = View.inflate(context, layout, null);
 
         ButterKnife.bind(this, view);
 
-        final LinearLayout.LayoutParams parentLp = new LinearLayout.LayoutParams(
-                0, ViewGroup.LayoutParams.MATCH_PARENT);
-        parentLp.weight = weight;
-        parent.setLayoutParams(parentLp);
-
-        final LinearLayout.LayoutParams childLp = new LinearLayout.LayoutParams(
-                0, ViewGroup.LayoutParams.MATCH_PARENT);
-        childLp.weight = totalWeight - weight;
-        child.setLayoutParams(childLp);
-
+        this.from = from;
     }
 
-    public void addItem(View v) {
-        v.setId(View.generateViewId());
-        final int childCount = content.getChildCount();
+    public void addItem(ViewController item) {
+        final View v = item.getView();
 
-        if(childCount == 0) {
+        v.setId(View.generateViewId());
+
+        if(items.isEmpty()) {
             v.setNextFocusUpId(v.getId());
             v.setNextFocusDownId(v.getId());
+            v.requestFocus();
         } else {
-            final View first = content.getChildAt(0);
+            final View first = items.get(0).getView();
             first.setNextFocusUpId(v.getId());
 
-            final View oldLast = content.getChildAt(childCount-1);
+            final View oldLast = items.get(items.size()-1).getView();
             oldLast.setNextFocusDownId(View.NO_ID);
-            
-            v.setNextFocusDownId(content.getChildAt(0).getId());
+
+            v.setNextFocusDownId(items.get(0).getView().getId());
         }
 
-        content.addView(v);
+        items.add(item);
+        itemsWrapper.addView(v);
 
     }
 
-    public void setChild(@Nullable View v) {
-        child.removeAllViews();
-        if(v != null) {
-            child.addView(v);
-            gap.setVisibility(View.VISIBLE);
-            v.requestFocus();
+    public void addDummyItem(View v) {
+        itemsWrapper.addView(v);
+    }
+
+    public void setContent(@Nullable View content, ViewController trigger) {
+        if(trigger != null) {
+            trigger.getView().setSelected(true);
+        }
+        contentWrapper.removeAllViews();
+        if(content != null) {
+            contentWrapper.addView(content);
+        }
+    }
+
+    public ViewController getSelectedItem() {
+        for(ViewController c: items) {
+            if(c.getView().isSelected()) return c;
+        }
+        throw new RuntimeException();
+    }
+
+    public void dismiss() {
+        if(from != null) {
+            from.setContent(null, null);
+            final View selectedItem = from.getSelectedItem().getView();
+            selectedItem.setSelected(false);
+            selectedItem.requestFocus();
         } else {
-            gap.setVisibility(View.GONE);
+            throw new RuntimeException("dismissing root menu");
         }
     }
 

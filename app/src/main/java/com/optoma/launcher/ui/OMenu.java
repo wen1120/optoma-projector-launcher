@@ -64,7 +64,7 @@ public class OMenu extends LinearLayout {
                     content.getChildAt(i).setEnabled(isChecked);
                     content.getChildAt(i).setFocusable(isChecked);
                 }
-                // content.setEnabled(isChecked);
+                // selector.setEnabled(isChecked);
             }
         });
 

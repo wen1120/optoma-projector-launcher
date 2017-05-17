@@ -22,9 +22,7 @@ public class Projector {
             "User (3D)",
             "ISF Day",
             "ISF Night",
-            "ISF 3D",
-            "2D High Speed",
-            "Blending"
+            "ISF 3D"
     };
 
     public static final String[] wallColors = new String[]{
@@ -54,13 +52,7 @@ public class Projector {
             "1.8",
             "2.0",
             "2.4",
-            "2.6",
-            "3D",
-            "Blackboard",
-            "DICOM SIM.",
-            "Bright",
-            "CRT",
-            "User"
+            "2.6"
     };
 
     public static final String[] colorTemperatures = new String[] {

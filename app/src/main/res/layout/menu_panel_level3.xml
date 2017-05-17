@@ -29,14 +29,9 @@
         </ScrollView>
     </FrameLayout>
 
-    <Space
-        android:layout_width="5dp"
-        android:layout_height="match_parent"
-        android:id="@+id/gap"/>
-
     <FrameLayout
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="2"
+        android:layout_weight="0"
         android:id="@+id/content"/>
 </LinearLayout>
