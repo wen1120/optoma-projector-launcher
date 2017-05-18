@@ -226,6 +226,10 @@
                 android:textColor="@color/p301c"
                 android:fontFamily="sans-serif">
             </TextView>
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:layout_below="@+id/setup_test_pattern_view"/>
         </RelativeLayout>
     </ScrollView>
     <Space
