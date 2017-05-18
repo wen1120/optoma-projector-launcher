@@ -154,7 +154,7 @@ public class Home extends Activity {
                         intent.setClassName(getPackageName(), getPackageName() + ".Settings.Settings");
                         break;
                     case R.id.shortcut_app8: // projector settings
-                        intent.setClassName(getPackageName(), getPackageName() + ".ProjectorSetup.ProjectorMain");
+                        intent.setClass(Home.this, Setup.class);
                         break;
                     default:
                         intent.setClassName(getPackageName(), getPackageName() + ".Settings.Settings");

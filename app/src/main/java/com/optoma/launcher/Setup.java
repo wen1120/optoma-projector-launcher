@@ -1,6 +1,7 @@
 package com.optoma.launcher;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -9,6 +10,9 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Space;
 
+import com.optoma.launcher.ProjectorSetup.Signal;
+import com.optoma.launcher.ProjectorSetup.SourceControl;
+import com.optoma.launcher.ProjectorSetup.ThreeD;
 import com.optoma.launcher.ui.ButtonController;
 import com.optoma.launcher.ui.MenuController;
 import com.optoma.launcher.ui.MenuGroupController;
@@ -77,18 +81,36 @@ public class Setup extends Activity {
 
         final ShortcutController threeD = new ShortcutController(
                 this, R.drawable.e_3d, getResources().getString(R.string.projector_3d));
+        threeD.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Setup.this, ThreeD.class));
+            }
+        });
         menu.addItem(threeD);
 
         menu.addDummyItem(createSpace());
 
         final ShortcutController signal = new ShortcutController(
                 this, R.drawable.signal, getResources().getString(R.string.projector_signal));
+        signal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Setup.this, Signal.class));
+            }
+        });
         menu.addItem(signal);
 
         menu.addDummyItem(createSpace());
 
         final ShortcutController installation = new ShortcutController(
                 this, R.drawable.installation, getResources().getString(R.string.projector_installation));
+        installation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Setup.this, com.optoma.launcher.ProjectorSetup.Setup.class));
+            }
+        });
         menu.addItem(installation);
 
         menu.addDummyItem(createSpace());
@@ -107,6 +129,12 @@ public class Setup extends Activity {
 
         final ShortcutController sourceControl = new ShortcutController(
                 this, R.drawable.source_control, getResources().getString(R.string.projector_source_control));
+        sourceControl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Setup.this, SourceControl.class));
+            }
+        });
         menu.addItem(sourceControl);
 
         return menu.getView();
