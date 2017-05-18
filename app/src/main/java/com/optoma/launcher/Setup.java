@@ -479,46 +479,46 @@ public class Setup extends Activity {
         return menu.getView();
     }
 
-//    private View createPipPbp(final ViewGroup parent) {
-//        final MenuController menu = new MenuController(this, 1, 3);
-//        menu.setContent(null);
-//
-//        final PickerController screen = new PickerController(
-//                this, "Screen", Projector.pipPbpScreens, 0);
-//        menu.addItem(screen.getView());
-//
-//        final PickerController location = new PickerController(
-//                this, "Location", Projector.pipPbpLocations, 0);
-//        menu.addItem(location.getView());
-//
-//        final PickerController size = new PickerController(
-//                this, "Size", Projector.pipPdpSizes, 0);
-//        menu.addItem(size.getView());
-//
-//        final MenuGroupController source = new MenuGroupController(this, "Source");
-//        {
-//            final PickerController mainSource = new PickerController(
-//                    this, "Main Source", Projector.mainSources, 0);
-//            source.addItem(mainSource.getView());
-//
-//            final PickerController subSource = new PickerController(
-//                    this, "Sub Source", Projector.mainSources, 0);
-//            source.addItem(subSource.getView());
-//        }
-//        menu.addItem(source.getView());
-//
-//        final ButtonController back = new ButtonController(
-//                this, "Back to Projector Setup", R.drawable.backtotop_white, -1);
-//        back.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                parent.removeAllViews();
-//            }
-//        });
-//        menu.addItem(back.getView());
-//
-//        return menu.getView();
-//    }
+    private View createPipPbp(final MenuController parent) {
+        final MenuController menu = new MenuController(
+                this, R.layout.menu_panel, parent);
+
+        final PickerController screen = new PickerController(
+                this, "Screen", Projector.pipPbpScreens, 0);
+        menu.addItem(screen);
+
+        final PickerController location = new PickerController(
+                this, "Location", Projector.pipPbpLocations, 0);
+        menu.addItem(location);
+
+        final PickerController size = new PickerController(
+                this, "Size", Projector.pipPdpSizes, 0);
+        menu.addItem(size);
+
+        final MenuGroupController source = new MenuGroupController(this, "Source");
+        {
+            final PickerController mainSource = new PickerController(
+                    this, "Main Source", Projector.mainSources, 0);
+            source.addItem(mainSource.getView());
+
+            final PickerController subSource = new PickerController(
+                    this, "Sub Source", Projector.mainSources, 0);
+            source.addItem(subSource.getView());
+        }
+        menu.addItem(source);
+
+        final ButtonController back = new ButtonController(
+                this, "Back to Projector Setup", R.drawable.backtotop_white, -1);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                menu.dismiss();
+            }
+        });
+        menu.addItem(back);
+
+        return menu.getView();
+    }
 
     private View createDevicesControl(final MenuController parent) {
 

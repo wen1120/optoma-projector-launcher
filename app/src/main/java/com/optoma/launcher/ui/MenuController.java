@@ -40,7 +40,7 @@ public class MenuController implements ViewController {
         v.setId(View.generateViewId());
 
         if(items.isEmpty()) {
-            v.setNextFocusUpId(v.getId());
+            v.setNextFocusUpId(v.getId()); //TODO: how about horizontal menus?
             v.setNextFocusDownId(v.getId());
             v.requestFocus();
         } else {
