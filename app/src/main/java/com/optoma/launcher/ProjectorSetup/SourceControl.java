@@ -63,8 +63,13 @@ public class SourceControl extends Activity {
         ivSCOnOff[index].setImageResource(ImageSource);
     }
 
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        switch (keyCode) {
+    public boolean dispatchKeyEvent(KeyEvent event) {
+        if (event.getAction() != KeyEvent.ACTION_DOWN)
+            return super.dispatchKeyEvent(event);
+        switch (event.getKeyCode()) {
+            case KeyEvent.KEYCODE_BACK:
+                finish();
+                break;
             case KeyEvent.KEYCODE_DPAD_UP:
                 if(yPosition == 4) {
                     vSCBigView[0].setVisibility(View.VISIBLE);
@@ -85,7 +90,6 @@ public class SourceControl extends Activity {
                     yPosition++;
                 }
                 break;
-
             case KeyEvent.KEYCODE_DPAD_LEFT:
             case KeyEvent.KEYCODE_DPAD_RIGHT:
             case KeyEvent.KEYCODE_ENTER:
@@ -106,10 +110,10 @@ public class SourceControl extends Activity {
                         SetOnOff(4);
                         break;
                     case 2:
-                        if(KeyEvent.KEYCODE_ENTER == keyCode) break;
-                        else if(KeyEvent.KEYCODE_DPAD_LEFT == keyCode) {
+                        if(KeyEvent.KEYCODE_ENTER == event.getKeyCode()) break;
+                        else if(KeyEvent.KEYCODE_DPAD_LEFT == event.getKeyCode()) {
                             iPowerOnLink = iPowerOnLink > 0 ? iPowerOnLink - 1 : aSCPowerOnLink.size() - 1;
-                        } else if(KeyEvent.KEYCODE_DPAD_RIGHT == keyCode) {
+                        } else if(KeyEvent.KEYCODE_DPAD_RIGHT == event.getKeyCode()) {
                             iPowerOnLink = iPowerOnLink < aSCPowerOnLink.size() - 1 ? iPowerOnLink + 1 : 0;
                         }
                         tvSCContent[0].setText(aSCPowerOnLink.get(iPowerOnLink));
@@ -117,7 +121,6 @@ public class SourceControl extends Activity {
                 }
                 break;
         }
-        Log.d(TAG, "yPosition =  " + yPosition + ",keycode = " + keyCode);
-        return super.onKeyDown(keyCode, event);
+        return super.dispatchKeyEvent(event);
     }
 }

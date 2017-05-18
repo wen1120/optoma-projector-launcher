@@ -89,10 +89,10 @@ public class ProjectorMain extends Activity {
                         intent.setClassName(getPackageName(), getPackageName() + ".Settings.Settings");
                         break;
                     case R.id.projector_button4:
-                        intent.setClassName(getPackageName(), getPackageName() + ".InputSource");
+                        intent.setClassName(getPackageName(), getPackageName() + ".ProjectorSetup.ThreeD");
                         break;
                     case R.id.projector_button5:
-                        intent.setClassName(getPackageName(), getPackageName() + ".InputSource");
+                        intent.setClassName(getPackageName(), getPackageName() + ".ProjectorSetup.Signal");
                         break;
                     case R.id.projector_button6:
                         intent.setClassName(getPackageName(), getPackageName() + ".ProjectorSetup.Setup");

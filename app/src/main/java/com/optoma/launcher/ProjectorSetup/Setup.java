@@ -64,8 +64,13 @@ public class Setup extends Activity {
         ivSetupOnOff[index].setImageResource(ImageSource);
     }
 
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        switch (keyCode) {
+    public boolean dispatchKeyEvent(KeyEvent event) {
+        if (event.getAction()!=KeyEvent.ACTION_DOWN)
+            return super.dispatchKeyEvent(event);
+        switch(event.getKeyCode()) {
+            case KeyEvent.KEYCODE_BACK:
+                finish();
+                break;
             case KeyEvent.KEYCODE_DPAD_UP:
                 if(yPosition == 3) {
                     vSetupBigView[0].setVisibility(View.VISIBLE);
@@ -97,9 +102,9 @@ public class Setup extends Activity {
                     case 0:
                         break;
                     case 1:
-                        if(KeyEvent.KEYCODE_DPAD_LEFT == keyCode) {
+                        if(KeyEvent.KEYCODE_DPAD_LEFT == event.getKeyCode()) {
                             iCeilingMount = iCeilingMount > 0 ? iCeilingMount - 1 : aSetupCeilingMount.size() - 1;
-                        } else if(KeyEvent.KEYCODE_DPAD_RIGHT == keyCode) {
+                        } else if(KeyEvent.KEYCODE_DPAD_RIGHT == event.getKeyCode()) {
                             iCeilingMount = iCeilingMount < aSetupCeilingMount.size() - 1 ? iCeilingMount + 1 : 0;
                         }
                         tvSetupContent[0].setText(aSetupCeilingMount.get(iCeilingMount));
@@ -108,9 +113,9 @@ public class Setup extends Activity {
                         SetOnOff(0);
                         break;
                     case 3:
-                        if(KeyEvent.KEYCODE_DPAD_LEFT == keyCode) {
+                        if(KeyEvent.KEYCODE_DPAD_LEFT == event.getKeyCode()) {
                             iTestPattern = iTestPattern > 0 ? iTestPattern - 1 : aSetupTestPattern.size() - 1;
-                        } else if(KeyEvent.KEYCODE_DPAD_RIGHT == keyCode) {
+                        } else if(KeyEvent.KEYCODE_DPAD_RIGHT == event.getKeyCode()) {
                             iTestPattern = iTestPattern < aSetupTestPattern.size() - 1 ? iTestPattern + 1 : 0;
                         }
                         tvSetupContent[1].setText(aSetupTestPattern.get(iTestPattern));
@@ -118,7 +123,6 @@ public class Setup extends Activity {
                 }
                 break;
         }
-        Log.d(TAG, "yPosition =  " + yPosition + ",keycode = " + keyCode);
-        return super.onKeyDown(keyCode, event);
+        return super.dispatchKeyEvent(event);
     }
 }

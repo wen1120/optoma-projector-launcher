@@ -149,9 +149,25 @@
     <string name="projector_pip_pbp">PIP/PBP</string>
     <string name="projector_3d">3D</string>
     <string name="projector_signal">Signal</string>
-    <string name="projector_installation">Installation</string>
+    <string name="projector_installation">Setup</string>
     <string name="projector_components_control">Devices Control</string>
     <string name="projector_source_control">Source Control</string>
+    <string name="threed_3d_mode">3D Mode</string>
+    <string name="threed_3d_2d">3D-2D</string>
+    <string name="threed_3d_format">3D Format</string>
+    <string name="threed_3d_sync_invert">3D sync invert</string>
+    <string name="threed_2d_3d">2D-3D</string>
+    <string name="signal_automatic">Automatic</string>
+    <string name="signal_frequency">Frequency</string>
+    <string name="signal_phase">Phase</string>
+    <string name="signal_hposition">H. Position</string>
+    <string name="signal_vposition">V. Position</string>
+    <string name="signal_color_space">Color Space</string>
+    <string name="signal_white_level">White Level</string>
+    <string name="signal_black_level">Black Level</string>
+    <string name="signal_saturation">Saturation</string>
+    <string name="signal_hue">Hue</string>
+    <string name="signal_ire">IRE</string>
     <string name="setup_position">Position</string>
     <string name="setup_ceiling_mount">Ceiling Mount</string>
     <string name="setup_rear_projection">Rear Projection</string>
@@ -197,6 +213,43 @@
         <item>English</item>
         <item>3</item>
         <item>Crestron, PJ Link, HTTP</item>
+    </string-array>
+    <string-array name="threed_3d_mode_array">
+        <item>Off</item>
+        <item>DLP-Link</item>
+        <item>IR</item>
+    </string-array>
+    <string-array name="threed_3d_2d_array">
+        <item>3D</item>
+        <item>L</item>
+        <item>R</item>
+    </string-array>
+    <string-array name="threed_3d_format_array">
+        <item>Auto</item>
+        <item>SBS</item>
+        <item>Top and Bottom</item>
+        <item>Frame Sequential</item>
+        <item>Frame Packing</item>
+        <item>Off</item>
+    </string-array>
+    <string-array name="threed_2d_3d_array">
+        <item>Off</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+    <string-array name="signal_color_space_array">
+        <item>Auto</item>
+        <item>RGB</item>
+        <item>YUV</item>
+        <item>RGB(0~255)</item>
+        <item>RGB(16~235)</item>
+        <item>Rec. 709</item>
+        <item>Rec. 601</item>
+    </string-array>
+    <string-array name="signal_ire_array">
+        <item>0</item>
+        <item>7.5</item>
     </string-array>
     <string-array name="setup_ceiling_mount_array">
         <item>Off</item>
