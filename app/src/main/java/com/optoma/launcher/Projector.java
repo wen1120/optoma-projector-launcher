@@ -152,11 +152,6 @@ public class Projector {
             "Swipe Screen"
     };
 
-    public static final String[] anamorphicLensType = new String[] {
-            "None",
-            "Fixed",
-            "Movable"
-    };
 
     public static final String[] lampModes = new String[] {
             "Dual",
@@ -191,5 +186,39 @@ public class Projector {
             "Red",
             "Green",
             "Blue"
+    };
+
+    public static final String[] ultraDetails = new String[] {
+            "HD+",
+            "User",
+            "1",
+            "2",
+            "3",
+    };
+
+    public static final String[] lensTypes = new String[] {
+            "WT1",
+            "WT2",
+            "ST1",
+            "TZ1",
+            "TZ2"
+    };
+
+    public static final String[] anamorphicLensTypes = new String[] {
+            "None",
+            "Fixed",
+            "Movable"
+    };
+
+    public static final String[] irFunctions = new String[] {
+            "Off All",
+            "On All",
+            "Front",
+            "Top",
+            "Front Off",
+            "Front On",
+            "Top Off",
+            "Top On",
+            "Back"
     };
 }

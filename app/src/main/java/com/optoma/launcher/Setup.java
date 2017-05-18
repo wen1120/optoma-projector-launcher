@@ -5,12 +5,14 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Space;
 
 import com.optoma.launcher.ui.ButtonController;
 import com.optoma.launcher.ui.MenuController;
 import com.optoma.launcher.ui.MenuGroupController;
+import com.optoma.launcher.ui.MenuGroupWithToggleController;
 import com.optoma.launcher.ui.PickerController;
 import com.optoma.launcher.ui.SeekBarController;
 import com.optoma.launcher.ui.ShortcutController;
@@ -147,9 +149,15 @@ public class Setup extends Activity {
         final SeekBarController tint = new SeekBarController(this, "Tint", 0, -50, 50, 1);
         menu.addItem(tint);
 
+        final ToggleController dynamicBlack = new ToggleController(this, "Dynamic Black", false);
+        menu.addItem(dynamicBlack);
+
         final PickerController brightnessMode = new PickerController(
                 this, "Brightness Mode", Projector.brightnessModes, 0);
         menu.addItem(brightnessMode);
+
+        final SeekBarController power = new SeekBarController(this, "Power", 50, 50, 100, 1);
+        menu.addItem(power);
 
         final PickerController gammaMode = new PickerController(
                 this, "Gamma Mode", Projector.gammaModes, 3);
@@ -166,6 +174,22 @@ public class Setup extends Activity {
             }
         });
         menu.addItem(colorSettings);
+
+        final MenuGroupWithToggleController ultraDetail = new MenuGroupWithToggleController(
+                this, "Ultra Detail", false
+        );
+
+        final PickerController ultraDetailMode = new PickerController(
+                this, null, Projector.ultraDetails, 0
+        );
+        ultraDetail.addItem(ultraDetailMode.getView());
+
+        final SeekBarController user = new SeekBarController(
+                this, "User", 0, 0, 150, 1
+        );
+        ultraDetail.addItem(user.getView());
+        menu.addItem(ultraDetail);
+
 
         final ButtonController pureEngine = new ButtonController(
                 this, "PureEngine", 0, R.drawable.expand431);
@@ -219,6 +243,10 @@ public class Setup extends Activity {
         final PickerController colorTemperature = new PickerController(
                 this, "Color Temperature", Projector.colorTemperatures, 0);
         menu.addItem(colorTemperature);
+
+        final ButtonController resetColorTemperature = new ButtonController(
+                this, "Reset Color Temperature", -1, -1);
+        menu.addItem(resetColorTemperature);
 
         final ButtonController colorMatching = new ButtonController(
                 this, "Color Matching", -1, R.drawable.expand431);
@@ -436,6 +464,16 @@ public class Setup extends Activity {
         final SeekBarController zoom = new SeekBarController(this, "Zoom", 0, -5, 25, 1);
         menu.addItem(zoom);
 
+        final MenuGroupController digitalZoom = new MenuGroupController(this, "Digital Zoom");
+        {
+            final SeekBarController h = new SeekBarController(this, "H Zoom", 0, 0, 100, 1);
+            digitalZoom.addItem(h.getView());
+
+            final SeekBarController v = new SeekBarController(this, "V Zoom", 0, 0, 100, 1);
+            digitalZoom.addItem(v.getView());
+        }
+        menu.addItem(digitalZoom);
+
         final MenuGroupController imageShift = new MenuGroupController(this, "Image Shift");
         {
             final SeekBarController h = new SeekBarController(this, "H", 0, -100, 100, 1);
@@ -546,15 +584,27 @@ public class Setup extends Activity {
 
         final ButtonController lensSettings = new ButtonController(
                 this, "Lens Settings", 0, R.drawable.expand431);
+        lensSettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                menu.setContent(createLensSettings(menu), lensSettings);
+            }
+        });
         menu.addItem(lensSettings);
 
         final PickerController anamorphicLens = new PickerController(
-                this, "Anamorphic Lens", Projector.anamorphicLensType, 0
+                this, "Anamorphic Lens", Projector.anamorphicLensTypes, 0
         );
         menu.addItem(anamorphicLens);
 
         final ButtonController remoteSettings = new ButtonController(
                 this, "Remote Settings", 0, R.drawable.expand431);
+        remoteSettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                menu.setContent(createRemoteSettings(menu), remoteSettings);
+            }
+        });
         menu.addItem(remoteSettings);
 
         final ToggleController twelveVTrigger = new ToggleController(
@@ -562,14 +612,20 @@ public class Setup extends Activity {
         );
         menu.addItem(twelveVTrigger);
 
-        final ButtonController twelveVTriggerB = new ButtonController(
-                this, "12V Trigger B", 0, R.drawable.expand431);
-        menu.addItem(twelveVTriggerB);
-
         final ToggleController highAltitude = new ToggleController(
                 this, "High Altitude", false
         );
         menu.addItem(highAltitude);
+
+        final ToggleController twelveVTriggerA = new ToggleController(
+                this, "12V Trigger A", false
+        );
+        menu.addItem(twelveVTriggerA);
+
+        final ButtonController twelveVTriggerB = new ButtonController(
+                this, "12V Trigger B", 0, R.drawable.expand431);
+        menu.addItem(twelveVTriggerB);
+
 
         final ButtonController back = new ButtonController(
                 this, "Back to Projector Setup", R.drawable.backtotop_white, -1);
@@ -670,7 +726,74 @@ public class Setup extends Activity {
         );
         menu.addItem(lensCalibration);
 
+        final PickerController lensType = new PickerController(
+                this, "Lens Type", Projector.lensTypes, 0
+        );
+        menu.addItem(lensType);
+
+        final PickerController zoomLock = new PickerController(
+                this, "Zoom", new String[] { "Lock", "Unlock" }, 0
+        );
+        menu.addItem(zoomLock);
+
+        final PickerController focusLock = new PickerController(
+                this, "Focus Shift", new String[] { "Lock", "Unlock" }, 0
+        );
+        menu.addItem(focusLock );
+
+        final PickerController lensShiftLock = new PickerController(
+                this, "Lens Shift", new String[] { "Lock", "Unlock" }, 0
+        );
+        menu.addItem(lensShiftLock);
+
+        final ToggleController shutter = new ToggleController(
+                this, "Shutter", false
+        );
+        menu.addItem(shutter);
+
+//        final MenuGroupController lensMemory = new MenuGroupController(this, "Lens Memory");
+//        {
+//            final SeekBarController applyPosition = new SeekBarController(this, "Apply Position", 1, 1, 10, 1);
+//            lensMemory.addItem(applyPosition.getView());
+//
+//            final SeekBarController saveCurrentPosition = new SeekBarController(this, "Save Current Position", 1, 1, 10, 1);
+//            lensMemory.addItem(saveCurrentPosition.getView());
+//        }
+//        menu.addItem(lensMemory);
+
         return menu.getView();
 
+    }
+
+    private View createRemoteSettings(MenuController parent) {
+        final MenuController menu = new MenuController(this, R.layout.menu_panel_level2, parent);
+
+        final ButtonController back = new ButtonController(
+                this, "Back to Components Control", R.drawable.backtotop_white, -1);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                menu.dismiss();
+            }
+        });
+        menu.addItem(back);
+
+        final PickerController irFunction = new PickerController(
+                this, "IR Function", Projector.irFunctions, 0);
+        menu.addItem(irFunction);
+
+        final SeekBarController remoteCode = new SeekBarController(this, "Remote Code", 0, 0, 99, 1);
+        menu.addItem(remoteCode);
+
+        final ButtonController user1 = new ButtonController(this, "user1 (F1)");
+        menu.addItem(user1);
+
+        final ButtonController user2 = new ButtonController(this, "user2 (F1)");
+        menu.addItem(user2);
+
+        final ButtonController user3 = new ButtonController(this, "user3 (F1)");
+        menu.addItem(user3);
+
+        return menu.getView();
     }
 }
