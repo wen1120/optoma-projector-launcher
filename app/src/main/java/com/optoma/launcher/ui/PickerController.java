@@ -1,6 +1,7 @@
 package com.optoma.launcher.ui;
 
 import android.content.Context;
+import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -24,13 +25,18 @@ public class PickerController implements ViewController {
     @BindView(R.id.left_arrow) View leftButton;
     @BindView(R.id.right_arrow) View rightButton;
 
-    public PickerController(Context context, String title, String[] values, int initial) {
+    public PickerController(
+            Context context, @Nullable String title, String[] values, int initial) {
         view = View.inflate(context, R.layout.menu_picker, null);
         this.values = values;
         this.currentIndex = initial;
         ButterKnife.bind(this, view);
 
-        this.title.setText(title);
+        if(title == null) {
+            this.title.setVisibility(View.GONE);
+        } else {
+            this.title.setText(title);
+        }
         this.current.setText(values[initial]);
 
         view.setNextFocusUpId(view.getId());
