@@ -79,6 +79,20 @@ public class Projector {
             "W"
     };
 
+    public static final String[] colorGamuts = new String[] {
+            "Native",
+            "REC2020",
+            "ADOBE",
+            "DLP-C",
+            "HDTV",
+            "EBU",
+            "SMPTE-C",
+            "Presentation",
+            "Cinema",
+            "Game"
+    };
+
+
     public static final String[] aspectRatios = new String[]{
             "[None]",
             "4:3",
@@ -172,4 +186,10 @@ public class Projector {
     };
 
 
+    public static final String[] rgbChannels = new String[] {
+            "Normal",
+            "Red",
+            "Green",
+            "Blue"
+    };
 }

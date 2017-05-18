@@ -2,6 +2,7 @@ package com.optoma.launcher;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -40,7 +41,7 @@ public class Setup extends Activity {
         imageSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                menu.setContent(createImageSettingsMenu(menu), imageSettings);
+                menu.setContent(createImageSettings(menu), imageSettings);
             }
         });
         menu.addItem(imageSettings);
@@ -90,15 +91,15 @@ public class Setup extends Activity {
 
         menu.addDummyItem(createSpace());
 
-        final ShortcutController componentsControl = new ShortcutController(
+        final ShortcutController devicesControl = new ShortcutController(
                 this, R.drawable.components_control, getResources().getString(R.string.projector_components_control));
-        componentsControl.setOnClickListener(new View.OnClickListener() {
+        devicesControl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               // TODO
+               menu.setContent(createDevicesControl(menu), devicesControl);
             }
         });
-        menu.addItem(componentsControl);
+        menu.addItem(devicesControl);
 
         menu.addDummyItem(createSpace());
 
@@ -117,7 +118,7 @@ public class Setup extends Activity {
         return space;
     }
 
-    private View createImageSettingsMenu(final MenuController from) {
+    private View createImageSettings(final MenuController from) {
 
         final MenuController menu = new MenuController(this, R.layout.menu_panel, from);
 
@@ -131,14 +132,7 @@ public class Setup extends Activity {
                 this, "Wall Color", Projector.wallColors, 0);
         menu.addItem(wallColor);
 
-        final SeekBarController brightnessValue = new SeekBarController(this, "Value", 0, -50, 50, 1);
-
-        final PickerController brightnessMode = new PickerController(
-                this, "Brightness Mode", Projector.brightnessModes, 0);
-
-        final MenuGroupController brightness = new MenuGroupController(this, "Brightness");
-        brightness.addItem(brightnessValue.getView());
-        brightness.addItem(brightnessMode.getView());
+        final SeekBarController brightness = new SeekBarController(this, "Brightness", 0, -50, 50, 1);
         menu.addItem(brightness);
 
         final SeekBarController contrast = new SeekBarController(this, "Contrast", 0, -50, 50, 1);
@@ -153,6 +147,10 @@ public class Setup extends Activity {
         final SeekBarController tint = new SeekBarController(this, "Tint", 0, -50, 50, 1);
         menu.addItem(tint);
 
+        final PickerController brightnessMode = new PickerController(
+                this, "Brightness Mode", Projector.brightnessModes, 0);
+        menu.addItem(brightnessMode);
+
         final PickerController gammaMode = new PickerController(
                 this, "Gamma Mode", Projector.gammaModes, 3);
         menu.addItem(gammaMode);
@@ -164,7 +162,7 @@ public class Setup extends Activity {
             @Override
             public void onClick(View v) {
                 // Toast.makeText(Setup.this, "hello?", Toast.LENGTH_SHORT).show();
-                menu.setContent(createColorSettingsMenu(menu), colorSettings);
+                menu.setContent(createColorSettings(menu), colorSettings);
             }
         });
         menu.addItem(colorSettings);
@@ -202,7 +200,7 @@ public class Setup extends Activity {
         return menu.getView();
     }
 
-    private View createColorSettingsMenu(final MenuController parent) {
+    private View createColorSettings(final MenuController parent) {
         final MenuController menu = new MenuController(this, R.layout.menu_panel_level2, parent);
 
         final ButtonController back = new ButtonController(
@@ -227,10 +225,38 @@ public class Setup extends Activity {
         colorMatching.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                menu.setContent(createColorMatchingMenu(menu), colorMatching);
+                menu.setContent(createColorMatching(menu), colorMatching);
             }
         });
         menu.addItem(colorMatching);
+
+        final PickerController colorGamut = new PickerController(
+                this, "Color Gamut", Projector.colorGamuts, 0);
+        menu.addItem(colorGamut);
+
+        final ButtonController cms = new ButtonController(
+                this, "CMS", -1, R.drawable.expand431);
+        cms.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                menu.setContent(createCMS(menu), cms);
+            }
+        });
+        menu.addItem(cms);
+
+        final ButtonController rgbGainBias = new ButtonController(
+                this, "RGB Gain/Bias", -1, R.drawable.expand431);
+        rgbGainBias.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                menu.setContent(createRGBGainBias(menu), rgbGainBias);
+            }
+        });
+        menu.addItem(rgbGainBias);
+
+        final PickerController rgbChannel = new PickerController(
+                this, "RGB Channel", Projector.rgbChannels, 0);
+        menu.addItem(rgbChannel);
 
         return menu.getView();
     }
@@ -247,6 +273,10 @@ public class Setup extends Activity {
             }
         });
         menu.addItem(back);
+
+        final ToggleController contrast = new ToggleController(
+                this, "PureContrast", false);
+        menu.addItem(contrast);
 
         final PickerController color = new PickerController(
                 this, "PureColor", new String[]{"Off", "1", "2", "3", "4", "5"}, 0);
@@ -290,7 +320,7 @@ public class Setup extends Activity {
         return menu.getView();
     }
 
-    private View createColorMatchingMenu(final MenuController parent) {
+    private View createColorMatching(final MenuController parent) {
         final MenuController menu = new MenuController(this, R.layout.menu_panel_level3, parent);
 
         final ButtonController back = new ButtonController(
@@ -315,6 +345,79 @@ public class Setup extends Activity {
 
         final SeekBarController gain = new SeekBarController(this, "Gain", 0, -50, 50, 1);
         menu.addItem(gain);
+
+        final ButtonController reset = new ButtonController(
+                this, "Reset", -1, -1);
+        menu.addItem(reset);
+
+        return menu.getView();
+    }
+
+    private View createCMS(final MenuController parent) {
+
+        final MenuController menu = new MenuController(
+                this, R.layout.menu_panel_level3, parent);
+
+        final ButtonController back = new ButtonController(
+                this, "Back to Color Settings", R.drawable.backtotop_white, -1);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                menu.dismiss();
+            }
+        });
+        menu.addItem(back);
+
+        final PickerController color = new PickerController(
+                this, "Color", Projector.colorSettingsColors, 0);
+        menu.addItem(color);
+
+        final SeekBarController xOffset= new SeekBarController(this, "X Offset", 0, -50, 50, 1);
+        menu.addItem(xOffset);
+
+        final SeekBarController yOffset = new SeekBarController(this, "Y Offset", 0, -50, 50, 1);
+        menu.addItem(yOffset);
+
+        final SeekBarController brightness = new SeekBarController(this, "Brightness", 0, -50, 50, 1);
+        menu.addItem(brightness);
+
+        return menu.getView();
+    }
+
+    private View createRGBGainBias(final MenuController parent) {
+        final MenuController menu = new MenuController(
+                this, R.layout.menu_panel_level3, parent);
+
+        final ButtonController back = new ButtonController(
+                this, "Back to Color Settings", R.drawable.backtotop_white, -1);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                menu.dismiss();
+            }
+        });
+        menu.addItem(back);
+
+        final SeekBarController redGain = new SeekBarController(this, "Red Gain", 0, -50, 50, 1);
+        menu.addItem(redGain);
+
+        final SeekBarController greenGain = new SeekBarController(this, "Green Gain", 0, -50, 50, 1);
+        menu.addItem(greenGain);
+
+        final SeekBarController blueGain = new SeekBarController(this, "Blue Gain", 0, -50, 50, 1);
+        menu.addItem(blueGain);
+
+        final SeekBarController redBias = new SeekBarController(this, "Red Bias", 0, -50, 50, 1);
+        menu.addItem(redBias);
+
+        final SeekBarController greenBias = new SeekBarController(this, "Green Bias", 0, -50, 50, 1);
+        menu.addItem(greenBias);
+
+        final SeekBarController blueBias = new SeekBarController(this, "Blue Bias", 0, -50, 50, 1);
+        menu.addItem(blueBias);
+
+        final ButtonController reset = new ButtonController(this, "Reset");
+        menu.addItem(reset);
 
         return menu.getView();
     }
@@ -375,7 +478,7 @@ public class Setup extends Activity {
 
         return menu.getView();
     }
-//
+
 //    private View createPipPbp(final ViewGroup parent) {
 //        final MenuController menu = new MenuController(this, 1, 3);
 //        menu.setContent(null);
@@ -416,158 +519,158 @@ public class Setup extends Activity {
 //
 //        return menu.getView();
 //    }
-//
-//    private View createDevicesControl(final ViewGroup parent) {
-//
-//        final MenuController menu = new MenuController(this, R.layout.menu_panel, parent);
-//
-//        final ButtonController lampSettings = new ButtonController(
-//                this, "Light Source", 0, R.drawable.expand431);
-//        lampSettings.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                menu.setContent(createLightSource(menu));
-//            }
-//        });
-//        menu.addItem(lampSettings.getView());
-//
-//        final ButtonController filterSettings = new ButtonController(
-//                this, "Filter Settings", 0, R.drawable.expand431);
-//        filterSettings.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                menu.setContent(createFilterSettings(menu));
-//            }
-//        });
-//        menu.addItem(filterSettings.getView());
-//
-//        final ButtonController lensSettings = new ButtonController(
-//                this, "Lens Settings", 0, R.drawable.expand431);
-//        menu.addItem(lensSettings.getView());
-//
-//        final PickerController anamorphicLens = new PickerController(
-//                this, "Anamorphic Lens", Projector.anamorphicLensType, 0
-//        );
-//        menu.addItem(anamorphicLens.getView());
-//
-//        final ButtonController remoteSettings = new ButtonController(
-//                this, "Remote Settings", 0, R.drawable.expand431);
-//        menu.addItem(remoteSettings.getView());
-//
-//        final ToggleController twelveVTrigger = new ToggleController(
-//                this, "12V Trigger", false
-//        );
-//        menu.addItem(twelveVTrigger.getView());
-//
-//        final ButtonController twelveVTriggerB = new ButtonController(
-//                this, "12V Trigger B", 0, R.drawable.expand431);
-//        menu.addItem(twelveVTriggerB.getView());
-//
-//        final ToggleController highAltitude = new ToggleController(
-//                this, "High Altitude", false
-//        );
-//        menu.addItem(highAltitude .getView());
-//
-//        final ButtonController back = new ButtonController(
-//                this, "Back to Projector Setup", R.drawable.backtotop_white, -1);
-//        back.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                parent.removeAllViews();
-//            }
-//        });
-//        menu.addItem(back.getView());
-//
-//        return menu.getView();
-//
-//    }
-//
-//    private View createLightSource(final MenuController parent) {
-//
-//        final MenuController menu = new MenuController(this, R.layout.menu_panel, parent);
-//
-//        final ButtonController back = new ButtonController(
-//                this, "Back to Components Control", R.drawable.backtotop_white, -1);
-//        back.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                menu.dismiss();
-//            }
-//        });
-//        menu.addItem(back.getView());
-//
-//        final ToggleController lampReminder = new ToggleController(this, "Lamp Reminder", false);
-//        menu.addItem(lampReminder.getView());
-//
-//        final ButtonController lampReset = new ButtonController(this, "Lamp Reset");
-//        menu.addItem(lampReset.getView());
-//
-//        return menu.getView();
-//    }
-//
-//    private View createFilterSettings(final MenuController parent) {
-//
-//        final MenuController menu = new MenuController(this, 1, 2);
-//
-//        final ButtonController back = new ButtonController(
-//                this, "Back to Components Control", R.drawable.backtotop_white, -1);
-//        back.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                parent.setContent(null);
-//            }
-//        });
-//        menu.addItem(back.getView());
-//
-//        final ToggleController optionalFilterInstalled = new ToggleController(
-//                this, "Optional Filter Installed", false
-//        );
-//        menu.addItem(optionalFilterInstalled.getView());
-//
-//        final PickerController filterReminder = new PickerController(
-//                this, "Filter Reminder", Projector.filterReminders, 0
-//        );
-//        menu.addItem(filterReminder.getView());
-//
-//        final ButtonController filterReset = new ButtonController(
-//                this, "Filter Reset"
-//        );
-//        menu.addItem(filterReset.getView());
-//
-//        return menu.getView();
-//
-//    }
-//
-//    private View createLensSettings(final MenuController parent) {
-//
-//        final MenuController menu = new MenuController(this, 1, 2);
-//
-//        final ButtonController back = new ButtonController(
-//                this, "Back to Components Control", R.drawable.backtotop_white, -1);
-//        back.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                parent.setContent(null);
-//            }
-//        });
-//        menu.addItem(back.getView());
-//
-//        final PickerController lensFunction = new PickerController(
-//                this, "Lens Function", Projector.lensFunctions, 0
-//        );
-//        menu.addItem(lensFunction.getView());
-//
-//        final PickerController lensShift = new PickerController(
-//                this, "Lens Shift", Projector.lensShifts, 0
-//        );
-//        menu.addItem(lensShift.getView());
-//
-//        final ButtonController lensCalibration = new ButtonController(
-//                this, "Lens Calibration", -1, R.drawable.expand431
-//        );
-//        menu.addItem(lensCalibration.getView());
-//
-//        return menu.getView();
-//
-//    }
+
+    private View createDevicesControl(final MenuController parent) {
+
+        final MenuController menu = new MenuController(this, R.layout.menu_panel, parent);
+
+        final ButtonController lampSettings = new ButtonController(
+                this, "Light Source", 0, R.drawable.expand431);
+        lampSettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                menu.setContent(createLightSource(menu), lampSettings);
+            }
+        });
+        menu.addItem(lampSettings);
+
+        final ButtonController filterSettings = new ButtonController(
+                this, "Filter Settings", 0, R.drawable.expand431);
+        filterSettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                menu.setContent(createFilterSettings(menu), filterSettings);
+            }
+        });
+        menu.addItem(filterSettings);
+
+        final ButtonController lensSettings = new ButtonController(
+                this, "Lens Settings", 0, R.drawable.expand431);
+        menu.addItem(lensSettings);
+
+        final PickerController anamorphicLens = new PickerController(
+                this, "Anamorphic Lens", Projector.anamorphicLensType, 0
+        );
+        menu.addItem(anamorphicLens);
+
+        final ButtonController remoteSettings = new ButtonController(
+                this, "Remote Settings", 0, R.drawable.expand431);
+        menu.addItem(remoteSettings);
+
+        final ToggleController twelveVTrigger = new ToggleController(
+                this, "12V Trigger", false
+        );
+        menu.addItem(twelveVTrigger);
+
+        final ButtonController twelveVTriggerB = new ButtonController(
+                this, "12V Trigger B", 0, R.drawable.expand431);
+        menu.addItem(twelveVTriggerB);
+
+        final ToggleController highAltitude = new ToggleController(
+                this, "High Altitude", false
+        );
+        menu.addItem(highAltitude);
+
+        final ButtonController back = new ButtonController(
+                this, "Back to Projector Setup", R.drawable.backtotop_white, -1);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                menu.dismiss();
+            }
+        });
+        menu.addItem(back);
+
+        return menu.getView();
+
+    }
+
+    private View createLightSource(final MenuController parent) {
+
+        final MenuController menu = new MenuController(this, R.layout.menu_panel_level2, parent);
+
+        final ButtonController back = new ButtonController(
+                this, "Back to Components Control", R.drawable.backtotop_white, -1);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                menu.dismiss();
+            }
+        });
+        menu.addItem(back);
+
+        final ToggleController lampReminder = new ToggleController(this, "Lamp Reminder", false);
+        menu.addItem(lampReminder);
+
+        final ButtonController lampReset = new ButtonController(this, "Lamp Reset");
+        menu.addItem(lampReset);
+
+        return menu.getView();
+    }
+
+    private View createFilterSettings(final MenuController parent) {
+
+        final MenuController menu = new MenuController(this, R.layout.menu_panel_level2, parent);
+
+        final ButtonController back = new ButtonController(
+                this, "Back to Components Control", R.drawable.backtotop_white, -1);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                menu.dismiss();
+            }
+        });
+        menu.addItem(back);
+
+        final ToggleController optionalFilterInstalled = new ToggleController(
+                this, "Optional Filter Installed", false
+        );
+        menu.addItem(optionalFilterInstalled);
+
+        final PickerController filterReminder = new PickerController(
+                this, "Filter Reminder", Projector.filterReminders, 0
+        );
+        menu.addItem(filterReminder);
+
+        final ButtonController filterReset = new ButtonController(
+                this, "Filter Reset"
+        );
+        menu.addItem(filterReset);
+
+        return menu.getView();
+
+    }
+
+    private View createLensSettings(final MenuController parent) {
+
+        final MenuController menu = new MenuController(this, R.layout.menu_panel_level2, parent);
+
+        final ButtonController back = new ButtonController(
+                this, "Back to Components Control", R.drawable.backtotop_white, -1);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                menu.dismiss();
+            }
+        });
+        menu.addItem(back);
+
+        final PickerController lensFunction = new PickerController(
+                this, "Lens Function", Projector.lensFunctions, 0
+        );
+        menu.addItem(lensFunction);
+
+        final PickerController lensShift = new PickerController(
+                this, "Lens Shift", Projector.lensShifts, 0
+        );
+        menu.addItem(lensShift);
+
+        final ButtonController lensCalibration = new ButtonController(
+                this, "Lens Calibration", -1, R.drawable.expand431
+        );
+        menu.addItem(lensCalibration);
+
+        return menu.getView();
+
+    }
 }

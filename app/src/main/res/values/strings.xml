@@ -150,7 +150,7 @@
     <string name="projector_3d">3D</string>
     <string name="projector_signal">Signal</string>
     <string name="projector_installation">Installation</string>
-    <string name="projector_components_control">Components Control</string>
+    <string name="projector_components_control">Devices Control</string>
     <string name="projector_source_control">Source Control</string>
     <string name="setup_position">Position</string>
     <string name="setup_ceiling_mount">Ceiling Mount</string>
