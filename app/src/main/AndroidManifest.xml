@@ -63,10 +63,6 @@
         </activity>
 
         <activity
-            android:name=".ui.ODemo">
-
-        </activity>
-        <activity
             android:name=".ProjectorSetup.ThreeD"
             android:theme="@android:style/Theme.Translucent.NoTitleBar">
         </activity>

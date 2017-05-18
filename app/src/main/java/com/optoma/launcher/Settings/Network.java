@@ -4,21 +4,11 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.CompoundButton;
 import android.widget.LinearLayout;
-import android.widget.Space;
 
 import com.optoma.launcher.R;
 import com.optoma.launcher.ui.ButtonController;
 import com.optoma.launcher.ui.MenuGroupWithToggleController;
-import com.optoma.launcher.ui.OMenuItem;
-import com.optoma.launcher.ui.OMenu;
-import com.optoma.launcher.ui.OMenuItemWithPicker;
-import com.optoma.launcher.ui.OMenuItemWithText;
-import com.optoma.launcher.ui.OMenuItemWithToggle;
-import com.optoma.launcher.ui.OPicker;
-import com.optoma.launcher.ui.OUtil;
 import com.optoma.launcher.ui.PickerController;
 import com.optoma.launcher.ui.ToggleController;
 
