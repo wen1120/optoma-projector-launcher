@@ -15,6 +15,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
+        <!--white vertical line-->
         <View
             android:layout_width="2dp"
             android:layout_height="match_parent"
