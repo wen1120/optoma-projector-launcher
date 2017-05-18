@@ -2,6 +2,7 @@ package com.optoma.launcher.ui;
 
 import android.content.Context;
 import android.support.annotation.DrawableRes;
+import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -19,16 +20,23 @@ import butterknife.ButterKnife;
 public class ButtonController implements ViewController {
     private View view;
     @BindView(R.id.title) TextView title;
+    @BindView(R.id.info) TextView info;
     @BindView(R.id.leading_image) ImageView leadingImage;
     @BindView(R.id.trailing_image) ImageView trailingImage;
     View.OnClickListener onClickListener;
 
     public ButtonController(Context context,
                             String title) {
-        this(context, title, -1, -1);
+        this(context, title, null);
     }
     public ButtonController(Context context,
                             String title,
+                            String info) {
+        this(context, title, info, -1, -1);
+    }
+    public ButtonController(Context context,
+                            String title,
+                            @Nullable String info,
                             @DrawableRes int leadingImage,
                             @DrawableRes int trailingImage) {
         view = View.inflate(context, R.layout.menu_button, null);
@@ -39,6 +47,12 @@ public class ButtonController implements ViewController {
             this.leadingImage.setImageResource(leadingImage);
         if(trailingImage>=0)
             this.trailingImage.setImageResource(trailingImage);
+
+        if(info != null) {
+            this.info.setText(info);
+        } else {
+            this.info.setVisibility(View.GONE);
+        }
 
         view.setOnKeyListener(new View.OnKeyListener() {
             @Override

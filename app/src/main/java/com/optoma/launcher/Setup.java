@@ -193,7 +193,7 @@ public class Setup extends Activity {
 
 
         final ButtonController colorSettings = new ButtonController(
-                this, "Color Settings", 0, R.drawable.expand431);
+                this, "Color Settings", null, 0, R.drawable.expand431);
         colorSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -220,7 +220,7 @@ public class Setup extends Activity {
 
 
         final ButtonController pureEngine = new ButtonController(
-                this, "PureEngine", 0, R.drawable.expand431);
+                this, "PureEngine", null, 0, R.drawable.expand431);
         pureEngine.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -230,7 +230,7 @@ public class Setup extends Activity {
         menu.addItem(pureEngine);
 
         final ButtonController darbeeSettings = new ButtonController(
-                this, "Darbee Settings", 0, R.drawable.expand431);
+                this, "Darbee Settings", null, 0, R.drawable.expand431);
         darbeeSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -240,7 +240,7 @@ public class Setup extends Activity {
         menu.addItem(darbeeSettings);
 
         final ButtonController back = new ButtonController(
-                this, "Back to Projector Setup", R.drawable.backtotop_white, -1);
+                this, "Back to Projector Setup", null, R.drawable.backtotop_white, -1);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -256,7 +256,7 @@ public class Setup extends Activity {
         final MenuController menu = new MenuController(this, R.layout.menu_panel_level2, parent);
 
         final ButtonController back = new ButtonController(
-                this, "Back to Image Settings", R.drawable.backtotop_white, -1);
+                this, "Back to Image Settings", null, R.drawable.backtotop_white, -1);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -273,11 +273,11 @@ public class Setup extends Activity {
         menu.addItem(colorTemperature);
 
         final ButtonController resetColorTemperature = new ButtonController(
-                this, "Reset Color Temperature", -1, -1);
+                this, "Reset Color Temperature", null, -1, -1);
         menu.addItem(resetColorTemperature);
 
         final ButtonController colorMatching = new ButtonController(
-                this, "Color Matching", -1, R.drawable.expand431);
+                this, "Color Matching", null, -1, R.drawable.expand431);
         colorMatching.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -291,7 +291,7 @@ public class Setup extends Activity {
         menu.addItem(colorGamut);
 
         final ButtonController cms = new ButtonController(
-                this, "CMS", -1, R.drawable.expand431);
+                this, "CMS", null, -1, R.drawable.expand431);
         cms.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -301,7 +301,7 @@ public class Setup extends Activity {
         menu.addItem(cms);
 
         final ButtonController rgbGainBias = new ButtonController(
-                this, "RGB Gain/Bias", -1, R.drawable.expand431);
+                this, "RGB Gain/Bias", null, -1, R.drawable.expand431);
         rgbGainBias.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -321,7 +321,7 @@ public class Setup extends Activity {
         final MenuController menu = new MenuController(this, R.layout.menu_panel_level2, parent);
 
         final ButtonController back = new ButtonController(
-                this, "Back to Image Settings", R.drawable.backtotop_white, -1);
+                this, "Back to Image Settings", null, R.drawable.backtotop_white, -1);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -353,7 +353,7 @@ public class Setup extends Activity {
         final MenuController menu = new MenuController(this, R.layout.menu_panel_level2, parent);
 
         final ButtonController back = new ButtonController(
-                this, "Back to Image Settings", R.drawable.backtotop_white, -1);
+                this, "Back to Image Settings", null, R.drawable.backtotop_white, -1);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -380,7 +380,7 @@ public class Setup extends Activity {
         final MenuController menu = new MenuController(this, R.layout.menu_panel_level3, parent);
 
         final ButtonController back = new ButtonController(
-                this, "Back to Color Settings", R.drawable.backtotop_white, -1);
+                this, "Back to Color Settings", null, R.drawable.backtotop_white, -1);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -403,7 +403,7 @@ public class Setup extends Activity {
         menu.addItem(gain);
 
         final ButtonController reset = new ButtonController(
-                this, "Reset", -1, -1);
+                this, "Reset", null, -1, -1);
         menu.addItem(reset);
 
         return menu.getView();
@@ -415,7 +415,7 @@ public class Setup extends Activity {
                 this, R.layout.menu_panel_level3, parent);
 
         final ButtonController back = new ButtonController(
-                this, "Back to Color Settings", R.drawable.backtotop_white, -1);
+                this, "Back to Color Settings", null, R.drawable.backtotop_white, -1);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -445,7 +445,7 @@ public class Setup extends Activity {
                 this, R.layout.menu_panel_level3, parent);
 
         final ButtonController back = new ButtonController(
-                this, "Back to Color Settings", R.drawable.backtotop_white, -1);
+                this, "Back to Color Settings", null, R.drawable.backtotop_white, -1);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -533,7 +533,7 @@ public class Setup extends Activity {
         menu.addItem(geometricCorrection);
 
         final ButtonController back = new ButtonController(
-                this, "Back to Projector Setup", R.drawable.backtotop_white, -1);
+                this, "Back to Projector Setup", null, R.drawable.backtotop_white, -1);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -574,7 +574,7 @@ public class Setup extends Activity {
         menu.addItem(source);
 
         final ButtonController back = new ButtonController(
-                this, "Back to Projector Setup", R.drawable.backtotop_white, -1);
+                this, "Back to Projector Setup", null, R.drawable.backtotop_white, -1);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -591,7 +591,7 @@ public class Setup extends Activity {
         final MenuController menu = new MenuController(this, R.layout.menu_panel, parent);
 
         final ButtonController lampSettings = new ButtonController(
-                this, "Light Source", 0, R.drawable.expand431);
+                this, "Light Source", null, 0, R.drawable.expand431);
         lampSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -601,7 +601,7 @@ public class Setup extends Activity {
         menu.addItem(lampSettings);
 
         final ButtonController filterSettings = new ButtonController(
-                this, "Filter Settings", 0, R.drawable.expand431);
+                this, "Filter Settings", null, 0, R.drawable.expand431);
         filterSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -611,7 +611,7 @@ public class Setup extends Activity {
         menu.addItem(filterSettings);
 
         final ButtonController lensSettings = new ButtonController(
-                this, "Lens Settings", 0, R.drawable.expand431);
+                this, "Lens Settings", null, 0, R.drawable.expand431);
         lensSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -626,7 +626,7 @@ public class Setup extends Activity {
         menu.addItem(anamorphicLens);
 
         final ButtonController remoteSettings = new ButtonController(
-                this, "Remote Settings", 0, R.drawable.expand431);
+                this, "Remote Settings", null, 0, R.drawable.expand431);
         remoteSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -651,12 +651,12 @@ public class Setup extends Activity {
         menu.addItem(twelveVTriggerA);
 
         final ButtonController twelveVTriggerB = new ButtonController(
-                this, "12V Trigger B", 0, R.drawable.expand431);
+                this, "12V Trigger B", null, 0, R.drawable.expand431);
         menu.addItem(twelveVTriggerB);
 
 
         final ButtonController back = new ButtonController(
-                this, "Back to Projector Setup", R.drawable.backtotop_white, -1);
+                this, "Back to Projector Setup", null, R.drawable.backtotop_white, -1);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -674,7 +674,7 @@ public class Setup extends Activity {
         final MenuController menu = new MenuController(this, R.layout.menu_panel_level2, parent);
 
         final ButtonController back = new ButtonController(
-                this, "Back to Components Control", R.drawable.backtotop_white, -1);
+                this, "Back to Components Control", null, R.drawable.backtotop_white, -1);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -697,7 +697,7 @@ public class Setup extends Activity {
         final MenuController menu = new MenuController(this, R.layout.menu_panel_level2, parent);
 
         final ButtonController back = new ButtonController(
-                this, "Back to Components Control", R.drawable.backtotop_white, -1);
+                this, "Back to Components Control", null, R.drawable.backtotop_white, -1);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -730,7 +730,7 @@ public class Setup extends Activity {
         final MenuController menu = new MenuController(this, R.layout.menu_panel_level2, parent);
 
         final ButtonController back = new ButtonController(
-                this, "Back to Components Control", R.drawable.backtotop_white, -1);
+                this, "Back to Components Control", null, R.drawable.backtotop_white, -1);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -750,7 +750,7 @@ public class Setup extends Activity {
         menu.addItem(lensShift);
 
         final ButtonController lensCalibration = new ButtonController(
-                this, "Lens Calibration", -1, R.drawable.expand431
+                this, "Lens Calibration", null, -1, R.drawable.expand431
         );
         menu.addItem(lensCalibration);
 
@@ -797,7 +797,7 @@ public class Setup extends Activity {
         final MenuController menu = new MenuController(this, R.layout.menu_panel_level2, parent);
 
         final ButtonController back = new ButtonController(
-                this, "Back to Components Control", R.drawable.backtotop_white, -1);
+                this, "Back to Components Control", null, R.drawable.backtotop_white, -1);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

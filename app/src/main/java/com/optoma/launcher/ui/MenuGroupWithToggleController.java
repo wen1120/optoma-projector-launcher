@@ -28,6 +28,7 @@ public class MenuGroupWithToggleController implements ViewController {
 
     public MenuGroupWithToggleController(final Context context, String title, boolean isChecked) {
         view = View.inflate(context, R.layout.menu_group_with_toggle, null);
+        view.setId(View.generateViewId());
         ButterKnife.bind(this, view);
 
         this.title.setText(title);
@@ -57,7 +58,9 @@ public class MenuGroupWithToggleController implements ViewController {
 
                 }
                 if(content.getChildCount() > 0 && isChecked) {
-                    view.setNextFocusDownId(content.getChildAt(0).getId());
+                    final View firstChild = content.getChildAt(0);
+                    view.setNextFocusDownId(firstChild.getId());
+                    firstChild.setNextFocusUpId(view.getId());
                 } else {
                     view.setNextFocusDownId(View.NO_ID);
                 }

@@ -3,12 +3,15 @@ package com.optoma.launcher.Settings;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.Space;
 
 import com.optoma.launcher.R;
+import com.optoma.launcher.ui.ButtonController;
+import com.optoma.launcher.ui.MenuGroupWithToggleController;
 import com.optoma.launcher.ui.OMenuItem;
 import com.optoma.launcher.ui.OMenu;
 import com.optoma.launcher.ui.OMenuItemWithPicker;
@@ -16,157 +19,84 @@ import com.optoma.launcher.ui.OMenuItemWithText;
 import com.optoma.launcher.ui.OMenuItemWithToggle;
 import com.optoma.launcher.ui.OPicker;
 import com.optoma.launcher.ui.OUtil;
+import com.optoma.launcher.ui.PickerController;
+import com.optoma.launcher.ui.ToggleController;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 
 public class Network extends Activity {
+
+    @BindView(R.id.network_content) LinearLayout content;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.network);
+        ButterKnife.bind(this);
 
-        final LinearLayout content = (LinearLayout) findViewById(R.id.network_content);
-
-        final OMenu wifi = getWifiMenu();
-        wifi.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                // TODO: enable/disable wifi
-            }
-        });
+        final View wifi = getWifiMenu();
         content.addView(wifi);
 
-        final OMenu lan = getLanMenu();
-        lan.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                // TODO: enable/disable lan
-            }
-        });
+        final View lan = getLanMenu();
         content.addView(lan);
 
     }
 
-    private OMenu getWifiMenu() {
-        final OMenuItem ssid = getSsid();
+    private View getWifiMenu() {
+        final ButtonController ssid = new ButtonController(this, "SSID", "Optoma-Lab");
 
-        final OMenuItemWithPicker mode = getMode();
+        final PickerController mode = new PickerController(this, "Connection Mode", new String[] {
+                "Infrastructure",
+                "Ad-hoc"
+        }, 0);
 
-        final OMenu wifiMenu = new OMenu(this);
-        wifiMenu.setTitle("Wi-Fi");
-        wifiMenu.addItem(ssid);
-        wifiMenu.addItem(mode);
+        final MenuGroupWithToggleController wifiMenu = new MenuGroupWithToggleController(
+                this, "Wi-Fi", false
+        );
+        wifiMenu.addItem(ssid.getView());
+        wifiMenu.addItem(mode.getView());
 
-        final ViewGroup.LayoutParams menuLayoutParams = new ViewGroup.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-
-        wifiMenu.setLayoutParams(menuLayoutParams);
-
-        return wifiMenu;
+        return wifiMenu.getView();
     }
 
-    private OMenuItem getSsid() {
-        final OMenuItemWithText ssid = new OMenuItemWithText(this);
-        ssid.setText("SSID");
-        ssid.setValue("Optoma-Lab"); // TODO
-        ssid.setIndent(true);
-        ssid.setLayoutParams(new ViewGroup.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT, OUtil.dpToPixel(this, 48)));
-        return ssid;
+//    private View getSsid() {
+//
+//
+//        return ssid;
+//    }
+//
+//
+    private View getLanMenu() {
+        final MenuGroupWithToggleController lanMenu = new MenuGroupWithToggleController(
+                this, "Lan", false
+        );
+
+        final ToggleController dhcp = new ToggleController(this, "DHCP", false);
+        lanMenu.addItem(dhcp.getView());
+
+        final ButtonController ipAddress = new ButtonController(
+                this, "IP Address", "192.168.0.2");
+        lanMenu.addItem(ipAddress.getView());
+
+        final ButtonController subnetMask = new ButtonController(
+                this, "Subnet Mask", "255.255.255.0");
+        lanMenu.addItem(subnetMask.getView());
+
+        final ButtonController gateway = new ButtonController(
+                this, "Gateway", "192.168.0.254");
+        lanMenu.addItem(gateway.getView());
+
+        final ButtonController dns = new ButtonController(
+                this, "DNS", "192.168.0.1");
+        lanMenu.addItem(dns.getView());
+
+        final ButtonController reset = new ButtonController(this, "Reset");
+        lanMenu.addItem(reset.getView());
+
+        return lanMenu.getView();
     }
 
-    private OMenuItemWithPicker getMode() {
-        final OMenuItemWithPicker picker = new OMenuItemWithPicker(this);
-        picker.setText("Connection Mode");
-        picker.setIndent(true);
-        picker.addOption("Infrastructure");
-        picker.addOption("Ad-hoc");
-        picker.setLayoutParams(new ViewGroup.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT, OUtil.dpToPixel(this, 96)));
-        return picker;
-    }
-
-    private OMenu getLanMenu() {
-        final OMenu lan = new OMenu(this);
-        lan.setTitle("LAN");
-        lan.addItem(getDhcp());
-        lan.addItem(getIpAddress());
-        lan.addItem(getSubnetMask());
-        lan.addItem(getGateway());
-        lan.addItem(getDns());
-        lan.addItem(getReset());
-
-        final ViewGroup.LayoutParams menuLayoutParams = new ViewGroup.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-
-        return lan;
-    }
-
-    private OMenuItemWithToggle getDhcp() {
-        final OMenuItemWithToggle dhcp = new OMenuItemWithToggle(this);
-        final ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT, OUtil.dpToPixel(this, 48));
-        dhcp.setLayoutParams(layoutParams);
-        dhcp.setIndent(true);
-        dhcp.setText("DHCP");
-        return dhcp;
-    }
-
-    private OMenuItemWithText getIpAddress() {
-        final OMenuItemWithText m = new OMenuItemWithText(this);
-        m.setText("IP Address");
-        m.setValue("192.168.0.2"); //: TODO
-        m.setIndent(true);
-
-        final ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT, OUtil.dpToPixel(this, 48));
-        m.setLayoutParams(layoutParams);
-        return m;
-    }
-
-    private OMenuItemWithText getSubnetMask() {
-        final OMenuItemWithText m = new OMenuItemWithText(this);
-        m.setText("Subnet Mask");
-        m.setValue("255.255.255.0"); //: TODO
-        m.setIndent(true);
-        final ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT, OUtil.dpToPixel(this, 48));
-        m.setLayoutParams(layoutParams);
-        return m;
-    }
-
-    private OMenuItemWithText getGateway() {
-        final OMenuItemWithText m = new OMenuItemWithText(this);
-        m.setText("Gateway");
-        m.setValue("192.168.0.254"); //: TODO
-        m.setIndent(true);
-
-        final ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT, OUtil.dpToPixel(this, 48));
-        m.setLayoutParams(layoutParams);
-        return m;
-    }
-
-    private OMenuItemWithText getDns() {
-        final OMenuItemWithText m = new OMenuItemWithText(this);
-        m.setText("DNS");
-        m.setValue("192.168.0.1"); //: TODO
-        m.setIndent(true);
-
-        final ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT, OUtil.dpToPixel(this, 48));
-        m.setLayoutParams(layoutParams);
-        return m;
-    }
-
-    private OMenuItem getReset() {
-        final OMenuItem m = new OMenuItem(this);
-        m.setText("Reset");
-        m.setIndent(true);
-        final ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT, OUtil.dpToPixel(this, 48));
-        m.setLayoutParams(layoutParams);
-        return m;
-
-    }
 }
