@@ -43,7 +43,7 @@ public class Setup extends Activity {
         final MenuController menu = new MenuController(this, R.layout.setup_main, null);
 
         final ShortcutController imageSettings = new ShortcutController(
-                this, R.drawable.image_settings, getResources().getString(R.string.projector_image_settings));
+                this, R.drawable.image_settings, "Image\nSettings");
         imageSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,7 +55,7 @@ public class Setup extends Activity {
         menu.addDummyItem(createSpace());
 
         final ShortcutController displayAdjustment = new ShortcutController(
-                this, R.drawable.display_adjustment, getResources().getString(R.string.projector_display_adjustment));
+                this, R.drawable.display_adjustment, "Display\nAdjustment");
         displayAdjustment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -116,7 +116,7 @@ public class Setup extends Activity {
         menu.addDummyItem(createSpace());
 
         final ShortcutController devicesControl = new ShortcutController(
-                this, R.drawable.components_control, getResources().getString(R.string.projector_components_control));
+                this, R.drawable.components_control, "Devices\nControl");
         devicesControl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -128,7 +128,7 @@ public class Setup extends Activity {
         menu.addDummyItem(createSpace());
 
         final ShortcutController sourceControl = new ShortcutController(
-                this, R.drawable.source_control, getResources().getString(R.string.projector_source_control));
+                this, R.drawable.source_control, "Source\nControl");
         sourceControl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
