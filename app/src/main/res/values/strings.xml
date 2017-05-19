@@ -180,6 +180,7 @@
     <string name="sc_hdbaset_control">HDBaseT Control</string>
     <string name="sc_ethernet">Ethernet</string>
     <string name="sc_rs232">RS232</string>
+    <string name="back_projector">Back to Projector Setup</string>
 
     <string-array name="ssArray">
         <item>Miracast</item>
