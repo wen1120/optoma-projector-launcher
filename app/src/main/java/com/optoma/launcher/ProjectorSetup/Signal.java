@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -16,7 +17,7 @@ import java.util.ArrayList;
 public class Signal extends Activity {
     private static final String TAG = "LauncherLog";
     private int xPosition, yPosition,iColorSpace,iIRE;
-    private final int yLimit = 11, TotalIV = 1, TotalTV = 2, TotalSB = 8;
+    private final int yLimit = 12, TotalIV = 1, TotalTV = 2, TotalSB = 8;
     private boolean[] bSignalOn = {false};
     private ArrayList<String> aSignalColorSpace = new ArrayList<String>();
     private ArrayList<String> aSignalIRE = new ArrayList<String>();
@@ -26,6 +27,7 @@ public class Signal extends Activity {
     private TextView[] tvSignalSBValue = new TextView[TotalSB];
     private ImageView[] ivSignalOnOff = new ImageView[TotalIV];
     private TextView[] tvSignalContent = new TextView[TotalTV];
+    private View vStartView,vEndView;
     private static int[] SignalOnID = {
             R.id.signal_automatic_on
     };
@@ -71,6 +73,8 @@ public class Signal extends Activity {
                 R.array.signal_ire_array)) {
             aSignalIRE.add(s);
         }
+        vStartView = this.findViewById(R.id.signal_automatic_view);
+        vEndView = this.findViewById(R.id.signal_back_projector_view);
         xPosition = yPosition = iColorSpace = iIRE = 0;
     }
 
@@ -93,19 +97,26 @@ public class Signal extends Activity {
                 finish();
                 break;
             case KeyEvent.KEYCODE_DPAD_UP:
-                if(yPosition > 0) {
-                    yPosition--;
+                yPosition = yPosition > 0 ? yPosition - 1: yLimit - 1;
+                if(yPosition == yLimit - 1) {
+                    vEndView.requestFocus();
+                    return true;
                 }
                 break;
             case KeyEvent.KEYCODE_DPAD_DOWN:
-                if(yPosition < yLimit - 1) {
-                    yPosition++;
+                yPosition = yPosition < yLimit - 1 ? yPosition + 1: 0;
+                if(yPosition == 0) {
+                    vStartView.requestFocus();
+                    return true;
                 }
                 break;
             case KeyEvent.KEYCODE_ENTER:
                 switch (yPosition) {
                     case 0:
                         SetOnOff(0);
+                        break;
+                    case yLimit - 1:
+                        finish();
                         break;
                 }
                 break;
