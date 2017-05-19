@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.optoma.launcher.R;
+import com.optoma.launcher.Setup;
 
 import java.util.ArrayList;
 
@@ -47,7 +48,8 @@ public class Settings extends Activity {
             R.id.setting_power_button,
             R.id.setting_bluetooth_button,
             R.id.setting_general_button,
-            R.id.setting_network_button
+            R.id.setting_network_button,
+            R.id.setting_account_button
     };
 
     @Override
@@ -109,6 +111,9 @@ public class Settings extends Activity {
                     break;
                 case R.id.setting_network_button:
                     intent.setClassName(getPackageName(), getPackageName() + ".Settings.Network");
+                    break;
+                case R.id.setting_account_button:
+                    intent.setClass(Settings.this, Setup.class);
                     break;
                 default:
                     Log.d(TAG, "unknown setting id=" + v.getId());

@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class ThreeD extends Activity {
     private static final String TAG = "LauncherLog";
     private int xPosition, yPosition;
-    private final int yLimit = 5, TotalIV = 1, TotalTV = 4;
+    private final int yLimit = 6, TotalIV = 1, TotalTV = 4;
     private boolean[] b3DOn = {false};
     private ArrayList<String> a3DMode = new ArrayList<String>();
     private ArrayList<String> a3D2D = new ArrayList<String>();
@@ -85,19 +85,18 @@ public class ThreeD extends Activity {
                 finish();
                 break;
             case KeyEvent.KEYCODE_DPAD_UP:
-                if(yPosition > 0) {
-                    yPosition--;
-                }
+                yPosition = yPosition > 0 ? yPosition - 1: yLimit - 1;
                 break;
             case KeyEvent.KEYCODE_DPAD_DOWN:
-                if(yPosition < yLimit - 1) {
-                    yPosition++;
-                }
+                yPosition = yPosition < yLimit - 1 ? yPosition + 1: 0;
                 break;
             case KeyEvent.KEYCODE_ENTER:
                 switch (yPosition) {
                     case 3:
                         SetOnOff(0);
+                        break;
+                    case yLimit - 1:
+                        finish();
                         break;
                 }
                 break;

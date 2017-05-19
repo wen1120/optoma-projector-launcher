@@ -16,12 +16,13 @@ import java.util.ArrayList;
 public class SourceControl extends Activity {
     private static final String TAG = "LauncherLog";
     private int xPosition, yPosition,iPowerOnLink;
-    private final int yLimit = 6, TotalIV = 5, TotalTV = 1, TotalV = 2;
+    private final int yLimit = 7, TotalIV = 5, TotalTV = 1, TotalV = 2;
     private boolean[] bSCOn = {true,false,false,true,true};
     private ArrayList<String> aSCPowerOnLink = new ArrayList<String>();
     private ImageView[] ivSCOnOff = new ImageView[TotalIV];
     private TextView[] tvSCContent = new TextView[TotalTV];
     private View[] vSCBigView = new View[TotalV];
+    private View vStartView,vEndView;
     private static int[] SCOnID = {
             R.id.sc_hdmi_link_on,
             R.id.sc_inclusive_of_tv_on,
@@ -49,6 +50,8 @@ public class SourceControl extends Activity {
                 R.array.SC_power_on_link_array)) {
             aSCPowerOnLink.add(s);
         }
+        vStartView = this.findViewById(R.id.sc_hdmi_link_view);
+        vEndView = this.findViewById(R.id.sc_back_projector_view);
         xPosition = yPosition = iPowerOnLink = 0;
     }
 
@@ -75,9 +78,16 @@ public class SourceControl extends Activity {
                     vSCBigView[0].setVisibility(View.VISIBLE);
                     vSCBigView[1].setVisibility(View.INVISIBLE);
                     yPosition--;
-                }
-                else if(yPosition > 0) {
+                } else if(yPosition == yLimit - 1) {
+                    vSCBigView[1].setVisibility(View.VISIBLE);
                     yPosition--;
+                } else if(yPosition > 0) {
+                    yPosition--;
+                } else if(yPosition == 0) {
+                    yPosition = yLimit - 1;
+                    vSCBigView[0].setVisibility(View.INVISIBLE);
+                    vEndView.requestFocus();
+                    return true;
                 }
                 break;
             case KeyEvent.KEYCODE_DPAD_DOWN:
@@ -85,13 +95,19 @@ public class SourceControl extends Activity {
                     vSCBigView[0].setVisibility(View.INVISIBLE);
                     vSCBigView[1].setVisibility(View.VISIBLE);
                     yPosition++;
+                } else if(yPosition == 5) {
+                    vSCBigView[1].setVisibility(View.INVISIBLE);
+                    yPosition++;
                 }
                 else if(yPosition < yLimit - 1) {
                     yPosition++;
+                } else if(yPosition == yLimit - 1) {
+                    yPosition = 0;
+                    vSCBigView[0].setVisibility(View.VISIBLE);
+                    vStartView.requestFocus();
+                    return true;
                 }
                 break;
-            case KeyEvent.KEYCODE_DPAD_LEFT:
-            case KeyEvent.KEYCODE_DPAD_RIGHT:
             case KeyEvent.KEYCODE_ENTER:
                 switch (yPosition) {
                     case 0:
@@ -109,9 +125,31 @@ public class SourceControl extends Activity {
                     case 5:
                         SetOnOff(4);
                         break;
+                    case yLimit - 1:
+                        finish();
+                        break;
+                }
+                break;
+            case KeyEvent.KEYCODE_DPAD_LEFT:
+            case KeyEvent.KEYCODE_DPAD_RIGHT:
+                switch (yPosition) {
+                    case 0:
+                        SetOnOff(0);
+                        break;
+                    case 1:
+                        SetOnOff(1);
+                        break;
+                    case 3:
+                        SetOnOff(2);
+                        break;
+                    case 4:
+                        SetOnOff(3);
+                        break;
+                    case 5:
+                        SetOnOff(4);
+                        break;
                     case 2:
-                        if(KeyEvent.KEYCODE_ENTER == event.getKeyCode()) break;
-                        else if(KeyEvent.KEYCODE_DPAD_LEFT == event.getKeyCode()) {
+                        if(KeyEvent.KEYCODE_DPAD_LEFT == event.getKeyCode()) {
                             iPowerOnLink = iPowerOnLink > 0 ? iPowerOnLink - 1 : aSCPowerOnLink.size() - 1;
                         } else if(KeyEvent.KEYCODE_DPAD_RIGHT == event.getKeyCode()) {
                             iPowerOnLink = iPowerOnLink < aSCPowerOnLink.size() - 1 ? iPowerOnLink + 1 : 0;
