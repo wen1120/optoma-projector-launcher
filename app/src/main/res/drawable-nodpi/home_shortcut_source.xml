@@ -6,3 +6,5 @@
         android:drawable="@drawable/home_shortcut_source_focus" /> <!-- focused -->
     <item android:drawable="@drawable/home_shortcut_source_normal" /> <!-- default -->
 </selector>
+
+
