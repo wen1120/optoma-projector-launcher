@@ -291,10 +291,41 @@
                 android:scaleType="center"
                 app:srcCompat="@drawable/on">
             </android.support.v7.widget.AppCompatImageView>
+            <View
+                android:id="@+id/sc_back_projector_view"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/projector_line_height"
+                android:layout_below="@+id/sc_rs232_view"
+                android:background="@drawable/setting_selected"
+                android:focusable="true">
+            </View>
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/sc_back_projector_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/projector_line_height"
+                android:layout_below="@+id/sc_rs232_view"
+                android:layout_marginLeft="@dimen/projector_1st_tv_left"
+                android:layout_alignParentStart="true"
+                android:gravity="start"
+                android:scaleType="center"
+                app:srcCompat="@drawable/backtotop_427">
+            </android.support.v7.widget.AppCompatImageView>
+            <TextView
+                android:id="@+id/sc_back_projector_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/projector_line_height"
+                android:layout_below="@+id/sc_rs232_view"
+                android:layout_toRightOf="@+id/sc_back_projector_iv"
+                android:gravity="center|center_vertical|center_horizontal"
+                android:text="@string/back_projector"
+                android:textSize = "18sp"
+                android:textColor="@color/p427c"
+                android:fontFamily="sans-serif">
+            </TextView>
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="5dp"
-                android:layout_below="@+id/sc_rs232_view"/>
+                android:layout_below="@+id/sc_back_projector_view"/>
         </RelativeLayout>
     </ScrollView>
     <Space
