@@ -66,8 +66,8 @@ public class ButtonController implements ViewController {
         });
     }
 
-    public void setOnClickListener(View.OnClickListener lis) {
-       view.setOnClickListener(lis);
+    public void setOnClickListener(final View.OnClickListener lis) {
+        view.setOnClickListener(lis);
     }
 
     @Override

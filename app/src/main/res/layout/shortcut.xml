@@ -1,45 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
 
-    android:background="@drawable/home_shortcut_source"
-    android:clickable="true"
-    android:focusable="true"
-    android:focusableInTouchMode="true"
-    >
-    <LinearLayout
-        android:id="@+id/shortcut"
-        android:layout_width="112dp"
-        android:layout_height="128dp"
-        android:orientation="vertical"
-        android:gravity="center">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/shortcut"
+    android:layout_width="112dp"
+    android:layout_height="128dp"
+    android:clickable="false"
+    android:focusable="false"
+    android:focusableInTouchMode="false"
+    android:gravity="center"
+    android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/image"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="10"
-            android:layout_gravity="center"
-            android:focusable="false"
-            android:focusableInTouchMode="false"
-            android:scaleType="fitCenter"
-            android:src="@drawable/hdmi"
-            android:layout_margin="8dp"
-            />
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        android:layout_margin="8dp"
+        android:layout_weight="10"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:scaleType="fitCenter"
+        android:src="@drawable/hdmi" />
 
-        <TextView
-            android:id="@+id/label"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="6"
+    <TextView
+        android:id="@+id/label"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="6"
 
-            android:gravity="center"
-            android:text="HMDI1"
-            android:textAlignment="center"
-            android:textColor="#B2FFFFFF"
-            android:textSize="16sp"
-            android:fontFamily="Roboto"
-            android:textStyle="bold"/>
-    </LinearLayout>
-</FrameLayout>
+        android:fontFamily="Roboto"
+        android:gravity="center"
+        android:text="HMDI1"
+        android:textAlignment="center"
+        android:textColor="#B2FFFFFF"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+</LinearLayout>
+

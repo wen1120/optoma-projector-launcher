@@ -7,6 +7,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.optoma.launcher.R;
+import com.optoma.launcher.Shortcut;
 import com.optoma.launcher.SizeChanger;
 
 import butterknife.BindView;
@@ -18,13 +19,11 @@ public class ShortcutController implements ViewController {
     @BindView(R.id.label) TextView label;
 
     public ShortcutController(Context context, @DrawableRes int img, String lab) {
-        view = View.inflate(context, R.layout.shortcut, null);
+        view = new Shortcut(context); // View.inflate(context, R.layout.shortcut, null);
         ButterKnife.bind(this, view);
 
         image.setImageResource(img);
         label.setText(lab);
-
-        view.setOnFocusChangeListener(new SizeChanger(1.25f, 80));
 
     }
 
