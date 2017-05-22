@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:gravity="center"
-        android:text="@string/projector_setup"
+        android:text=""
         android:textSize = "45sp"
         android:textColor="#40FFFFFF"
         android:textStyle="bold"
