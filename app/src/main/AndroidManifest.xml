@@ -59,7 +59,7 @@
 
         <activity
             android:name=".Setup"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar">
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
         </activity>
 
         <activity
