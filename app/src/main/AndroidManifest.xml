@@ -9,17 +9,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Leanback">
         <activity android:name=".InitialSetup">
-
-        </activity>
-        <activity
-            android:name=".Home"
-            android:label="@string/title_activity_main" >
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".Home"
+            android:label="@string/title_activity_main" >
+
         </activity>
         <activity
             android:name=".InputSource"
@@ -56,7 +55,9 @@
             android:theme="@android:style/Theme.Translucent.NoTitleBar"></activity>
         <activity
             android:name=".Setup"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"></activity>
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
+        </activity>
+
         <activity
             android:name=".ProjectorSetup.ThreeD"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"></activity>

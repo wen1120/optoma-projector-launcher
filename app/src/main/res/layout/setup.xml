@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:clipChildren="false"
-    android:background="@color/primary_black_transparent">
+    android:background="@drawable/bg_tekapo">
 
     <TextView
         android:id="@+id/projector_tv"
