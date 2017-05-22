@@ -27,6 +27,7 @@
     <color name="secondary_cyan">#00c7b1</color>
     <color name="secondary_yellow">#eada24</color>
     <color name="secondary_gray">#8a8d8f</color>
+    \<color name="secondary_gray_80">#808a8d8f</color>
     <color name="secondary_light_gray">#d0d3d4</color>
     <color name="secondary_light_brown">#9a887b</color>
     

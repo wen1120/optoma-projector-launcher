@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.optoma.launcher.ui.HomeMenu;
+
 /*
 * gradle debug on command line on Mac
 * $ brew install gradle
@@ -175,24 +177,24 @@ public class Home extends Activity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final Intent intent = new Intent();
+                final Intent intent = new Intent(Home.this, HomeMenu.class);
                 switch (rID) {
                     case R.id.menu_position:
-                        intent.setClassName(getPackageName(), getPackageName() + ".InputSource");
+                        intent.putExtra("page", HomeMenu.Page.Position);
                         break;
                     case R.id.menu_apps:
-                        intent.setClassName(getPackageName(), getPackageName() + ".InputSource");
+                        intent.putExtra("page", HomeMenu.Page.Apps);
                         break;
                     case R.id.menu_is:
-                        intent.setClassName(getPackageName(), getPackageName() + ".InputSource");
+                        intent.putExtra("page", HomeMenu.Page.InputSource);
                         break;
                     case R.id.menu_lang:
-                        intent.setClassName(getPackageName(), getPackageName() + ".InputSource");
+                        intent.putExtra("page", HomeMenu.Page.Language);
                         break;
                     default:
-                        intent.setClassName(getPackageName(), getPackageName() + ".InputSource");
                         break;
                 }
+
                 startActivity(intent);
             }
         });

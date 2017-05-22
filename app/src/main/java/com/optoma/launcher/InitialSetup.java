@@ -26,68 +26,6 @@ public class InitialSetup extends Activity {
             R.id.rear_ceiling
     };
 
-    private static final String[] langsEng = new String[] {
-            "ar",
-            "cs",
-            "da",
-            "de",
-            "el",
-            "en",
-            "es",
-            "fa",
-            "fi",
-            "fr",
-            "hu",
-            "id",
-            "it",
-            "ja",
-            "ko",
-            "nl",
-            "no",
-            "pl",
-            "pt",
-            "ro",
-            "ru",
-            "sk",
-            "sv",
-            "th",
-            "tr",
-            "vi",
-            "zh",
-            "zh"
-    };
-
-    private static final String[] langs = new String[] {
-            "عربي",
-            "Čeština",
-            "Dansk",
-            "Deutsch",
-            "ελληνικά",
-            "English",
-            "Español",
-            "فارسی",
-            "Suomi",
-            "Français",
-            "Magyar",
-            "Bahasa Indonesia",
-            "Italiano",
-            "日本語",
-            "한국어",
-            "Nederlands",
-            "Norsk",
-            "Polski",
-            "Português",
-            "Română",
-            "Русский",
-            "Slovak",
-            "Svenska",
-            "ไทย",
-            "Türkçe",
-            "Tiếng Việt",
-            "繁體中文",
-            "簡体中文"
-    };
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -137,12 +75,12 @@ public class InitialSetup extends Activity {
                 final int index = numCol * rowIndex + colIndex;
 
                 final TextView originalName = (TextView) (((ViewGroup) tile).getChildAt(1));
-                originalName.setText(langs[index]);
+                originalName.setText(Projector.langs[index]);
 
                 final TextView englishName = (TextView)  (((ViewGroup) tile).getChildAt(0));
-                englishName.setText(langsEng[index]);
+                englishName.setText(Projector.langsEng[index]);
 
-                tile.setContentDescription(langsEng[index]);
+                tile.setContentDescription(Projector.langsEng[index]);
 
                 tile.setOnFocusChangeListener(new SizeChanger(1.25f, Home.animateDuration) {
                      @Override
