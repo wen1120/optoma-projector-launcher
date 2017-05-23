@@ -1,4 +1,4 @@
-package com.optoma.launcher.ui;
+package com.optoma.launcher;
 
 import android.app.Activity;
 import android.graphics.Color;
@@ -9,6 +9,7 @@ import android.widget.LinearLayout;
 
 import com.optoma.launcher.Projector;
 import com.optoma.launcher.R;
+import com.optoma.launcher.ui.UI;
 
 import java.util.function.Consumer;
 
@@ -159,9 +160,9 @@ public class HomeMenu extends Activity {
                     // backgroundColor(Color.GREEN);
                     margin(dip(150), dip(52), dip(150), dip(100));
 
-                    layoutTiles(WRAP, MATCH, 2, icons.length, dip(38), dip(66),
+                    UI.layoutTiles(WRAP, MATCH, 2, icons.length, dip(38), dip(66),
                             (Integer index) -> {
-                                createIconTile(dip(150), dip(150), icons[index]);
+                                UI.createIconTile(dip(150), dip(150), icons[index]);
                             }, (Integer index) -> {
                                 space(() -> {
                                     size(dip(150), dip(150));
@@ -204,8 +205,8 @@ public class HomeMenu extends Activity {
                     size(MATCH, MATCH);
                     margin(dip(150), dip(52), dip(150), dip(100));
 
-                    layoutTiles(MATCH, MATCH, 6, icons.length, -1, dip(56), (Integer index) -> {
-                        createIconLabelTile(dip(112), dip(128), icons[index], labels[index], R.drawable.initial_setup_language_tile_bg);
+                    UI.layoutTiles(MATCH, MATCH, 6, icons.length, -1, dip(56), (Integer index) -> {
+                        UI.createIconLabelTile(dip(112), dip(128), icons[index], labels[index], R.drawable.initial_setup_language_tile_bg);
                     }, (Integer index) -> {
                         space(() -> {
                             size(dip(112), dip(128));
@@ -220,114 +221,17 @@ public class HomeMenu extends Activity {
                     size(MATCH, MATCH);
                     margin(dip(80), dip(28), dip(80), dip(80));
 
-                    layoutTiles(MATCH, MATCH, 7, Projector.langs.length, -1, dip(32), (Integer index) -> {
-                        createLabelLabelTile(Projector.langsEng[index], Projector.langs[index]);
+                    UI.layoutTiles(MATCH, MATCH, 7, Projector.langs.length, -1, dip(32), (Integer index) -> {
+                        UI.createLabelLabelTile(Projector.langsEng[index], Projector.langs[index]);
                     }, (Integer index) -> {
-                        // noop
+                        // no-op
                     });
                 });
 
             }
 
 
-            private void layoutTiles(int width, int height,
-                                     int col, int len, int colSpacing, int rowSpacing,
-                                     Consumer<Integer> createTile,
-                                     Consumer<Integer> createDummyTile) {
-                linearLayout(() -> {
-                    size(width, height);
-                    // backgroundColor(Color.RED);
-                    orientation(LinearLayout.VERTICAL);
 
-                    final int row = len / col + (len % col > 0 ? 1 : 0);
-                    for (int i = 0; i < row; i++) {
-
-                        final int rowIndex = i;
-                        linearLayout(() -> {
-                            size(colSpacing < 0 ? MATCH : WRAP, WRAP);
-
-                            for (int j = 0; j < col; j++) {
-
-                                final int index = rowIndex * col + j;
-                                if (index < len) {
-                                    createTile.accept(index);
-                                } else {
-                                    // dummy tile
-                                    createDummyTile.accept(index);
-                                }
-
-                                // col spacing
-                                if (j < col - 1) {
-                                    space(() -> {
-                                        if(colSpacing < 0) {
-                                            weight(1);
-                                        } else {
-                                            size(colSpacing, 0);
-                                        }
-                                    });
-                                }
-                            }
-                        });
-
-                        // row spacing
-                        space(() -> {
-                            size(0, rowSpacing);
-                        });
-                    }
-                });
-
-            }
-
-            private void createIconLabelTile(int width, int height, @DrawableRes int icon, String label,
-                                             @DrawableRes int background) {
-                linearLayout(() -> {
-                    size(width, height);
-                    orientation(LinearLayout.VERTICAL);
-                    gravity(Gravity.CENTER);
-                    // backgroundColor(Color.parseColor("#2e2a25"));
-                    backgroundResource(background);
-                    focusable(true);
-                    focusableInTouchMode(true);
-                    clickable(true);
-
-                    imageView(() -> {
-                        size(dip(64), dip(64));
-                        weight(11);
-                        imageResource(icon);
-                    });
-
-                    textView(() -> {
-                        size(WRAP, WRAP);
-                        textSize(24);
-                        weight(5);
-                        text(label);
-                    });
-
-                });
-            }
-
-            private void createIconTile(int width, int height, @DrawableRes int icon) {
-                imageView(() -> {
-                    size(width, height);
-                    imageResource(icon);
-                    focusable(true);
-                    focusableInTouchMode(true);
-                    clickable(true);
-                    // backgroundColor(Color.BLUE);
-                });
-            }
-
-            private void createLabelLabelTile(String label1, String label2) {
-                xml(R.layout.initial_setup_language_tile, () -> { // TODO: remove xml
-                    withId(R.id.language_name_eng, () -> {
-                       text(label1);
-                    });
-
-                    withId(R.id.language_name, () -> {
-                        text(label2);
-                    });
-                });
-            }
         });
     }
 

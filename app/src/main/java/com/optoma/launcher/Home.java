@@ -8,8 +8,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.optoma.launcher.ui.HomeMenu;
-
 /*
 * gradle debug on command line on Mac
 * $ brew install gradle
