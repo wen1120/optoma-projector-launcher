@@ -7,6 +7,9 @@ import android.widget.LinearLayout;
 import com.optoma.launcher.R;
 
 import java.util.function.Consumer;
+
+import trikita.anvil.Anvil;
+
 import static trikita.anvil.DSL.*;
 
 
@@ -24,7 +27,7 @@ public class UI {
             for (int i = 0; i < row; i++) {
 
                 final int rowIndex = i;
-                linearLayout(() -> {
+                final Anvil.Renderable rowTiles = () -> {
                     size(colSpacing < 0 ? MATCH : WRAP, WRAP);
 
                     for (int j = 0; j < col; j++) {
@@ -38,7 +41,7 @@ public class UI {
                         }
 
                         // col spacing
-                        if (j < col - 1) {
+                        if (colSpacing != 0 && j < col - 1) {
                             space(() -> {
                                 if(colSpacing < 0) {
                                     weight(1);
@@ -48,12 +51,25 @@ public class UI {
                             });
                         }
                     }
-                });
+                };
+
+                if(col == 1) {
+                    rowTiles.view();
+                } else {
+                    linearLayout(rowTiles);
+                }
 
                 // row spacing
-                space(() -> {
-                    size(0, rowSpacing);
-                });
+                if(rowSpacing != 0 && i < row - 1) {
+                    space(() -> {
+                        if(rowSpacing < 0) {
+                            weight(1);
+                        } else {
+                            size(0, rowSpacing);
+                        }
+                    });
+
+                }
             }
         });
 
