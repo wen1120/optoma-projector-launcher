@@ -17,15 +17,13 @@
         </activity>
         <activity
             android:name=".Home"
-            android:label="@string/title_activity_main" >
-
-        </activity>
+            android:label="@string/title_activity_main"></activity>
         <activity
             android:name=".InputSource"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
         <activity
             android:name=".Settings.Settings"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"></activity>
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
         <activity
             android:name=".Settings.Audio"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
@@ -52,28 +50,26 @@
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity
             android:name=".ProjectorSetup.ProjectorMain"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"></activity>
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity
             android:name=".Setup"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
-        </activity>
-
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"></activity>
         <activity
             android:name=".ProjectorSetup.ThreeD"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"></activity>
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity
             android:name=".ProjectorSetup.Signal"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"></activity>
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity
             android:name=".ProjectorSetup.Setup"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"></activity>
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity
             android:name=".ProjectorSetup.SourceControl"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"></activity>
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity
             android:name=".HomeMenu"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"
-            >
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"></activity>
+        <activity android:name=".ui.UITest">
 
         </activity>
     </application>
