@@ -1,12 +1,13 @@
-package com.optoma.launcher.ui;
-
+package com.optoma.launcher.ui; 
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
 import android.support.annotation.DrawableRes;
 import android.view.Gravity;
+import android.view.View;
 import android.widget.LinearLayout;
 
 import com.optoma.launcher.R;
-
-import java.util.function.Consumer;
 
 import trikita.anvil.Anvil;
 
@@ -14,10 +15,31 @@ import static trikita.anvil.DSL.*;
 
 
 public class UI {
+
+    public static final int primary_red = Color.parseColor("#cf0a2c");
+    public static final int primary_black = Color.parseColor("#2e2a25");
+    public static final int primary_black_transparent = Color.parseColor("#992e2a25");
+    public static final int primary_gray = Color.parseColor("#5b646f");
+    public static final int primary_white = Color.parseColor("#ffffff");
+    public static final int secondary_dark_blue = Color.parseColor("#004b87");
+    public static final int secondary_blue = Color.parseColor("#009cde");
+    public static final int secondary_light_blue = Color.parseColor("#71c5e8");
+    public static final int secondary_cyan = Color.parseColor("#00c7b1");
+    public static final int secondary_yellow = Color.parseColor("#eada24");
+    public static final int secondary_gray = Color.parseColor("#8a8d8f");
+    public static final int secondary_gray_80 = Color.parseColor("#808a8d8f");
+    public static final int secondary_light_gray = Color.parseColor("#d0d3d4");
+    public static final int secondary_light_brown = Color.parseColor("#9a887b");
+
+    public interface Consumer<T> {
+        void accept(T t);
+    }
+
     public static void layoutTiles(int width, int height,
                              int col, int len, int colSpacing, int rowSpacing,
                              Consumer<Integer> createTile,
-                             Consumer<Integer> createDummyTile) {
+                             Consumer<Integer> createDummyTile,
+                             Anvil.Renderable r) {
         linearLayout(() -> {
             size(width, height);
             // backgroundColor(Color.RED);
@@ -71,32 +93,39 @@ public class UI {
 
                 }
             }
+
+            if(r!=null) r.view();
         });
 
     }
 
-    public static  void createIconLabelTile(int width, int height, @DrawableRes int icon, String label,
-                                     @DrawableRes int background) {
+    public static  void createIconLabelTile(int width, int height,
+                                     @DrawableRes int icon,
+                                     float iconResizeFactor,
+                                     String label,
+                                     int fontSize,
+                                     Drawable background) {
         linearLayout(() -> {
             size(width, height);
             orientation(LinearLayout.VERTICAL);
             gravity(Gravity.CENTER);
             // backgroundColor(Color.parseColor("#2e2a25"));
-            backgroundResource(background);
+            background(background);
             focusable(true);
             focusableInTouchMode(true);
             clickable(true);
 
             imageView(() -> {
-                size(dip(64), dip(64));
+                size(dip(Math.round(86 * iconResizeFactor)), dip(Math.round(76 * iconResizeFactor)));
                 weight(11);
                 imageResource(icon);
             });
 
             textView(() -> {
                 size(WRAP, WRAP);
-                textSize(24);
+                textSize(fontSize);
                 weight(5);
+                gravity(Gravity.CENTER);
                 text(label);
             });
 
@@ -124,5 +153,39 @@ public class UI {
                 text(label2);
             });
         });
+    }
+
+    public static void createHorizontalBar(int width, int color) {
+        v(View.class, () -> {
+            size(width, dip(1));
+            backgroundColor(color);
+        });
+    }
+
+    public static GradientDrawable createRectangle(int bgColor, int borderWidth, int borderColor, int cornerRadius) {
+        return createRectangle(
+                bgColor, borderWidth, borderColor, cornerRadius, cornerRadius, cornerRadius, cornerRadius);
+    }
+
+    public static GradientDrawable createRectangle(
+            int bgColor, int borderWidth, int borderColor, int upperLeft,
+            int upperRight, int lowerRight, int lowerLeft) {
+
+        final GradientDrawable shape = new GradientDrawable();
+        shape.setShape(GradientDrawable.RECTANGLE);
+        shape.setCornerRadii(new float[] {
+                upperLeft, upperLeft, upperRight, upperRight, lowerRight, lowerRight, lowerLeft, lowerLeft });
+        shape.setColor(bgColor);
+        shape.setStroke(borderWidth, borderColor);
+        return shape;
+    }
+
+    // modified from https://stackoverflow.com/questions/15319635/manipulate-alpha-bytes-of-java-android-color-int
+    public static int getColor(int color, float alphaFactor) {
+        int alpha = Math.round(Color.alpha(color) * alphaFactor);
+        int red = Color.red(color);
+        int green = Color.green(color);
+        int blue = Color.blue(color);
+        return Color.argb(alpha, red, green, blue);
     }
 }

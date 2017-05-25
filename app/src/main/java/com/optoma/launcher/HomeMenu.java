@@ -2,6 +2,7 @@ package com.optoma.launcher;
 
 import android.app.Activity;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.DrawableRes;
 import android.view.Gravity;
@@ -19,6 +20,8 @@ import static trikita.anvil.DSL.*;
 import static trikita.anvil.DSL.view;
 
 public class HomeMenu extends Activity {
+
+    private static final Drawable shortcutUnfocused = UI.createRectangle(UI.getColor(UI.primary_black, 0.7f), 0, 0, 10);
 
     public enum Page {
         Position,
@@ -52,12 +55,11 @@ public class HomeMenu extends Activity {
 
                     createMenu();
 
-                    // horizontal bar
-                    frameLayout(() -> {
-                        size(dip(254), dip(1));
-                        margin(0, dip(8), 0, 0);
-                        backgroundColor(Color.WHITE);
+                    space(() -> {
+                        size(0, dip(8));
                     });
+
+                    UI.createHorizontalBar(dip(254), getResources().getColor(R.color.primary_white));
 
                     switch (model.page) {
                         case Position:
@@ -167,7 +169,7 @@ public class HomeMenu extends Activity {
                                 space(() -> {
                                     size(dip(150), dip(150));
                                 });
-                            });
+                            }, null);
                 });
 
 
@@ -206,12 +208,14 @@ public class HomeMenu extends Activity {
                     margin(dip(150), dip(52), dip(150), dip(100));
 
                     UI.layoutTiles(MATCH, MATCH, 6, icons.length, -1, dip(56), (Integer index) -> {
-                        UI.createIconLabelTile(dip(112), dip(128), icons[index], labels[index], R.drawable.initial_setup_language_tile_bg);
+                        UI.createIconLabelTile(
+                                dip(112), dip(128), icons[index], 0.7f, labels[index], 24,
+                                shortcutUnfocused);
                     }, (Integer index) -> {
                         space(() -> {
                             size(dip(112), dip(128));
                         });
-                    });
+                    }, null);
                 });
 
             }
@@ -225,7 +229,7 @@ public class HomeMenu extends Activity {
                         UI.createLabelLabelTile(Projector.langsEng[index], Projector.langs[index]);
                     }, (Integer index) -> {
                         // no-op
-                    });
+                    }, null);
                 });
 
             }
