@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.widget.LinearLayout;
 import com.optoma.launcher.R;
-import java.util.function.Consumer;
 import trikita.anvil.RenderableView;
 import static trikita.anvil.DSL.*;
 
@@ -38,7 +37,7 @@ public class UITest extends Activity {
     }
 
     private void testTiles() {
-        final Consumer<Integer> createTile = (index) -> {
+        final UI.Consumer<Integer> createTile = (index) -> {
             linearLayout(() -> {
                 size(WRAP, WRAP);
                 orientation(LinearLayout.VERTICAL);
@@ -59,14 +58,13 @@ public class UITest extends Activity {
 
         };
 
-        final Consumer<Integer> createDummyTile = (index) -> {
+        final UI.Consumer<Integer> createDummyTile = (index) -> {
             space(() -> {
                 size(150, 100);
             });
         };
 
-        UI.layoutTiles(MATCH, MATCH, 2, 5, -1, dip(12),
-                createTile, createDummyTile);
+
     }
 
 }
