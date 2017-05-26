@@ -37,32 +37,32 @@ public class UITest extends Activity {
     }
 
     private void testTiles() {
-        final UI.Consumer<Integer> createTile = (index) -> {
-            linearLayout(() -> {
-                size(WRAP, WRAP);
-                orientation(LinearLayout.VERTICAL);
-                size(dip(150), dip(100));
-                backgroundColor(colors[index]);
-                gravity(Gravity.CENTER);
-
-                imageView(() -> {
-                    size(WRAP, WRAP);
-                    imageResource(R.drawable.hdmi);
-                });
-
-                textView(() -> {
-                    size(WRAP, WRAP);
-                    text(String.valueOf(index));
-                });
-            });
-
-        };
-
-        final UI.Consumer<Integer> createDummyTile = (index) -> {
-            space(() -> {
-                size(150, 100);
-            });
-        };
+//        final UI.Consumer<Integer> createTile = (index) -> {
+//            linearLayout(() -> {
+//                size(WRAP, WRAP);
+//                orientation(LinearLayout.VERTICAL);
+//                size(dip(150), dip(100));
+//                backgroundColor(colors[index]);
+//                gravity(Gravity.CENTER);
+//
+//                imageView(() -> {
+//                    size(WRAP, WRAP);
+//                    imageResource(R.drawable.hdmi);
+//                });
+//
+//                textView(() -> {
+//                    size(WRAP, WRAP);
+//                    text(String.valueOf(index));
+//                });
+//            });
+//
+//        };
+//
+//        final UI.Consumer<Integer> createDummyTile = (index) -> {
+//            space(() -> {
+//                size(150, 100);
+//            });
+//        };
 
 
     }
