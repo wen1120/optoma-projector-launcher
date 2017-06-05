@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.optoma.launcher">
+    package="com.optoma.launcher"
+    android:sharedUserId="android.uid.system">
+
+    <uses-permission android:name="android.permission.SET_TIME" />
 
     <application
         android:allowBackup="true"
@@ -9,23 +12,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Leanback">
         <activity android:name=".InitialSetup">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".Home"
-            android:label="@string/title_activity_main" >
-
-        </activity>
+            android:label="@string/title_activity_main"></activity>
         <activity
             android:name=".InputSource"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
         <activity
             android:name=".Settings.Settings"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"></activity>
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
         <activity
             android:name=".Settings.Audio"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
@@ -52,29 +49,33 @@
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity
             android:name=".ProjectorSetup.ProjectorMain"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"></activity>
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity
             android:name=".Setup"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
-        </activity>
-
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"></activity>
         <activity
             android:name=".ProjectorSetup.ThreeD"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"></activity>
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity
             android:name=".ProjectorSetup.Signal"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"></activity>
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity
             android:name=".ProjectorSetup.Setup"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"></activity>
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity
             android:name=".ProjectorSetup.SourceControl"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"></activity>
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity
             android:name=".HomeMenu"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"
-            >
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"></activity>
 
+        <activity android:name=".SystemTest">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.HOME" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
     </application>
 
