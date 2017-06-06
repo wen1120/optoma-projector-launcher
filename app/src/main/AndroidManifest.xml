@@ -9,7 +9,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Leanback">
         <activity android:name=".InitialSetup">
-
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".Home"
@@ -68,10 +71,7 @@
 
         <activity android:name=".ui.UITest"></activity>
         <activity android:name=".Home2">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
         </activity>
     </application>
 
