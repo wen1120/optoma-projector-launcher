@@ -15,7 +15,7 @@ public class SystemTest extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_system_test);
 
-        // testTimeAndTimeZone();
+        testTimeAndTimeZone();
 
     }
 
@@ -23,10 +23,12 @@ public class SystemTest extends Activity {
         final String[] ids = TimeZone.getAvailableIDs();
         for(int i=0; i<ids.length; i++) {
             setTimeZone("Asia/Taipei");
-            setTime(2017, 6, 5, 12, 0, 0);
+            setTime(2017, 6, 5, 12, 0, 0, "Asia/Taipei");
             setTimeZone(ids[i]);
-            final Calendar c = Calendar.getInstance();
-            Log.d("ken", String.format("%s - %s", ids[i], c.getTime()));
+            final Calendar c =
+                    Calendar.getInstance(TimeZone.getTimeZone(ids[i]));
+            // Log.d("ken", String.format("%s, %s", ids[i], c.getTime()));
+            Log.d("ken", String.format("%s", c.getTime()));
         }
     }
 
@@ -35,8 +37,8 @@ public class SystemTest extends Activity {
                                int date,
                                int hourOfDay,
                                int minute,
-                               int second) {
-        final Calendar c = Calendar.getInstance();
+                               int second, String timeZoneId) {
+        final Calendar c = Calendar.getInstance(TimeZone.getTimeZone(timeZoneId));
         c.set(year, month - 1, date, hourOfDay, minute, second);
         AlarmManager am =
                 (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
