@@ -6,7 +6,6 @@
     android:focusableInTouchMode="true"
     android:clickable="true"
     android:background="@drawable/menu_item_bg"
-
     >
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="horizontal"
@@ -23,6 +22,7 @@
             android:text="Hello"
             android:gravity="center"
             android:textSize = "18sp"
+            android:textColor="@color/primary_white"
             android:id="@+id/title"/>
         <Space
             android:layout_width="0dp"

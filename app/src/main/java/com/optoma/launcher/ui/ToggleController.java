@@ -3,11 +3,15 @@ package com.optoma.launcher.ui;
 import android.content.Context;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
 import com.optoma.launcher.R;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -19,6 +23,8 @@ public class ToggleController implements ViewController {
     @BindView(R.id.title) TextView title;
     @BindView(R.id.toggle)
     ToggleButton toggle;
+    private List<CompoundButton.OnCheckedChangeListener> onCheckedChangeListeners = new ArrayList<>();
+    private List<View.OnFocusChangeListener> onFocusChangeListeners = new ArrayList<>();
 
     public ToggleController(Context context, String title, boolean isChecked) {
         view = View.inflate(context, R.layout.menu_toggle, null);
@@ -26,6 +32,24 @@ public class ToggleController implements ViewController {
 
         this.title.setText(title);
         this.toggle.setChecked(isChecked);
+
+        this.toggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                for(CompoundButton.OnCheckedChangeListener l: onCheckedChangeListeners) {
+                    l.onCheckedChanged(buttonView, isChecked);
+                }
+            }
+        });
+
+        this.view.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                for(View.OnFocusChangeListener l: onFocusChangeListeners) {
+                    l.onFocusChange(v, hasFocus);
+                }
+            }
+        });
 
         view.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,6 +69,14 @@ public class ToggleController implements ViewController {
                 return false;
             }
         });
+    }
+
+    public void addOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener lis) {
+        onCheckedChangeListeners.add(lis);
+    }
+
+    public void addOnFocusChangeListeners(View.OnFocusChangeListener lis) {
+        onFocusChangeListeners.add(lis);
     }
 
     @Override

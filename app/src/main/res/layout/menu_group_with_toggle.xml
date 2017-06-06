@@ -2,42 +2,20 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:clickable="true"
-    android:focusable="true"
-    android:focusableInTouchMode="true"
-    android:background="@drawable/menu_item_bg"
+    android:clickable="false"
+    android:focusable="false"
+    android:focusableInTouchMode="false"
+    android:background="@drawable/menu_bg"
     >
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:orientation="horizontal"
-        android:layout_marginEnd="24dp"
-        >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="48dp"
-            android:id="@+id/title"
-            android:gravity="center_vertical"
-            android:textSize = "18sp"
-            android:text="HDMI"
-            android:layout_marginStart="12dp"/>
-        <Space
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"/>
+        android:layout_height="wrap_content"
+        android:clickable="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:id="@+id/title">
 
-        <ToggleButton
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:text=""
-            android:textOn=""
-            android:textOff=""
-            android:focusable="false"
-            android:focusableInTouchMode="false"
-            android:clickable="false"
-            android:background="@drawable/on_off"
-            android:id="@+id/toggle"/>
-    </LinearLayout>
+    </FrameLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -51,7 +29,8 @@
             android:layout_marginStart="17dp"
             android:layout_marginEnd="7dp"
             android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"/>
+            android:layout_marginBottom="5dp"
+            android:id="@+id/indent"/>
 
         <LinearLayout
             android:layout_width="match_parent"

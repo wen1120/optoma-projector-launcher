@@ -27,11 +27,11 @@ public class Network extends Activity {
         setContentView(R.layout.network);
         ButterKnife.bind(this);
 
-        final View wifi = getWifiMenu();
-        content.addView(wifi);
-
         final View lan = getLanMenu();
         content.addView(lan);
+
+        final View wifi = getWifiMenu();
+        content.addView(wifi);
 
     }
 
