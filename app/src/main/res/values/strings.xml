@@ -18,7 +18,7 @@
     <string name="is_ss_ss01">Shortcut 01</string>
     <string name="is_ss_ss02">Shortcut 02</string>
     <string name="is_ss_ss03">Shortcut 03</string>
-    <string name="setting_power">power</string>
+    <string name="setting_power">Power</string>
     <string name="setting_power_title">Power Mode</string>
     <string name="setting_power_content">Active</string>
     <string name="setting_account">Account</string>
