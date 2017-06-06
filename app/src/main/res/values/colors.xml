@@ -4,18 +4,19 @@
     <color name="date">#d0d3d4</color>
     <color name="time">#8a8d8f</color>
     <color name="setting">#b29a887b</color>
-    <color name="source">#b22e2a25</color>
+    <color name="source">#b2231f20</color>
     <color name="tsetting">#ff9a887b</color>
-    <color name="tsource">#ff2e2a25</color>
+    <color name="tsource">#ff231f20</color>
     <color name="transparent">#ffffff</color>
-    <color name="bolder">#eada24</color>
+    <color name="bolder">#f2a900</color>
     <color name="select">#d0d3d4</color>
     <color name="shortcut">#5b646f</color>
     <color name="ss_unselect_source">#71c5e8</color>
 
     <color name="primary_red">#cf0a2c</color>
-    <color name="primary_black">#2e2a25</color>
-    <color name="primary_black_transparent">#992e2a25</color>
+    <color name="primary_black">#231f20</color>
+    <color name="primary_black_70">#b2231f20</color>
+    <color name="primary_black_transparent">#99231f20</color>
 
     <color name="primary_gray">#5b646f</color>
     <color name="primary_white">#ffffff</color>
@@ -25,11 +26,12 @@
     <color name="secondary_light_blue">#71c5e8</color>
 
     <color name="secondary_cyan">#00c7b1</color>
-    <color name="secondary_yellow">#eada24</color>
+    <color name="secondary_yellow">#f2a900</color>
     <color name="secondary_gray">#8a8d8f</color>
     \<color name="secondary_gray_80">#808a8d8f</color>
     <color name="secondary_light_gray">#d0d3d4</color>
     <color name="secondary_light_brown">#9a887b</color>
+    <color name="secondary_light_brown_70">#b29a887b</color>
     
     <color name="p427c">#d0d3d4</color>
     <color name="p301c">#004b87</color>
