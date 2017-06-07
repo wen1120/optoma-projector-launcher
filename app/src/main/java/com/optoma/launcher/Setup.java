@@ -132,7 +132,8 @@ public class Setup extends Activity {
         sourceControl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Setup.this, SourceControl.class));
+                menu.setContent(createSourceControl(menu), sourceControl);
+                // startActivity(new Intent(Setup.this, SourceControl.class));
             }
         });
         menu.addItem(sourceControl);
@@ -903,5 +904,50 @@ public class Setup extends Activity {
         menu.addItem(back);
         return menu.getView();
     }
+
+    private View createSourceControl(MenuController parent) {
+        final MenuController menu = new MenuController(this, R.layout.menu_panel, parent);
+
+        final MenuGroupController digitalZoom = new MenuGroupController(this, "HDMI Link Settings");
+        {
+            final ToggleController hdmiLink = new ToggleController(this, "HDMI Link", false);
+            digitalZoom.addItem(hdmiLink);
+
+            final PickerController inclusiveOfTv = new PickerController(this, "Inclusive of TV", new String[] {
+                    "No", "Yes"
+            }, 0);
+            digitalZoom.addItem(inclusiveOfTv);
+
+            final PickerController powerOnLink = new PickerController(this, "Power On Link", Projector.powerOnLink, 0);
+            digitalZoom.addItem(powerOnLink);
+
+            final ToggleController powerOffLink = new ToggleController(this, "Power Off Link", false);
+            digitalZoom.addItem(powerOffLink);
+
+        }
+        menu.addItem(digitalZoom);
+
+        final MenuGroupController hdBaseTControl = new MenuGroupController(this, "HDBaseT Control");
+        {
+            final ToggleController ethernet = new ToggleController(this, "Ethernet", false);
+            hdBaseTControl.addItem(ethernet);
+
+            final ToggleController rs232 = new ToggleController(this, "RS232", false);
+            hdBaseTControl.addItem(rs232);
+        }
+        menu.addItem(hdBaseTControl);
+
+        final ButtonController back = new ButtonController(
+                this, "Back to Projector Setup", null, R.drawable.backtotop_white, -1);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                menu.dismiss();
+            }
+        });
+        menu.addItem(back);
+        return menu.getView();
+    }
+
 
 }

@@ -51,7 +51,7 @@ public class MenuGroupWithToggleController extends ViewController {
     }
 
     public void addItem(ViewController v) {
-        v.addOnFocusChangeListener(focusListener); // TODO
+        v.addOnFocusChangeListener(focusListener);
         children.add(v);
         v.setEnabled(isCheckedInitially);
 

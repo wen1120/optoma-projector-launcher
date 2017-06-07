@@ -318,4 +318,9 @@ public class Projector {
             "0",
             "7.5"
     };
+    public static String[] powerOnLink = new String[] {
+            "Mutual",
+            "PJ --> Device",
+            "Device --> PJ"
+    };
 }

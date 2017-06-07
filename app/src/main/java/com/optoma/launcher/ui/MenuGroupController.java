@@ -31,7 +31,24 @@ public class MenuGroupController extends ViewController {
     }
 
     public void addItem(ViewController v) {
+        v.addOnFocusChangeListener(focusListener);
         children.add(v);
         content.addView(v.getView());
     }
+
+    private View.OnFocusChangeListener focusListener = new View.OnFocusChangeListener() {
+        private int focusCount = 0;
+
+        @Override
+        public void onFocusChange(View v, boolean hasFocus) {
+            if(hasFocus) {
+                focusCount++;
+            } else {
+                focusCount--;
+            }
+            view.setBackground((focusCount>0) ?
+                    view.getResources().getDrawable(R.drawable.menu_bg_select) :
+                    view.getResources().getDrawable(R.drawable.menu_bg_normal));
+        }
+    };
 }
