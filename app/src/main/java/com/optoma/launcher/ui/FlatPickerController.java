@@ -15,9 +15,8 @@ import butterknife.ButterKnife;
  * Created by ken.chou on 5/15/2017.
  */
 
-public class FlatPickerController implements ViewController {
+public class FlatPickerController extends ViewController {
 
-    private View view;
     private int[] choices;
     private int currentIndex;
 
@@ -25,7 +24,7 @@ public class FlatPickerController implements ViewController {
     @BindView(R.id.tabs) GridLayout content;
 
     public FlatPickerController(Context context, String title, @DrawableRes int[] choices, int initial) {
-        view = View.inflate(context, R.layout.menu_flat_picker, null);
+        super(View.inflate(context, R.layout.menu_flat_picker, null));
         this.choices = choices;
         this.currentIndex = initial;
         ButterKnife.bind(this, view);

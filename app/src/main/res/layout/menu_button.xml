@@ -26,6 +26,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:textSize = "18sp"
+            android:textColor="@color/menu_text"
             android:id="@+id/title"/>
 
         <Space
@@ -38,6 +39,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:textSize = "18sp"
+            android:textColor="@color/menu_value"
             android:id="@+id/info"/>
 
         <ImageView

@@ -46,8 +46,8 @@ public class Network extends Activity {
         final MenuGroupWithToggleController wifiMenu = new MenuGroupWithToggleController(
                 this, "Wi-Fi", false
         );
-        wifiMenu.addItem(ssid.getView());
-        wifiMenu.addItem(mode.getView());
+        wifiMenu.addItem(ssid);
+        wifiMenu.addItem(mode);
 
         return wifiMenu.getView();
     }
@@ -65,26 +65,26 @@ public class Network extends Activity {
         );
 
         final ToggleController dhcp = new ToggleController(this, "DHCP", false);
-        lanMenu.addItem(dhcp.getView());
+        lanMenu.addItem(dhcp);
 
         final ButtonController ipAddress = new ButtonController(
                 this, "IP Address", "192.168.0.2");
-        lanMenu.addItem(ipAddress.getView());
+        lanMenu.addItem(ipAddress);
 
         final ButtonController subnetMask = new ButtonController(
                 this, "Subnet Mask", "255.255.255.0");
-        lanMenu.addItem(subnetMask.getView());
+        lanMenu.addItem(subnetMask);
 
         final ButtonController gateway = new ButtonController(
                 this, "Gateway", "192.168.0.254");
-        lanMenu.addItem(gateway.getView());
+        lanMenu.addItem(gateway);
 
         final ButtonController dns = new ButtonController(
                 this, "DNS", "192.168.0.1");
-        lanMenu.addItem(dns.getView());
+        lanMenu.addItem(dns);
 
         final ButtonController reset = new ButtonController(this, "Reset");
-        lanMenu.addItem(reset.getView());
+        lanMenu.addItem(reset);
 
         return lanMenu.getView();
     }

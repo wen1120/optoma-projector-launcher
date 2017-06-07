@@ -210,12 +210,12 @@ public class Setup extends Activity {
         final PickerController ultraDetailMode = new PickerController(
                 this, null, Projector.ultraDetails, 0
         );
-        ultraDetail.addItem(ultraDetailMode.getView());
+        ultraDetail.addItem(ultraDetailMode);
 
         final SeekBarController user = new SeekBarController(
                 this, "User", 0, 0, 150, 1
         );
-        ultraDetail.addItem(user.getView());
+        ultraDetail.addItem(user);
         menu.addItem(ultraDetail);
 
 
@@ -495,39 +495,39 @@ public class Setup extends Activity {
         final MenuGroupController digitalZoom = new MenuGroupController(this, "Digital Zoom");
         {
             final SeekBarController h = new SeekBarController(this, "H Zoom", 0, 0, 100, 1);
-            digitalZoom.addItem(h.getView());
+            digitalZoom.addItem(h);
 
             final SeekBarController v = new SeekBarController(this, "V Zoom", 0, 0, 100, 1);
-            digitalZoom.addItem(v.getView());
+            digitalZoom.addItem(v);
         }
         menu.addItem(digitalZoom);
 
         final MenuGroupController imageShift = new MenuGroupController(this, "Image Shift");
         {
             final SeekBarController h = new SeekBarController(this, "H", 0, -100, 100, 1);
-            imageShift.addItem(h.getView());
+            imageShift.addItem(h);
 
             final SeekBarController v = new SeekBarController(this, "V", 0, -100, 100, 1);
-            imageShift.addItem(v.getView());
+            imageShift.addItem(v);
         }
         menu.addItem(imageShift);
 
         final MenuGroupController geometricCorrection = new MenuGroupController(this, "Geometric Correction");
         {
             final SeekBarController hArc = new SeekBarController(this, "H Arc", 0, -10, 10, 1);
-            geometricCorrection.addItem(hArc.getView());
+            geometricCorrection.addItem(hArc);
 
             final SeekBarController vArc = new SeekBarController(this, "V Arc", 0, -10, 10, 1);
-            geometricCorrection.addItem(vArc.getView());
+            geometricCorrection.addItem(vArc);
 
             final SeekBarController hKeystone = new SeekBarController(this, "H Keystone", 0, -40, 40, 1);
-            geometricCorrection.addItem(hKeystone.getView());
+            geometricCorrection.addItem(hKeystone);
 
             final SeekBarController vKeystone = new SeekBarController(this, "V Keystone", 0, -40, 40, 1);
-            geometricCorrection.addItem(vKeystone.getView());
+            geometricCorrection.addItem(vKeystone);
 
             final ToggleController autoKeystone = new ToggleController(this, "Auto Keystone", false);
-            geometricCorrection.addItem(autoKeystone.getView());
+            geometricCorrection.addItem(autoKeystone);
 
         }
         menu.addItem(geometricCorrection);
@@ -565,11 +565,11 @@ public class Setup extends Activity {
         {
             final PickerController mainSource = new PickerController(
                     this, "Main Source", Projector.mainSources, 0);
-            source.addItem(mainSource.getView());
+            source.addItem(mainSource);
 
             final PickerController subSource = new PickerController(
                     this, "Sub Source", Projector.mainSources, 0);
-            source.addItem(subSource.getView());
+            source.addItem(subSource);
         }
         menu.addItem(source);
 

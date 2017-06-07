@@ -14,9 +14,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class PickerController implements ViewController {
+public class PickerController extends ViewController {
 
-    private View view;
     private String[] values;
     private int currentIndex;
 
@@ -27,7 +26,7 @@ public class PickerController implements ViewController {
 
     public PickerController(
             Context context, @Nullable String title, String[] values, int initial) {
-        view = View.inflate(context, R.layout.menu_picker, null);
+        super(View.inflate(context, R.layout.menu_picker, null));
         this.values = values;
         this.currentIndex = initial;
         ButterKnife.bind(this, view);

@@ -12,9 +12,7 @@ import com.optoma.launcher.R;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class SeekBarController implements ViewController {
-
-    private View view;
+public class SeekBarController extends ViewController {
 
     @BindView(R.id.title) TextView title;
     @BindView(R.id.value) TextView value;
@@ -25,7 +23,7 @@ public class SeekBarController implements ViewController {
 
     public SeekBarController(Context context,
                              final String title, final int initial, final int min, final int max, final int step) {
-        view = View.inflate(context, R.layout.menu_seekbar, null);
+        super(View.inflate(context, R.layout.menu_seekbar, null));
         ButterKnife.bind(this, view);
 
         this.title.setText(title);

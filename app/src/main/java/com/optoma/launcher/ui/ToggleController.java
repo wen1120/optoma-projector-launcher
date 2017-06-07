@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.CompoundButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
@@ -15,19 +14,16 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
-public class ToggleController implements ViewController {
-    private View view;
+public class ToggleController extends ViewController {
 
     @BindView(R.id.title) TextView title;
     @BindView(R.id.toggle)
     ToggleButton toggle;
     private List<CompoundButton.OnCheckedChangeListener> onCheckedChangeListeners = new ArrayList<>();
-    private List<View.OnFocusChangeListener> onFocusChangeListeners = new ArrayList<>();
 
     public ToggleController(Context context, String title, boolean isChecked) {
-        view = View.inflate(context, R.layout.menu_toggle, null);
+        super(View.inflate(context, R.layout.menu_toggle, null));
         ButterKnife.bind(this, view);
 
         this.title.setText(title);
@@ -42,12 +38,10 @@ public class ToggleController implements ViewController {
             }
         });
 
-        this.view.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+        addOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                for(View.OnFocusChangeListener l: onFocusChangeListeners) {
-                    l.onFocusChange(v, hasFocus);
-                }
+                ToggleController.this.title.setSelected(hasFocus);
             }
         });
 
@@ -75,8 +69,15 @@ public class ToggleController implements ViewController {
         onCheckedChangeListeners.add(lis);
     }
 
-    public void addOnFocusChangeListeners(View.OnFocusChangeListener lis) {
-        onFocusChangeListeners.add(lis);
+    @Override
+    public void setEnabled(boolean isEnabled) {
+        view.setEnabled(isEnabled);
+        view.setFocusable(isEnabled);
+        view.setFocusableInTouchMode(isEnabled);
+        view.setClickable(isEnabled);
+
+        title.setEnabled(isEnabled);
+        toggle.setEnabled(isEnabled);
     }
 
     @Override

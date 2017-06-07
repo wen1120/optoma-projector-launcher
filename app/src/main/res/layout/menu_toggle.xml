@@ -22,7 +22,7 @@
             android:text="Hello"
             android:gravity="center"
             android:textSize = "18sp"
-            android:textColor="@color/primary_white"
+            android:textColor="@color/menu_text"
             android:id="@+id/title"/>
         <Space
             android:layout_width="0dp"

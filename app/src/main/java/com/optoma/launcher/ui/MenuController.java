@@ -14,8 +14,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MenuController implements ViewController {
-    private View view;
+public class MenuController extends ViewController {
 
     @BindView(R.id.selector)
     ViewGroup itemsWrapper;
@@ -27,7 +26,7 @@ public class MenuController implements ViewController {
     private List<ViewController> items = new ArrayList<>();
 
     public MenuController(Context context, @LayoutRes int layout, MenuController from) {
-        view = View.inflate(context, layout, null);
+        super(View.inflate(context, layout, null));
 
         ButterKnife.bind(this, view);
 

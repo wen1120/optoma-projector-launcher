@@ -13,13 +13,12 @@ import com.optoma.launcher.SizeChanger;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class ShortcutController implements ViewController {
-    private View view;
+public class ShortcutController extends ViewController {
     @BindView(R.id.image) ImageView image;
     @BindView(R.id.label) TextView label;
 
     public ShortcutController(Context context, @DrawableRes int img, String lab) {
-        view = new Shortcut(context); // View.inflate(context, R.layout.shortcut, null);
+        super(new Shortcut(context)); // View.inflate(context, R.layout.shortcut, null);
         ButterKnife.bind(this, view);
 
         image.setImageResource(img);

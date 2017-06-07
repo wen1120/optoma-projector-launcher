@@ -17,8 +17,8 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class ButtonController implements ViewController {
-    private View view;
+public class ButtonController extends ViewController {
+
     @BindView(R.id.title) TextView title;
     @BindView(R.id.info) TextView info;
     @BindView(R.id.leading_image) ImageView leadingImage;
@@ -39,7 +39,7 @@ public class ButtonController implements ViewController {
                             @Nullable String info,
                             @DrawableRes int leadingImage,
                             @DrawableRes int trailingImage) {
-        view = View.inflate(context, R.layout.menu_button, null);
+        super(View.inflate(context, R.layout.menu_button, null));
         ButterKnife.bind(this, view);
 
         this.title.setText(title);
@@ -73,5 +73,16 @@ public class ButtonController implements ViewController {
     @Override
     public View getView() {
         return view;
+    }
+
+    @Override
+    public void setEnabled(boolean isEnabled) {
+        view.setEnabled(isEnabled);
+        view.setFocusable(isEnabled);
+        view.setFocusableInTouchMode(isEnabled);
+        view.setClickable(isEnabled);
+
+        title.setEnabled(isEnabled);
+        info.setEnabled(isEnabled);
     }
 }
