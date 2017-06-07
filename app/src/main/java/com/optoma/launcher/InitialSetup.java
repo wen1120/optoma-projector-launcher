@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.Space;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
@@ -37,7 +38,7 @@ public class InitialSetup extends Activity {
 
         final View languageTab = (View) findViewById(R.id.language);
         final ViewFlipper flipper = (ViewFlipper) findViewById(R.id.initial_setup_flipper);
-        final LinearLayout grid = (LinearLayout) flipper.getChildAt(1);
+        final ViewGroup grid = (ViewGroup) flipper.findViewById(R.id.lang_content);
 
         for(int i=0; i<positionIds.length; i++) {
             final View v = findViewById(positionIds[i]);
@@ -60,7 +61,7 @@ public class InitialSetup extends Activity {
 
     }
 
-    private void addLanguages(LinearLayout grid) {
+    private void addLanguages(ViewGroup grid) {
         final LayoutInflater inflater = getLayoutInflater();
         final int numRow = 4;
         final int numCol = 7;
@@ -117,7 +118,9 @@ public class InitialSetup extends Activity {
 
             grid.addView(row);
             if (rowIndex != numRow - 1 ) {
-                inflater.inflate(R.layout.space, grid);
+                final Space space = new Space(this);
+                space.setLayoutParams(new ViewGroup.LayoutParams(0, Util.dp(this, 32)));
+                grid.addView(space);
             }
         }
     }
