@@ -2,6 +2,7 @@ package com.optoma.launcher.ui;
 
 import android.content.Context;
 import android.support.annotation.DrawableRes;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -21,9 +22,21 @@ public class ShortcutController extends ViewController {
         // super(new Shortcut(context));
         super(View.inflate(context, R.layout.shortcut, null));
 
+        ButterKnife.bind(this, view);
+
         view.setBackgroundResource(R.drawable.setup_shortcut_bg);
 
-        ButterKnife.bind(this, view);
+        view.setScaleX(0.8f);
+        view.setScaleY(0.8f);
+        view.setAlpha(0.7f);
+
+        view.setOnFocusChangeListener(new SizeChanger(1, 0.8f, 80) {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                super.onFocusChange(v, hasFocus);
+                view.setAlpha(hasFocus ? 1.0f : 0.7f);
+            }
+        });
 
         image.setImageResource(img);
         label.setText(lab);
