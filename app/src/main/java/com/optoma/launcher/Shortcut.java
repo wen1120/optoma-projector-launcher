@@ -16,7 +16,7 @@ public class Shortcut extends FrameLayout {
 
         final View content = View.inflate(context, R.layout.shortcut, this);
 
-        setBackgroundResource(R.drawable.home_shortcut_source);
+        setBackgroundResource(R.drawable.settings_menu_bg);
 
         setClipChildren(false);
         setWillNotDraw(false);
@@ -24,8 +24,11 @@ public class Shortcut extends FrameLayout {
         setClickable(true);
         setFocusable(true);
         setFocusableInTouchMode(true);
+        setAlpha(0.7f);
+        setScaleX(0.8f);
+        setScaleY(0.8f);
 
-        final SizeChanger sc = new SizeChanger(1.25f, 80);
+        final SizeChanger sc = new SizeChanger(1f, 80);
         setOnFocusChangeListener(new OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {

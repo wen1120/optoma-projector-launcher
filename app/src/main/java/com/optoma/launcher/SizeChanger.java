@@ -21,9 +21,11 @@ public class SizeChanger implements View.OnFocusChangeListener {
         if(hasFocus) {
             v.animate().scaleX(expandSize).setDuration(duration);
             v.animate().scaleY(expandSize).setDuration(duration);
+            v.setAlpha(1f);
         } else {
-            v.animate().scaleX(1f).setDuration(duration);
-            v.animate().scaleY(1f).setDuration(duration);
+            v.animate().scaleX(0.8f).setDuration(duration);
+            v.animate().scaleY(0.8f).setDuration(duration);
+            v.setAlpha(0.7f);
         }
     }
 }
