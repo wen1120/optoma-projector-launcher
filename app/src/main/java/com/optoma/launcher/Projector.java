@@ -305,4 +305,17 @@ public class Projector {
             "2",
             "3"
     };
+    public static String[] colorSpaces = new String[] {
+            "Auto",
+            "RGB",
+            "YUV",
+            "RGB(0~255)",
+            "RGB(16~235)",
+            "Rec. 709",
+            "Rec. 601"
+    };
+    public static String[] ire = new String[] {
+            "0",
+            "7.5"
+    };
 }

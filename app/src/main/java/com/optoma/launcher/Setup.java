@@ -96,7 +96,7 @@ public class Setup extends Activity {
         signal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Setup.this, Signal.class));
+                menu.setContent(createSignal(menu), signal);
             }
         });
         menu.addItem(signal);
@@ -855,4 +855,53 @@ public class Setup extends Activity {
 
         return menu.getView();
     }
+
+    private View createSignal(MenuController parent) {
+        final MenuController menu = new MenuController(this, R.layout.menu_panel, parent);
+
+        final ToggleController automatic = new ToggleController(this, "Automatic", false);
+        menu.addItem(automatic);
+
+        final SeekBarController frequency = new SeekBarController(this, "Frequency", 0, -50, 50, 1);
+        menu.addItem(frequency);
+
+        final SeekBarController phase = new SeekBarController(this, "Phase", 0, 0, 31, 1);
+        menu.addItem(phase);
+
+        final SeekBarController hPosition = new SeekBarController(this, "H. Position", 0, -50, 50, 1);
+        menu.addItem(hPosition);
+
+        final SeekBarController vPosition = new SeekBarController(this, "V. Position", 0, -50, 50, 1);
+        menu.addItem(vPosition);
+
+        final PickerController colorSpaces = new PickerController(this, "Color Space", Projector.colorSpaces, 0);
+        menu.addItem(colorSpaces);
+
+        final SeekBarController whiteLevel = new SeekBarController(this, "White Level", 0, -50, 50, 1);
+        menu.addItem(whiteLevel);
+
+        final SeekBarController blackLevel = new SeekBarController(this, "Black Level", 0, -50, 50, 1);
+        menu.addItem(blackLevel);
+
+        final SeekBarController saturation = new SeekBarController(this, "Saturation", 0, -50, 50, 1);
+        menu.addItem(saturation);
+
+        final SeekBarController hue = new SeekBarController(this, "Hue", 0, -50, 50, 1);
+        menu.addItem(hue);
+
+        final PickerController ire = new PickerController(this, "IRE", Projector.ire, 0);
+        menu.addItem(ire);
+
+        final ButtonController back = new ButtonController(
+                this, "Back to Projector Setup", null, R.drawable.backtotop_white, -1);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                menu.dismiss();
+            }
+        });
+        menu.addItem(back);
+        return menu.getView();
+    }
+
 }
