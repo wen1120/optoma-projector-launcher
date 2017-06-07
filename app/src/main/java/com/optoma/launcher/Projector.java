@@ -281,4 +281,28 @@ public class Projector {
             "繁體中文",
             "簡体中文"
     };
+    public static String[] threeDModes = new String[] {
+            "Off",
+            "DLP-Link",
+            "IR"
+    };
+    public static String[] threeDTwoD = new String[] {
+            "3D",
+            "L",
+            "R"
+    };
+    public static String[] threeDFormats = new String[] {
+            "Auto",
+            "SBS",
+            "Top and Bottom",
+            "Frame Sequentia",
+            "Frame Packing",
+            "Off"
+    };
+    public static String[] twoDThreeD = new String[] {
+            "Off",
+            "1",
+            "2",
+            "3"
+    };
 }

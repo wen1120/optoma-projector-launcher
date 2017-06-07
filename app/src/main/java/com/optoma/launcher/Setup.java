@@ -84,7 +84,7 @@ public class Setup extends Activity {
         threeD.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Setup.this, ThreeD.class));
+                menu.setContent(createThreeD(menu), threeD);
             }
         });
         menu.addItem(threeD);
@@ -821,6 +821,37 @@ public class Setup extends Activity {
 
         final ButtonController user3 = new ButtonController(this, "user3 (F1)");
         menu.addItem(user3);
+
+        return menu.getView();
+    }
+
+    private View createThreeD(final MenuController parent) {
+        final MenuController menu = new MenuController(this, R.layout.menu_panel, parent);
+
+        final PickerController threeDMode = new PickerController(this, "3D Mode", Projector.threeDModes, 0);
+        menu.addItem(threeDMode);
+
+        final PickerController threeDTwoD = new PickerController(this, "3D-2D", Projector.threeDTwoD, 0);
+        menu.addItem(threeDTwoD);
+
+        final PickerController threeDFormat = new PickerController(this, "3D Format", Projector.threeDFormats, 0);
+        menu.addItem(threeDFormat);
+
+        final ToggleController threeDSyncInvert = new ToggleController(this, "3D sync invert", false);
+        menu.addItem(threeDSyncInvert);
+
+        final PickerController twoDThreeD = new PickerController(this, "2D-3D", Projector.twoDThreeD, 0);
+        menu.addItem(twoDThreeD);
+
+        final ButtonController back = new ButtonController(
+                this, "Back to Projector Setup", null, R.drawable.backtotop_white, -1);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                menu.dismiss();
+            }
+        });
+        menu.addItem(back);
 
         return menu.getView();
     }
