@@ -18,7 +18,11 @@ public class ShortcutController extends ViewController {
     @BindView(R.id.label) TextView label;
 
     public ShortcutController(Context context, @DrawableRes int img, String lab) {
-        super(new Shortcut(context)); // View.inflate(context, R.layout.shortcut, null);
+        // super(new Shortcut(context));
+        super(View.inflate(context, R.layout.shortcut, null));
+
+        view.setBackgroundResource(R.drawable.setup_shortcut_bg);
+
         ButterKnife.bind(this, view);
 
         image.setImageResource(img);
@@ -28,11 +32,6 @@ public class ShortcutController extends ViewController {
 
     public void setOnClickListener(View.OnClickListener lis) {
         view.setOnClickListener(lis);
-    }
-
-    @Override
-    public View getView() {
-        return view;
     }
 
 }

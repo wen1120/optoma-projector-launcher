@@ -89,8 +89,4 @@ public class MenuController extends ViewController {
         }
     }
 
-    @Override
-    public View getView() {
-        return view;
-    }
 }

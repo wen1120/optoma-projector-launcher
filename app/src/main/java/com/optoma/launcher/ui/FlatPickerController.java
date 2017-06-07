@@ -32,8 +32,4 @@ public class FlatPickerController extends ViewController {
         this.title.setText(title);
     }
 
-    @Override
-    public View getView() {
-        return view;
-    }
 }

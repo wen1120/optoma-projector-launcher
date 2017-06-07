@@ -71,11 +71,6 @@ public class ButtonController extends ViewController {
     }
 
     @Override
-    public View getView() {
-        return view;
-    }
-
-    @Override
     public void setEnabled(boolean isEnabled) {
         view.setEnabled(isEnabled);
         view.setFocusable(isEnabled);

@@ -14,7 +14,7 @@ public class Shortcut extends FrameLayout {
     public Shortcut(Context context) {
         super(context);
 
-        final View content = View.inflate(context, R.layout.shortcut, this);
+        View.inflate(context, R.layout.shortcut, this);
 
         setBackgroundResource(R.drawable.home_shortcut_setup_normal);
 
@@ -28,18 +28,8 @@ public class Shortcut extends FrameLayout {
         setScaleX(0.8f);
         setScaleY(0.8f);
 
-        final SizeChanger sc = new SizeChanger(1f, 80);
-        setOnFocusChangeListener(new OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                Log.d("focus-change", "hasFocus: "+hasFocus);
-                Log.d("focus-change", "isSelected: "+isSelected());
-                if(hasFocus || !isSelected()) {
-                    sc.onFocusChange(v, hasFocus);
-                }
-                invalidate();
-            }
-        });
+        setOnFocusChangeListener(new SizeChanger(1f, 0.8f, 80));
+
     }
 
     private Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);

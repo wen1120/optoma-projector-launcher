@@ -30,11 +30,6 @@ public class MenuGroupController extends ViewController {
         this.title.setText(title);
     }
 
-    @Override
-    public View getView() {
-        return view;
-    }
-
     public void addItem(ViewController v) {
         children.add(v);
         content.addView(v.getView());

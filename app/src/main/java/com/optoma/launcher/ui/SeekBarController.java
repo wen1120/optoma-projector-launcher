@@ -79,8 +79,4 @@ public class SeekBarController extends ViewController {
         });
     }
 
-    public View getView() {
-        return view;
-    }
-
 }

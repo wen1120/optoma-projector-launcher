@@ -80,8 +80,4 @@ public class ToggleController extends ViewController {
         toggle.setEnabled(isEnabled);
     }
 
-    @Override
-    public View getView() {
-        return view;
-    }
 }

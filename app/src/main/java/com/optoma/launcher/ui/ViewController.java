@@ -22,7 +22,7 @@ public class ViewController {
         });
     }
 
-    public View getView() { return null; }
+    public View getView() { return view; }
 
     public void setEnabled(boolean isEnabled) {}
 

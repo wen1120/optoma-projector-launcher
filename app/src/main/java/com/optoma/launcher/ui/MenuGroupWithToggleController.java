@@ -50,11 +50,6 @@ public class MenuGroupWithToggleController extends ViewController {
         });
     }
 
-    @Override
-    public View getView() {
-        return view;
-    }
-
     public void addItem(ViewController v) {
         v.addOnFocusChangeListener(focusListener); // TODO
         children.add(v);

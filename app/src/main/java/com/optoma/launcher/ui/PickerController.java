@@ -67,8 +67,4 @@ public class PickerController extends ViewController {
         current.setText(values[currentIndex]);
     }
 
-    @Override
-    public View getView() {
-        return view;
-    }
 }
