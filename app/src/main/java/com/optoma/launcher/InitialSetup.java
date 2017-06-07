@@ -83,7 +83,7 @@ public class InitialSetup extends Activity {
 
                 tile.setContentDescription(Projector.langsEng[index]);
 
-                tile.setOnFocusChangeListener(new SizeChanger(1.25f, Home.animateDuration) {
+                tile.setOnFocusChangeListener(new SizeChanger(1f, Home.animateDuration) {
                      @Override
                      public void onFocusChange(View v, boolean hasFocus) {
                          super.onFocusChange(v, hasFocus);

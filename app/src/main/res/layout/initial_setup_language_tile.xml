@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="128dp"
-    android:layout_height="112dp"
+    android:layout_width="160dp"
+    android:layout_height="140dp"
+    android:scaleX="0.8"
+    android:scaleY="0.8"
+    android:alpha="0.7"
     android:background="@drawable/initial_setup_language_tile_bg"
     android:orientation="vertical"
     android:focusable="true"
@@ -16,8 +19,9 @@
         android:layout_marginStart="12dp"
         android:layout_weight="3"
         android:gravity="center_vertical"
-        android:textColor="#8A8D8F"
-        android:textSize="36sp" />
+        android:textColor="@color/secondary_gray"
+        android:textSize="48sp"
+        android:fontFamily="sans-serif-medium"/>
 
     <TextView
         android:id="@+id/language_name"
@@ -27,7 +31,8 @@
         android:layout_weight="2"
         android:gravity="center_vertical"
         android:textAlignment="center"
-        android:textColor="#8A8D8F"
-        android:textSize="20sp" />
+        android:textColor="@color/secondary_gray"
+        android:textSize="24sp"
+        android:fontFamily="sans-serif-medium"/>
 
 </LinearLayout>
