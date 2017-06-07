@@ -189,6 +189,7 @@
                     android:id="@+id/menu_hint"
                     android:layout_width="wrap_content"
                     android:layout_height="24dp"
+                    android:textColor="@color/primary_white"
                     android:text="Position"
                     android:layout_alignParentBottom="true"/>
 
