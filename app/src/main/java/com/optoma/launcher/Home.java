@@ -82,7 +82,7 @@ public class Home extends Activity {
     }
 
     private View.OnFocusChangeListener shortcutFocusChangeListener =
-            new SizeChanger(1.25f, animateDuration);
+            new SizeChanger(1f, animateDuration);
 
     private View.OnFocusChangeListener menuFocusChangeListener = new View.OnFocusChangeListener() {
         @Override
