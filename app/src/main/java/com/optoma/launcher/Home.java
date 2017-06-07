@@ -82,7 +82,13 @@ public class Home extends Activity {
     }
 
     private View.OnFocusChangeListener shortcutFocusChangeListener =
-            new SizeChanger(1f, animateDuration);
+            new SizeChanger(1f, 0.8f, animateDuration) {
+                @Override
+                public void onFocusChange(View v, boolean hasFocus) {
+                    super.onFocusChange(v, hasFocus);
+                    v.setAlpha(hasFocus ? 1f : 0.7f);
+                }
+            };
 
     private View.OnFocusChangeListener menuFocusChangeListener = new View.OnFocusChangeListener() {
         @Override

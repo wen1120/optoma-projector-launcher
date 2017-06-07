@@ -9,10 +9,16 @@ import android.view.View;
 public class SizeChanger implements View.OnFocusChangeListener {
 
     private float expandSize;
+    private float shrinkSize;
     private long duration;
 
     public SizeChanger(float expandSize, long duration) {
+        this(expandSize, 1, duration);
+    }
+
+    public SizeChanger(float expandSize, float shrinkSize, long duration) {
         this.expandSize = expandSize;
+        this.shrinkSize = shrinkSize;
         this.duration = duration;
     }
 
@@ -21,11 +27,9 @@ public class SizeChanger implements View.OnFocusChangeListener {
         if(hasFocus) {
             v.animate().scaleX(expandSize).setDuration(duration);
             v.animate().scaleY(expandSize).setDuration(duration);
-            v.setAlpha(1f);
         } else {
-            v.animate().scaleX(0.8f).setDuration(duration);
-            v.animate().scaleY(0.8f).setDuration(duration);
-            v.setAlpha(0.7f);
+            v.animate().scaleX(shrinkSize).setDuration(duration);
+            v.animate().scaleY(shrinkSize).setDuration(duration);
         }
     }
 }

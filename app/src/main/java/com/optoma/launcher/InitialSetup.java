@@ -119,7 +119,7 @@ public class InitialSetup extends Activity {
             grid.addView(row);
             if (rowIndex != numRow - 1 ) {
                 final Space space = new Space(this);
-                space.setLayoutParams(new ViewGroup.LayoutParams(0, Util.dp(this, 32)));
+                space.setLayoutParams(new ViewGroup.LayoutParams(0, Util.dp(this, 36)));
                 grid.addView(space);
             }
         }
