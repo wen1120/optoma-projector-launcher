@@ -73,6 +73,8 @@ public class InitialSetup extends Activity {
                 final View tile = inflater.inflate(
                         R.layout.initial_setup_language_tile, row, false);
 
+                tile.setAlpha(0.7f);
+
                 final int index = numCol * rowIndex + colIndex;
 
                 final TextView originalName = (TextView) (((ViewGroup) tile).getChildAt(1));
@@ -83,16 +85,18 @@ public class InitialSetup extends Activity {
 
                 tile.setContentDescription(Projector.langsEng[index]);
 
-                tile.setOnFocusChangeListener(new SizeChanger(1f, Home.animateDuration) {
+                tile.setOnFocusChangeListener(new SizeChanger(1.25f, Home.animateDuration) {
                      @Override
                      public void onFocusChange(View v, boolean hasFocus) {
                          super.onFocusChange(v, hasFocus);
                          if(hasFocus) {
                              originalName.setTextColor(Color.parseColor("#2E2A25"));
                              englishName.setTextColor(Color.parseColor("#2E2A25"));
+                             v.setAlpha(1.0f);
                          } else {
                              originalName.setTextColor(Color.parseColor("#8A8D8F"));
                              englishName.setTextColor(Color.parseColor("#8A8D8F"));
+                             v.setAlpha(0.7f);
                          }
                      }
                 });
