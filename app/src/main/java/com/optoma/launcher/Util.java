@@ -6,7 +6,7 @@ import android.util.DisplayMetrics;
 public class Util {
 
     public static int dp(Context context, int px) {
-        DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
-        return Math.round(px / (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT));
+        // from https://developer.android.com/guide/practices/screens_support.html#dips-pels
+        return (int) (px * context.getResources().getDisplayMetrics().density + 0.5f);
     }
 }

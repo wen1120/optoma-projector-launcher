@@ -122,8 +122,10 @@ public class InitialSetup extends Activity {
 
             grid.addView(row);
             if (rowIndex != numRow - 1 ) {
-                final Space space = new Space(this);
-                space.setLayoutParams(new ViewGroup.LayoutParams(0, Util.dp(this, 36)));
+                final View space = new Space(this);
+                space.setLayoutParams(new ViewGroup.LayoutParams(
+                        ViewGroup.LayoutParams.MATCH_PARENT, Util.dp(this, 36)));
+                // space.setBackgroundColor(Color.RED);
                 grid.addView(space);
             }
         }
