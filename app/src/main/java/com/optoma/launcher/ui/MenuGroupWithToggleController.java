@@ -31,27 +31,12 @@ public class MenuGroupWithToggleController implements ViewController {
 
     public MenuGroupWithToggleController(final Context context, String title, boolean isChecked) {
         view = View.inflate(context, R.layout.menu_group_with_toggle, null);
-        view.setId(View.generateViewId());
         ButterKnife.bind(this, view);
 
         isCheckedInitially = isChecked;
 
         final ToggleController toggleController = new ToggleController(context, title, isChecked);
         this.title.addView(toggleController.getView());
-
-//        view.setOnKeyListener(new View.OnKeyListener() {
-//            @Override
-//            public boolean onKey(View v, int keyCode, KeyEvent event) {
-//                if(event.getAction() != KeyEvent.ACTION_DOWN) return false;
-//                if(keyCode == KeyEvent.KEYCODE_DPAD_LEFT ||
-//                        keyCode == KeyEvent.KEYCODE_DPAD_RIGHT ||
-//                        keyCode == KeyEvent.KEYCODE_ENTER) {
-//                    toggle.performClick();
-//                    return true;
-//                }
-//                return false;
-//            }
-//        });
 
         toggleController.addOnFocusChangeListeners(focusListener);
 
@@ -67,13 +52,6 @@ public class MenuGroupWithToggleController implements ViewController {
 
                 }
 
-//                if(content.getChildCount() > 0 && isChecked) {
-//                    final View firstChild = content.getChildAt(0);
-//                    view.setNextFocusDownId(firstChild.getId());
-//                    firstChild.setNextFocusUpId(view.getId());
-//                } else {
-//                    view.setNextFocusDownId(View.NO_ID);
-//                }
             }
         });
     }
@@ -84,7 +62,6 @@ public class MenuGroupWithToggleController implements ViewController {
     }
 
     public void addItem(View v) {
-        v.setId(View.generateViewId());
         v.setOnFocusChangeListener(focusListener); // TODO
         // v.setEnabled(isCheckedInitially);
         v.setFocusable(isCheckedInitially);
