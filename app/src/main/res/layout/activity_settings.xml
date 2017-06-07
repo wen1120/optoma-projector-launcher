@@ -19,7 +19,7 @@
         android:id="@+id/setting_textview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="20dp"
         android:gravity="center"
         android:text="@string/home_settings"
         android:textSize = "45sp"
@@ -33,8 +33,7 @@
         android:layout_height="1dp"
         android:layout_marginLeft="48dp"
         android:layout_marginRight="48dp"
-        android:layout_marginTop="0dp"
-        android:layout_below="@id/setting_textview"
+        android:layout_marginTop="66dp"
         android:background="@color/transparent" />
 
     <TextView
