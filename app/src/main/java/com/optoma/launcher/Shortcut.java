@@ -16,7 +16,7 @@ public class Shortcut extends FrameLayout {
 
         final View content = View.inflate(context, R.layout.shortcut, this);
 
-        setBackgroundResource(R.drawable.settings_menu_bg);
+        setBackgroundResource(R.drawable.home_shortcut_setup_normal);
 
         setClipChildren(false);
         setWillNotDraw(false);

@@ -325,7 +325,7 @@
                 android:text="HMDI1"
                 android:textAlignment="center"
                 android:textColor="@color/primary_white"
-                android:textSize="16sp"
+                android:textSize="20sp"
                 android:textStyle="bold" />
         </LinearLayout>
 
@@ -372,7 +372,7 @@
                 android:text="VGA"
                 android:textAlignment="center"
                 android:textColor="@color/primary_white"
-                android:textSize="16sp"
+                android:textSize="20sp"
                 android:textStyle="bold" />
         </LinearLayout>
 
@@ -419,7 +419,7 @@
                 android:text="Settings"
                 android:textAlignment="center"
                 android:textColor="@color/primary_white"
-                android:textSize="16sp"
+                android:textSize="20sp"
                 android:textStyle="bold" />
         </LinearLayout>
 
@@ -466,7 +466,7 @@
                 android:text="Projector\nSetup"
                 android:textAlignment="center"
                 android:textColor="@color/primary_white"
-                android:textSize="16sp"
+                android:textSize="20sp"
                 android:textStyle="bold" />
         </LinearLayout>
 
