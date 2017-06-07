@@ -6,8 +6,10 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewParent;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.Space;
 
 import com.optoma.launcher.ProjectorSetup.Signal;
@@ -909,32 +911,31 @@ public class Setup extends Activity {
         final MenuController menu = new MenuController(this, R.layout.menu_panel, parent);
 
         final MenuGroupController digitalZoom = new MenuGroupController(this, "HDMI Link Settings");
-        {
-            final ToggleController hdmiLink = new ToggleController(this, "HDMI Link", false);
-            digitalZoom.addItem(hdmiLink);
 
-            final PickerController inclusiveOfTv = new PickerController(this, "Inclusive of TV", new String[] {
-                    "No", "Yes"
-            }, 0);
-            digitalZoom.addItem(inclusiveOfTv);
+        final ToggleController hdmiLink = new ToggleController(this, "HDMI Link", false);
+        digitalZoom.addItem(hdmiLink);
 
-            final PickerController powerOnLink = new PickerController(this, "Power On Link", Projector.powerOnLink, 0);
-            digitalZoom.addItem(powerOnLink);
+        final PickerController inclusiveOfTv = new PickerController(this, "Inclusive of TV", new String[] {
+                "No", "Yes"
+        }, 0);
+        digitalZoom.addItem(inclusiveOfTv);
 
-            final ToggleController powerOffLink = new ToggleController(this, "Power Off Link", false);
-            digitalZoom.addItem(powerOffLink);
+        final PickerController powerOnLink = new PickerController(this, "Power On Link", Projector.powerOnLink, 0);
+        digitalZoom.addItem(powerOnLink);
 
-        }
+        final ToggleController powerOffLink = new ToggleController(this, "Power Off Link", false);
+        digitalZoom.addItem(powerOffLink);
+
         menu.addItem(digitalZoom);
 
         final MenuGroupController hdBaseTControl = new MenuGroupController(this, "HDBaseT Control");
-        {
-            final ToggleController ethernet = new ToggleController(this, "Ethernet", false);
-            hdBaseTControl.addItem(ethernet);
 
-            final ToggleController rs232 = new ToggleController(this, "RS232", false);
-            hdBaseTControl.addItem(rs232);
-        }
+        final ToggleController ethernet = new ToggleController(this, "Ethernet", false);
+        hdBaseTControl.addItem(ethernet);
+
+        final ToggleController rs232 = new ToggleController(this, "RS232", false);
+        hdBaseTControl.addItem(rs232);
+
         menu.addItem(hdBaseTControl);
 
         final ButtonController back = new ButtonController(
@@ -946,6 +947,21 @@ public class Setup extends Activity {
             }
         });
         menu.addItem(back);
+
+        hdmiLink.getView().setNextFocusUpId(back.getView().getId());
+        back.getView().setNextFocusDownId(hdmiLink.getView().getId());
+
+        final ScrollView scrollView = Util.<ScrollView>findParent(hdmiLink.getView());
+
+        hdmiLink.addOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(hasFocus) {
+                    scrollView.smoothScrollTo(0, digitalZoom.getView().getTop());
+                }
+            }
+        });
+
         return menu.getView();
     }
 

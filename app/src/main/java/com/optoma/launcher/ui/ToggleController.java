@@ -26,6 +26,8 @@ public class ToggleController extends ViewController {
         super(View.inflate(context, R.layout.menu_toggle, null));
         ButterKnife.bind(this, view);
 
+        view.setId(View.generateViewId());
+
         this.title.setText(title);
         this.toggle.setChecked(isChecked);
 
