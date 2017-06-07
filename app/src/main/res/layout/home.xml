@@ -179,17 +179,19 @@
                 <!-- horizontal separator -->
                 <View
                     android:layout_width="254dp"
-                    android:layout_height="2dp"
+                    android:layout_height="1dp"
                     android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true"
                     android:layout_marginBottom="24dp"
-                    android:background="#D0D3D4" />
+                    android:background="@color/primary_white" />
 
                 <TextView
                     android:id="@+id/menu_hint"
                     android:layout_width="wrap_content"
                     android:layout_height="24dp"
                     android:textColor="@color/primary_white"
+                    android:textSize="16sp"
+                    android:fontFamily="sans-serif-medium"
                     android:text="Position"
                     android:layout_alignParentBottom="true"/>
 
