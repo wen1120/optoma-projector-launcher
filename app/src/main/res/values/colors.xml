@@ -32,8 +32,8 @@
     <color name="secondary_light_gray">#d0d3d4</color>
     <color name="secondary_light_brown">#9a887b</color>
     <color name="secondary_light_brown_70">#b29a887b</color>
-    <color name="dark_gray">#2e2a25</color>
-    <color name="dark_gray_70">#b22e2a25</color>
+    <color name="dark_gray">#231f20</color>
+    <color name="dark_gray_70">#b2231f20</color>
     
     <color name="p427c">#d0d3d4</color>
     <color name="p301c">#004b87</color>
