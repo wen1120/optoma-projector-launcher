@@ -109,6 +109,7 @@
                         android:layout_centerHorizontal="true"
                         android:fontFamily="Roboto"
                         android:format12Hour="EEE d MMM"
+                        android:format24Hour="EEE d MMM"
                         android:textColor="#FFFFFF"
                         android:textSize="20sp" />
                 </RelativeLayout>
