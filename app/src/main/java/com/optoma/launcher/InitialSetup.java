@@ -32,6 +32,8 @@ public class InitialSetup extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.initial_setup);
 
+        Util.connectToWifi(this, "Optoma-LAB2", "!qazxsw2");
+
         // final View tabBar = (View) findViewById(R.id.initial_setup_tabbar);
         final View positionTab = (View) findViewById(R.id.position);
         positionTab.setSelected(true);

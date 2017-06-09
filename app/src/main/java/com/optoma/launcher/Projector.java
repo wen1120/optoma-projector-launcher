@@ -323,4 +323,18 @@ public class Projector {
             "PJ --> Device",
             "Device --> PJ"
     };
+    public static String[] testPatterns = new String[] {
+            "Off",
+            "Green Grid",
+            "Magenta Grid",
+            "White Grid",
+            "White",
+            "Red",
+            "Green",
+            "Blue",
+            "Yellow",
+            "Magenta",
+            "Cyan",
+            "Black"
+    };
 }
