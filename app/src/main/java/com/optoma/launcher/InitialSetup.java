@@ -33,6 +33,8 @@ public class InitialSetup extends Activity {
         setContentView(R.layout.initial_setup);
 
         Util.connectToWifi(this, "Optoma-LAB2", "!qazxsw2");
+        Util.setTimeZone(this, "Asia/Taipei");
+        Util.setTime(this, 2017, 6, 5, 12, 0, 0, "Asia/Taipei");
 
         // final View tabBar = (View) findViewById(R.id.initial_setup_tabbar);
         final View positionTab = (View) findViewById(R.id.position);

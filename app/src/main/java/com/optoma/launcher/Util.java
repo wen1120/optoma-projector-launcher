@@ -1,12 +1,17 @@
 package com.optoma.launcher;
 
+import android.app.AlarmManager;
 import android.content.Context;
 import android.net.wifi.WifiConfiguration;
 import android.net.wifi.WifiManager;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewParent;
 import android.widget.ScrollView;
+
+import java.util.Calendar;
+import java.util.TimeZone;
 
 public class Util {
 
@@ -47,5 +52,24 @@ public class Util {
         final int netId = wifiManager.addNetwork(wc);
         wifiManager.enableNetwork(netId, true);
         wifiManager.setWifiEnabled(true);
+    }
+
+    public static void setTime(Context context, int year,
+                               int month,
+                               int date,
+                               int hourOfDay,
+                               int minute,
+                               int second, String timeZoneId) {
+        final Calendar c = Calendar.getInstance(TimeZone.getTimeZone(timeZoneId));
+        c.set(year, month - 1, date, hourOfDay, minute, second);
+        AlarmManager am =
+                (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+        am.setTime(c.getTimeInMillis());
+    }
+
+    public static void setTimeZone(Context context, String timeZone) {
+        AlarmManager am =
+                (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+        am.setTimeZone(timeZone);
     }
 }
