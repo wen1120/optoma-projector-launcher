@@ -1,6 +1,8 @@
 package com.optoma.launcher;
 
 import android.content.Context;
+import android.net.wifi.WifiConfiguration;
+import android.net.wifi.WifiManager;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewParent;
@@ -26,5 +28,24 @@ public class Util {
         } else {
             return null;
         }
+    }
+
+    public static void connectToWifi(Context context, String ssid, String pwd) {
+        final WifiManager wifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
+
+        WifiConfiguration wc = new WifiConfiguration();
+        wc.SSID = String.format("\"%s\"", ssid);
+        wc.preSharedKey = String.format("\"%s\"", pwd);
+        wc.status = WifiConfiguration.Status.ENABLED;
+        wc.allowedGroupCiphers.set(WifiConfiguration.GroupCipher.TKIP);
+        wc.allowedGroupCiphers.set(WifiConfiguration.GroupCipher.CCMP);
+        wc.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.WPA_PSK);
+        wc.allowedPairwiseCiphers.set(WifiConfiguration.PairwiseCipher.TKIP);
+        wc.allowedPairwiseCiphers.set(WifiConfiguration.PairwiseCipher.CCMP);
+        wc.allowedProtocols.set(WifiConfiguration.Protocol.RSN);
+
+        final int netId = wifiManager.addNetwork(wc);
+        wifiManager.enableNetwork(netId, true);
+        wifiManager.setWifiEnabled(true);
     }
 }
