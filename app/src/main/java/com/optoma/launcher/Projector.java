@@ -1,10 +1,18 @@
 package com.optoma.launcher;
 
+import android.content.Context;
+
+import com.optoma.launcher.achieve.CmdManager;
+
 /**
  * Created by ken.chou on 5/16/2017.
  */
 
 public class Projector {
+    private CmdManager mCmdManager;
+    public Projector(Context context) {
+        mCmdManager = new CmdManager(context);
+    }
 
     public static final String[] displayModes = new String[]{
             "[None]",
@@ -337,4 +345,38 @@ public class Projector {
             "Cyan",
             "Black"
     };
+
+    //value: 0 ~ 80
+    public void SetKeystone(int value) {
+        mCmdManager.setKeystone(value);
+    }
+
+    public int GetKeystone() {
+        return mCmdManager.getKeystone();
+    }
+
+    //index: 0:rear 1:rear_ceiling 2:front 3:front_ceiling
+    public void SetProjectMode(int index) {
+        mCmdManager.setProjectionMode(index);
+    }
+
+    //index: 0: (16:9)  2: (16:10) 3: (4:3)
+    public void SetScreenScaleMode(int index) {
+        mCmdManager.setScreenScaleMode(index);
+    }
+
+    //index: 50~100
+    public void SetTiSuperFocus(int index) {
+        mCmdManager.setTiSuperFocus(index);
+    }
+
+    //index:50~100
+    public void SetTiHorizontalAspect(int index) {
+        mCmdManager.setTiHorizontalAspect(index);
+    }
+
+    //index:50~100
+    public void SetTiVerticalAspect(int index) {
+        mCmdManager.setTiVerticalAspect(index);
+    }
 }
