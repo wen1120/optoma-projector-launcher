@@ -24,6 +24,10 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
+    dexOptions {
+        preDexLibraries = false
+        additionalParameters=['--core-library']
+    }
 }
 
 repositories {
