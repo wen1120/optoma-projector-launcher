@@ -2,7 +2,9 @@ package com.optoma.launcher;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.wifi.WifiManager;
 import android.os.Bundle;
+import android.text.format.Formatter;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
@@ -79,6 +81,11 @@ public class Home extends Activity {
                 homeRows.getFocusedView().requestFocus();
             }
         });
+
+        final WifiManager wm = (WifiManager) getSystemService(WIFI_SERVICE);
+        final String ip = Formatter.formatIpAddress(wm.getConnectionInfo().getIpAddress());
+        final TextView ipAddr = (TextView) findViewById(R.id.ipaddr);
+        ipAddr.setText(ip);
     }
 
     private View.OnFocusChangeListener shortcutFocusChangeListener =
