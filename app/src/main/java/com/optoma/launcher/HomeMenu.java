@@ -1,10 +1,17 @@
 package com.optoma.launcher;
 
 import android.app.Activity;
+import android.content.ActivityNotFoundException;
+import android.content.Context;
+import android.content.Intent;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.DrawableRes;
+import android.util.Log;
 import android.view.Gravity;
 import android.widget.LinearLayout;
 
@@ -12,8 +19,11 @@ import com.optoma.launcher.Projector;
 import com.optoma.launcher.R;
 import com.optoma.launcher.ui.UI;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Consumer;
 
+import trikita.anvil.Anvil;
 import trikita.anvil.RenderableView;
 
 import static trikita.anvil.DSL.*;
@@ -36,12 +46,41 @@ public class HomeMenu extends Activity {
 
     private Model model = new Model();
 
+    final List<ApplicationInfo> packages = new ArrayList<>();
+    private boolean loading = false;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
 
         model.page = (Page) getIntent().getExtras().get("page");
+
+        AsyncTask<Void, Integer, Void> loadPackages = new AsyncTask<Void, Integer, Void>() {
+            @Override
+            protected void onPreExecute() {
+                loading = true;
+                Anvil.render();
+            }
+
+            @Override
+            protected Void doInBackground(Void[] params) {
+                final PackageManager pm = getPackageManager();
+                packages.clear();
+                packages.addAll(pm.getInstalledApplications(PackageManager.GET_META_DATA));
+
+
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(Void aVoid) {
+                loading = false;
+                Anvil.render();
+            }
+        };
+        loadPackages.execute();
 
         setContentView(new RenderableView(this) {
             @Override
@@ -66,9 +105,7 @@ public class HomeMenu extends Activity {
                             createPositions();
                             break;
                         case Apps:
-                            space(() -> {
-                                size(MATCH, MATCH);
-                            });
+                            createApps();
                             break;
                         case InputSource:
                             createInputSources();
@@ -234,6 +271,46 @@ public class HomeMenu extends Activity {
 
             }
 
+            private void createApps() {
+                scrollView(() -> {
+                    size(MATCH, MATCH);
+                    linearLayout(() -> {
+                        size(MATCH, WRAP);
+
+                        orientation(LinearLayout.VERTICAL);
+
+                        if(loading) {
+
+                            textView(() -> {
+                                text("Loading...");
+                            });
+
+                        } else {
+                            if(packages.isEmpty()) {
+                                textView(() -> {
+                                    text("Empty");
+                                });
+                            } else {
+                                final PackageManager pm = getPackageManager();
+                                for (ApplicationInfo packageInfo : packages) {
+                                    final CharSequence label = packageInfo.loadLabel(pm);
+                                    final Intent launchIntent = pm.getLaunchIntentForPackage(packageInfo.packageName);
+
+                                    button(() -> {
+                                        text(label);
+
+                                        onClick((view) -> {
+                                            startActivity(launchIntent);
+                                        });
+                                    });
+                                }
+                            }
+
+                        }
+                    });
+                });
+
+            }
 
 
         });
