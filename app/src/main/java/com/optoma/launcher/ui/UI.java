@@ -1,4 +1,4 @@
-package com.optoma.testlauncher.ui;
+package com.optoma.launcher.ui;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
@@ -7,7 +7,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.LinearLayout;
 
-import com.optoma.testlauncher.R;
+import com.optoma.launcher.R;
 
 import trikita.anvil.Anvil;
 
@@ -59,7 +59,7 @@ public class UI {
                             createTile.accept(index);
                         } else {
                             // dummy tile
-                            createDummyTile.accept(index);
+                            if(createDummyTile!=null) createDummyTile.accept(index);
                         }
 
                         // col spacing
