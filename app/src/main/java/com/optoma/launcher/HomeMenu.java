@@ -1,6 +1,5 @@
 package com.optoma.launcher;
 
-import android.animation.LayoutTransition;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -15,7 +14,6 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
-import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -26,7 +24,6 @@ import java.util.List;
 
 import trikita.anvil.Anvil;
 import trikita.anvil.BaseDSL;
-import trikita.anvil.RenderableAdapter;
 import trikita.anvil.RenderableView;
 
 import static trikita.anvil.DSL.*;
@@ -66,48 +63,12 @@ public class HomeMenu extends Activity {
     private Model model = new Model();
 
     // messages
-    static class Msg {}
-    static class LoadPackage extends Msg {}
-    static class PackageLoadedMsg extends Msg {
-        private final List<ApplicationInfo> apps;
-        public PackageLoadedMsg(List<ApplicationInfo> apps) {
-            this.apps = apps;
-        }
+    static abstract class Action {
+        abstract void perform(Model model);
     }
-    static class OpenPage extends Msg {
-        private final Page page;
-        public OpenPage(Page page) {
-            this.page = page;
-        }
-    }
-    static class OpenApp extends Msg {
-        private final ApplicationInfo ai;
-        public OpenApp(ApplicationInfo ai) {
-            this.ai = ai;
-        }
-    }
-    static class FocusUp extends Msg {}
-    static class FocusDown extends Msg {}
-    static class FocusLeft extends Msg {}
-    static class FocusRight extends Msg {}
-
-
-    private PackageManager pm;
-
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-
-        super.onCreate(savedInstanceState);
-
-        init();
-
-        setContentView(new Renderer(this));
-
-    }
-
-    private void update(Msg msg) {
-        if(msg instanceof LoadPackage) {
+    class LoadPackage extends Action {
+        @Override
+        public void perform(Model model) {
             final AsyncTask<Void, Integer, List<ApplicationInfo>> loadPackages =
                     new AsyncTask<Void, Integer, List<ApplicationInfo>>() {
                         @Override
@@ -128,14 +89,19 @@ public class HomeMenu extends Activity {
                         @Override
                         protected void onPostExecute(List<ApplicationInfo> apps) {
                             model.loadingApps = false;
-                            update(new PackageLoadedMsg(apps));
+                            update(new PackageLoaded(apps));
                         }
                     };
             loadPackages.execute();
-
-        } else if(msg instanceof PackageLoadedMsg) {
-            final List<ApplicationInfo> apps = ((PackageLoadedMsg) msg).apps;
-
+        }
+    }
+    class PackageLoaded extends Action {
+        private final List<ApplicationInfo> apps;
+        public PackageLoaded(List<ApplicationInfo> apps) {
+            this.apps = apps;
+        }
+        @Override
+        public void perform(Model model) {
             model.packages.clear();
             for(ApplicationInfo ai : apps) {
                 if(pm.getLaunchIntentForPackage(ai.packageName) != null) {
@@ -143,26 +109,48 @@ public class HomeMenu extends Activity {
                 }
             }
             Log.d("ken", "done loading apps. # of packages: "+model.packages.size());
+        }
+    }
+    class OpenPage extends Action {
+        private final Page page;
+        public OpenPage(Page page) {
+            this.page = page;
+        }
 
-        } else if(msg instanceof OpenPage) {
-            final OpenPage openPage = (OpenPage) msg;
-            model.page = openPage.page;
+        @Override
+        void perform(Model model) {
+            model.page = page;
             if(model.page == Page.Apps) {
                 update(new LoadPackage());
             }
+        }
+    }
+    class OpenApp extends Action {
+        private final ApplicationInfo ai;
+        public OpenApp(ApplicationInfo ai) {
+            this.ai = ai;
+        }
 
-        } else if(msg instanceof OpenApp) {
-            final OpenApp openApp = (OpenApp) msg;
-            Toast.makeText(this, "opening "+openApp.ai.packageName + "...", Toast.LENGTH_SHORT).show();
-            final Intent intent = pm.getLaunchIntentForPackage(openApp.ai.packageName);
+        @Override
+        void perform(Model model) {
+            if(pm == null) pm = getPackageManager(); // TODO
+            Toast.makeText(getApplicationContext(), "opening "+ai.packageName + " ...", Toast.LENGTH_SHORT).show();
+            final Intent intent = pm.getLaunchIntentForPackage(ai.packageName);
             startActivity(intent);
-
-        } else if(msg instanceof FocusUp) {
+        }
+    }
+    class FocusUp extends Action {
+        @Override
+        void perform(Model model) {
             if(model.focus >= model.numCol) {
                 model.focus -= model.numCol;
                 updateScroll();
             }
-        } else if(msg instanceof FocusDown) {
+        }
+    }
+    class FocusDown extends Action {
+        @Override
+        void perform(Model model) {
             if(model.focus < model.packages.size() - model.numCol) { // TODO
                 model.focus += model.numCol;
                 updateScroll();
@@ -170,20 +158,47 @@ public class HomeMenu extends Activity {
                 model.focus = model.packages.size() - 1;
                 updateScroll();
             }
-
-        } else if(msg instanceof FocusLeft) {
+        }
+    }
+    class FocusLeft extends Action {
+        @Override
+        void perform(Model model) {
             if(model.focus > 0) {
                 model.focus--;
                 updateScroll();
             }
-        } else if(msg instanceof FocusRight) {
+        }
+    }
+    class FocusRight extends Action {
+        @Override
+        void perform(Model model) {
             if(model.focus < model.packages.size() - 1) { // TODO
                 model.focus++;
                 updateScroll();
             }
-        } else {}
+        }
+    }
+
+
+    private PackageManager pm;
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+
+        super.onCreate(savedInstanceState);
+
+        init();
+
+        setContentView(new Renderer(this));
+
+    }
+
+    private void update(Action action) {
+        action.perform(model);
 
         Log.d("ken", String.format("focus: %d, # apps: %d", model.focus, model.packages.size()));
+
         Anvil.render();
     }
 
@@ -234,8 +249,8 @@ public class HomeMenu extends Activity {
 
     private class Renderer extends RenderableView {
 
-        private final Drawable shortcutUnfocused = UI.createRectangle(UI.getColor(UI.primary_gray, 0.7f), 0, 0, 10);
-        private final Drawable shortcutFocused = UI.createRectangle(UI.primary_gray, 1, UI.secondary_yellow, 10);
+        private final Drawable shortcutUnfocused = UI.createRectangle(UI.getColor(UI.primary_gray, 0.7f), 0, 0, Util.dp(HomeMenu.this, 10));
+        private final Drawable shortcutFocused = UI.createRectangle(UI.primary_gray, 1, UI.secondary_yellow, Util.dp(HomeMenu.this, 10));
 
         public Renderer(Context context) {
             super(context);
