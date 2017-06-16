@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipChildren="false"
+    android:background="@drawable/bg_tekapo">
+
+    <View
+        android:id="@+id/setting_main_bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/setting_main_bg_shape" />
+    <View
+        android:id="@+id/setting_top_bg"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@drawable/setting_top_bg_shape" />
+
+    <TextView
+        android:id="@+id/settings_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="@string/home_settings"
+        android:textSize = "45sp"
+        android:textColor="#40FFFFFF"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif">
+    </TextView>
+
+    <View
+        android:id="@+id/settings_divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginTop="66dp"
+        android:background="@color/transparent" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="48dp"
+        android:layout_marginEnd="66dp"
+        android:clipChildren="false"
+    >
+        <RelativeLayout
+            android:id="@+id/settings_selector"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:orientation="horizontal"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            >
+            <TextView
+                android:id="@+id/setting_tv_upper_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="102dp"
+                android:text="@string/setting_power_title"
+                android:textSize = "18sp"
+                android:textColor="#d0d3d4"
+                android:fontFamily="sans-serif">
+            </TextView>
+            <TextView
+                android:id="@+id/setting_tv_upper_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="128dp"
+                android:text="@string/setting_power_content"
+                android:textSize = "24sp"
+                android:textColor="#ffffff"
+                android:fontFamily="sans-serif">
+            </TextView>
+
+            <TextView
+                android:id="@+id/setting_tv_middle_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="286dp"
+                android:visibility="invisible"
+                android:text="middle_title"
+                android:textSize = "18sp"
+                android:textColor="#d0d3d4"
+                android:fontFamily="sans-serif">
+            </TextView>
+            <TextView
+                android:id="@+id/setting_tv_middle_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="312dp"
+                android:visibility="invisible"
+                android:text="middle_content"
+                android:textSize = "24sp"
+                android:textColor="#ffffff"
+                android:fontFamily="sans-serif">
+            </TextView>
+
+            <TextView
+                android:id="@+id/setting_tv_lower_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="470dp"
+                android:visibility="invisible"
+                android:text="lower_title"
+                android:textSize = "18sp"
+                android:textColor="#d0d3d4"
+                android:fontFamily="sans-serif">
+            </TextView>
+            <TextView
+                android:id="@+id/setting_tv_lower_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="496dp"
+                android:visibility="invisible"
+                android:text="lower_content"
+                android:textSize = "24sp"
+                android:textColor="#ffffff"
+                android:fontFamily="sans-serif">
+            </TextView>
+
+        </RelativeLayout>
+
+        <GridView
+            android:id="@+id/gridview"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:layout_marginTop="86dp"
+            android:columnWidth="140dp"
+            android:numColumns="3"
+            android:verticalSpacing="14dp"
+            android:horizontalSpacing="1dp"
+            android:stretchMode="spacingWidth"
+            android:gravity="center"
+            android:descendantFocusability="afterDescendants"
+            />
+    </LinearLayout>
+</RelativeLayout>

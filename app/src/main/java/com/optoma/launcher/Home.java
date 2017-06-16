@@ -150,6 +150,9 @@ public class Home extends Activity {
             public void onClick(View view) {
                 final Intent intent = new Intent();
                 switch (rID) {
+                    case R.id.shortcut_app4: // settings test
+                        intent.setClass(Home.this, SettingsHome.class);
+                        break;
                     case R.id.shortcut_app5: //input source
                         intent.setClassName(getPackageName(), getPackageName() + ".InputSource");
                         break;

@@ -51,6 +51,9 @@
             android:name=".ProjectorSetup.ProjectorMain"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity
+            android:name=".SettingsHome"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+        <activity
             android:name=".Setup"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
         <activity
