@@ -7,11 +7,10 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.DrawableRes;
 import android.text.TextUtils;
-import android.util.Log;
+import android.util.TimingLogger;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.widget.LinearLayout;
@@ -27,29 +26,30 @@ import trikita.anvil.BaseDSL;
 import trikita.anvil.RenderableView;
 
 import static trikita.anvil.DSL.*;
+import static trikita.anvil.DSL.view;
 
 public class HomeMenu extends Activity {
 
     // model
     private static class Model {
         // general
-        Page page = Page.Apps;
-        int numCol = 3;
+        Page page = Page.Dummy;
+        int numCol = 6;
         int focus = 0;
 
         // apps
-        List<ApplicationInfo> packages = new ArrayList<>();
-        boolean loadingApps = false;
+        List<ApplicationInfo> apps = new ArrayList<>();
+        List<Drawable> icons = new ArrayList<>();
         int startRow = 0;
-        int rowShown = 2;
+        int rowShown = 3;
 
         public int getCurrentRow() {
             return focus / numCol;
         }
 
         public int getRowCount() {
-            return packages.size() / numCol +
-                    ((packages.size() % numCol != 0) ? 1 : 0);
+            return apps.size() / numCol +
+                    ((apps.size() % numCol != 0) ? 1 : 0);
         }
 
     }
@@ -57,7 +57,8 @@ public class HomeMenu extends Activity {
         Position,
         Apps,
         InputSource,
-        Language
+        Language,
+        Dummy
     }
 
     private Model model = new Model();
@@ -66,51 +67,7 @@ public class HomeMenu extends Activity {
     static abstract class Action {
         abstract void perform(Model model);
     }
-    class LoadPackage extends Action {
-        @Override
-        public void perform(Model model) {
-            final AsyncTask<Void, Integer, List<ApplicationInfo>> loadPackages =
-                    new AsyncTask<Void, Integer, List<ApplicationInfo>>() {
-                        @Override
-                        protected void onPreExecute() {
-                            model.loadingApps = true;
-                            Log.d("ken", "start loading apps.");
-                            Anvil.render();
-                        }
 
-                        @Override
-                        protected List<ApplicationInfo> doInBackground(Void[] params) {
-                            if(pm == null) pm = getPackageManager(); // TODO
-
-                            return pm.getInstalledApplications(PackageManager.GET_META_DATA);
-
-                        }
-
-                        @Override
-                        protected void onPostExecute(List<ApplicationInfo> apps) {
-                            model.loadingApps = false;
-                            update(new PackageLoaded(apps));
-                        }
-                    };
-            loadPackages.execute();
-        }
-    }
-    class PackageLoaded extends Action {
-        private final List<ApplicationInfo> apps;
-        public PackageLoaded(List<ApplicationInfo> apps) {
-            this.apps = apps;
-        }
-        @Override
-        public void perform(Model model) {
-            model.packages.clear();
-            for(ApplicationInfo ai : apps) {
-                if(pm.getLaunchIntentForPackage(ai.packageName) != null) {
-                    model.packages.add(ai);
-                }
-            }
-            Log.d("ken", "done loading apps. # of packages: "+model.packages.size());
-        }
-    }
     class OpenPage extends Action {
         private final Page page;
         public OpenPage(Page page) {
@@ -121,7 +78,13 @@ public class HomeMenu extends Activity {
         void perform(Model model) {
             model.page = page;
             if(model.page == Page.Apps) {
-                update(new LoadPackage());
+                if(pm == null) pm = getPackageManager(); // TODO
+                model.apps.clear();
+                List<ApplicationInfo> ais = pm.getInstalledApplications(PackageManager.GET_META_DATA);
+                for(ApplicationInfo ai : ais) {
+                    final Intent intent = pm.getLaunchIntentForPackage(ai.packageName);
+                    if(intent!=null) model.apps.add(ai);
+                }
             }
         }
     }
@@ -151,11 +114,11 @@ public class HomeMenu extends Activity {
     class FocusDown extends Action {
         @Override
         void perform(Model model) {
-            if(model.focus < model.packages.size() - model.numCol) { // TODO
+            if(model.focus < model.apps.size() - model.numCol) { // TODO
                 model.focus += model.numCol;
                 updateScroll();
             } else if(model.getCurrentRow() < model.getRowCount() - 1) {
-                model.focus = model.packages.size() - 1;
+                model.focus = model.apps.size() - 1;
                 updateScroll();
             }
         }
@@ -172,7 +135,7 @@ public class HomeMenu extends Activity {
     class FocusRight extends Action {
         @Override
         void perform(Model model) {
-            if(model.focus < model.packages.size() - 1) { // TODO
+            if(model.focus < model.apps.size() - 1) { // TODO
                 model.focus++;
                 updateScroll();
             }
@@ -188,16 +151,16 @@ public class HomeMenu extends Activity {
 
         super.onCreate(savedInstanceState);
 
-        init();
-
         setContentView(new Renderer(this));
+
+        init();
 
     }
 
     private void update(Action action) {
         action.perform(model);
 
-        Log.d("ken", String.format("focus: %d, # apps: %d", model.focus, model.packages.size()));
+        // Log.d("ken", String.format("focus: %d, # apps: %d", model.focus, model.apps.size()));
 
         Anvil.render();
     }
@@ -240,7 +203,7 @@ public class HomeMenu extends Activity {
                 update(new FocusRight());
                 break;
             case KeyEvent.KEYCODE_ENTER:
-                update(new OpenApp(model.packages.get(model.focus)));
+                update(new OpenApp(model.apps.get(model.focus)));
                 break;
         }
 
@@ -261,7 +224,7 @@ public class HomeMenu extends Activity {
             linearLayout(() -> {
                 size(MATCH, MATCH);
                 orientation(LinearLayout.VERTICAL);
-                // backgroundColor(Color.BLACK);
+                backgroundColor(UI.secondary_gray_80);
                 gravity(Gravity.CENTER);
 
                 renderMenu();
@@ -284,6 +247,8 @@ public class HomeMenu extends Activity {
                         break;
                     case Language:
                         renderLanguages();
+                        break;
+                    case Dummy:
                         break;
                     default:
                         throw new RuntimeException();
@@ -445,53 +410,37 @@ public class HomeMenu extends Activity {
 
         private void renderApps() {
 
-            if(model.loadingApps) {
-
+            if(model.apps.isEmpty()) {
                 textView(() -> {
+                    size(MATCH, MATCH);
+
                     textSize(sip(48));
-                    text("Loading...");
+                    gravity(Gravity.CENTER);
+                    text("Empty");
                 });
-
             } else {
+                TimingLogger logger = new TimingLogger("ken", "start");
+                frameLayout(() -> {
+                    size(MATCH, MATCH);
+                    margin(dip(150), 0, dip(150), 0);
 
-                if(model.packages.isEmpty()) {
-                    textView(() -> {
-                        textSize(sip(48));
-                        text("Empty");
-                    });
-                } else {
-                    UI.layoutTiles(MATCH, MATCH, model.numCol, model.numCol*model.rowShown, -1, dip(36),
+                    UI.layoutTiles(MATCH, MATCH, model.numCol, model.numCol * model.rowShown, -1, dip(20),
                             (index) -> {
-                                final int newIndex = model.startRow * model.numCol + index;
-                                if(newIndex < model.packages.size()) {
-                                    renderAppIcon(newIndex, model.packages.get(newIndex));
+                                final int indexInList = model.startRow * model.numCol + index;
+                                if(indexInList < model.apps.size()) {
+                                    renderAppIcon(indexInList, model.apps.get(indexInList));
+                                } else {
+                                    space(() -> {
+                                        size(dip(140), dip(160));
+                                    });
                                 }
                             },
                             null,
                             null
                     );
-
-//                    gridView(() -> {
-//                        size(MATCH, MATCH);
-//                        columnWidth(dip(112));
-//                        numColumns(model.numCol);
-//                        verticalSpacing(dip(36));
-//                        margin(0, 0, 0, dip(200));
-//
-//                        // so that we can focus on our element instead of the wrapping gridview created
-//                        descendantFocusability(GridView.FOCUS_AFTER_DESCENDANTS);
-//
-//                        stretchMode(GridView.STRETCH_SPACING_UNIFORM);
-//                        // backgroundColor(Color.BLUE);
-//
-//                        layoutGravity(Gravity.CENTER);
-//                        adapter(RenderableAdapter.withItems(model.packages, Renderer.this::renderAppIcon));
-//
-//                    });
-
-                }
+                });
+                logger.dumpToLog();
             }
-
 
         }
 
@@ -518,7 +467,7 @@ public class HomeMenu extends Activity {
 
                     final CharSequence label = item.loadLabel(pm);
 
-                    Log.d("ken", String.format("focus %d - %d", model.focus, index));
+                    // Log.d("ken", String.format("focus %d - %d", model.focus, index));
                     if(model.focus == index) {
                         background(shortcutFocused);
                         scaleX(1f);
@@ -552,7 +501,12 @@ public class HomeMenu extends Activity {
                         focusableInTouchMode(false);
                         clickable(false);
 
-                        textSize(sip(16));
+                        textSize(sip(20));
+                        if(model.focus == index) {
+                            typeface(UI.defaultBoldFont);
+                        } else {
+                            typeface(UI.defaultFont);
+                        }
                         weight(5);
                         gravity(Gravity.CENTER);
 

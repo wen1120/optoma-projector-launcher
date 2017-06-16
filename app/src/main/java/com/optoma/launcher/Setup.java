@@ -1,12 +1,15 @@
 package com.optoma.launcher;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.PixelFormat;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
@@ -37,7 +40,9 @@ public class Setup extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.setup);
         ButterKnife.bind(this);
+
         content.addView(createMainMenu());
+
     }
 
     private View createMainMenu() {

@@ -82,10 +82,11 @@ public class Home extends Activity {
             }
         });
 
-        final WifiManager wm = (WifiManager) getSystemService(WIFI_SERVICE);
-        final String ip = Formatter.formatIpAddress(wm.getConnectionInfo().getIpAddress());
-        final TextView ipAddr = (TextView) findViewById(R.id.ipaddr);
-        ipAddr.setText(ip);
+        // ip address
+//        final WifiManager wm = (WifiManager) getSystemService(WIFI_SERVICE);
+//        final String ip = Formatter.formatIpAddress(wm.getConnectionInfo().getIpAddress());
+//        final TextView ipAddr = (TextView) findViewById(R.id.ipaddr);
+//        ipAddr.setText(ip);
     }
 
     private View.OnFocusChangeListener shortcutFocusChangeListener =
