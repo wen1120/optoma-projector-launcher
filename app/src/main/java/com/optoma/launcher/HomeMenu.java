@@ -10,7 +10,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.DrawableRes;
 import android.text.TextUtils;
-import android.util.TimingLogger;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.widget.LinearLayout;
@@ -22,7 +22,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import trikita.anvil.Anvil;
-import trikita.anvil.BaseDSL;
 import trikita.anvil.RenderableView;
 
 import static trikita.anvil.DSL.*;
@@ -39,17 +38,18 @@ public class HomeMenu extends Activity {
 
         // apps
         List<ApplicationInfo> apps = new ArrayList<>();
-        List<Drawable> icons = new ArrayList<>();
+
         int startRow = 0;
         int rowShown = 3;
+        int dataLength = 0;
 
         public int getCurrentRow() {
             return focus / numCol;
         }
 
         public int getRowCount() {
-            return apps.size() / numCol +
-                    ((apps.size() % numCol != 0) ? 1 : 0);
+            return dataLength / numCol +
+                    ((dataLength % numCol != 0) ? 1 : 0);
         }
 
     }
@@ -85,7 +85,14 @@ public class HomeMenu extends Activity {
                     final Intent intent = pm.getLaunchIntentForPackage(ai.packageName);
                     if(intent!=null) model.apps.add(ai);
                 }
+                model.dataLength = model.apps.size();
+            } else if(model.page == Page.InputSource) {
+                model.dataLength = Projector.inputSources.length;
+            } else {
+                model.dataLength = 0;
             }
+            model.focus = 0; // TODO
+
         }
     }
     class OpenApp extends Action {
@@ -97,12 +104,12 @@ public class HomeMenu extends Activity {
         @Override
         void perform(Model model) {
             if(pm == null) pm = getPackageManager(); // TODO
-            Toast.makeText(getApplicationContext(), "opening "+ai.packageName + " ...", Toast.LENGTH_SHORT).show();
+            showToast("Opening "+ai.loadLabel(pm)+ " ...");
             final Intent intent = pm.getLaunchIntentForPackage(ai.packageName);
             startActivity(intent);
         }
     }
-    class FocusUp extends Action {
+    class Up extends Action {
         @Override
         void perform(Model model) {
             if(model.focus >= model.numCol) {
@@ -111,19 +118,19 @@ public class HomeMenu extends Activity {
             }
         }
     }
-    class FocusDown extends Action {
+    class Down extends Action {
         @Override
         void perform(Model model) {
-            if(model.focus < model.apps.size() - model.numCol) { // TODO
+            if(model.focus < model.dataLength - model.numCol) {
                 model.focus += model.numCol;
                 updateScroll();
             } else if(model.getCurrentRow() < model.getRowCount() - 1) {
-                model.focus = model.apps.size() - 1;
+                model.focus = model.dataLength - 1;
                 updateScroll();
             }
         }
     }
-    class FocusLeft extends Action {
+    class Left extends Action {
         @Override
         void perform(Model model) {
             if(model.focus > 0) {
@@ -132,14 +139,33 @@ public class HomeMenu extends Activity {
             }
         }
     }
-    class FocusRight extends Action {
+    class Right extends Action {
         @Override
         void perform(Model model) {
-            if(model.focus < model.apps.size() - 1) { // TODO
+            if(model.focus < model.dataLength - 1) { // TODO
                 model.focus++;
                 updateScroll();
             }
         }
+    }
+
+    class OK extends Action {
+        @Override
+        void perform(Model model) {
+            switch(model.page) {
+                case Apps:
+                    update(new OpenApp(model.apps.get(model.focus)));
+                    break;
+                case InputSource:
+                    showToast("Select input source "+Projector.inputSources[model.focus]);
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+    private void showToast(String msg) {
+        Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
     }
 
 
@@ -160,7 +186,7 @@ public class HomeMenu extends Activity {
     private void update(Action action) {
         action.perform(model);
 
-        // Log.d("ken", String.format("focus: %d, # apps: %d", model.focus, model.apps.size()));
+        Log.d("ken", String.format("focus: %d, len: %d, current row: %d, row count: %d", model.focus, model.dataLength, model.getCurrentRow(), model.getRowCount()));
 
         Anvil.render();
     }
@@ -191,19 +217,19 @@ public class HomeMenu extends Activity {
 
         switch(keyCode) {
             case KeyEvent.KEYCODE_DPAD_UP:
-                update(new FocusUp());
+                update(new Up());
                 break;
             case KeyEvent.KEYCODE_DPAD_DOWN:
-                update(new FocusDown());
+                update(new Down());
                 break;
             case KeyEvent.KEYCODE_DPAD_LEFT:
-                update(new FocusLeft());
+                update(new Left());
                 break;
             case KeyEvent.KEYCODE_DPAD_RIGHT:
-                update(new FocusRight());
+                update(new Right());
                 break;
             case KeyEvent.KEYCODE_ENTER:
-                update(new OpenApp(model.apps.get(model.focus)));
+                update(new OK());
                 break;
         }
 
@@ -214,6 +240,18 @@ public class HomeMenu extends Activity {
 
         private final Drawable shortcutUnfocused = UI.createRectangle(UI.getColor(UI.primary_gray, 0.7f), 0, 0, Util.dp(HomeMenu.this, 10));
         private final Drawable shortcutFocused = UI.createRectangle(UI.primary_gray, Util.dp(HomeMenu.this, 1), UI.secondary_yellow, Util.dp(HomeMenu.this, 10));
+        private final @DrawableRes int[] inputSourceIcons = new int[]{
+                R.drawable.miracast,
+                R.drawable.vga,
+                R.drawable.hdmi,
+                R.drawable.hdmi,
+                R.drawable.hdmi,
+                R.drawable.displayport,
+                R.drawable.usb,
+                R.drawable.usb,
+                R.drawable.s_video,
+                R.drawable.addshortcut
+        };
 
         public Renderer(Context context) {
             super(context);
@@ -240,10 +278,8 @@ public class HomeMenu extends Activity {
                         renderPositions();
                         break;
                     case Apps:
-                        renderApps();
-                        break;
                     case InputSource:
-                        renderInputSources();
+                        renderAppsOrInputSources();
                         break;
                     case Language:
                         renderLanguages();
@@ -349,51 +385,6 @@ public class HomeMenu extends Activity {
 
         }
 
-        private void renderInputSources() {
-
-            final @DrawableRes int[] icons = new int[]{
-                    R.drawable.miracast,
-                    R.drawable.vga,
-                    R.drawable.hdmi,
-                    R.drawable.hdmi,
-                    R.drawable.hdmi,
-                    R.drawable.displayport,
-                    R.drawable.usb,
-                    R.drawable.usb,
-                    R.drawable.s_video,
-                    R.drawable.addshortcut
-            };
-
-            final String[] labels = new String[]{
-                    "Miracast",
-                    "VGA",
-                    "HDMI 1",
-                    "HDMI 2",
-                    "HDMI 3",
-                    "Display Port",
-                    "USB 1",
-                    "USB 2",
-                    "S-video",
-                    "Set Shortcut"
-            };
-
-            frameLayout(() -> {
-                size(MATCH, MATCH);
-                margin(dip(150), dip(52), dip(150), dip(100));
-
-                UI.layoutTiles(MATCH, MATCH, 6, icons.length, -1, dip(56), (Integer index) -> {
-                    UI.createIconLabelTile(
-                            dip(112), dip(128), getResources().getDrawable(icons[index]), 0.7f, labels[index], 24,
-                            shortcutUnfocused);
-                }, (Integer index) -> {
-                    space(() -> {
-                        size(dip(112), dip(128));
-                    });
-                }, null);
-            });
-
-        }
-
         private void renderLanguages() {
             scrollView(() -> {
                 size(MATCH, MATCH);
@@ -408,9 +399,9 @@ public class HomeMenu extends Activity {
 
         }
 
-        private void renderApps() {
+        private void renderAppsOrInputSources() {
 
-            if(model.apps.isEmpty()) {
+            if(model.dataLength == 0) {
                 textView(() -> {
                     size(MATCH, MATCH);
 
@@ -419,7 +410,6 @@ public class HomeMenu extends Activity {
                     text("Empty");
                 });
             } else {
-                TimingLogger logger = new TimingLogger("ken", "start");
                 frameLayout(() -> {
                     size(MATCH, MATCH);
                     margin(dip(150), 0, dip(150), 0);
@@ -427,8 +417,16 @@ public class HomeMenu extends Activity {
                     UI.layoutTiles(MATCH, MATCH, model.numCol, model.numCol * model.rowShown, -1, dip(20),
                             (index) -> {
                                 final int indexInList = model.startRow * model.numCol + index;
-                                if(indexInList < model.apps.size()) {
-                                    renderAppIcon(indexInList, model.apps.get(indexInList));
+                                if(indexInList < model.dataLength) {
+                                    final boolean focused = model.focus == indexInList;
+                                    if(model.page == Page.Apps) {
+                                        final ApplicationInfo item = model.apps.get(indexInList);
+                                        renderIconLabel(item.loadIcon(pm), item.loadLabel(pm), focused);
+                                    } else {
+                                        renderIconLabel(getResources().getDrawable(inputSourceIcons[indexInList]),
+                                                Projector.inputSources[indexInList], focused);
+                                    }
+
                                 } else {
                                     space(() -> {
                                         size(dip(140), dip(160));
@@ -439,12 +437,11 @@ public class HomeMenu extends Activity {
                             null
                     );
                 });
-                logger.dumpToLog();
             }
 
         }
 
-        private void renderAppIcon(int index, ApplicationInfo item) {
+        private void renderIconLabel(Drawable icon, CharSequence label, boolean focused) {
             frameLayout(() -> {
                 size(dip(140), dip(160));
 
@@ -457,18 +454,10 @@ public class HomeMenu extends Activity {
 //                focusableInTouchMode(true);
 //                clickable(true);
 
-                    BaseDSL.init(() -> {
-                        if(index==0) {
-                            requestFocus();
-                        }
-                    });
                     // weight(1);
 
-
-                    final CharSequence label = item.loadLabel(pm);
-
                     // Log.d("ken", String.format("focus %d - %d", model.focus, index));
-                    if(model.focus == index) {
+                    if(focused) {
                         background(shortcutFocused);
                         scaleX(1f);
                         scaleY(1f);
@@ -489,7 +478,7 @@ public class HomeMenu extends Activity {
                         focusableInTouchMode(false);
                         clickable(false);
 
-                        imageDrawable(item.loadIcon(pm));
+                        imageDrawable(icon);
                         // imageResource(R.drawable.hdmi);
                     });
 
@@ -502,7 +491,7 @@ public class HomeMenu extends Activity {
                         clickable(false);
 
                         textSize(sip(20));
-                        if(model.focus == index) {
+                        if(focused) {
                             typeface(UI.defaultBoldFont);
                         } else {
                             typeface(UI.defaultFont);

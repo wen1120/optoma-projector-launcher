@@ -346,6 +346,20 @@ public class Projector {
             "Black"
     };
 
+    public static final String[] inputSources = new String[]{
+            "Miracast",
+            "VGA",
+            "HDMI 1",
+            "HDMI 2",
+            "HDMI 3",
+            "Display Port",
+            "USB 1",
+            "USB 2",
+            "S-video",
+            "Set Shortcut"
+    };
+
+
     //value: 0 ~ 80
     public void SetKeystone(int value) {
         mCmdManager.setKeystone(value);
