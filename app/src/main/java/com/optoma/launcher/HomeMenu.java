@@ -35,10 +35,6 @@ public class HomeMenu extends Activity {
         Page page = Page.Dummy;
         int numCol = 6;
         int focus = 0;
-
-        // apps
-        List<ApplicationInfo> apps = new ArrayList<>();
-
         int startRow = 0;
         int rowShown = 3;
         int dataLength = 0;
@@ -51,6 +47,9 @@ public class HomeMenu extends Activity {
             return dataLength / numCol +
                     ((dataLength % numCol != 0) ? 1 : 0);
         }
+
+        // apps
+        List<ApplicationInfo> apps = new ArrayList<>();
 
     }
     public enum Page {
@@ -77,6 +76,7 @@ public class HomeMenu extends Activity {
         @Override
         void perform(Model model) {
             model.page = page;
+
             if(model.page == Page.Apps) {
                 if(pm == null) pm = getPackageManager(); // TODO
                 model.apps.clear();
@@ -86,12 +86,26 @@ public class HomeMenu extends Activity {
                     if(intent!=null) model.apps.add(ai);
                 }
                 model.dataLength = model.apps.size();
+                model.numCol = 6;
+                model.rowShown = 3;
             } else if(model.page == Page.InputSource) {
                 model.dataLength = Projector.inputSources.length;
+                model.numCol = 6;
+                model.rowShown = 3;
+            } else if(model.page == Page.Position) {
+                model.dataLength = Projector.positions.length;
+                model.numCol = 2;
+                model.rowShown = 2;
+            } else if(model.page == Page.Language) {
+                model.dataLength = Projector.langs.length;
+                model.numCol = 7;
+                model.rowShown = 4;
             } else {
                 model.dataLength = 0;
+                model.numCol = 0;
             }
             model.focus = 0; // TODO
+            model.startRow = 0;
 
         }
     }
@@ -252,6 +266,18 @@ public class HomeMenu extends Activity {
                 R.drawable.s_video,
                 R.drawable.addshortcut
         };
+        private final @DrawableRes int[] positionIcons = new int[]{
+                R.drawable.uf_front,
+                R.drawable.uf_rear,
+                R.drawable.uf_frontceiling,
+                R.drawable.uf_rearceiling
+        };
+        private final @DrawableRes int[] positionIconsFocusd = new int[]{
+                R.drawable.f_front,
+                R.drawable.f_rear,
+                R.drawable.f_frontceiling,
+                R.drawable.f_rearceiling
+        };
 
         public Renderer(Context context) {
             super(context);
@@ -273,22 +299,7 @@ public class HomeMenu extends Activity {
 
                 UI.createHorizontalBar(dip(254), Color.WHITE);
 
-                switch (model.page) {
-                    case Position:
-                        renderPositions();
-                        break;
-                    case Apps:
-                    case InputSource:
-                        renderAppsOrInputSources();
-                        break;
-                    case Language:
-                        renderLanguages();
-                        break;
-                    case Dummy:
-                        break;
-                    default:
-                        throw new RuntimeException();
-                }
+                renderContent();
 
             });
 
@@ -308,11 +319,10 @@ public class HomeMenu extends Activity {
                 imageView(() -> {
                     final boolean selected = model.page == Page.Position;
                     imageResource(selected ? R.drawable.ff_position : R.drawable.uf_position);
-                    selected(selected);
-
-                    onClick(v -> {
-                        update(new OpenPage(Page.Position));
-                    });
+//                    selected(selected);
+//                    onClick(v -> {
+//                        update(new OpenPage(Page.Position));
+//                    });
                 });
 
                 space(() -> {
@@ -322,10 +332,10 @@ public class HomeMenu extends Activity {
                 imageView(() -> {
                     final boolean selected = model.page == Page.Apps;
                     imageResource(selected ? R.drawable.f_apps : R.drawable.uf_apps);
-                    selected(selected);
-                    onClick(v -> {
-                        update(new OpenPage(Page.Apps));
-                    });
+//                    selected(selected);
+//                    onClick(v -> {
+//                        update(new OpenPage(Page.Apps));
+//                    });
                 });
 
                 space(() -> {
@@ -335,10 +345,10 @@ public class HomeMenu extends Activity {
                 imageView(() -> {
                     final boolean selected = model.page == Page.InputSource;
                     imageResource(selected ? R.drawable.f_inputsource : R.drawable.uf_inputsource);
-                    selected(selected);
-                    onClick(v -> {
-                        update(new OpenPage(Page.InputSource));
-                    });
+//                    selected(selected);
+//                    onClick(v -> {
+//                        update(new OpenPage(Page.InputSource));
+//                    });
                 });
 
                 space(() -> {
@@ -348,41 +358,12 @@ public class HomeMenu extends Activity {
                 imageView(() -> {
                     final boolean selected = model.page == Page.Language;
                     imageResource(selected ? R.drawable.f_language : R.drawable.uff_language);
-                    selected(selected);
-                    onClick(v -> {
-                        update(new OpenPage(Page.Language));
-                    });
+//                    selected(selected);
+//                    onClick(v -> {
+//                        update(new OpenPage(Page.Language));
+//                    });
                 });
             });
-        }
-
-        private void renderPositions() {
-            final @DrawableRes int[] icons = new int[]{
-                    R.drawable.initial_setup_position_front,
-                    R.drawable.initial_setup_position_rear,
-                    R.drawable.initial_setup_position_front_ceiling,
-                    R.drawable.initial_setup_position_rear_ceiling
-            };
-
-
-            linearLayout(() -> {
-                size(MATCH, MATCH);
-                gravity(Gravity.CENTER);
-                orientation(LinearLayout.VERTICAL);
-                // backgroundColor(Color.GREEN);
-                margin(dip(150), dip(52), dip(150), dip(100));
-
-                UI.layoutTiles(WRAP, MATCH, 2, icons.length, dip(38), dip(66),
-                        (Integer index) -> {
-                            UI.createIconTile(dip(150), dip(150), icons[index]);
-                        }, (Integer index) -> {
-                            space(() -> {
-                                size(dip(150), dip(150));
-                            });
-                        }, null);
-            });
-
-
         }
 
         private void renderLanguages() {
@@ -399,7 +380,7 @@ public class HomeMenu extends Activity {
 
         }
 
-        private void renderAppsOrInputSources() {
+        private void renderContent() {
 
             if(model.dataLength == 0) {
                 textView(() -> {
@@ -411,39 +392,88 @@ public class HomeMenu extends Activity {
                 });
             } else {
                 frameLayout(() -> {
-                    size(MATCH, MATCH);
-                    margin(dip(150), 0, dip(150), 0);
 
-                    UI.layoutTiles(MATCH, MATCH, model.numCol, model.numCol * model.rowShown, -1, dip(20),
-                            (index) -> {
-                                final int indexInList = model.startRow * model.numCol + index;
-                                if(indexInList < model.dataLength) {
+                    // backgroundColor(Color.BLUE);
+
+                    if(model.page == Page.Position) {
+                        size(WRAP, MATCH);
+                        margin(0, dip(52), 0, dip(100));
+                        gravity(Gravity.CENTER_HORIZONTAL);
+
+                        UI.layoutTiles(WRAP, WRAP, model.numCol, model.dataLength, dip(38), dip(66),
+                                (index) -> {
+                                    final boolean focused = model.focus == index;
+                                    renderPositions(index, focused);
+                                },
+                                null,
+                                null
+                        );
+                    } else  {
+                        size(MATCH, MATCH);
+                        margin(dip(150), 0, dip(150), 0);
+
+                        UI.layoutTiles(MATCH, MATCH, model.numCol, model.numCol * model.rowShown, -1, dip(20),
+                                (index) -> {
+
+                                    final int indexInList = model.startRow * model.numCol + index;
                                     final boolean focused = model.focus == indexInList;
-                                    if(model.page == Page.Apps) {
-                                        final ApplicationInfo item = model.apps.get(indexInList);
-                                        renderIconLabel(item.loadIcon(pm), item.loadLabel(pm), focused);
+
+                                    if(indexInList < model.dataLength) {
+                                        if (model.page == Page.Apps) {
+                                            renderApps(indexInList, focused);
+                                        } else if (model.page == Page.InputSource) {
+                                            renderInputSources(indexInList, focused);
+                                        } else if (model.page == Page.Language) {
+                                            renderLanguages(indexInList, focused);
+                                        }
                                     } else {
-                                        renderIconLabel(getResources().getDrawable(inputSourceIcons[indexInList]),
-                                                Projector.inputSources[indexInList], focused);
+                                        space(() -> {
+                                            size(dip(140), dip(160));
+                                        });
                                     }
 
-                                } else {
-                                    space(() -> {
-                                        size(dip(140), dip(160));
-                                    });
-                                }
-                            },
-                            null,
-                            null
-                    );
+                                },
+                                null,
+                                null
+                        );
+                    }
+
+
                 });
             }
 
         }
 
+        private void renderApps(int index, boolean focused) {
+            final ApplicationInfo item = model.apps.get(index);
+            renderIconLabel(item.loadIcon(pm), item.loadLabel(pm), focused);
+        }
+
+        private void renderInputSources(int index, boolean focused) {
+            renderIconLabel(getResources().getDrawable(inputSourceIcons[index]),
+                    Projector.inputSources[index], focused);
+
+        }
+
+        private void renderPositions(int index, boolean focused) {
+            imageView(() -> {
+                size(dip(150), dip(150));
+                if(focused) {
+                    imageResource(positionIconsFocusd[index]);
+                } else {
+                    imageResource(positionIcons[index]);
+                }
+            });
+        }
+
+        private void renderLanguages(int index, boolean focused) {
+            renderLabelLabel(Projector.langsEng[index], Projector.langs[index], focused);
+        }
+
         private void renderIconLabel(Drawable icon, CharSequence label, boolean focused) {
             frameLayout(() -> {
                 size(dip(140), dip(160));
+                // backgroundColor(Color.GREEN);
 
                 linearLayout(() -> {
 
@@ -505,6 +535,53 @@ public class HomeMenu extends Activity {
 
                 });
             });
+
+        }
+
+        private void renderLabelLabel(CharSequence label1, CharSequence label2, boolean focused) {
+            frameLayout(() -> {
+                size(dip(140), dip(140));
+
+                linearLayout(() -> {
+                    size(MATCH, MATCH);
+
+                    if(focused) {
+                        backgroundResource(R.drawable.initial_setup_language_tile_bg_focus); // TODO: rm external dependency
+                        scaleX(1);
+                        scaleY(1);
+                    } else {
+                        backgroundResource(R.drawable.initial_setup_language_tile_bg);
+                        scaleX(0.8f);
+                        scaleY(0.8f);
+                    }
+
+                    orientation(LinearLayout.VERTICAL);
+
+                    textView(() -> {
+                        size(WRAP, WRAP);
+                        margin(dip(12), 0, 0, 0);
+                        weight(3);
+                        gravity(Gravity.CENTER_VERTICAL);
+                        textColor(UI.secondary_gray);
+                        textSize(sip(36));
+                        typeface(UI.defaultBoldFont);
+                        text(label1);
+                    });
+
+                    textView(() -> {
+                        size(WRAP, WRAP);
+                        margin(dip(12), 0, 0, 0);
+                        weight(2);
+                        gravity(Gravity.CENTER_VERTICAL);
+                        textColor(UI.secondary_gray);
+                        textSize(sip(20));
+                        typeface(UI.defaultBoldFont);
+                        text(label2);
+                    });
+
+                });
+            });
+
 
         }
     }

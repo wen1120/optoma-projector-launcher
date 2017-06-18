@@ -83,10 +83,14 @@ public class UI {
                         if (colSpacing != 0 && col < numCol - 1) {
                             final int colIndex = col;
                             space(() -> {
+                                // backgroundColor(Color.RED);
+
                                 if(colSpacing < 0) {
                                     weight(1);
+                                    size(0, 0);
                                 } else {
-                                    size(colSpacing, 0);
+                                    weight(0);
+                                    size(colSpacing, 1);
                                 }
                             });
                         }

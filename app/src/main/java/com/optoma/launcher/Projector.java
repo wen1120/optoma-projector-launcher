@@ -14,6 +14,13 @@ public class Projector {
         mCmdManager = new CmdManager(context);
     }
 
+    public static final String[] positions = new String[] {
+            "Front",
+            "Rear",
+            "Front Ceiling",
+            "Rear Ceiling"
+    };
+
     public static final String[] displayModes = new String[]{
             "[None]",
             "Presentation",
