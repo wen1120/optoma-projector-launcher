@@ -18,6 +18,7 @@ import trikita.anvil.Anvil;
 import trikita.anvil.RenderableView;
 import static trikita.anvil.DSL.*;
 
+// experimental
 public class Home2 extends Activity {
 
     static class Model {
