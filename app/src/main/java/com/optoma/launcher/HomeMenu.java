@@ -402,9 +402,9 @@ public class HomeMenu extends Activity {
                     } else  {
                         size(MATCH, MATCH);
                         if(model.page == Page.Language) {
-                            margin(dip(80), 0, dip(80), 0);
+                            margin(dip(80), dip(16), dip(80), 0);
                         } else {
-                            margin(dip(150), 0, dip(150), 0);
+                            margin(dip(150), dip(16), dip(150), 0);
                         }
 
                         final int cellWidth = model.page == Page.Language ? dip(160) : dip(140);
