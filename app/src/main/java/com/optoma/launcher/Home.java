@@ -12,6 +12,9 @@ import android.widget.TextView;
 
 import com.optoma.launcher.Settings.Settings;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 /*
 * gradle debug on command line on Mac
 * $ brew install gradle
@@ -21,6 +24,8 @@ public class Home extends Activity {
     private static final String TAG = "LauncherLog";
     public static long animateDuration = 80;
     private FocusContainer homeRows;
+    @BindView(R.id.menu_wrapper) View menu;
+    @BindView(R.id.menu_hint) View menuHint;
 
     private static int[] menuID = {
             R.id.menu_position,
@@ -44,6 +49,7 @@ public class Home extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
+        ButterKnife.bind(this);
         init();
     }
 
@@ -186,6 +192,9 @@ public class Home extends Activity {
         });
     }
 
+
+    private static final int MENU = 0;
+
     /*
     * used for AppCompatImageView to be clickable
      */
@@ -213,10 +222,20 @@ public class Home extends Activity {
                     default:
                         break;
                 }
-
-                startActivity(intent);
+                menu.setAlpha(0);
+                menuHint.setAlpha(0);
+                startActivityForResult(intent, MENU);
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == MENU) {
+            menu.setAlpha(1);
+            menuHint.setAlpha(1);
+        }
     }
 
     @Override

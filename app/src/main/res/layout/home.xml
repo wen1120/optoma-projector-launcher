@@ -114,77 +114,100 @@
                         android:textSize="20sp" />
                 </RelativeLayout>
 
-                <RelativeLayout
-                    android:id="@+id/menu"
+                <LinearLayout
+                    android:id="@+id/menu_wrapper"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
                     android:layout_centerInParent="true"
-                    android:orientation="horizontal"
-                    android:clipChildren="false"
-                    android:layout_marginBottom="33dp">
-
-                    <ImageButton
-                        android:id="@+id/menu_position"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal"
+                    >
+                    <LinearLayout
+                        android:id="@+id/menu"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@android:color/transparent"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:focusableInTouchMode="true"
-                        android:src="@drawable/home_menu_position"
-                        android:layout_alignParentLeft="true"
-                        android:contentDescription="Position"/>
+                        android:orientation="horizontal"
+                        android:clipChildren="false"
+                        android:layout_marginBottom="8dp"
 
-                    <ImageButton
-                        android:id="@+id/menu_apps"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@android:color/transparent"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:focusableInTouchMode="true"
-                        android:src="@drawable/home_menu_apps"
-                        android:layout_marginLeft="14dp"
-                        android:layout_toRightOf="@id/menu_position"
-                        android:contentDescription="Apps"/>
+                        >
 
-                    <ImageButton
-                        android:id="@+id/menu_is"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@android:color/transparent"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:focusableInTouchMode="true"
-                        android:src="@drawable/home_menu_source"
-                        android:layout_toRightOf="@id/menu_apps"
-                        android:layout_marginLeft="14dp"
-                        android:contentDescription="Input Source"/>
+                        <ImageButton
+                            android:id="@+id/menu_position"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:focusableInTouchMode="true"
+                            android:src="@drawable/home_menu_position"
+                            android:layout_alignParentLeft="true"
+                            android:contentDescription="Position"/>
 
-                    <ImageButton
-                        android:id="@+id/menu_lang"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@android:color/transparent"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:focusableInTouchMode="true"
-                        android:src="@drawable/home_menu_language"
-                        android:layout_toRightOf="@id/menu_is"
-                        android:layout_marginLeft="14dp"
-                        android:contentDescription="Language"/>
+                        <Space
+                            android:layout_width="14dp"
+                            android:layout_height="1dp"
+                            />
 
-                </RelativeLayout>
+                        <ImageButton
+                            android:id="@+id/menu_apps"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:focusableInTouchMode="true"
+                            android:src="@drawable/home_menu_apps"
+                            android:layout_toRightOf="@id/menu_position"
+                            android:contentDescription="Apps"/>
 
-                <!-- horizontal separator -->
-                <View
-                    android:layout_width="254dp"
-                    android:layout_height="1dp"
-                    android:layout_alignParentBottom="true"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginBottom="24dp"
-                    android:background="@color/primary_white" />
+                        <Space
+                            android:layout_width="14dp"
+                            android:layout_height="1dp"
+                            />
+
+                        <ImageButton
+                            android:id="@+id/menu_is"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:focusableInTouchMode="true"
+                            android:src="@drawable/home_menu_source"
+                            android:layout_toRightOf="@id/menu_apps"
+                            android:contentDescription="Input Source"/>
+
+                        <Space
+                            android:layout_width="14dp"
+                            android:layout_height="1dp"
+                            />
+
+                        <ImageButton
+                            android:id="@+id/menu_lang"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:focusableInTouchMode="true"
+                            android:src="@drawable/home_menu_language"
+                            android:layout_toRightOf="@id/menu_is"
+                            android:contentDescription="Language"/>
+
+                    </LinearLayout>
+
+                    <!-- horizontal separator -->
+                    <View
+                        android:layout_width="254dp"
+                        android:layout_height="1dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginBottom="24dp"
+                        android:background="@color/primary_white" />
+
+                </LinearLayout>
 
                 <TextView
                     android:id="@+id/menu_hint"
@@ -195,7 +218,6 @@
                     android:fontFamily="sans-serif-medium"
                     android:text="Position"
                     android:layout_alignParentBottom="true"/>
-
             </RelativeLayout>
 
         </LinearLayout>
