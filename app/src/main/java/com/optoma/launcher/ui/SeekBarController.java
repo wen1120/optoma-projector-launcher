@@ -9,6 +9,9 @@ import android.widget.Toast;
 
 import com.optoma.launcher.R;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -20,6 +23,8 @@ public class SeekBarController extends ViewController {
     android.widget.SeekBar seekBar;
     @BindView(R.id.left_arrow) View leftButton;
     @BindView(R.id.right_arrow) View rightButton;
+
+    private final List<SeekBar.OnSeekBarChangeListener> seekBarChangeListeners = new ArrayList<>();
 
     public SeekBarController(Context context,
                              final String title, final int initial, final int min, final int max, final int step) {
@@ -35,16 +40,24 @@ public class SeekBarController extends ViewController {
             public void onProgressChanged(android.widget.SeekBar seekBar, int progress, boolean fromUser) {
                 int correctedProgress = progress + min;
                 value.setText(String.valueOf(correctedProgress));
+
+                for(SeekBar.OnSeekBarChangeListener lis : seekBarChangeListeners) {
+                    lis.onProgressChanged(seekBar, correctedProgress, fromUser);
+                }
             }
 
             @Override
             public void onStartTrackingTouch(android.widget.SeekBar seekBar) {
-
+                for(SeekBar.OnSeekBarChangeListener lis : seekBarChangeListeners) {
+                    lis.onStartTrackingTouch(seekBar);
+                }
             }
 
             @Override
             public void onStopTrackingTouch(android.widget.SeekBar seekBar) {
-
+                for(SeekBar.OnSeekBarChangeListener lis : seekBarChangeListeners) {
+                    lis.onStopTrackingTouch(seekBar);
+                }
             }
         });
         value.setText(String.valueOf(seekBar.getProgress() + min));
@@ -79,4 +92,7 @@ public class SeekBarController extends ViewController {
         });
     }
 
+    public void addOnSeekBarChangeListener(SeekBar.OnSeekBarChangeListener lis) {
+        seekBarChangeListeners.add(lis);
+    }
 }

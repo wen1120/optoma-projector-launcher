@@ -11,8 +11,10 @@ import android.view.ViewGroup;
 import android.view.ViewParent;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
+import android.widget.SeekBar;
 import android.widget.Space;
 
 import com.optoma.launcher.ProjectorSetup.Signal;
@@ -32,15 +34,15 @@ import butterknife.ButterKnife;
 
 public class Setup extends Activity {
 
-    @BindView(R.id.content)
-    ViewGroup content;
+    @BindView(R.id.content) ViewGroup content;
+    private Projector projector;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.setup);
         ButterKnife.bind(this);
-
+        projector = new Projector(getApplicationContext());
         content.addView(createMainMenu());
 
     }
@@ -502,10 +504,43 @@ public class Setup extends Activity {
 
         final MenuGroupController digitalZoom = new MenuGroupController(this, "Digital Zoom");
         {
-            final SeekBarController h = new SeekBarController(this, "H Zoom", 0, 0, 100, 1);
+            final SeekBarController h = new SeekBarController(this, "H Zoom", projector.getHiHorizontalAspect(), 0, 100, 2);
+            h.addOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+
+                @Override
+                public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                    projector.setTiHorizontalAspect(progress);
+                }
+
+                @Override
+                public void onStartTrackingTouch(SeekBar seekBar) {
+
+                }
+
+                @Override
+                public void onStopTrackingTouch(SeekBar seekBar) {
+
+                }
+            });
             digitalZoom.addItem(h);
 
-            final SeekBarController v = new SeekBarController(this, "V Zoom", 0, 0, 100, 1);
+            final SeekBarController v = new SeekBarController(this, "V Zoom", projector.getTiVerticalAspect(), 0, 100, 2);
+            v.addOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+                @Override
+                public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                    projector.setTiVerticalAspect(progress);
+                }
+
+                @Override
+                public void onStartTrackingTouch(SeekBar seekBar) {
+
+                }
+
+                @Override
+                public void onStopTrackingTouch(SeekBar seekBar) {
+
+                }
+            });
             digitalZoom.addItem(v);
         }
         menu.addItem(digitalZoom);
@@ -531,10 +566,33 @@ public class Setup extends Activity {
             final SeekBarController hKeystone = new SeekBarController(this, "H Keystone", 0, -40, 40, 1);
             geometricCorrection.addItem(hKeystone);
 
-            final SeekBarController vKeystone = new SeekBarController(this, "V Keystone", 0, -40, 40, 1);
+            final SeekBarController vKeystone = new SeekBarController(
+                    this, "V Keystone", projector.getKeystone(), -40, 40, 1);
+            vKeystone.addOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+                @Override
+                public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                    projector.setKeystone(progress);
+                }
+
+                @Override
+                public void onStartTrackingTouch(SeekBar seekBar) {
+
+                }
+
+                @Override
+                public void onStopTrackingTouch(SeekBar seekBar) {
+
+                }
+            });
             geometricCorrection.addItem(vKeystone);
 
-            final ToggleController autoKeystone = new ToggleController(this, "Auto Keystone", false);
+            final ToggleController autoKeystone = new ToggleController(this, "Auto Keystone", projector.hasAutoKeystone());
+            autoKeystone.addOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    projector.setAutoKeystone(isChecked);
+                }
+            });
             geometricCorrection.addItem(autoKeystone);
 
         }
