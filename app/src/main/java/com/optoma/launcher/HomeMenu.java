@@ -7,6 +7,7 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.DrawableRes;
 import android.text.TextUtils;
@@ -119,7 +120,11 @@ public class HomeMenu extends Activity {
         void perform(Model model) {
             if(pm == null) pm = getPackageManager(); // TODO
             showToast("Opening "+ai.loadLabel(pm)+ " ...");
-            final Intent intent = pm.getLaunchIntentForPackage(ai.packageName);
+
+            Intent intent = pm.getLaunchIntentForPackage(ai.packageName);
+            if(intent == null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                intent = pm.getLeanbackLaunchIntentForPackage(ai.packageName); // for TV apps
+            }
             startActivity(intent);
         }
     }
