@@ -109,6 +109,7 @@
                         android:layout_centerHorizontal="true"
                         android:fontFamily="Roboto"
                         android:format12Hour="EEE d MMM"
+                        android:format24Hour="EEE d MMM"
                         android:textColor="#FFFFFF"
                         android:textSize="20sp" />
                 </RelativeLayout>
@@ -478,5 +479,10 @@
             android:layout_width="80dp"/>
 
     </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/ipaddr"/>
 
 </LinearLayout>

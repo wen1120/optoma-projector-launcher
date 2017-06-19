@@ -2,7 +2,6 @@ package com.optoma.launcher;
 
 import android.app.Activity;
 import android.graphics.Color;
-import android.graphics.LinearGradient;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
@@ -124,32 +123,37 @@ public class Home2 extends Activity {
                     (f) -> {
                         createShortcut(() -> {
                             UI.createIconLabelTile(dip(112), dip(128),
-                                    R.drawable.hdmi, 0.7f, "HDMI", labelSizeUnfocused, shortcutUnfocused);
+                                    getResources().getDrawable(R.drawable.hdmi),
+                                    0.7f, "HDMI", labelSizeUnfocused, shortcutUnfocused);
                         });
                     },
                     (f) -> {
                         if(f) {
                             createShortcut(() -> {
                                 UI.createIconLabelTile(dip(140), dip(160),
-                                        R.drawable.vga, 1f, "VGA", labelSizeFocused, shortcutFocused);
+                                        getResources().getDrawable(R.drawable.vga),
+                                        1f, "VGA", labelSizeFocused, shortcutFocused);
                             });
                         } else {
                             createShortcut(() -> {
                                 UI.createIconLabelTile(dip(112), dip(128),
-                                        R.drawable.vga, 0.7f, "VGA", labelSizeUnfocused, shortcutUnfocused);
+                                        getResources().getDrawable(R.drawable.vga),
+                                        0.7f, "VGA", labelSizeUnfocused, shortcutUnfocused);
                             });
                         }
                     },
                     (f) -> {
                         createShortcut(() -> {
                             UI.createIconLabelTile(dip(112), dip(128),
-                                    R.drawable.settings, 0.7f, "Settings", labelSizeUnfocused, shortcutUnfocused);
+                                    getResources().getDrawable(R.drawable.settings),
+                                    0.7f, "Settings", labelSizeUnfocused, shortcutUnfocused);
                         });
                     },
                     (f) -> {
                         createShortcut(() -> {
                             UI.createIconLabelTile(dip(112), dip(128),
-                                    R.drawable.projectorsetup, 0.7f, "Projector\nSetup", labelSizeUnfocused, shortcutUnfocused);
+                                    getResources().getDrawable(R.drawable.projectorsetup),
+                                    0.7f, "Projector\nSetup", labelSizeUnfocused, shortcutUnfocused);
                         });
                     }
             );

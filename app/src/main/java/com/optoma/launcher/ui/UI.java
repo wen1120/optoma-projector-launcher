@@ -1,4 +1,4 @@
-package com.optoma.launcher.ui; 
+package com.optoma.launcher.ui;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
@@ -59,7 +59,7 @@ public class UI {
                             createTile.accept(index);
                         } else {
                             // dummy tile
-                            createDummyTile.accept(index);
+                            if(createDummyTile!=null) createDummyTile.accept(index);
                         }
 
                         // col spacing
@@ -100,7 +100,40 @@ public class UI {
     }
 
     public static  void createIconLabelTile(int width, int height,
-                                     @DrawableRes int icon,
+                                            @DrawableRes int icon,
+                                            float iconResizeFactor,
+                                            String label,
+                                            int fontSize,
+                                            Drawable background) {
+        linearLayout(() -> {
+            size(width, height);
+            orientation(LinearLayout.VERTICAL);
+            gravity(Gravity.CENTER);
+            // backgroundColor(Color.parseColor("#2e2a25"));
+            background(background);
+            focusable(true);
+            focusableInTouchMode(true);
+            clickable(true);
+
+            imageView(() -> {
+                size(dip(Math.round(86 * iconResizeFactor)), dip(Math.round(76 * iconResizeFactor)));
+                weight(11);
+                imageResource(icon);
+            });
+
+            textView(() -> {
+                size(WRAP, WRAP);
+                textSize(fontSize);
+                weight(5);
+                gravity(Gravity.CENTER);
+                text(label);
+            });
+
+        });
+    }
+
+    public static  void createIconLabelTile(int width, int height,
+                                     Drawable icon,
                                      float iconResizeFactor,
                                      String label,
                                      int fontSize,
@@ -118,7 +151,7 @@ public class UI {
             imageView(() -> {
                 size(dip(Math.round(86 * iconResizeFactor)), dip(Math.round(76 * iconResizeFactor)));
                 weight(11);
-                imageResource(icon);
+                imageDrawable(icon);
             });
 
             textView(() -> {
