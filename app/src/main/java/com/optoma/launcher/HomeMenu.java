@@ -94,7 +94,7 @@ public class HomeMenu extends Activity {
                 model.numCol = 6;
                 model.rowShown = 3;
             } else if(model.page == Page.Position) {
-                model.dataLength = Projector.positions.length;
+                model.dataLength = Projector.ProjectionModes.values().length;
                 model.numCol = 2;
                 model.rowShown = 2;
             } else if(model.page == Page.Language) {
@@ -415,7 +415,14 @@ public class HomeMenu extends Activity {
                         );
                     } else  {
                         size(MATCH, MATCH);
-                        margin(dip(150), 0, dip(150), 0);
+                        if(model.page == Page.Language) {
+                            margin(dip(80), 0, dip(80), 0);
+                        } else {
+                            margin(dip(150), 0, dip(150), 0);
+                        }
+
+                        final int cellWidth = model.page == Page.Language ? dip(160) : dip(140);
+                        final int cellHeight = model.page == Page.Language ? dip(140) : dip(160);
 
                         UI.layoutTiles(MATCH, MATCH, model.numCol, model.numCol * model.rowShown, -1, dip(20),
                                 (index) -> {
@@ -433,7 +440,7 @@ public class HomeMenu extends Activity {
                                         }
                                     } else {
                                         space(() -> {
-                                            size(dip(140), dip(160));
+                                            size(cellWidth, cellHeight);
                                         });
                                     }
 
@@ -545,7 +552,7 @@ public class HomeMenu extends Activity {
 
         private void renderLabelLabel(CharSequence label1, CharSequence label2, boolean focused) {
             frameLayout(() -> {
-                size(dip(140), dip(140));
+                size(dip(160), dip(140));
 
                 linearLayout(() -> {
                     size(MATCH, MATCH);
