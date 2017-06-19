@@ -371,20 +371,6 @@ public class HomeMenu extends Activity {
             });
         }
 
-        private void renderLanguages() {
-            scrollView(() -> {
-                size(MATCH, MATCH);
-                margin(dip(80), dip(28), dip(80), dip(200));
-
-                UI.layoutTiles(MATCH, MATCH, 7, Projector.langs.length, -1, dip(32), (Integer index) -> {
-                    UI.createLabelLabelTile(Projector.langsEng[index], Projector.langs[index]);
-                }, (Integer index) -> {
-                    // no-op
-                }, null);
-            });
-
-        }
-
         private void renderContent() {
 
             if(model.dataLength == 0) {
@@ -432,11 +418,11 @@ public class HomeMenu extends Activity {
 
                                     if(indexInList < model.dataLength) {
                                         if (model.page == Page.Apps) {
-                                            renderApps(indexInList, focused);
+                                            renderApp(indexInList, focused);
                                         } else if (model.page == Page.InputSource) {
-                                            renderInputSources(indexInList, focused);
+                                            renderInputSource(indexInList, focused);
                                         } else if (model.page == Page.Language) {
-                                            renderLanguages(indexInList, focused);
+                                            renderLanguage(indexInList, focused);
                                         }
                                     } else {
                                         space(() -> {
@@ -456,12 +442,12 @@ public class HomeMenu extends Activity {
 
         }
 
-        private void renderApps(int index, boolean focused) {
+        private void renderApp(int index, boolean focused) {
             final ApplicationInfo item = model.apps.get(index);
             renderIconLabel(item.loadIcon(pm), item.loadLabel(pm), focused);
         }
 
-        private void renderInputSources(int index, boolean focused) {
+        private void renderInputSource(int index, boolean focused) {
             renderIconLabel(getResources().getDrawable(inputSourceIcons[index]),
                     Projector.inputSources[index], focused);
 
@@ -478,7 +464,7 @@ public class HomeMenu extends Activity {
             });
         }
 
-        private void renderLanguages(int index, boolean focused) {
+        private void renderLanguage(int index, boolean focused) {
             renderLabelLabel(Projector.langsEng[index], Projector.langs[index], focused);
         }
 
