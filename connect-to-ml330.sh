@@ -1,6 +1,7 @@
 #!/bin/bash
-adb connect 192.168.0.158 && \
+IP=192.168.0.154
+adb connect $IP && \
 adb root && \
-adb connect 192.168.0.158 && \
+adb connect $IP && \
 adb remount
 
