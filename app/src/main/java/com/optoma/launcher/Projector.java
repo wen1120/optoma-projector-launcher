@@ -1,9 +1,11 @@
 package com.optoma.launcher;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.mstar.android.tv.TvCommonManager;
 import com.optoma.launcher.achieve.CmdManager;
 
 /**
@@ -12,7 +14,10 @@ import com.optoma.launcher.achieve.CmdManager;
 
 public class Projector {
     private CmdManager mCmdManager;
+    private Context context;
+
     public Projector(Context context) {
+        this.context = context;
         mCmdManager = new CmdManager(context);
     }
 
@@ -432,6 +437,16 @@ public class Projector {
     public int getTiVerticalAspect() {
         final int value = mCmdManager.getTiVerticalAspect();
         return adjust(value, 50, 100, 0, 100);
+    }
+
+    public void startHmdi() {
+        Intent intent = new Intent("com.mstar.android.intent.action.START_TV_PLAYER");
+        intent.putExtra("inputSrc", TvCommonManager.INPUT_SOURCE_HDMI3);
+        context.startActivity(intent);
+        Intent targetIntent = new Intent("mstar.tvsetting.ui.intent.action.RootActivity");
+        targetIntent.putExtra("task_tag", "input_source_changed");
+        targetIntent.putExtra("no_change_source", true);
+        context.startActivity(targetIntent);
     }
 
     private int adjust(int current, int oldFrom, int oldTo, int newFrom, int newTo) {

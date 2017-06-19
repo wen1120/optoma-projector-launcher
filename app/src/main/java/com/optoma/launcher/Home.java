@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.optoma.launcher.Settings.Settings;
+
 /*
 * gradle debug on command line on Mac
 * $ brew install gradle
@@ -156,28 +158,30 @@ public class Home extends Activity {
         ly.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final Intent intent = new Intent();
+
                 switch (rID) {
-                    case R.id.shortcut_app4: // settings test
-                        intent.setClass(Home.this, SettingsHome.class);
+
+                    case R.id.shortcut_app5: {
+                        new Projector(Home.this).startHmdi();
+                    }
+                    case R.id.shortcut_app6:
                         break;
-                    case R.id.shortcut_app5: //input source
-                        intent.setClassName(getPackageName(), getPackageName() + ".InputSource");
+                    case R.id.shortcut_app7: {
+                        final Intent intent = new Intent();
+                        intent.setClass(Home.this, Settings.class);
+                        startActivity(intent);
                         break;
-                    case R.id.shortcut_app6: //input source
-                        intent.setClassName(getPackageName(), getPackageName() + ".InputSource");
-                        break;
-                    case R.id.shortcut_app7: //settings
-                        intent.setClassName(getPackageName(), getPackageName() + ".Settings.Settings");
-                        break;
-                    case R.id.shortcut_app8: // projector settings
+                    }
+                    case R.id.shortcut_app8: {
+                        final Intent intent = new Intent();
                         intent.setClass(Home.this, Setup.class);
+                        startActivity(intent);
                         break;
+                    }
                     default:
-                        intent.setClassName(getPackageName(), getPackageName() + ".Settings.Settings");
                         break;
                 }
-                startActivity(intent);
+
             }
         });
     }
