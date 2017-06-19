@@ -1,6 +1,8 @@
 package com.optoma.launcher;
 
 import android.content.Context;
+import android.util.Log;
+import android.widget.Toast;
 
 import com.optoma.launcher.achieve.CmdManager;
 
@@ -13,6 +15,22 @@ public class Projector {
     public Projector(Context context) {
         mCmdManager = new CmdManager(context);
     }
+
+    public enum ProjectionModes {
+        front("Front"),
+        rear("Rear"),
+        frontCeiling("Front Ceiling"),
+        rearCeiling("Rear Ceiling");
+
+        final String name;
+
+        ProjectionModes(String name) {
+            this.name = name;
+        }
+        @Override public String toString() {
+            return name;
+        }
+    };
 
     public static final String[] displayModes = new String[]{
             "[None]",
@@ -346,19 +364,47 @@ public class Projector {
             "Black"
     };
 
+    public static final String[] inputSources = new String[]{
+            "Miracast",
+            "VGA",
+            "HDMI 1",
+            "HDMI 2",
+            "HDMI 3",
+            "Display Port",
+            "USB 1",
+            "USB 2",
+            "S-video",
+            "Set Shortcut"
+    };
+
+
     //value: 0 ~ 80
-    public void SetKeystone(int value) {
-        mCmdManager.setKeystone(value);
+    public void setKeystone(int value) {
+        final int newVal = adjust(value, -40, 40, 0, 80);
+        Log.d("ken", String.format("set keystone: %d -> %d", value, newVal));
+        mCmdManager.setKeystone(newVal);
+
     }
 
-    public int GetKeystone() {
-        return mCmdManager.getKeystone();
+    public int getKeystone() {
+        final int value = adjust(mCmdManager.getKeystone(), 0, 80, -40, 40);
+        Log.d("ken", String.format("get keystone: %d -> %d", mCmdManager.getKeystone(), value));
+        return value;
+    }
+
+    public void setAutoKeystone(boolean enabled) {
+        mCmdManager.setAutoKeystoneEnable(enabled ? 1 : 0);
+    }
+
+    public boolean hasAutoKeystone() {
+        return mCmdManager.getAutoKeystoneEnable() != 0;
     }
 
     //index: 0:rear 1:rear_ceiling 2:front 3:front_ceiling
     public void SetProjectMode(int index) {
         mCmdManager.setProjectionMode(index);
     }
+
 
     //index: 0: (16:9)  2: (16:10) 3: (4:3)
     public void SetScreenScaleMode(int index) {
@@ -371,12 +417,25 @@ public class Projector {
     }
 
     //index:50~100
-    public void SetTiHorizontalAspect(int index) {
-        mCmdManager.setTiHorizontalAspect(index);
+    public void setTiHorizontalAspect(int index) {
+        mCmdManager.setTiHorizontalAspect(adjust(index, 0, 100, 50, 100));
+    }
+    public int getHiHorizontalAspect() {
+        final int value = mCmdManager.getTiHorizontalAspect();
+        return adjust(value, 50, 100, 0, 100);
     }
 
     //index:50~100
-    public void SetTiVerticalAspect(int index) {
-        mCmdManager.setTiVerticalAspect(index);
+    public void setTiVerticalAspect(int index) {
+        mCmdManager.setTiVerticalAspect(adjust(index, 0, 100, 50, 100));
     }
+    public int getTiVerticalAspect() {
+        final int value = mCmdManager.getTiVerticalAspect();
+        return adjust(value, 50, 100, 0, 100);
+    }
+
+    private int adjust(int current, int oldFrom, int oldTo, int newFrom, int newTo) {
+        return newFrom + (int)(((float)current - oldFrom) / (oldTo - oldFrom) * (newTo - newFrom));
+    }
+
 }

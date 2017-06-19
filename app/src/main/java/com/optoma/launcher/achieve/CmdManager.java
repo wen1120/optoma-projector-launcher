@@ -221,7 +221,8 @@ public class CmdManager {
 		ContentValues vals = new ContentValues();
 		vals.put(key, value);
 		try {
-			ret = context.getContentResolver().update(Uri.parse("content://mstar.tv.usersetting/systemsetting"), vals, null, null);
+			ret = context.getContentResolver().update(
+					Uri.parse("content://mstar.tv.usersetting/systemsetting"), vals, null, null);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

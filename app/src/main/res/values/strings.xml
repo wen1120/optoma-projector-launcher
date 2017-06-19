@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Launcher001</string>
+    <string name="app_name">Optoma Launcher</string>
     <string name="title_activity_main">HomeActivity</string>
     <string name="home_input_source">Input Source</string>
     <string name="home_settings">Settings</string>

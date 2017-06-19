@@ -1,8 +1,10 @@
 package com.optoma.launcher.ui;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.support.annotation.DrawableRes;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -31,12 +33,23 @@ public class UI {
     public static final int secondary_light_gray = Color.parseColor("#d0d3d4");
     public static final int secondary_light_brown = Color.parseColor("#9a887b");
 
+    public static final Typeface defaultFont = Typeface.create("sans-serif", Typeface.NORMAL); // roboto
+    public static final Typeface defaultBoldFont = Typeface.create("sans-serif", Typeface.BOLD); // roboto bold
+
     public interface Consumer<T> {
         void accept(T t);
     }
 
+    private static int getRowCount(int len, int numCol) {
+        return len / numCol + (len % numCol > 0 ? 1 : 0);
+    }
+
+    private static int getIndex(int rowIndex, int numCol, int col) {
+        return rowIndex * numCol + col;
+    }
+
     public static void layoutTiles(int width, int height,
-                             int col, int len, int colSpacing, int rowSpacing,
+                             int numCol, int len, int colSpacing, int rowSpacing,
                              Consumer<Integer> createTile,
                              Consumer<Integer> createDummyTile,
                              Anvil.Renderable r) {
@@ -45,16 +58,20 @@ public class UI {
             // backgroundColor(Color.RED);
             orientation(LinearLayout.VERTICAL);
 
-            final int row = len / col + (len % col > 0 ? 1 : 0);
-            for (int i = 0; i < row; i++) {
+            final int numRow = getRowCount(len, numCol);
 
-                final int rowIndex = i;
+            for (int row = 0; row < numRow; row++) {
+
+                final int rowIndex = row;
+
                 final Anvil.Renderable rowTiles = () -> {
+
                     size(colSpacing < 0 ? MATCH : WRAP, WRAP);
 
-                    for (int j = 0; j < col; j++) {
+                    for (int col = 0; col < numCol; col++) {
 
-                        final int index = rowIndex * col + j;
+                        final int index = getIndex(rowIndex, numCol, col);
+
                         if (index < len) {
                             createTile.accept(index);
                         } else {
@@ -63,26 +80,31 @@ public class UI {
                         }
 
                         // col spacing
-                        if (colSpacing != 0 && j < col - 1) {
+                        if (colSpacing != 0 && col < numCol - 1) {
+                            final int colIndex = col;
                             space(() -> {
+                                // backgroundColor(Color.RED);
+
                                 if(colSpacing < 0) {
                                     weight(1);
+                                    size(0, 0);
                                 } else {
-                                    size(colSpacing, 0);
+                                    weight(0);
+                                    size(colSpacing, 1);
                                 }
                             });
                         }
                     }
                 };
 
-                if(col == 1) {
+                if(numCol == 1) {
                     rowTiles.view();
                 } else {
                     linearLayout(rowTiles);
                 }
 
                 // row spacing
-                if(rowSpacing != 0 && i < row - 1) {
+                if(rowSpacing != 0 && row < numRow - 1) {
                     space(() -> {
                         if(rowSpacing < 0) {
                             weight(1);
