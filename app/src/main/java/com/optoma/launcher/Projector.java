@@ -18,7 +18,11 @@ public class Projector {
 
     public Projector(Context context) {
         this.context = context;
-        mCmdManager = new CmdManager(context);
+        try {
+            mCmdManager = new CmdManager(context);
+        } catch(java.lang.NoClassDefFoundError e) {
+            Log.d("ken", "Not on ML330!!!");
+        }
     }
 
     public enum ProjectionModes {
@@ -385,6 +389,7 @@ public class Projector {
 
     //value: 0 ~ 80
     public void setKeystone(int value) {
+        if(mCmdManager==null) return;
         final int newVal = adjust(value, -40, 40, 0, 80);
         Log.d("ken", String.format("set keystone: %d -> %d", value, newVal));
         mCmdManager.setKeystone(newVal);
@@ -392,54 +397,65 @@ public class Projector {
     }
 
     public int getKeystone() {
+        if(mCmdManager==null) return 0;
         final int value = adjust(mCmdManager.getKeystone(), 0, 80, -40, 40);
         Log.d("ken", String.format("get keystone: %d -> %d", mCmdManager.getKeystone(), value));
         return value;
     }
 
     public void setAutoKeystone(boolean enabled) {
+        if(mCmdManager==null) return;
         mCmdManager.setAutoKeystoneEnable(enabled ? 1 : 0);
     }
 
     public boolean hasAutoKeystone() {
+        if(mCmdManager==null) return false;
         return mCmdManager.getAutoKeystoneEnable() != 0;
     }
 
     //index: 0:rear 1:rear_ceiling 2:front 3:front_ceiling
     public void SetProjectMode(int index) {
+        if(mCmdManager==null) return;
         mCmdManager.setProjectionMode(index);
     }
 
 
     //index: 0: (16:9)  2: (16:10) 3: (4:3)
     public void SetScreenScaleMode(int index) {
+        if(mCmdManager==null) return;
         mCmdManager.setScreenScaleMode(index);
     }
 
     //index: 50~100
     public void SetTiSuperFocus(int index) {
+        if(mCmdManager==null) return;
         mCmdManager.setTiSuperFocus(index);
     }
 
     //index:50~100
     public void setTiHorizontalAspect(int index) {
+        if(mCmdManager==null) return;
         mCmdManager.setTiHorizontalAspect(adjust(index, 0, 100, 50, 100));
     }
     public int getHiHorizontalAspect() {
+        if(mCmdManager==null) return 0;
         final int value = mCmdManager.getTiHorizontalAspect();
         return adjust(value, 50, 100, 0, 100);
     }
 
     //index:50~100
     public void setTiVerticalAspect(int index) {
+        if(mCmdManager==null) return;
         mCmdManager.setTiVerticalAspect(adjust(index, 0, 100, 50, 100));
     }
     public int getTiVerticalAspect() {
+        if(mCmdManager==null) return 0;
         final int value = mCmdManager.getTiVerticalAspect();
         return adjust(value, 50, 100, 0, 100);
     }
 
     public void startHmdi() {
+        if(mCmdManager==null) return;
         Intent intent = new Intent("com.mstar.android.intent.action.START_TV_PLAYER");
         intent.putExtra("inputSrc", TvCommonManager.INPUT_SOURCE_HDMI3);
         context.startActivity(intent);
