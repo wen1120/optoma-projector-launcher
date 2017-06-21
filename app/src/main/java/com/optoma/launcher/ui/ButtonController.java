@@ -45,6 +45,7 @@ public class ButtonController extends ViewController {
         this.title.setText(title);
         if(leadingImage>=0)
             this.leadingImage.setImageResource(leadingImage);
+        else this.leadingImage.setVisibility(View.GONE);
         if(trailingImage>=0)
             this.trailingImage.setImageResource(trailingImage);
 

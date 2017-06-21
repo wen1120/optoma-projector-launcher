@@ -15,7 +15,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="48dp">
+        android:layout_height="48dp"
+        android:duplicateParentState="true">
         <TextView
             android:id="@+id/title"
             android:layout_width="wrap_content"
@@ -23,7 +24,8 @@
             android:gravity="center_vertical"
             android:text="@string/audio_volume"
             android:textSize = "18sp"
-            android:textColor="@color/secondary_light_gray"/>
+            android:textColor="@color/secondary_light_gray"
+            android:duplicateParentState="true"/>
         <Space
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -33,7 +35,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="18sp"
-            android:textColor="@color/secondary_blue"/>
+            android:textColor="@color/menu_value"
+            android:duplicateParentState="true"/>
     </LinearLayout>
 
     <LinearLayout
@@ -42,14 +45,16 @@
         android:orientation="horizontal"
         android:gravity="center_vertical"
         android:layout_marginStart="48dp"
-        android:clipChildren="false">
+        android:clipChildren="false"
+        android:duplicateParentState="true">
         <ImageView
             android:id="@+id/left_arrow"
             android:layout_width="wrap_content"
             android:layout_height="48dp"
             android:gravity="center"
             android:scaleType="center"
-            android:src="@drawable/left_arrow427">
+            android:src="@drawable/left_arrow"
+            android:duplicateParentState="true">
         </ImageView>
 
         <SeekBar
@@ -65,14 +70,15 @@
             android:layout_marginLeft="12dp"
             android:layout_marginRight="12dp"
             android:max="10"
-            />
+            android:duplicateParentState="true"/>
 
         <ImageView
             android:id="@+id/right_arrow"
             android:layout_width="wrap_content"
             android:layout_height="48dp"
             android:scaleType="center"
-            android:src="@drawable/right_arrow427">
+            android:src="@drawable/right_arrow"
+            android:duplicateParentState="true">
         </ImageView>
 
     </LinearLayout>
