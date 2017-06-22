@@ -86,7 +86,7 @@ public class Setup extends Activity {
 //        });
 //        shortcutArea.addView(pipPdb.getView());
 //
-//        addSpace();
+//        addSpace(); 
 
         final ShortcutController threeD = new ShortcutController(
                 this, R.drawable.e_3d, getResources().getString(R.string.projector_3d));
@@ -203,7 +203,7 @@ public class Setup extends Activity {
 
 
         final ButtonController colorSettings = new ButtonController(
-                this, "Color Settings", null, 0, R.drawable.expand431);
+                this, "Color Settings", null, -1, R.drawable.expand_arrow);
         colorSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -230,7 +230,7 @@ public class Setup extends Activity {
 
 
         final ButtonController pureEngine = new ButtonController(
-                this, "PureEngine", null, 0, R.drawable.expand431);
+                this, "PureEngine", null, -1, R.drawable.expand_arrow);
         pureEngine.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -240,7 +240,7 @@ public class Setup extends Activity {
         menu.addItem(pureEngine);
 
         final ButtonController darbeeSettings = new ButtonController(
-                this, "Darbee Settings", null, 0, R.drawable.expand431);
+                this, "Darbee Settings", null, -1, R.drawable.expand_arrow);
         darbeeSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -266,7 +266,7 @@ public class Setup extends Activity {
         final MenuController menu = new MenuController(this, R.layout.menu_panel_level2, parent);
 
         final ButtonController back = new ButtonController(
-                this, "Back to Image Settings", null, R.drawable.backtotop_white, -1);
+                this, "Back to Image Settings", null, R.drawable.left_arrow, -1);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -287,7 +287,7 @@ public class Setup extends Activity {
         menu.addItem(resetColorTemperature);
 
         final ButtonController colorMatching = new ButtonController(
-                this, "Color Matching", null, -1, R.drawable.expand431);
+                this, "Color Matching", null, -1, R.drawable.expand_arrow);
         colorMatching.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -301,7 +301,7 @@ public class Setup extends Activity {
         menu.addItem(colorGamut);
 
         final ButtonController cms = new ButtonController(
-                this, "CMS", null, -1, R.drawable.expand431);
+                this, "CMS", null, -1, R.drawable.expand_arrow);
         cms.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -311,7 +311,7 @@ public class Setup extends Activity {
         menu.addItem(cms);
 
         final ButtonController rgbGainBias = new ButtonController(
-                this, "RGB Gain/Bias", null, -1, R.drawable.expand431);
+                this, "RGB Gain/Bias", null, -1, R.drawable.expand_arrow);
         rgbGainBias.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -331,7 +331,7 @@ public class Setup extends Activity {
         final MenuController menu = new MenuController(this, R.layout.menu_panel_level2, parent);
 
         final ButtonController back = new ButtonController(
-                this, "Back to Image Settings", null, R.drawable.backtotop_white, -1);
+                this, "Back to Image Settings", null, R.drawable.left_arrow, -1);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -363,7 +363,7 @@ public class Setup extends Activity {
         final MenuController menu = new MenuController(this, R.layout.menu_panel_level2, parent);
 
         final ButtonController back = new ButtonController(
-                this, "Back to Image Settings", null, R.drawable.backtotop_white, -1);
+                this, "Back to Image Settings", null, R.drawable.left_arrow, -1);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -390,7 +390,7 @@ public class Setup extends Activity {
         final MenuController menu = new MenuController(this, R.layout.menu_panel_level3, parent);
 
         final ButtonController back = new ButtonController(
-                this, "Back to Color Settings", null, R.drawable.backtotop_white, -1);
+                this, "Back to Color Settings", null, R.drawable.left_arrow, -1);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -425,7 +425,7 @@ public class Setup extends Activity {
                 this, R.layout.menu_panel_level3, parent);
 
         final ButtonController back = new ButtonController(
-                this, "Back to Color Settings", null, R.drawable.backtotop_white, -1);
+                this, "Back to Color Settings", null, R.drawable.left_arrow, -1);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -455,7 +455,7 @@ public class Setup extends Activity {
                 this, R.layout.menu_panel_level3, parent);
 
         final ButtonController back = new ButtonController(
-                this, "Back to Color Settings", null, R.drawable.backtotop_white, -1);
+                this, "Back to Color Settings", null, R.drawable.left_arrow, -1);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -502,7 +502,7 @@ public class Setup extends Activity {
         final SeekBarController zoom = new SeekBarController(this, "Zoom", 0, -5, 25, 1);
         menu.addItem(zoom);
 
-        final MenuGroupController digitalZoom = new MenuGroupController(this, "Digital Zoom");
+       /* final MenuGroupController digitalZoom = new MenuGroupController(this, "Digital Zoom");
         {
             final SeekBarController h = new SeekBarController(this, "H Zoom", projector.getHiHorizontalAspect(), 0, 100, 2);
             h.addOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -596,7 +596,7 @@ public class Setup extends Activity {
             geometricCorrection.addItem(autoKeystone);
 
         }
-        menu.addItem(geometricCorrection);
+        menu.addItem(geometricCorrection);*/
 
         final ButtonController back = new ButtonController(
                 this, "Back to Projector Setup", null, R.drawable.backtotop_white, -1);
@@ -657,7 +657,7 @@ public class Setup extends Activity {
         final MenuController menu = new MenuController(this, R.layout.menu_panel, parent);
 
         final ButtonController lampSettings = new ButtonController(
-                this, "Light Source", null, 0, R.drawable.expand431);
+                this, "Light Source", null, 0, R.drawable.expand_arrow);
         lampSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -667,7 +667,7 @@ public class Setup extends Activity {
         menu.addItem(lampSettings);
 
         final ButtonController filterSettings = new ButtonController(
-                this, "Filter Settings", null, 0, R.drawable.expand431);
+                this, "Filter Settings", null, 0, R.drawable.expand_arrow);
         filterSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -677,7 +677,7 @@ public class Setup extends Activity {
         menu.addItem(filterSettings);
 
         final ButtonController lensSettings = new ButtonController(
-                this, "Lens Settings", null, 0, R.drawable.expand431);
+                this, "Lens Settings", null, 0, R.drawable.expand_arrow);
         lensSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -692,7 +692,7 @@ public class Setup extends Activity {
         menu.addItem(anamorphicLens);
 
         final ButtonController remoteSettings = new ButtonController(
-                this, "Remote Settings", null, 0, R.drawable.expand431);
+                this, "Remote Settings", null, 0, R.drawable.expand_arrow);
         remoteSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -717,7 +717,7 @@ public class Setup extends Activity {
         menu.addItem(twelveVTriggerA);
 
         final ButtonController twelveVTriggerB = new ButtonController(
-                this, "12V Trigger B", null, 0, R.drawable.expand431);
+                this, "12V Trigger B", null, 0, R.drawable.expand_arrow);
         menu.addItem(twelveVTriggerB);
 
 
@@ -740,7 +740,7 @@ public class Setup extends Activity {
         final MenuController menu = new MenuController(this, R.layout.menu_panel_level2, parent);
 
         final ButtonController back = new ButtonController(
-                this, "Back to Components Control", null, R.drawable.backtotop_white, -1);
+                this, "Back to Components Control", null, R.drawable.left_arrow, -1);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -763,7 +763,7 @@ public class Setup extends Activity {
         final MenuController menu = new MenuController(this, R.layout.menu_panel_level2, parent);
 
         final ButtonController back = new ButtonController(
-                this, "Back to Components Control", null, R.drawable.backtotop_white, -1);
+                this, "Back to Components Control", null, R.drawable.left_arrow, -1);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -796,7 +796,7 @@ public class Setup extends Activity {
         final MenuController menu = new MenuController(this, R.layout.menu_panel_level2, parent);
 
         final ButtonController back = new ButtonController(
-                this, "Back to Components Control", null, R.drawable.backtotop_white, -1);
+                this, "Back to Components Control", null, R.drawable.left_arrow, -1);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -816,7 +816,7 @@ public class Setup extends Activity {
         menu.addItem(lensShift);
 
         final ButtonController lensCalibration = new ButtonController(
-                this, "Lens Calibration", null, -1, R.drawable.expand431
+                this, "Lens Calibration", null, -1, R.drawable.expand_arrow
         );
         menu.addItem(lensCalibration);
 
@@ -863,7 +863,7 @@ public class Setup extends Activity {
         final MenuController menu = new MenuController(this, R.layout.menu_panel_level2, parent);
 
         final ButtonController back = new ButtonController(
-                this, "Back to Components Control", null, R.drawable.backtotop_white, -1);
+                this, "Back to Components Control", null, R.drawable.left_arrow, -1);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
