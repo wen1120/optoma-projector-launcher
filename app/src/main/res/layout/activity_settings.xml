@@ -143,6 +143,16 @@
         android:fontFamily="sans-serif">
     </TextView>
 </RelativeLayout>
+    <View
+        android:id="@+id/setting_power_mask"
+        android:layout_width="112dp"
+        android:layout_height="128dp"
+        android:layout_below="@+id/setting_divider"
+        android:layout_marginTop="38dp"
+        android:layout_marginLeft="662dp"
+        android:background="@drawable/setting_mask"
+        android:visibility="invisible"/>
+
     <RelativeLayout
         android:id="@+id/setting_account"
         android:layout_width="112dp"
@@ -177,6 +187,16 @@
             android:fontFamily="sans-serif">
         </TextView>
     </RelativeLayout>
+    <View
+        android:id="@+id/setting_account_mask"
+        android:layout_width="112dp"
+        android:layout_height="128dp"
+        android:layout_below="@+id/setting_divider"
+        android:layout_marginTop="38dp"
+        android:layout_marginLeft="806dp"
+        android:background="@drawable/setting_mask"
+        android:visibility="invisible"/>
+
     <RelativeLayout
         android:id="@+id/setting_general"
         android:layout_width="112dp"
@@ -211,6 +231,15 @@
             android:fontFamily="sans-serif">
         </TextView>
     </RelativeLayout>
+    <View
+        android:id="@+id/setting_general_mask"
+        android:layout_width="112dp"
+        android:layout_height="128dp"
+        android:layout_below="@+id/setting_divider"
+        android:layout_marginTop="38dp"
+        android:layout_marginLeft="950dp"
+        android:background="@drawable/setting_mask"
+        android:visibility="invisible"/>
 
     <RelativeLayout
         android:id="@+id/setting_network"
@@ -246,6 +275,16 @@
             android:fontFamily="sans-serif">
         </TextView>
     </RelativeLayout>
+    <View
+        android:id="@+id/setting_network_mask"
+        android:layout_width="112dp"
+        android:layout_height="128dp"
+        android:layout_below="@+id/setting_divider"
+        android:layout_marginTop="222dp"
+        android:layout_marginLeft="662dp"
+        android:background="@drawable/setting_mask"
+        android:visibility="invisible"/>
+
     <RelativeLayout
         android:id="@+id/setting_information"
         android:layout_width="112dp"
@@ -280,6 +319,16 @@
             android:fontFamily="sans-serif">
         </TextView>
     </RelativeLayout>
+    <View
+        android:id="@+id/setting_information_mask"
+        android:layout_width="112dp"
+        android:layout_height="128dp"
+        android:layout_below="@+id/setting_divider"
+        android:layout_marginTop="222dp"
+        android:layout_marginLeft="806dp"
+        android:background="@drawable/setting_mask"
+        android:visibility="invisible"/>
+
     <RelativeLayout
         android:id="@+id/setting_bluetooth"
         android:layout_width="112dp"
@@ -314,6 +363,15 @@
             android:fontFamily="sans-serif">
         </TextView>
     </RelativeLayout>
+    <View
+        android:id="@+id/setting_bluetooth_mask"
+        android:layout_width="112dp"
+        android:layout_height="128dp"
+        android:layout_below="@+id/setting_divider"
+        android:layout_marginTop="222dp"
+        android:layout_marginLeft="950dp"
+        android:background="@drawable/setting_mask"
+        android:visibility="invisible"/>
 
     <RelativeLayout
         android:id="@+id/setting_system"
@@ -349,6 +407,16 @@
             android:fontFamily="sans-serif">
         </TextView>
     </RelativeLayout>
+    <View
+        android:id="@+id/setting_system_mask"
+        android:layout_width="112dp"
+        android:layout_height="128dp"
+        android:layout_below="@+id/setting_divider"
+        android:layout_marginTop="406dp"
+        android:layout_marginLeft="662dp"
+        android:background="@drawable/setting_mask"
+        android:visibility="invisible"/>
+
     <RelativeLayout
         android:id="@+id/setting_audio"
         android:layout_width="112dp"
@@ -383,6 +451,16 @@
             android:fontFamily="sans-serif">
         </TextView>
     </RelativeLayout>
+    <View
+        android:id="@+id/setting_audio_mask"
+        android:layout_width="112dp"
+        android:layout_height="128dp"
+        android:layout_below="@+id/setting_divider"
+        android:layout_marginTop="406dp"
+        android:layout_marginLeft="806dp"
+        android:background="@drawable/setting_mask"
+        android:visibility="invisible"/>
+
     <RelativeLayout
         android:id="@+id/setting_control"
         android:layout_width="112dp"
@@ -417,4 +495,13 @@
             android:fontFamily="sans-serif">
         </TextView>
     </RelativeLayout>
+    <View
+        android:id="@+id/setting_control_mask"
+        android:layout_width="112dp"
+        android:layout_height="128dp"
+        android:layout_below="@+id/setting_divider"
+        android:layout_marginTop="406dp"
+        android:layout_marginLeft="950dp"
+        android:background="@drawable/setting_mask"
+        android:visibility="invisible"/>
 </RelativeLayout>

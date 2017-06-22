@@ -25,6 +25,7 @@ public class Settings extends Activity {
     private ArrayList<String> aSystemContent = new ArrayList<String>();
     private Button[] button = new Button[9];
     private Intent intent = new Intent();
+    private View[] mask = new View[9];
     public static boolean[] bControlItems = {true,false,true,false,false,true};
     public String[] bControlString = {"Crestron","Extron","PJ Link","AMX","Telnet","HTTP"};
 
@@ -52,6 +53,17 @@ public class Settings extends Activity {
             R.id.setting_account_button
     };
 
+    private static int[] SettingMaskID = {
+            R.id.setting_power_mask,
+            R.id.setting_account_mask,
+            R.id.setting_general_mask,
+            R.id.setting_network_mask,
+            R.id.setting_information_mask,
+            R.id.setting_bluetooth_mask,
+            R.id.setting_system_mask,
+            R.id.setting_audio_mask,
+            R.id.setting_control_mask
+    };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,6 +82,7 @@ public class Settings extends Activity {
         for(int i=0;i<SettingButtonID.length;i++) {
             button[i] = (Button) findViewById(SettingButtonID[i]);
             button[i].setOnClickListener(buttonOnClick);
+            mask[i] = findViewById(SettingMaskID[i]);
             if(i < yLimit) {
                 SystemTitleTV[i] = (TextView) findViewById(SettingTvTitleID[i]);
                 SystemContentTV[i] = (TextView) findViewById(SettingTvContentID[i]);
@@ -125,6 +138,7 @@ public class Settings extends Activity {
 
     private void SetSettingTV(boolean show) {
         int iShow = show ? View.VISIBLE : View.INVISIBLE;
+        int iNotShow = show ? View.INVISIBLE : View.VISIBLE;
         if((2 == xFocus) && (2 == yFocus)) {
             String sControl = "";
             boolean bStart = true;
@@ -143,6 +157,14 @@ public class Settings extends Activity {
         SettingTV.setVisibility(iShow);
         SystemTitleTV[yFocus].setVisibility(iShow);
         SystemContentTV[yFocus].setVisibility(iShow);
+        for(int i = 0;i<3;i++) {
+            for(int j = 0;j<3;j++) {
+                if ((xFocus == j) && (yFocus == i))
+                    mask[3*i+j].setVisibility(View.INVISIBLE);
+                else
+                    mask[3*i+j].setVisibility(iNotShow);
+            }
+        }
     }
 
     public void SetTitleContent(int x, int y) {
