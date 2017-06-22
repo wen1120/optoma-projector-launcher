@@ -43,11 +43,18 @@ public class ButtonController extends ViewController {
         ButterKnife.bind(this, view);
 
         this.title.setText(title);
-        if(leadingImage>=0)
+
+        if(leadingImage>=0) {
             this.leadingImage.setImageResource(leadingImage);
-        else this.leadingImage.setVisibility(View.GONE);
-        if(trailingImage>=0)
+        } else {
+            this.leadingImage.setVisibility(View.GONE);
+        }
+
+        if(trailingImage>=0) {
             this.trailingImage.setImageResource(trailingImage);
+        } else {
+            this.trailingImage.setVisibility(View.GONE);
+        }
 
         if(info != null) {
             this.info.setText(info);

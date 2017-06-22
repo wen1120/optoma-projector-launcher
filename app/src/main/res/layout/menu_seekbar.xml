@@ -24,7 +24,7 @@
             android:gravity="center_vertical"
             android:text="@string/audio_volume"
             android:textSize = "18sp"
-            android:textColor="@color/secondary_light_gray"
+            android:textColor="@color/menu_text"
             android:duplicateParentState="true"/>
         <Space
             android:layout_width="0dp"

@@ -19,7 +19,8 @@
         android:layout_height="48dp"
         android:gravity="center_vertical"
         android:textSize = "18sp"
-        android:textColor="@color/secondary_light_gray"/>
+        android:textColor="@color/menu_text"
+        android:duplicateParentState="true"/>
 
     <LinearLayout
         android:layout_width="match_parent"
