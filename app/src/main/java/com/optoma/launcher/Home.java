@@ -167,6 +167,13 @@ public class Home extends Activity {
 
                 switch (rID) {
 
+                    case R.id.shortcut_app4: {
+                        final Intent intent = new Intent();
+                        intent.setClass(Home.this, SettingsHome.class);
+                        startActivity(intent);
+                        break;
+                    }
+
                     case R.id.shortcut_app5: {
                         new Projector(Home.this).startHmdi();
                     }

@@ -13,6 +13,7 @@ import android.widget.BaseAdapter;
 import android.content.Context;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.optoma.launcher.ui.ButtonController;
@@ -31,7 +32,33 @@ import java.util.ArrayList;
 public class SettingsHome extends Activity {
 
     GridView settingsList;
-    ArrayList<GridShortcut> settingsItem=new ArrayList<>();
+    ArrayList<GridShortcut> settingsItem = new ArrayList<>();
+    static int gridCount;
+
+    private static int[] SettingTvTitleID = {
+            R.id.setting_tv_upper_title,
+            R.id.setting_tv_middle_title,
+            R.id.setting_tv_lower_title
+    };
+
+    private static int[] SettingTvContentID = {
+            R.id.setting_tv_upper_content,
+            R.id.setting_tv_middle_content,
+            R.id.setting_tv_lower_content
+    };
+    private static String[] SettingTitle = {
+            "Power Mode", "User Name", "Projector ID",
+            "Network Status", "Software Version", "Current Mode",
+            "Launguage", "Volume", "Allow Access"
+    };
+
+
+    private static String[] SettingContent = {
+            "Power Mode", "User Name", "Projector ID",
+            "Network Status", "Software Version", "Current Mode",
+            "Launguage", "Volume", "Allow Access"
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,18 +66,48 @@ public class SettingsHome extends Activity {
         ButterKnife.bind(this);
 
         settingsList = (GridView) findViewById(R.id.gridview);
-        settingsItem.add(new GridShortcut(R.drawable.power,"Power"));
-        settingsItem.add(new GridShortcut(R.drawable.account,"Account"));
-        settingsItem.add(new GridShortcut(R.drawable.general,"General"));
-        settingsItem.add(new GridShortcut(R.drawable.network,"Network"));
-        settingsItem.add(new GridShortcut(R.drawable.information,"Information"));
-        settingsItem.add(new GridShortcut(R.drawable.bluetooth,"Bluetooth"));
-        settingsItem.add(new GridShortcut(R.drawable.system,"System"));
-        settingsItem.add(new GridShortcut(R.drawable.audio,"Audio"));
-        settingsItem.add(new GridShortcut(R.drawable.control,"Control"));
+        settingsItem.add(new GridShortcut(R.drawable.power, "Power"));
+        settingsItem.add(new GridShortcut(R.drawable.account, "Account"));
+        settingsItem.add(new GridShortcut(R.drawable.general, "General"));
+        settingsItem.add(new GridShortcut(R.drawable.network, "Network"));
+        settingsItem.add(new GridShortcut(R.drawable.information, "Information"));
+        settingsItem.add(new GridShortcut(R.drawable.bluetooth, "Bluetooth"));
+        settingsItem.add(new GridShortcut(R.drawable.system, "System"));
+        settingsItem.add(new GridShortcut(R.drawable.audio, "Audio"));
+        settingsItem.add(new GridShortcut(R.drawable.control, "Control"));
 
-        MyAdapter myAdapter=new MyAdapter(this,R.layout.shortcut,settingsItem);
+        MyAdapter myAdapter = new MyAdapter(this, R.layout.shortcut, settingsItem);
         settingsList.setAdapter(myAdapter);
+
     }
 
+    public class ChangeTitle {
+        public void ChangeTitle(int pos) {
+
+            gridCount = pos;
+            TextView title = (TextView) findViewById(SettingTvTitleID[(gridCount / 3)]);
+            title.setText(SettingTitle[pos]);
+            System.out.println(gridCount);
+
+            for(int i=0;i<3;i++) {
+                    if(i != (gridCount / 3)) {
+                        findViewById(SettingTvTitleID[i]).setVisibility(View.INVISIBLE);
+                        findViewById(SettingTvContentID[i]).setVisibility(View.INVISIBLE);
+                    }
+
+                    else {
+                        findViewById(SettingTvTitleID[i]).setVisibility(View.VISIBLE);
+                        findViewById(SettingTvContentID[i]).setVisibility(View.VISIBLE);
+
+                    }
+            }
+
+
+
+        }
+    }
+
+    public void SetTitle(int pos) {
+        new ChangeTitle().ChangeTitle(pos);
+    }
 }

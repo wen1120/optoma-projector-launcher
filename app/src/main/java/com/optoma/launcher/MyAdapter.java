@@ -8,6 +8,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.optoma.launcher.Settings.Settings;
+import com.optoma.launcher.SettingsHome;
+
 
 import java.util.ArrayList;
 
@@ -42,6 +45,9 @@ public class MyAdapter extends ArrayAdapter<GridShortcut> {
             public void onFocusChange(View v, boolean hasFocus){
             super.onFocusChange(v,hasFocus);
             v.setAlpha(hasFocus ? 1.0f : 0.7f);
+
+            SettingsHome settingItem = new SettingsHome();
+            settingItem.SetTitle(position);
             }}
         );
 
@@ -49,7 +55,6 @@ public class MyAdapter extends ArrayAdapter<GridShortcut> {
         ImageView imageView = (ImageView) v.findViewById(R.id.image);
         textView.setText(settingsItem.get(position).getItemName());
         imageView.setImageResource(settingsItem.get(position).getItemImage());
-
         return v;
 
     }
