@@ -84,6 +84,9 @@ public class SettingsHome extends Activity {
     public class ChangeTitle {
         public void ChangeTitle(int pos) {
 
+            if (settingsList==null)
+                return;
+            else {
             gridCount = pos;
             TextView title = (TextView) findViewById(SettingTvTitleID[(gridCount / 3)]);
             title.setText(SettingTitle[pos]);
@@ -100,7 +103,7 @@ public class SettingsHome extends Activity {
                         findViewById(SettingTvContentID[i]).setVisibility(View.VISIBLE);
 
                     }
-            }
+            }}
 
 
 
