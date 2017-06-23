@@ -34,7 +34,7 @@
         android:layout_marginLeft="48dp"
         android:layout_marginRight="48dp"
         android:layout_marginTop="66dp"
-        android:background="@color/transparent" />
+        android:background="@color/white" />
 
     <TextView
         android:id="@+id/setting_tv_upper_title"
@@ -138,7 +138,7 @@
         android:gravity="center"
         android:text="@string/setting_power"
         android:textSize = "16sp"
-        android:textColor="@color/transparent"
+        android:textColor="@color/white"
         android:textStyle="bold"
         android:fontFamily="sans-serif">
     </TextView>
@@ -182,7 +182,7 @@
             android:gravity="center"
             android:text="@string/projector_setup"
             android:textSize = "16sp"
-            android:textColor="@color/transparent"
+            android:textColor="@color/white"
             android:textStyle="bold"
             android:fontFamily="sans-serif">
         </TextView>
@@ -226,7 +226,7 @@
             android:gravity="center"
             android:text="@string/setting_general"
             android:textSize = "16sp"
-            android:textColor="@color/transparent"
+            android:textColor="@color/white"
             android:textStyle="bold"
             android:fontFamily="sans-serif">
         </TextView>
@@ -270,7 +270,7 @@
             android:gravity="center"
             android:text="@string/setting_network"
             android:textSize = "16sp"
-            android:textColor="@color/transparent"
+            android:textColor="@color/white"
             android:textStyle="bold"
             android:fontFamily="sans-serif">
         </TextView>
@@ -314,7 +314,7 @@
             android:gravity="center"
             android:text="@string/setting_information"
             android:textSize = "16sp"
-            android:textColor="@color/transparent"
+            android:textColor="@color/white"
             android:textStyle="bold"
             android:fontFamily="sans-serif">
         </TextView>
@@ -358,7 +358,7 @@
             android:gravity="center"
             android:text="@string/setting_bluetooth"
             android:textSize = "16sp"
-            android:textColor="@color/transparent"
+            android:textColor="@color/white"
             android:textStyle="bold"
             android:fontFamily="sans-serif">
         </TextView>
@@ -402,7 +402,7 @@
             android:gravity="center"
             android:text="@string/setting_system"
             android:textSize = "16sp"
-            android:textColor="@color/transparent"
+            android:textColor="@color/white"
             android:textStyle="bold"
             android:fontFamily="sans-serif">
         </TextView>
@@ -446,7 +446,7 @@
             android:gravity="center"
             android:text="@string/setting_audio"
             android:textSize = "16sp"
-            android:textColor="@color/transparent"
+            android:textColor="@color/white"
             android:textStyle="bold"
             android:fontFamily="sans-serif">
         </TextView>
@@ -490,7 +490,7 @@
             android:gravity="center"
             android:text="@string/setting_control"
             android:textSize = "16sp"
-            android:textColor="@color/transparent"
+            android:textColor="@color/white"
             android:textStyle="bold"
             android:fontFamily="sans-serif">
         </TextView>

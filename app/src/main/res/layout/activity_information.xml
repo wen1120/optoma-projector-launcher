@@ -25,7 +25,7 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginTop="50dp"
-        android:background="@color/transparent" />
+        android:background="@color/white" />
     <android.support.v7.widget.AppCompatImageView
         android:id="@+id/info_iv"
         android:layout_width="wrap_content"
@@ -93,7 +93,7 @@
                 android:layout_below="@+id/info_legal_tv"
                 android:layout_alignBottom="@+id/info_pp_tv"
                 android:layout_marginLeft="5dp"
-                android:background="@color/transparent" />
+                android:background="@color/white" />
             <View
                 android:id="@+id/info_tos_view"
                 android:layout_width="wrap_content"
@@ -153,7 +153,7 @@
                 android:layout_below="@+id/info_about_tv"
                 android:layout_alignBottom="@+id/info_mcu_fw_version_tv"
                 android:layout_marginLeft="5dp"
-                android:background="@color/transparent" />
+                android:background="@color/white" />
             <TextView
                 android:id="@+id/info_serial_number_tv"
                 android:layout_width="wrap_content"
@@ -293,7 +293,7 @@
                 android:layout_below="@+id/info_control_tv"
                 android:layout_alignBottom="@+id/info_remote_code_active_tv"
                 android:layout_marginLeft="5dp"
-                android:background="@color/transparent" />
+                android:background="@color/white" />
             <TextView
                 android:id="@+id/info_projector_id_tv"
                 android:layout_width="wrap_content"
@@ -390,7 +390,7 @@
                 android:layout_below="@+id/info_hardware_tv"
                 android:layout_alignBottom="@+id/info_lamp2_tv"
                 android:layout_marginLeft="5dp"
-                android:background="@color/transparent" />
+                android:background="@color/white" />
             <TextView
                 android:id="@+id/info_power_mode_tv"
                 android:layout_width="wrap_content"
@@ -626,7 +626,7 @@
                 android:layout_below="@+id/info_display_tv"
                 android:layout_alignBottom="@+id/info_display_mode_tv"
                 android:layout_marginLeft="5dp"
-                android:background="@color/transparent" />
+                android:background="@color/white" />
             <TextView
                 android:id="@+id/info_bright_mode_tv"
                 android:layout_width="wrap_content"
@@ -748,7 +748,7 @@
                 android:layout_below="@+id/info_network_tv"
                 android:layout_alignBottom="@+id/info_wifi_mac_address_tv"
                 android:layout_marginLeft="5dp"
-                android:background="@color/transparent" />
+                android:background="@color/white" />
             <TextView
                 android:id="@+id/info_lan_status_tv"
                 android:layout_width="wrap_content"

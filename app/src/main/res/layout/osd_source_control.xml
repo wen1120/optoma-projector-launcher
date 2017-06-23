@@ -46,7 +46,7 @@
                 android:layout_marginLeft="@dimen/projector_divider_left"
                 android:layout_below="@+id/sc_hdmi_link_settings_tv"
                 android:layout_alignBottom="@+id/sc_hdmi_link_settings_view"
-                android:background="@color/transparent" />
+                android:background="@color/white" />
             <View
                 android:id="@+id/sc_hdmi_link_view"
                 android:layout_width="match_parent"
@@ -226,7 +226,7 @@
                 android:layout_marginLeft="@dimen/projector_divider_left"
                 android:layout_below="@+id/sc_hdbaset_control_tv"
                 android:layout_alignBottom="@+id/sc_hdbaset_control_view"
-                android:background="@color/transparent" />
+                android:background="@color/white" />
             <View
                 android:id="@+id/sc_ethernet_view"
                 android:layout_width="match_parent"

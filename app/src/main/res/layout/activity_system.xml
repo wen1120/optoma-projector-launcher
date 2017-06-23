@@ -93,7 +93,7 @@
             android:layout_below="@+id/system_date_time_tv"
             android:layout_alignBottom="@+id/system_set_time_view"
             android:layout_marginLeft="53dp"
-            android:background="@color/transparent" />
+            android:background="@color/white" />
         <View
             android:id="@+id/system_automatic_view"
             android:layout_width="match_parent"
@@ -208,7 +208,7 @@
             android:layout_below="@+id/system_security_view"
             android:layout_alignBottom="@+id/system_change_pw_view"
             android:layout_marginLeft="53dp"
-            android:background="@color/transparent" />
+            android:background="@color/white" />
         <View
             android:id="@+id/system_security_timer_view"
             android:layout_width="match_parent"

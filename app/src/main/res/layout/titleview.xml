@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:layout_alignParentRight="true"
     android:alpha="70"
-    android:background="@android:color/transparent">
+    android:background="@android:color/white">
 
     <TextView
         android:id="@+id/title_bar_hour"
