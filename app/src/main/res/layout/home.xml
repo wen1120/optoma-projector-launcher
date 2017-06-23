@@ -59,9 +59,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:layout_marginTop="27dp"
+                    android:layout_marginTop="22dp"
                     android:layout_marginRight="48dp"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal">
                     <TextClock
                         android:id="@+id/home_clock"
                         android:layout_width="wrap_content"
@@ -69,11 +70,23 @@
                         android:clickable="false"
                         android:textColor="#D0D3D4"
                         android:format12Hour="HH:mm"
-                        android:textSize="42sp" />
+                        android:textSize="40sp" />
                     <View
                         android:layout_width="fill_parent"
                         android:layout_height="1dp"
+                        android:layout_marginTop="-10dp"
                         android:background="#D0D3D4" />
+                    <TextClock
+                        android:id="@+id/home_day"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerHorizontal="true"
+                        android:fontFamily="Roboto"
+                        android:format12Hour="EEE  d MMM"
+                        android:format24Hour="EEE  d MMM"
+                        android:textColor="#FFFFFF"
+                        android:textSize="20sp" />
                 </LinearLayout>
 
             </RelativeLayout>
@@ -84,35 +97,6 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:clipChildren="false">
-
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginEnd="48dp">
-
-                    <!-- dummy clock for layout purpose -->
-                    <TextClock
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:clickable="false"
-                        android:format12Hour="HH:mm"
-                        android:textColor="#D0D3D4"
-                        android:textSize="42sp"
-                        android:visibility="invisible" />
-
-                    <TextClock
-                        android:id="@+id/home_day"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentTop="true"
-                        android:layout_centerHorizontal="true"
-                        android:fontFamily="Roboto"
-                        android:format12Hour="EEE d MMM"
-                        android:format24Hour="EEE d MMM"
-                        android:textColor="#FFFFFF"
-                        android:textSize="20sp" />
-                </RelativeLayout>
 
                 <LinearLayout
                     android:id="@+id/menu_wrapper"
@@ -235,12 +219,12 @@
 
         <Space
             android:layout_height="match_parent"
-            android:layout_width="80dp"/>
+            android:layout_width="66dp"/>
 
         <ImageView
             android:id="@+id/shortcut_app1"
-            android:layout_width="112dp"
-            android:layout_height="128dp"
+            android:layout_width="140dp"
+            android:layout_height="160dp"
             android:layout_gravity="center_vertical|center"
             android:layout_marginBottom="36dp"
             android:layout_marginTop="36dp"
@@ -258,8 +242,8 @@
 
         <ImageView
             android:id="@+id/shortcut_app2"
-            android:layout_width="112dp"
-            android:layout_height="128dp"
+            android:layout_width="140dp"
+            android:layout_height="160dp"
             android:layout_gravity="center_vertical|center"
             android:layout_marginBottom="36dp"
             android:layout_marginTop="36dp"
@@ -277,8 +261,8 @@
 
         <ImageView
             android:id="@+id/shortcut_app3"
-            android:layout_width="112dp"
-            android:layout_height="128dp"
+            android:layout_width="140dp"
+            android:layout_height="160dp"
             android:layout_gravity="center_vertical|center"
             android:layout_marginBottom="36dp"
             android:layout_marginTop="36dp"
@@ -296,8 +280,8 @@
 
         <ImageView
             android:id="@+id/shortcut_app4"
-            android:layout_width="112dp"
-            android:layout_height="128dp"
+            android:layout_width="140dp"
+            android:layout_height="160dp"
             android:layout_gravity="center_vertical|center"
             android:layout_marginBottom="36dp"
             android:layout_marginTop="36dp"
@@ -351,7 +335,7 @@
                 android:text="HMDI1"
                 android:textAlignment="center"
                 android:textColor="@color/primary_white"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
         </LinearLayout>
 
@@ -398,7 +382,7 @@
                 android:text="VGA"
                 android:textAlignment="center"
                 android:textColor="@color/primary_white"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
         </LinearLayout>
 
@@ -445,7 +429,7 @@
                 android:text="Settings"
                 android:textAlignment="center"
                 android:textColor="@color/primary_white"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
         </LinearLayout>
 
@@ -492,13 +476,13 @@
                 android:text="Projector\nSetup"
                 android:textAlignment="center"
                 android:textColor="@color/primary_white"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
         </LinearLayout>
 
         <Space
             android:layout_height="match_parent"
-            android:layout_width="80dp"/>
+            android:layout_width="66dp"/>
 
     </LinearLayout>
 
