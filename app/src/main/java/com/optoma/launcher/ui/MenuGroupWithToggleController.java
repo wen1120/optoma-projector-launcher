@@ -74,8 +74,8 @@ public class MenuGroupWithToggleController extends ViewController {
                 focusCount--;
             }
             view.setBackground((focusCount>0) ?
-                    view.getResources().getDrawable(R.drawable.menu_bg_select) :
-                    view.getResources().getDrawable(R.drawable.menu_bg_normal));
+                    view.getResources().getDrawable(R.drawable.menu_double_bg_focus) :
+                    view.getResources().getDrawable(R.drawable.menu_double_bg_normal));
         }
     };
 }
