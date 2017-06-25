@@ -11,7 +11,7 @@ import com.optoma.launcher.R;
 
 
 public class General extends Activity {
-    private static final String TAG = "LauncherLog";
+    private static final String TAG = "launcherLog";
     private int xPosition, yPosition, iScreenTimeoutIndex;
     private final int yLimit = 5;
     private boolean[] bGeneralItems = {true,false};

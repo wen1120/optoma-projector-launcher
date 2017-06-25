@@ -28,7 +28,7 @@ import trikita.anvil.RenderableView;
 import static trikita.anvil.DSL.*;
 import static trikita.anvil.DSL.view;
 
-public class HomeMenu extends Activity {
+public class HomeMenuActivity extends Activity {
 
     // model
     private static class Model {
@@ -257,8 +257,8 @@ public class HomeMenu extends Activity {
 
     private class Renderer extends RenderableView {
 
-        private final Drawable shortcutUnfocused = UI.createRectangle(UI.getColor(UI.primary_gray, 0.7f), 0, 0, Util.dp(HomeMenu.this, 10));
-        private final Drawable shortcutFocused = UI.createRectangle(UI.primary_gray, Util.dp(HomeMenu.this, 1), UI.secondary_yellow, Util.dp(HomeMenu.this, 10));
+        private final Drawable shortcutUnfocused = UI.createRectangle(UI.getColor(UI.primary_gray, 0.7f), 0, 0, Util.dp(HomeMenuActivity.this, 10));
+        private final Drawable shortcutFocused = UI.createRectangle(UI.primary_gray, Util.dp(HomeMenuActivity.this, 1), UI.secondary_yellow, Util.dp(HomeMenuActivity.this, 10));
         private final @DrawableRes int[] inputSourceIcons = new int[]{
                 R.drawable.miracast,
                 R.drawable.vga,
@@ -352,7 +352,7 @@ public class HomeMenu extends Activity {
                     imageResource(selected ? R.drawable.f_inputsource : R.drawable.uf_inputsource);
 //                    selected(selected);
 //                    onClick(v -> {
-//                        update(new OpenPage(Page.InputSource));
+//                        update(new OpenPage(Page.InputSourceActivity));
 //                    });
                 });
 

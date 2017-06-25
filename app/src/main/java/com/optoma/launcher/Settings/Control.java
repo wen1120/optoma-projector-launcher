@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import com.optoma.launcher.R;
 
 public class Control extends Activity {
-    private static final String TAG = "LauncherLog";
+    private static final String TAG = "launcherLog";
     private int xPosition, yPosition;
     private final int yLimit = 6;
     private ImageView[] ivControlOnOff = new ImageView[yLimit];

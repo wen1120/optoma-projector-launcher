@@ -8,7 +8,6 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.Space;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,7 +17,7 @@ import android.widget.ViewFlipper;
  * Created by linweiting on 2017/4/20.
  */
 
-public class InitialSetup extends Activity {
+public class InitialSetupActivity extends Activity {
 
     private static final int[] positionIds = new int[] {
             R.id.front,
@@ -31,7 +30,7 @@ public class InitialSetup extends Activity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.initial_setup);
-        
+
         // final View tabBar = (View) findViewById(R.id.initial_setup_tabbar);
         final View positionTab = (View) findViewById(R.id.position);
         positionTab.setSelected(true);
@@ -46,7 +45,7 @@ public class InitialSetup extends Activity {
                 @Override
                 public void onClick(View v) {
                     // TODO: change position
-                    Toast.makeText(InitialSetup.this,
+                    Toast.makeText(InitialSetupActivity.this,
                             "Setting position to " + v.getContentDescription(), Toast.LENGTH_SHORT).show();
                     positionTab.setSelected(false);
                     languageTab.setSelected(true);
@@ -85,7 +84,7 @@ public class InitialSetup extends Activity {
 
                 tile.setContentDescription(Projector.langsEng[index]);
 
-                tile.setOnFocusChangeListener(new SizeChanger(1.25f, Home.animateDuration) {
+                tile.setOnFocusChangeListener(new SizeChanger(1.25f, HomeActivity.animateDuration) {
                      @Override
                      public void onFocusChange(View v, boolean hasFocus) {
                          super.onFocusChange(v, hasFocus);
@@ -105,10 +104,10 @@ public class InitialSetup extends Activity {
                     @Override
                     public void onClick(View v) {
                         // TODO: change language setting
-                        Toast.makeText(InitialSetup.this,
+                        Toast.makeText(InitialSetupActivity.this,
                                 "Setting language to " + v.getContentDescription(), Toast.LENGTH_SHORT).show();
 
-                        final Intent intent = new Intent(InitialSetup.this, Home.class);
+                        final Intent intent = new Intent(InitialSetupActivity.this, HomeActivity.class);
                         startActivity(intent);
                     }
                 });

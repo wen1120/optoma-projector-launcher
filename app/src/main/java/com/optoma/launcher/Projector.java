@@ -21,7 +21,7 @@ public class Projector {
         try {
             mCmdManager = new CmdManager(context);
         } catch(java.lang.NoClassDefFoundError e) {
-            Log.d("ken", "Not on ML330!!!");
+            Log.d("launcherLog", "Not on ML330!!!");
         }
     }
 
@@ -203,12 +203,12 @@ public class Projector {
             "1000hr"
     };
 
-    public static final String[] lensFunctions = new String[]{
+    public static final String[] lensFunctions = new String[] {
             "Lock",
             "Unlock"
     };
 
-    public static final String[] lensShifts = new String[]{
+    public static final String[] lensShifts = new String[] {
             "Up",
             "Down",
             "Left",
@@ -421,13 +421,13 @@ public class Projector {
 
 
     //index: 0: (16:9)  2: (16:10) 3: (4:3)
-    public void SetScreenScaleMode(int index) {
+    public void setScreenScaleMode(int index) {
         if(mCmdManager==null) return;
         mCmdManager.setScreenScaleMode(index);
     }
 
     //index: 50~100
-    public void SetTiSuperFocus(int index) {
+    public void setTiSuperFocus(int index) {
         if(mCmdManager==null) return;
         mCmdManager.setTiSuperFocus(index);
     }

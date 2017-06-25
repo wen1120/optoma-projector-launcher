@@ -10,7 +10,7 @@ import com.optoma.launcher.R;
 
 
 public class Bluetooth extends Activity {
-    private static final String TAG = "LauncherLog";
+    private static final String TAG = "launcherLog";
     private final int yLimit = 2;
     private int xPosition, yPosition;
     private boolean bBTPower = false;

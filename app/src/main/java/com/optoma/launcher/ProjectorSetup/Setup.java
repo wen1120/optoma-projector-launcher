@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 
 public class Setup extends Activity {
-    private static final String TAG = "LauncherLog";
+    private static final String TAG = "launcherLog";
     private int xPosition, yPosition,iCeilingMount,iTestPattern;
     private final int yLimit = 3, TotalIV = 1, TotalTV = 1, TotalV = 1;
     private boolean[] bSetupOn = {false};

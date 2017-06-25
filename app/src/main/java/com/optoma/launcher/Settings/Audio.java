@@ -12,7 +12,7 @@ import com.optoma.launcher.R;
 
 
 public class Audio extends Activity {
-    private static final String TAG = "LauncherLog";
+    private static final String TAG = "launcherLog";
     private int xPosition, yPosition;
     private final int yLimit = 9;
     private boolean[] bAudioItems = {true,false,false,false,false};

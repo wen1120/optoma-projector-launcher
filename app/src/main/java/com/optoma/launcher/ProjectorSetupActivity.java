@@ -1,25 +1,14 @@
 package com.optoma.launcher;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.PixelFormat;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewParent;
-import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
-import android.widget.SeekBar;
 import android.widget.Space;
 
-import com.optoma.launcher.ProjectorSetup.Signal;
-import com.optoma.launcher.ProjectorSetup.SourceControl;
-import com.optoma.launcher.ProjectorSetup.ThreeD;
 import com.optoma.launcher.ui.ButtonController;
 import com.optoma.launcher.ui.MenuController;
 import com.optoma.launcher.ui.MenuGroupController;
@@ -32,7 +21,7 @@ import com.optoma.launcher.ui.ToggleController;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class Setup extends Activity {
+public class ProjectorSetupActivity extends Activity {
 
     @BindView(R.id.content) ViewGroup content;
     private Projector projector;
@@ -117,7 +106,7 @@ public class Setup extends Activity {
         installation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Setup.this, com.optoma.launcher.ProjectorSetup.Setup.class));
+                startActivity(new Intent(ProjectorSetupActivity.this, com.optoma.launcher.ProjectorSetup.Setup.class));
             }
         });
         menu.addItem(installation);
@@ -142,7 +131,7 @@ public class Setup extends Activity {
             @Override
             public void onClick(View v) {
                 menu.setContent(createSourceControl(menu), sourceControl);
-                // startActivity(new Intent(Setup.this, SourceControl.class));
+                // startActivity(new Intent(ProjectorSetupActivity.this, SourceControl.class));
             }
         });
         menu.addItem(sourceControl);
@@ -207,7 +196,7 @@ public class Setup extends Activity {
         colorSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Toast.makeText(Setup.this, "hello?", Toast.LENGTH_SHORT).show();
+                // Toast.makeText(ProjectorSetupActivity.this, "hello?", Toast.LENGTH_SHORT).show();
                 menu.setContent(createColorSettings(menu), colorSettings);
             }
         });
@@ -250,7 +239,7 @@ public class Setup extends Activity {
         menu.addItem(darbeeSettings);
 
         final ButtonController back = new ButtonController(
-                this, "Back to Projector Setup", null, R.drawable.backtotop_white, -1);
+                this, "Back to Projector ProjectorSetupActivity", null, R.drawable.backtotop_white, -1);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -599,7 +588,7 @@ public class Setup extends Activity {
         menu.addItem(geometricCorrection);*/
 
         final ButtonController back = new ButtonController(
-                this, "Back to Projector Setup", null, R.drawable.backtotop_white, -1);
+                this, "Back to Projector ProjectorSetupActivity", null, R.drawable.backtotop_white, -1);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -640,7 +629,7 @@ public class Setup extends Activity {
         menu.addItem(source);
 
         final ButtonController back = new ButtonController(
-                this, "Back to Projector Setup", null, R.drawable.backtotop_white, -1);
+                this, "Back to Projector ProjectorSetupActivity", null, R.drawable.backtotop_white, -1);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -722,7 +711,7 @@ public class Setup extends Activity {
 
 
         final ButtonController back = new ButtonController(
-                this, "Back to Projector Setup", null, R.drawable.backtotop_white, -1);
+                this, "Back to Projector ProjectorSetupActivity", null, R.drawable.backtotop_white, -1);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -910,7 +899,7 @@ public class Setup extends Activity {
         menu.addItem(twoDThreeD);
 
         final ButtonController back = new ButtonController(
-                this, "Back to Projector Setup", null, R.drawable.backtotop_white, -1);
+                this, "Back to Projector ProjectorSetupActivity", null, R.drawable.backtotop_white, -1);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -959,7 +948,7 @@ public class Setup extends Activity {
         menu.addItem(ire);
 
         final ButtonController back = new ButtonController(
-                this, "Back to Projector Setup", null, R.drawable.backtotop_white, -1);
+                this, "Back to Projector ProjectorSetupActivity", null, R.drawable.backtotop_white, -1);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -1002,7 +991,7 @@ public class Setup extends Activity {
         menu.addItem(hdBaseTControl);
 
         final ButtonController back = new ButtonController(
-                this, "Back to Projector Setup", null, R.drawable.backtotop_white, -1);
+                this, "Back to Projector ProjectorSetupActivity", null, R.drawable.backtotop_white, -1);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

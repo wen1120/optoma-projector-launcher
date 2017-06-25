@@ -11,7 +11,7 @@ import com.optoma.launcher.R;
 
 
 public class Power extends Activity {
-    private static final String TAG = "LauncherLog";
+    private static final String TAG = "launcherLog";
     private int xPosition, yPosition;
     private final int yLimit = 11, TotalIV = 5, TotalTV = 2;
     private boolean[] bPowerItems = {true,false,false,false,false};

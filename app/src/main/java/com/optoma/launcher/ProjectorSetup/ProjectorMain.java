@@ -13,19 +13,18 @@ import com.optoma.launcher.FocusContainer;
 import com.optoma.launcher.SizeChanger;
 
 public class ProjectorMain extends Activity {
-    private static final String TAG = "LauncherLog";
+    private static final String TAG = "launcherLog";
     public static long animateDuration = 80;
     private FocusContainer buttonRow;
 
     private static int[] PSButtonID = {
-            R.id.projector_button1,
-            R.id.projector_button2,
-            R.id.projector_button3,
-            R.id.projector_button4,
-            R.id.projector_button5,
-            R.id.projector_button6,
-            R.id.projector_button7,
-            R.id.projector_button8
+            R.id.projector_button1, // image settings
+            R.id.projector_button2, // display adjustment
+            R.id.projector_button3, // 3d
+            R.id.projector_button4, // signal
+            R.id.projector_button5, // setup
+            R.id.projector_button6, // device control
+            R.id.projector_button7 // source control
     };
 
     @Override
@@ -80,10 +79,10 @@ public class ProjectorMain extends Activity {
                 final Intent intent = new Intent();
                 switch (rID) {
                     case R.id.projector_button1:
-                        intent.setClassName(getPackageName(), getPackageName() + ".InputSource");
+                        intent.setClassName(getPackageName(), getPackageName() + ".InputSourceActivity");
                         break;
                     case R.id.projector_button2:
-                        intent.setClassName(getPackageName(), getPackageName() + ".InputSource");
+                        intent.setClassName(getPackageName(), getPackageName() + ".InputSourceActivity");
                         break;
                     case R.id.projector_button3:
                         intent.setClassName(getPackageName(), getPackageName() + ".Settings.Settings");
@@ -95,7 +94,7 @@ public class ProjectorMain extends Activity {
                         intent.setClassName(getPackageName(), getPackageName() + ".ProjectorSetup.Signal");
                         break;
                     case R.id.projector_button6:
-                        intent.setClassName(getPackageName(), getPackageName() + ".ProjectorSetup.Setup");
+                        intent.setClassName(getPackageName(), getPackageName() + ".ProjectorSetup.ProjectorSetupActivity");
                         break;
                     case R.id.projector_button7:
                         intent.setClassName(getPackageName(), getPackageName() + ".Settings.Settings");

@@ -10,12 +10,12 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.optoma.launcher.R;
-import com.optoma.launcher.Setup;
+import com.optoma.launcher.ProjectorSetupActivity;
 
 import java.util.ArrayList;
 
 public class Settings extends Activity {
-    private static final String TAG = "LauncherLog";
+    private static final String TAG = "launcherLog";
     private static final int xLimit = 3, yLimit = 3;
     private int xPosition, yPosition, xFocus, yFocus;
     private TextView SettingTV;
@@ -126,7 +126,7 @@ public class Settings extends Activity {
                     intent.setClassName(getPackageName(), getPackageName() + ".Settings.Network");
                     break;
                 case R.id.setting_account_button:
-                    intent.setClass(Settings.this, Setup.class);
+                    intent.setClass(Settings.this, ProjectorSetupActivity.class);
                     break;
                 default:
                     Log.d(TAG, "unknown setting id=" + v.getId());

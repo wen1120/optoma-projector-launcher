@@ -29,7 +29,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import java.util.ArrayList;
 
-public class SettingsHome extends Activity {
+public class SettingsActivity extends Activity {
 
     GridView settingsList;
     ArrayList<GridShortcut> settingsItem = new ArrayList<>();

@@ -16,8 +16,8 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class InputSource extends Activity {
-    private static final String TAG = "LauncherLog";
+public class InputSourceActivity extends Activity {
+    private static final String TAG = "launcherLog";
     private static final int ssCount = 3;
     private Button bSetShortcut;
     private String[] sslist = {" ", " ", " "};
@@ -46,11 +46,11 @@ public class InputSource extends Activity {
         public void onClick(View v) {
             Log.d(TAG, "Button Set Shortcut clicked");
             iPosition = 0;
-            final View convertView = LayoutInflater.from(InputSource.this).inflate(R.layout.setshort_layout, null);
-            AlertDialog.Builder alertDialog = new AlertDialog.Builder(InputSource.this, R.style.CustomAlertDialog);
+            final View convertView = LayoutInflater.from(InputSourceActivity.this).inflate(R.layout.setshort_layout, null);
+            AlertDialog.Builder alertDialog = new AlertDialog.Builder(InputSourceActivity.this, R.style.CustomAlertDialog);
             alertDialog.setView(convertView);
             ListView lv = (ListView) convertView.findViewById(R.id.ss_list_view);
-            adapter = new ArrayAdapter<String>(InputSource.this ,R.layout.is_listview, sslist);
+            adapter = new ArrayAdapter<String>(InputSourceActivity.this ,R.layout.is_listview, sslist);
             lv.setAdapter(adapter);
             ssTextView[0] = (TextView) convertView.findViewById(R.id.ss_source01);
             ssTextView[1] = (TextView) convertView.findViewById(R.id.ss_source02);

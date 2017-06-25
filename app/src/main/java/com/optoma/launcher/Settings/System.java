@@ -22,7 +22,7 @@ import com.optoma.launcher.R;
 import java.util.ArrayList;
 
 public class System extends Activity {
-    private static final String TAG = "LauncherLog";
+    private static final String TAG = "launcherLog";
     private int xPosition, yPosition, iPosition = 0;
     private final int yLimit = 9, UpdateCount = 3;
     private boolean[] bSystemItems = {true,false};

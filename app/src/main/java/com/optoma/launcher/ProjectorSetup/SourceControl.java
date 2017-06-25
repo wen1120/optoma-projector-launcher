@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 
 public class SourceControl extends Activity {
-    private static final String TAG = "LauncherLog";
+    private static final String TAG = "launcherLog";
     private int xPosition, yPosition,iPowerOnLink;
     private final int yLimit = 7, TotalIV = 5, TotalTV = 1, TotalV = 2;
     private boolean[] bSCOn = {true,false,false,true,true};

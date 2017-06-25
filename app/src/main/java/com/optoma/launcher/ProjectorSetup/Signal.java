@@ -15,7 +15,7 @@ import java.util.ArrayList;
 
 
 public class Signal extends Activity {
-    private static final String TAG = "LauncherLog";
+    private static final String TAG = "launcherLog";
     private int xPosition, yPosition,iColorSpace,iIRE;
     private final int yLimit = 12, TotalIV = 1, TotalTV = 2, TotalSB = 8;
     private boolean[] bSignalOn = {false};
