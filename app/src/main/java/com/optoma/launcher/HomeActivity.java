@@ -210,19 +210,19 @@ public class HomeActivity extends Activity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final Intent intent = new Intent(HomeActivity.this, HomeMenuActivity.class);
+                final Intent intent = new Intent(HomeActivity.this, MenuActivity.class);
                 switch (rID) {
                     case R.id.menu_position:
-                        intent.putExtra("page", HomeMenuActivity.Page.Position);
+                        intent.putExtra("page", MenuActivity.Page.Position);
                         break;
                     case R.id.menu_apps:
-                        intent.putExtra("page", HomeMenuActivity.Page.Apps);
+                        intent.putExtra("page", MenuActivity.Page.Apps);
                         break;
                     case R.id.menu_is:
-                        intent.putExtra("page", HomeMenuActivity.Page.InputSource);
+                        intent.putExtra("page", MenuActivity.Page.InputSource);
                         break;
                     case R.id.menu_lang:
-                        intent.putExtra("page", HomeMenuActivity.Page.Language);
+                        intent.putExtra("page", MenuActivity.Page.Language);
                         break;
                     default:
                         break;

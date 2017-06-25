@@ -87,7 +87,7 @@
             android:name=".ProjectorSetup.SourceControl"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity
-            android:name=".HomeMenuActivity"
+            android:name=".MenuActivity"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity android:name=".ui.UITest" />
 
